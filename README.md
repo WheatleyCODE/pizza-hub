@@ -10,5 +10,4 @@ Redux
 React-redux
 Redux-thunk
 Axios
-
-// Firebase
+Firebase
