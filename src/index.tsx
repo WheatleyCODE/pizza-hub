@@ -2,6 +2,7 @@ import firebase from 'firebase';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import './index.scss';
 import { store } from './store/store';
@@ -21,9 +22,11 @@ firebase.analytics();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <Layout />
-    </Provider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <Layout />
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),
 );

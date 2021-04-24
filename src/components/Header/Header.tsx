@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
+import MobileMenu from './MobileMenu/MobileMenu';
 import './Header.scss';
+import Logo from './Logo/Logo';
 
 const Header = () => {
-  const as = 10;
-  console.log(as);
+  const [showMenu, setShowMenu] = useState(false);
+
+  const toggleMenu = () => {
+    setShowMenu((prev) => !prev);
+  };
+
   return (
     <header className="Header">
       <div className="logo">
-        <div className="logo__container">
-          <div>
-            <i className="fa fa-picture-o" aria-hidden="true" />
-          </div>
-          <h1 className="logo__text">PIZZA HUB</h1>
-        </div>
+        {/* fix */}
+        <Logo onClickHandler={() => {}} />
         <div className="menu__container">
-          <i className="fa fa-bars" aria-hidden="true" />
+          <button type="submit" onClick={toggleMenu} className="burger-menu">
+            <i className="fa fa-bars" aria-hidden="true" />
+          </button>
         </div>
       </div>
+      { showMenu ? <MobileMenu onClickHandler={toggleMenu} /> : null }
     </header>
   );
 };

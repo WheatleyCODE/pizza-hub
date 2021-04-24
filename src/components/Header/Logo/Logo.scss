@@ -1,0 +1,25 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+.Logo {
+  display: flex;
+  align-items: center;
+  @include ButtonToDiv;
+
+  .Logo__text {
+    font-size: 22px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+
+  h1 {
+    color: $colorWhite;
+    background-color: $colorBlack;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+  }
+
+  img {
+    width: 40px;
+    margin: 0 10px;
+  }
+}

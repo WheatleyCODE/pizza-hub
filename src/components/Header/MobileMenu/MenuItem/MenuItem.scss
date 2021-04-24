@@ -1,0 +1,30 @@
+@import '../../../../styles/variables';
+
+.MenuItem {
+  width: 100%;
+  display: flex;
+  padding: 10px;
+
+  &__icon {
+    font-size: 23px;
+  }
+
+  &__text {
+    margin-left: 14px;
+  }
+
+  .text__first {
+    font-size: 17px;
+    margin-bottom: 5px;
+  }
+
+  .text__last {
+    font-size: 12px;
+    color: $colorGrey;
+  }
+
+  .MenuItem__text {
+    display: flex;
+    flex-direction: column;
+  }
+}
