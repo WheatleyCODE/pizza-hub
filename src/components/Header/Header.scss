@@ -1,0 +1,41 @@
+@import '../../styles/variables';
+
+.Header {
+  width: 100%;
+  background-color: $colorWhite;
+
+  .menu {
+    position: sticky;
+    top: 0;
+    background-color: blue;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 15px;
+  }
+
+  .logo__container {
+    display: flex;
+    align-items: center;
+    i {
+      font-size: 40px;
+      margin-right: 8px;
+    }
+
+    .logo__text {
+      font-size: 22px;
+    }
+  }
+
+  .menu__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      font-size: 30px;
+    }
+  }
+}

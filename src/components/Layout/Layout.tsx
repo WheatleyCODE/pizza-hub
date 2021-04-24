@@ -1,20 +1,32 @@
 import React, { useEffect } from 'react';
 import { useActions } from '../../hooks/useAction';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
+import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
+import InfoBlock from '../InfoBlock/InfoBlock';
+import Menu from '../Menu/Menu';
+import PromoBlock from '../PromoBlock/PromoBlock';
+import StickyMenu from '../StickyMenu/StickyMenu';
+import Slider from '../UI/Slider/Slider';
 import './Layout.scss';
 
 const Layout = () => {
-  const { menu, loading, error } = useTypedSelector((state) => state.user);
+  const { loading } = useTypedSelector((state) => state.user);
   const { fetchMenu } = useActions();
   useEffect(() => {
     fetchMenu();
   }, []);
 
-  console.log(menu, loading, error);
-
   return (
     <div className="Layout">
-      <h1>Layout</h1>
+      <Header />
+      <StickyMenu />
+      { loading ? <h1>Загрузка</h1> : null }
+      <Slider />
+      <Menu />
+      <InfoBlock />
+      <PromoBlock />
+      <Footer />
     </div>
   );
 };
