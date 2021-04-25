@@ -22,3 +22,20 @@
     color: black;
   }
 }
+
+.Button.bright {
+  background-color: $colorOrange;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all .3s;
+  color: $colorWhite;
+
+  span {
+    font-size: 18px;
+  }
+
+  &:hover {
+    background-color: #e55f00;
+  }
+}
