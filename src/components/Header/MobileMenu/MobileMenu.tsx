@@ -20,8 +20,8 @@ const MobileMenu = ({ onClickHandler }: MobileMenuProps) => {
       <nav className="MobileMenu__navigation">
         <ul className="navigation__ul">
           { menuItems.map((item) => (
-            <NavLink onClick={onClickHandler} to={item.link}>
-              <li className="navigation__item-list" key={item.text}>{item.text}</li>
+            <NavLink key={item.text} onClick={onClickHandler} to={item.link}>
+              <li className="navigation__item-list">{item.text}</li>
             </NavLink>
           )) }
         </ul>

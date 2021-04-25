@@ -3,12 +3,24 @@ import MobileMenu from './MobileMenu/MobileMenu';
 import './Header.scss';
 import Logo from './Logo/Logo';
 import Button from '../UI/Button/Button';
+import Portal from '../Portal/Portal';
+import Modal from '../Modal/Modal';
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
+  const [showSityModal, setShowSityModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   const toggleMenu = () => {
     setShowMenu((prev) => !prev);
+  };
+
+  const toggleSityModal = () => {
+    setShowSityModal((prev) => !prev);
+  };
+
+  const toggleLoginModal = () => {
+    setShowLoginModal((prev) => !prev);
   };
 
   return (
@@ -21,7 +33,8 @@ const Header = () => {
             <div className="delivery__container">
               <span className="delivery__firstText">
                 Доставка пицы
-                <span className="sity"> Нижний Новгород</span>
+                {' '}
+                <span aria-hidden="true" role="link" onClick={toggleSityModal} className="sity">Нижний Новгород</span>
               </span>
               <span className="delivery__lastText">За 37 минут</span>
             </div>
@@ -38,11 +51,26 @@ const Header = () => {
             <i className="fa fa-bars" aria-hidden="true" />
           </button>
           <div className="login-button">
-            <Button text="Войти" />
+            <Button onClickHandler={toggleLoginModal} text="Войти" />
           </div>
         </div>
       </div>
       { showMenu ? <MobileMenu onClickHandler={toggleMenu} /> : null }
+      { showSityModal ? (
+        <Portal>
+          <Modal onCloseModal={toggleSityModal}>
+            <h1>showSityChanger</h1>
+          </Modal>
+        </Portal>
+      ) : null }
+
+      { showLoginModal ? (
+        <Portal>
+          <Modal onCloseModal={toggleLoginModal}>
+            <h1>showLoginModal</h1>
+          </Modal>
+        </Portal>
+      ) : null }
     </header>
   );
 };

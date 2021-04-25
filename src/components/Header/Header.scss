@@ -53,6 +53,14 @@
     }
   }
 
+  .sity {
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   .logo {
     display: flex;
 

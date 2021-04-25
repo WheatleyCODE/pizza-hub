@@ -5,12 +5,13 @@ interface ButtonProps {
   text: string,
   // eslint-disable-next-line react/require-default-props
   ButtonStyle?: string,
+  onClickHandler: () => void,
 }
 
-const Button = ({ text, ButtonStyle = 'default' }: ButtonProps) => {
+const Button = ({ text, ButtonStyle = 'default', onClickHandler }: ButtonProps) => {
   const styles = ButtonStyle;
   return (
-    <button type="button" className={`Button ${styles}`}>
+    <button onClick={onClickHandler} type="button" className={`Button ${styles}`}>
       <span>{text}</span>
     </button>
   );
