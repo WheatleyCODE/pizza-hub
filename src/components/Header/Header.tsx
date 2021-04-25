@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import MobileMenu from './MobileMenu/MobileMenu';
-import './Header.scss';
 import Logo from './Logo/Logo';
 import Button from '../UI/Button/Button';
 import Portal from '../Portal/Portal';
 import Modal from '../Modal/Modal';
+import Input from '../UI/Input/Input';
+import { useInput } from '../../hooks/useInput';
+import './Header.scss';
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showSityModal, setShowSityModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
+
+  const inputLogin = useInput('', 'Email', 'email');
+  const inputPassword = useInput('', 'Password', 'password');
+  const valid = (!inputLogin.isValid || !inputPassword.isValid);
 
   const toggleMenu = () => {
     setShowMenu((prev) => !prev);
@@ -26,7 +33,6 @@ const Header = () => {
   return (
     <header className="Header">
       <div className="logo__container">
-        {/* fix */}
         <div className="logo">
           <Logo onClickHandler={() => {}} />
           <div className="delivery">
@@ -56,23 +62,63 @@ const Header = () => {
         </div>
       </div>
       { showMenu ? <MobileMenu onClickHandler={toggleMenu} /> : null }
-      { showSityModal ? (
+
+      <CSSTransition
+        in={showSityModal}
+        timeout={200}
+        classNames="modal"
+        mountOnEnter
+        unmountOnExit
+      >
         <Portal>
           <Modal onCloseModal={toggleSityModal}>
             <h1>showSityChanger</h1>
           </Modal>
         </Portal>
-      ) : null }
+      </CSSTransition>
 
-      { showLoginModal ? (
+      <CSSTransition
+        in={showLoginModal}
+        timeout={200}
+        classNames="modal"
+        mountOnEnter
+        unmountOnExit
+      >
         <Portal>
           <Modal onCloseModal={toggleLoginModal}>
-            <h1>showLoginModal</h1>
+            <div>
+              <h1 className="logInText">Вход на сайт</h1>
+              <Input
+                isError={inputLogin.isError}
+                validError={inputLogin.validError}
+                icon="fa fa-envelope"
+                defaultParams={inputLogin.default}
+              />
+              <Input
+                isError={inputPassword.isError}
+                validError={inputPassword.validError}
+                icon="fa fa-unlock-alt"
+                defaultParams={inputPassword.default}
+              />
+              <div className="buttonContainer">
+                <div className="loginButton">
+                  { valid
+                    ? <Button onClickHandler={() => {}} text="Войти" />
+                    : <Button ButtonStyle="bright" onClickHandler={() => {}} text="Войти" /> }
+                </div>
+                <div className="registerButton">
+                  { valid
+                    ? <Button onClickHandler={() => {}} text="Регистрация" />
+                    : <Button ButtonStyle="bright" onClickHandler={() => {}} text="Регистрация" /> }
+                </div>
+              </div>
+            </div>
           </Modal>
         </Portal>
-      ) : null }
+      </CSSTransition>
     </header>
   );
 };
+//  <button type="button" disabled={(!inputLogin.isValid || !inputPassword.isValid)}>ОК</button>
 
 export default Header;

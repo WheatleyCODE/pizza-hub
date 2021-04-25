@@ -98,6 +98,40 @@
   }
 }
 
+.buttonContainer {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+  .loginButton {
+    margin-right: 15px;
+  }
+}
+
+.logInText {
+  color: $colorBlack;
+  margin-top: 10px;
+}
+
+.modal-enter-active {
+  animation: show-modal 0.2s forwards;
+}
+
+.modal-exit-active {
+  animation: show-modal 0.2s reverse;
+}
+
+@keyframes show-modal {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
 
 @media screen and (min-width: 1000px) {
   .burger-menu {

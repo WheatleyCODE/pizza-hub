@@ -8,7 +8,7 @@ interface ModalProps {
 }
 
 const Modal = ({ children, onCloseModal }: ModalProps) => {
-  console.log(10);
+  console.log('modal');
   return (
     <>
       <div className="Modal">
@@ -16,7 +16,6 @@ const Modal = ({ children, onCloseModal }: ModalProps) => {
           <button onClick={onCloseModal} type="button" className="closeButton">
             <i className="fa fa-times" aria-hidden="true" />
           </button>
-          <h1>Modal</h1>
           { children }
         </div>
         <BackDrop onCloseHandler={onCloseModal} />
