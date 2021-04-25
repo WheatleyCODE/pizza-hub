@@ -4,6 +4,8 @@
 .Header {
   width: 100%;
   background-color: $colorWhite;
+  display: flex;
+  justify-content: center;
 
   .menu {
     position: sticky;
@@ -11,7 +13,57 @@
     background-color: blue;
   }
 
+  .delivery {
+    margin-left: 90px;
+    &__container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &__firstText {
+      .sity {
+        color: $colorOrange;
+        font-weight: 800;
+      }
+    }
+
+    &__lastText {
+      color: $colorBlack;
+      font-weight: 800;
+    }
+  }
+
+  .phone {
+    &__container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &__firstText {
+      font-weight: 800;
+    }
+
+    &__lastText {
+      font-size: 13px;
+      color: $colorGrey;
+    }
+  }
+
   .logo {
+    display: flex;
+
+    &__flex {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .logo__container {
+    width: 1280px;
     display: flex;
     justify-content: space-between;
     padding: 10px 15px;
@@ -34,5 +86,29 @@
       cursor: pointer;
       transition: all .3s;
     }
+  }
+}
+
+
+@media screen and (min-width: 1000px) {
+  .burger-menu {
+    display: none;
+  }
+
+  .Header {
+    padding: 10px 0; 
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .phone, .login-button {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 700px) {
+  .delivery {
+    display: none;
   }
 }
