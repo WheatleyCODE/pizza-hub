@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import MobileMenu from './MobileMenu/MobileMenu';
 import Logo from './Logo/Logo';
@@ -8,22 +8,38 @@ import Modal from '../Modal/Modal';
 import Input from '../UI/Input/Input';
 import { useInput } from '../../hooks/useInput';
 import './Header.scss';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useActions } from '../../hooks/useAction';
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
-  const [showSityModal, setShowSityModal] = useState(false);
+  const [showCityModal, setShowCityModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
 
   const inputLogin = useInput('', 'Email', 'email');
   const inputPassword = useInput('', 'Password', 'password');
   const valid = (!inputLogin.isValid || !inputPassword.isValid);
 
+  const {
+    error,
+    loading,
+    city,
+  } = useTypedSelector((state) => state.city);
+
+  console.log(error, loading, city);
+
+  const { fetchCity } = useActions();
+
+  useEffect(() => {
+    fetchCity();
+  }, []);
+
   const toggleMenu = () => {
     setShowMenu((prev) => !prev);
   };
 
-  const toggleSityModal = () => {
-    setShowSityModal((prev) => !prev);
+  const toggleCityModal = () => {
+    setShowCityModal((prev) => !prev);
   };
 
   const toggleLoginModal = () => {
@@ -36,14 +52,16 @@ const Header = () => {
         <div className="logo">
           <Logo onClickHandler={() => {}} />
           <div className="delivery">
-            <div className="delivery__container">
-              <span className="delivery__firstText">
-                Доставка пицы
-                {' '}
-                <span aria-hidden="true" role="link" onClick={toggleSityModal} className="sity">Нижний Новгород</span>
-              </span>
-              <span className="delivery__lastText">За 37 минут</span>
-            </div>
+            { !loading ? (
+              <div className="delivery__container">
+                <span className="delivery__firstText">
+                  Доставка пицы
+                  {' '}
+                  <span aria-hidden="true" role="link" onClick={toggleCityModal} className="city">Нижний Новгород</span>
+                </span>
+                <span className="delivery__lastText">За 37 минут</span>
+              </div>
+            ) : null }
           </div>
         </div>
         <div className="phone">
@@ -64,22 +82,23 @@ const Header = () => {
       { showMenu ? <MobileMenu onClickHandler={toggleMenu} /> : null }
 
       <CSSTransition
-        in={showSityModal}
-        timeout={200}
+        in={showCityModal}
+        timeout={300}
         classNames="modal"
         mountOnEnter
         unmountOnExit
       >
         <Portal>
-          <Modal onCloseModal={toggleSityModal}>
-            <h1>showSityChanger</h1>
+          <Modal onCloseModal={toggleCityModal}>
+            <h1>showCityChanger</h1>
+            { city.map(() => (<h1>hello</h1>)) }
           </Modal>
         </Portal>
       </CSSTransition>
 
       <CSSTransition
         in={showLoginModal}
-        timeout={200}
+        timeout={300}
         classNames="modal"
         mountOnEnter
         unmountOnExit

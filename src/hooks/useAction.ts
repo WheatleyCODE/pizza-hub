@@ -1,9 +1,13 @@
+/* eslint-disable import/prefer-default-export */
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as menuActionCreators from '../store/action-creators/menu';
+import * as MenuActionCreators from '../store/action-creators/menu';
+import * as CityActionCreators from '../store/action-creators/city';
 
-// eslint-disable-next-line import/prefer-default-export
 export const useActions = () => {
   const dispatch = useDispatch();
-  return bindActionCreators(menuActionCreators, dispatch);
+  return bindActionCreators({
+    ...MenuActionCreators,
+    ...CityActionCreators,
+  }, dispatch);
 };

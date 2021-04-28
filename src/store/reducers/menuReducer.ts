@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import { MenuAction, MenuActionTypes, MenuState } from '../../types/menu';
 
 const initialState: MenuState = {
@@ -6,8 +7,7 @@ const initialState: MenuState = {
   error: null,
 };
 
-// eslint-disable-next-line import/prefer-default-export
-export const userReducer = (state = initialState, action: MenuAction): MenuState => {
+export const menuReducer = (state = initialState, action: MenuAction): MenuState => {
   switch (action.type) {
     case MenuActionTypes.FETCH_MENU:
       return { loading: true, error: null, menu: [] };

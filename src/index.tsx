@@ -4,8 +4,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
+import store from './store/store';
 import './index.scss';
-import { store } from './store/store';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCybwd8_sQFZF95r1i7mLeZc-F8LkDR7mQ',

@@ -3,6 +3,7 @@
 
 .Header {
   width: 100%;
+  height: 90px;
   background-color: $colorWhite;
   display: flex;
   justify-content: center;
@@ -23,7 +24,7 @@
     }
 
     &__firstText {
-      .sity {
+      .city {
         color: $colorOrange;
         font-weight: 800;
       }
@@ -53,7 +54,7 @@
     }
   }
 
-  .sity {
+  .city {
     cursor: pointer;
 
     &:hover {
@@ -116,11 +117,11 @@
 }
 
 .modal-enter-active {
-  animation: show-modal 0.2s forwards;
+  animation: show-modal 0.32s forwards;
 }
 
 .modal-exit-active {
-  animation: show-modal 0.2s reverse;
+  animation: show-modal 0.32s reverse;
 }
 
 @keyframes show-modal {

@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-import { useActions } from '../../hooks/useAction';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
+import React from 'react';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import InfoBlock from '../InfoBlock/InfoBlock';
@@ -11,17 +9,11 @@ import Slider from '../UI/Slider/Slider';
 import './Layout.scss';
 
 const Layout = () => {
-  const { loading } = useTypedSelector((state) => state.user);
-  const { fetchMenu } = useActions();
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
+  console.log('object');
   return (
     <div className="Layout">
       <Header />
       <StickyMenu />
-      { loading ? <h1>Загрузка</h1> : null }
       <Slider />
       <Menu />
       <InfoBlock />

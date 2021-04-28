@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import { userReducer } from './userReducer';
+import { cityReducer } from './cityReducer';
+import { menuReducer } from './menuReducer';
 
 export const rootReducer = combineReducers({
-  user: userReducer,
+  menu: menuReducer,
+  city: cityReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
