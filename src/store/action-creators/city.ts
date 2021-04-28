@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { Dispatch } from 'react';
-import { CityAction, CityActionTypes } from '../../types/city';
+import { CityAction, CityActionTypes, CurrentCity } from '../../types/city';
 
-const fetchCity = () => async (dispatch: Dispatch<CityAction>) => {
+export const fetchCity = () => async (dispatch: Dispatch<CityAction>) => {
   try {
     dispatch({ type: CityActionTypes.FETCH_CITY });
 
@@ -29,4 +29,7 @@ const fetchCity = () => async (dispatch: Dispatch<CityAction>) => {
   }
 };
 
-export default fetchCity;
+export const setCurrentCity = (currentCity: CurrentCity): CityAction => ({
+  type: CityActionTypes.SET_CURRENT_CITY,
+  payload: currentCity,
+});

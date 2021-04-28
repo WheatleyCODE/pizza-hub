@@ -9,8 +9,9 @@ import Input from '../UI/Input/Input';
 import useInput from '../../hooks/useInput';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useActions from '../../hooks/useAction';
-import './Header.scss';
 import CityItem from './CityItem/CityItem';
+import minutesCorrect from '../../utils/correctMinutes';
+import './Header.scss';
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -21,46 +22,16 @@ const Header = () => {
   const inputPassword = useInput('', 'Password', 'password');
   const valid = (!inputLogin.isValid || !inputPassword.isValid);
 
-  // const cityas = [
-  //   {
-  //     name: 'Москва',
-  //     time: 42,
-  //   },
-  //   {
-  //     name: 'Санкт-Петербург',
-  //     time: 32,
-  //   },
-  //   {
-  //     name: 'Нижний Новгород',
-  //     time: 37,
-  //   },
-  //   {
-  //     name: 'Екатиринбург',
-  //     time: 35,
-  //   },
-  //   {
-  //     name: 'Самара',
-  //     time: 29,
-  //   },
-  //   {
-  //     name: 'Магадан',
-  //     time: 25,
-  //   },
-  // ];
-
-  // useEffect(() => {
-  //   axios.post('https://qb-pizza-hub-default-rtdb.firebaseio.com/cities.json', cityas);
-  // }, []);
-
   const {
     error,
     loading,
     city,
+    currentCity,
   } = useTypedSelector((state) => state.city);
 
   console.log(error, loading, city);
 
-  const { fetchCity } = useActions();
+  const { fetchCity, setCurrentCity } = useActions();
 
   useEffect(() => {
     fetchCity();
@@ -89,9 +60,9 @@ const Header = () => {
                 <span className="delivery__firstText">
                   Доставка пицы
                   {' '}
-                  <span aria-hidden="true" role="link" onClick={toggleCityModal} className="city">Нижний Новгород</span>
+                  <span aria-hidden="true" role="link" onClick={toggleCityModal} className="city">{currentCity.name}</span>
                 </span>
-                <span className="delivery__lastText">За 37 минут</span>
+                <span className="delivery__lastText">{`${currentCity.time} ${minutesCorrect(currentCity.time)}`}</span>
               </div>
             ) : null }
           </div>
@@ -127,7 +98,7 @@ const Header = () => {
             <div className="city-container">
               { city.map((el) => (
                 <CityItem
-                  onClick={() => {}}
+                  onClick={() => { setCurrentCity(el); toggleCityModal(); }}
                   key={el.name}
                   text={el.name}
                 />

@@ -1,6 +1,10 @@
 import { CityAction, CityActionTypes, CityState } from '../../types/city';
 
 const initialState: CityState = {
+  currentCity: {
+    name: 'Нижний Новгород',
+    time: 37,
+  },
   city: [],
   loading: false,
   error: null,
@@ -10,10 +14,16 @@ const cityReducer = (state: CityState = initialState, action: CityAction): CityS
   switch (action.type) {
     case CityActionTypes.FETCH_CITY:
       return { ...state, loading: true };
+
     case CityActionTypes.FETCH_CITY_SUCCES:
       return { ...state, loading: false, city: action.payload };
+
     case CityActionTypes.FETCH_CITY_ERROR:
       return { ...state, loading: false, error: action.payload };
+
+    case CityActionTypes.SET_CURRENT_CITY:
+      return { ...state, currentCity: action.payload };
+
     default:
       return { ...state };
   }
