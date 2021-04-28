@@ -1,0 +1,18 @@
+@import '../../styles/variables';
+
+.buttonContainer {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+
+  .loginButton {
+    margin-right: 15px;
+  }
+}
+
+.logInText {
+  color: $colorBlack;
+  margin-top: 10px;
+}

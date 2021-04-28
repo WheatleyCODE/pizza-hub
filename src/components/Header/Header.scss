@@ -99,23 +99,6 @@
   }
 }
 
-.buttonContainer {
-  padding-top: 30px;
-  padding-bottom: 10px;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-
-  .loginButton {
-    margin-right: 15px;
-  }
-}
-
-.logInText {
-  color: $colorBlack;
-  margin-top: 10px;
-}
-
 .modal-enter-active {
   animation: show-modal 0.32s forwards;
 }
@@ -124,19 +107,6 @@
   animation: show-modal 0.32s reverse;
 }
 
-.city-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 20px;
-}
-.city-title {
-  margin: 10px 0;
-}
-
-.sity-hr {
-  margin-top: 20px;
-}
 @keyframes show-modal {
   0% {
     opacity: 0;

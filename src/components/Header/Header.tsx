@@ -5,31 +5,24 @@ import Logo from './Logo/Logo';
 import Button from '../UI/Button/Button';
 import Portal from '../Portal/Portal';
 import Modal from '../Modal/Modal';
-import Input from '../UI/Input/Input';
-import useInput from '../../hooks/useInput';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useActions from '../../hooks/useAction';
-import CityItem from './CityItem/CityItem';
 import minutesCorrect from '../../utils/correctMinutes';
 import './Header.scss';
+import Auth from '../Auth/Auth';
+import CityChanger from '../CityChanger/CityChanger';
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showCityModal, setShowCityModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
 
-  const inputLogin = useInput('', 'Email', 'email');
-  const inputPassword = useInput('', 'Password', 'password');
-  const valid = (!inputLogin.isValid || !inputPassword.isValid);
-
   const {
-    error,
+    // error,
     loading,
     city,
     currentCity,
   } = useTypedSelector((state) => state.city);
-
-  console.log(error, loading, city);
 
   const { fetchCity, setCurrentCity } = useActions();
 
@@ -93,18 +86,12 @@ const Header = () => {
       >
         <Portal>
           <Modal onCloseModal={toggleCityModal}>
-            <h1 className="city-title">Города</h1>
-            <hr className="sity-hr" />
-            <div className="city-container">
-              { city.map((el) => (
-                <CityItem
-                  target={el.name === currentCity.name}
-                  onClick={() => { setCurrentCity(el); toggleCityModal(); }}
-                  key={el.name}
-                  text={el.name}
-                />
-              )) }
-            </div>
+            <CityChanger
+              city={city}
+              currentCity={currentCity}
+              setCurrentCity={setCurrentCity}
+              toggleCityModal={toggleCityModal}
+            />
           </Modal>
         </Portal>
       </CSSTransition>
@@ -118,33 +105,7 @@ const Header = () => {
       >
         <Portal>
           <Modal onCloseModal={toggleLoginModal}>
-            <div>
-              <h1 className="logInText">Вход на сайт</h1>
-              <Input
-                isError={inputLogin.isError}
-                validError={inputLogin.validError}
-                icon="fa fa-envelope"
-                defaultParams={inputLogin.default}
-              />
-              <Input
-                isError={inputPassword.isError}
-                validError={inputPassword.validError}
-                icon="fa fa-unlock-alt"
-                defaultParams={inputPassword.default}
-              />
-              <div className="buttonContainer">
-                <div className="loginButton">
-                  { valid
-                    ? <Button buttonStyle="default" onClickHandler={() => {}} text="Войти" />
-                    : <Button buttonStyle="bright" onClickHandler={() => {}} text="Войти" /> }
-                </div>
-                <div className="registerButton">
-                  { valid
-                    ? <Button buttonStyle="default" onClickHandler={() => {}} text="Регистрация" />
-                    : <Button buttonStyle="bright" onClickHandler={() => {}} text="Регистрация" /> }
-                </div>
-              </div>
-            </div>
+            <Auth />
           </Modal>
         </Portal>
       </CSSTransition>
