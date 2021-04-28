@@ -124,6 +124,19 @@
   animation: show-modal 0.32s reverse;
 }
 
+.city-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 20px;
+}
+.city-title {
+  margin: 20px 0;
+}
+
+.sity-hr {
+  margin: 10px 0;
+}
 @keyframes show-modal {
   0% {
     opacity: 0;

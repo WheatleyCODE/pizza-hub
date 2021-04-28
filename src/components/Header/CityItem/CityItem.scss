@@ -1,0 +1,17 @@
+@import '../../../styles/variables';
+
+.CityItem {
+  &__item {
+    display: block;
+    font-size: 20px;
+    padding: 5px 10px;
+    transition: all .2s;
+    width: 200px;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+      color: $colorOrange;
+    }
+  }
+}

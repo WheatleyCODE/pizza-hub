@@ -10,6 +10,7 @@ import useInput from '../../hooks/useInput';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useActions from '../../hooks/useAction';
 import './Header.scss';
+import CityItem from './CityItem/CityItem';
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -19,6 +20,37 @@ const Header = () => {
   const inputLogin = useInput('', 'Email', 'email');
   const inputPassword = useInput('', 'Password', 'password');
   const valid = (!inputLogin.isValid || !inputPassword.isValid);
+
+  // const cityas = [
+  //   {
+  //     name: 'Москва',
+  //     time: 42,
+  //   },
+  //   {
+  //     name: 'Санкт-Петербург',
+  //     time: 32,
+  //   },
+  //   {
+  //     name: 'Нижний Новгород',
+  //     time: 37,
+  //   },
+  //   {
+  //     name: 'Екатиринбург',
+  //     time: 35,
+  //   },
+  //   {
+  //     name: 'Самара',
+  //     time: 29,
+  //   },
+  //   {
+  //     name: 'Магадан',
+  //     time: 25,
+  //   },
+  // ];
+
+  // useEffect(() => {
+  //   axios.post('https://qb-pizza-hub-default-rtdb.firebaseio.com/cities.json', cityas);
+  // }, []);
 
   const {
     error,
@@ -90,8 +122,17 @@ const Header = () => {
       >
         <Portal>
           <Modal onCloseModal={toggleCityModal}>
-            <h1>showCityChanger</h1>
-            { city.map(() => (<h1>hello</h1>)) }
+            <h1 className="city-title">Города</h1>
+            <hr className="sity-hr" />
+            <div className="city-container">
+              { city.map((el) => (
+                <CityItem
+                  onClick={() => {}}
+                  key={el.name}
+                  text={el.name}
+                />
+              )) }
+            </div>
           </Modal>
         </Portal>
       </CSSTransition>
