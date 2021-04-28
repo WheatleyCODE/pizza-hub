@@ -98,6 +98,7 @@ const Header = () => {
             <div className="city-container">
               { city.map((el) => (
                 <CityItem
+                  target={el.name === currentCity.name}
                   onClick={() => { setCurrentCity(el); toggleCityModal(); }}
                   key={el.name}
                   text={el.name}
