@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-// eslint-disable-next-line import/prefer-default-export
-export const useInput = (initialValue: string, placeholder: string, type: string) => {
+const useInput = (initialValue: string, placeholder: string, type: string) => {
   const [value, setValue] = useState(initialValue);
   const [validError, setValidError] = useState('Поле не может быть пустым');
   const [touched, setTouched] = useState(false);
@@ -69,3 +68,5 @@ export const useInput = (initialValue: string, placeholder: string, type: string
     isValid,
   };
 };
+
+export default useInput;

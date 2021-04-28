@@ -33,7 +33,7 @@ const StickyMenu = () => {
           </ul>
         </div>
         <div className="basket">
-          <Button onClickHandler={() => {}} ButtonStyle="bright" text="Корзина" />
+          <Button onClickHandler={() => {}} buttonStyle="bright" text="Корзина" />
         </div>
       </div>
     </div>

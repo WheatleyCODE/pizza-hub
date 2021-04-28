@@ -8,19 +8,16 @@ import StickyMenu from '../StickyMenu/StickyMenu';
 import Slider from '../UI/Slider/Slider';
 import './Layout.scss';
 
-const Layout = () => {
-  console.log('object');
-  return (
-    <div className="Layout">
-      <Header />
-      <StickyMenu />
-      <Slider />
-      <Menu />
-      <InfoBlock />
-      <PromoBlock />
-      <Footer />
-    </div>
-  );
-};
+const Layout = () => (
+  <div className="Layout">
+    <Header />
+    <StickyMenu />
+    <Slider />
+    <Menu />
+    <InfoBlock />
+    <PromoBlock />
+    <Footer />
+  </div>
+);
 
 export default Layout;

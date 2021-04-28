@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { useActions } from '../../hooks/useAction';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
+import useActions from '../../hooks/useAction';
+import useTypedSelector from '../../hooks/useTypedSelector';
 import './Menu.scss';
 
 const Menu = () => {

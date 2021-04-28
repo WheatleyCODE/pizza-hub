@@ -3,13 +3,12 @@ import './Button.scss';
 
 interface ButtonProps {
   text: string,
-  // eslint-disable-next-line react/require-default-props
-  ButtonStyle?: string,
+  buttonStyle: string,
   onClickHandler: () => void,
 }
 
-const Button = ({ text, ButtonStyle = 'default', onClickHandler }: ButtonProps) => {
-  const styles = ButtonStyle;
+const Button = ({ text, buttonStyle = 'default', onClickHandler }: ButtonProps) => {
+  const styles = buttonStyle;
   return (
     <button onClick={onClickHandler} type="button" className={`Button ${styles}`}>
       <span>{text}</span>

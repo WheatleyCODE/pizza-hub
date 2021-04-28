@@ -6,10 +6,10 @@ import Button from '../UI/Button/Button';
 import Portal from '../Portal/Portal';
 import Modal from '../Modal/Modal';
 import Input from '../UI/Input/Input';
-import { useInput } from '../../hooks/useInput';
+import useInput from '../../hooks/useInput';
+import useTypedSelector from '../../hooks/useTypedSelector';
+import useActions from '../../hooks/useAction';
 import './Header.scss';
-import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { useActions } from '../../hooks/useAction';
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -75,7 +75,7 @@ const Header = () => {
             <i className="fa fa-bars" aria-hidden="true" />
           </button>
           <div className="login-button">
-            <Button onClickHandler={toggleLoginModal} text="Войти" />
+            <Button buttonStyle="default" onClickHandler={toggleLoginModal} text="Войти" />
           </div>
         </div>
       </div>
@@ -122,13 +122,13 @@ const Header = () => {
               <div className="buttonContainer">
                 <div className="loginButton">
                   { valid
-                    ? <Button onClickHandler={() => {}} text="Войти" />
-                    : <Button ButtonStyle="bright" onClickHandler={() => {}} text="Войти" /> }
+                    ? <Button buttonStyle="default" onClickHandler={() => {}} text="Войти" />
+                    : <Button buttonStyle="bright" onClickHandler={() => {}} text="Войти" /> }
                 </div>
                 <div className="registerButton">
                   { valid
-                    ? <Button onClickHandler={() => {}} text="Регистрация" />
-                    : <Button ButtonStyle="bright" onClickHandler={() => {}} text="Регистрация" /> }
+                    ? <Button buttonStyle="default" onClickHandler={() => {}} text="Регистрация" />
+                    : <Button buttonStyle="bright" onClickHandler={() => {}} text="Регистрация" /> }
                 </div>
               </div>
             </div>
@@ -138,6 +138,5 @@ const Header = () => {
     </header>
   );
 };
-//  <button type="button" disabled={(!inputLogin.isValid || !inputPassword.isValid)}>ОК</button>
 
 export default Header;

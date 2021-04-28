@@ -6,8 +6,7 @@ const initialState: CityState = {
   error: null,
 };
 
-// eslint-disable-next-line import/prefer-default-export
-export const cityReducer = (state: CityState = initialState, action: CityAction): CityState => {
+const cityReducer = (state: CityState = initialState, action: CityAction): CityState => {
   switch (action.type) {
     case CityActionTypes.FETCH_CITY:
       return { ...state, loading: true };
@@ -19,3 +18,5 @@ export const cityReducer = (state: CityState = initialState, action: CityAction)
       return { ...state };
   }
 };
+
+export default cityReducer;
