@@ -12,6 +12,7 @@ const authSucces = (email: string, token: string, userId: string): AuthAction =>
 });
 
 export const logout = (): AuthAction => {
+  localStorage.removeItem('email');
   localStorage.removeItem('token');
   localStorage.removeItem('userId');
   localStorage.removeItem('expirationDate');
@@ -23,6 +24,23 @@ const autologout = (time: number, dispatch:Dispatch<AuthAction>) => {
   setTimeout(() => {
     dispatch(logout());
   }, time * 1000);
+};
+
+export const autoLogin = () => async (dispatch: Dispatch<AuthAction>) => {
+  const email = localStorage.getItem('email');
+  const token = localStorage.getItem('token');
+  const userId = localStorage.getItem('userId');
+  const expirationDate = localStorage.getItem('expirationDate');
+
+  if (!token || !userId || !expirationDate || !email) {
+    dispatch(logout());
+  } else if (expirationDate && new Date(JSON.parse(expirationDate)) <= new Date()) {
+    dispatch(logout());
+  } else {
+    const expDate = new Date(JSON.parse(expirationDate));
+    dispatch(authSucces(email, token, userId));
+    autologout((expDate.getTime() - new Date().getTime()) / 1000, dispatch);
+  }
 };
 
 export const auth = (authData: AuthData, succesCallback: () => void) => (
@@ -41,9 +59,10 @@ export const auth = (authData: AuthData, succesCallback: () => void) => (
 
       const expirationDate = new Date(new Date().getTime() + data.expiresIn * 1000);
 
+      localStorage.setItem('email', authData.email);
       localStorage.setItem('token', data.idToken);
       localStorage.setItem('userId', data.localId);
-      localStorage.setItem('expirationDate', expirationDate.toString());
+      localStorage.setItem('expirationDate', JSON.stringify(expirationDate));
 
       console.log(data);
       dispatch(authSucces(authData.email, data.idToken, data.localId));
