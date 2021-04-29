@@ -1,42 +1,28 @@
-import axios from 'axios';
 import React from 'react';
+import useActions from '../../hooks/useAction';
 import useInput from '../../hooks/useInput';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
 import './Auth.scss';
 
-const Auth = () => {
+interface AuthProps {
+  toggleLoginModal: () => void;
+}
+
+const Auth = ({ toggleLoginModal }: AuthProps) => {
   const inputLogin = useInput('', 'Email', 'email');
   const inputPassword = useInput('', 'Password', 'password');
   const valid = (!inputLogin.isValid || !inputPassword.isValid);
 
-  const loginHandler = async () => {
-    try {
-      const authData = {
-        email: inputLogin.default.value,
-        password: inputPassword.default.value,
-        returnSecureToken: true,
-      };
-      const response = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCybwd8_sQFZF95r1i7mLeZc-F8LkDR7mQ', authData);
+  const { auth } = useActions();
 
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  const registerHandler = async () => {
-    try {
-      const authData = {
-        email: inputLogin.default.value,
-        password: inputPassword.default.value,
-        returnSecureToken: true,
-      };
-      const response = await axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCybwd8_sQFZF95r1i7mLeZc-F8LkDR7mQ', authData);
-
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
+  const authHandler = (isLogin: boolean) => {
+    const authData = {
+      email: inputLogin.default.value,
+      password: inputPassword.default.value,
+      isLogin,
+    };
+    auth(authData, toggleLoginModal);
   };
 
   return (
@@ -58,12 +44,12 @@ const Auth = () => {
         <div className="loginButton">
           { valid
             ? <Button buttonStyle="default" onClickHandler={() => {}} text="Войти" />
-            : <Button buttonStyle="bright" onClickHandler={loginHandler} text="Войти" /> }
+            : <Button buttonStyle="bright" onClickHandler={() => authHandler(true)} text="Войти" /> }
         </div>
         <div className="registerButton">
           { valid
             ? <Button buttonStyle="default" onClickHandler={() => {}} text="Регистрация" />
-            : <Button buttonStyle="bright" onClickHandler={registerHandler} text="Регистрация" /> }
+            : <Button buttonStyle="bright" onClickHandler={() => authHandler(false)} text="Регистрация" /> }
         </div>
       </div>
     </div>

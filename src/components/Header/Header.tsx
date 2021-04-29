@@ -16,6 +16,8 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showCityModal, setShowCityModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const { token } = useTypedSelector((state) => state.auth);
+  const { logout } = useActions();
 
   const {
     // error,
@@ -71,7 +73,9 @@ const Header = () => {
             <i className="fa fa-bars" aria-hidden="true" />
           </button>
           <div className="login-button">
-            <Button buttonStyle="default" onClickHandler={toggleLoginModal} text="Войти" />
+            { token
+              ? <Button buttonStyle="default" onClickHandler={logout} text="Выйти" />
+              : <Button buttonStyle="default" onClickHandler={toggleLoginModal} text="Войти" />}
           </div>
         </div>
       </div>
@@ -105,7 +109,7 @@ const Header = () => {
       >
         <Portal>
           <Modal onCloseModal={toggleLoginModal}>
-            <Auth />
+            <Auth toggleLoginModal={toggleLoginModal} />
           </Modal>
         </Portal>
       </CSSTransition>

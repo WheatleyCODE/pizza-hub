@@ -1,10 +1,14 @@
+export interface City {
+  name: string,
+  time: number,
+}
 export interface CurrentCity {
   name: string,
   time: number,
 }
 export interface CityState {
   currentCity: CurrentCity,
-  city: any[]
+  city: City[]
   loading: boolean,
   error: null | string,
 }
@@ -21,7 +25,7 @@ interface FetchCityAction {
 }
 interface FetchCitySuccesAction {
   type: CityActionTypes.FETCH_CITY_SUCCES,
-  payload: any[],
+  payload: City[],
 }
 interface FetchCityErrorAction {
   type: CityActionTypes.FETCH_CITY_ERROR,
