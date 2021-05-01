@@ -136,3 +136,26 @@
     transform: translateX(0);
   }
 }
+
+@media screen and (max-width: 1300px) {
+  .Slider {
+    width: 1000px;
+    height: 290px;
+
+    &__img {
+      width: 1000px;
+    }
+  }
+}
+
+@media screen and (max-width: 999px) {
+  .Slider {
+    width: 550px;
+    height: 290px;
+    display: none;
+
+    &__img {
+      width: 550px;
+    }
+  }
+}
