@@ -1,13 +1,138 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
 .Slider {
-  padding: 20px 15px;
-  width: 100%;
+  margin: 20px 15px;
+  width: 1280px;
   display: flex;
+  height: 370px;
   justify-content: center;
   align-items: center;
+  position: relative;
   
-  img {
-    width: 100%;
+  &__img {
+    position: absolute;
+    width: 1280px;
     border-radius: 20px;
+    // animation: fade-in 1.5s forwards;
+  }
 
+  &__button-container {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      @include ButtonToDiv;
+      margin: 10px;
+      height: 50px;
+      width: 50px;
+      transition: 0.3s;
+      color: $colorLightGrey;
+      &:hover {
+        color: $colorOrange;
+        cursor: pointer;
+      }
+    }
+
+    i {
+      font-size: 30px;
+    }
+  }
+
+  &__dotted-container {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    }
+  }
+
+  .dotted-container__circle-buttom {
+    @include ButtonToDiv;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: $colorLightGrey;
+    margin: 10px;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: $colorOrange;
+      cursor: pointer;
+  }
+}
+
+.slider-enter-active {
+  animation: fade-in 0.32s forwards;
+}
+
+.slider-exit-active {
+  animation: fade-out 0.4s forwards;
+}
+
+.sliderPrev-enter-active {
+  animation: fade-in-prev 0.4s forwards;
+}
+
+.sliderPrev-exit-active {
+  animation: fade-out-prev 0.4s forwards;
+}
+
+.sliderNext-enter-active {
+  animation: fade-in-next 0.4s forwards;
+}
+
+.sliderNext-exit-active {
+  animation: fade-out-next 0.4s forwards;
+}
+
+@keyframes fade-out-prev {
+  0% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(400px);
+  }
+}
+
+@keyframes fade-in-prev {
+  0% {
+    opacity: 0;
+    transform: translateX(-400px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-out-next {
+  0% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-400px);
+  }
+}
+
+@keyframes fade-in-next {
+  0% {
+    opacity: 0;
+    transform: translateX(400px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

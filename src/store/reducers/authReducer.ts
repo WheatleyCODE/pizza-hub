@@ -9,10 +9,8 @@ const initialState: AuthState = {
 const authReducer = (state: AuthState = initialState, action: AuthAction): AuthState => {
   switch (action.type) {
     case AuthActionTypes.AUTH_SUCCES:
-      console.log('AuthActionTypes.AUTH_SUCCES');
       return { ...state, ...action.payload };
     case AuthActionTypes.AUTH_LOGOUT:
-      console.log('AuthActionTypes.AUTH_LOGOUT');
       return { ...initialState };
     default:
       return { ...state };
