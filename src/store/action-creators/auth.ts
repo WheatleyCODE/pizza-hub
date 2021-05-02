@@ -64,11 +64,10 @@ export const auth = (authData: AuthData, succesCallback: () => void) => (
       localStorage.setItem('userId', data.localId);
       localStorage.setItem('expirationDate', JSON.stringify(expirationDate));
 
-      console.log(data);
       dispatch(authSucces(authData.email, data.idToken, data.localId));
       autologout(data.expiresIn, dispatch);
       succesCallback();
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   });

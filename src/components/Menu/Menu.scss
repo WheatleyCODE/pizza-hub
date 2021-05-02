@@ -1,5 +1,33 @@
 .Menu {
-  width: 70%;
-  background-color: blue;
-  height: 800px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  &__container {
+    width: 1280px;
+    margin: 0 15px;
+  }
+
+  .container__colection {
+    margin-top: 80px;
+  }
+  .colection {
+
+    &__title {
+      margin: 20px 0;
+    }
+
+    &__product-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .Menu {
+    &__container {
+      width: 1000px;
+    }
+  }
 }

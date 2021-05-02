@@ -1,3 +1,10 @@
+export interface IProduct {
+  title: string,
+  url: string,
+  description: string,
+  price: number,
+}
+
 export interface MenuState {
   menu: any[]
   loading: boolean,

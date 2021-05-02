@@ -60,8 +60,9 @@ const Slider = () => {
             classNames={className}
             mountOnEnter
             unmountOnExit
+            key={slide.url}
           >
-            <img key={slide.url} className="Slider__img" src={slide.url} alt={slide.text} />
+            <img className="Slider__img" src={slide.url} alt={slide.text} />
           </CSSTransition>
         );
       })}
