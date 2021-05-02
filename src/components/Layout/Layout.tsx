@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
+import { Route } from 'react-router';
 import useActions from '../../hooks/useAction';
+import Routes from '../../types/routes';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import InfoBlock from '../InfoBlock/InfoBlock';
@@ -18,7 +20,7 @@ const Layout = () => {
 
   return (
     <div className="Layout">
-      <Header />
+      <Route path={Routes.HOME_ROUTE} component={Header} />
       <StickyMenu />
       <Slider />
       <Menu />

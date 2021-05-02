@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Route, RouteComponentProps } from 'react-router';
+import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import { IProduct } from '../../../types/menu';
+import Routes from '../../../types/routes';
 import Modal from '../../Modal/Modal';
 import Portal from '../../Portal/Portal';
 import Button from '../../UI/Button/Button';
@@ -10,10 +13,9 @@ interface ProductProps {
   product: IProduct
 }
 
-const Product = ({ product }: ProductProps) => {
-  const [showModal, setShowModal] = useState(false);
+const Product = ({ product, history }: ProductProps & RouteComponentProps) => {
   const toggleModal = () => {
-    setShowModal((prev) => !prev);
+    history.push(Routes.HOME_ROUTE);
   };
 
   const {
@@ -21,32 +23,42 @@ const Product = ({ product }: ProductProps) => {
     url,
     description,
     price,
+    route,
   } = product;
 
   return (
     <div className="Product">
-      <img aria-hidden="true" onClick={toggleModal} className="Product__img" src={url} alt={title} />
+      <Link to={route}>
+        <img aria-hidden="true" onClick={toggleModal} className="Product__img" src={url} alt={title} />
+      </Link>
       <div className="Product__description-block">
         <h2 className="description-block__title">{title}</h2>
         <span className="description-block__description">{description}</span>
         <div className="description-block__price-container">
           <span className="price-container__price">{`от ${price} р`}</span>
-          <Button buttonStyle="light" onClickHandler={toggleModal} text="Выбрать" />
+          <Link to={route}>
+            <Button buttonStyle="light" onClickHandler={toggleModal} text="Выбрать" />
+          </Link>
         </div>
       </div>
-      <CSSTransition
-        in={showModal}
-        timeout={300}
-        classNames="modal"
-        mountOnEnter
-        unmountOnExit
-      >
-        <Portal>
-          <Modal onCloseModal={toggleModal}>
-            <h1>Hello World</h1>
-          </Modal>
-        </Portal>
-      </CSSTransition>
+
+      <Route path={route}>
+        {({ match }) => (
+          <CSSTransition
+            in={match != null}
+            timeout={300}
+            classNames="modal"
+            mountOnEnter
+            unmountOnExit
+          >
+            <Portal>
+              <Modal onCloseModal={toggleModal}>
+                <h1>Hello World</h1>
+              </Modal>
+            </Portal>
+          </CSSTransition>
+        )}
+      </Route>
     </div>
   );
 };

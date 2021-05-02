@@ -1,10 +1,11 @@
 import React from 'react';
-import { CityAction, CurrentCity } from '../../types/city';
+import { City, CityAction, CurrentCity } from '../../types/city';
 import CityItem from './CityItem/CityItem';
+import Loader from '../UI/Loader/Loader';
 import './CityChanger.scss';
 
 interface CityChangerProps {
-  city: any[],
+  city: City[],
   currentCity: CurrentCity,
   setCurrentCity: (currentCity: CurrentCity) => CityAction,
   toggleCityModal: () => void,
@@ -28,6 +29,7 @@ const CityChanger = ({
           text={el.name}
         />
       )) }
+      { city.length === 0 ? <Loader /> : null }
     </div>
   </div>
 );

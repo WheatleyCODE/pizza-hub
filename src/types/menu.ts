@@ -3,6 +3,7 @@ export interface IProduct {
   url: string,
   description: string,
   price: number,
+  route: string,
 }
 
 export interface MenuState {

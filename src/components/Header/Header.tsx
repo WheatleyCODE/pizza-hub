@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import { Route, RouteComponentProps } from 'react-router';
+import { Link } from 'react-router-dom';
 import MobileMenu from './MobileMenu/MobileMenu';
 import Logo from './Logo/Logo';
 import Button from '../UI/Button/Button';
@@ -11,16 +13,14 @@ import minutesCorrect from '../../utils/correctMinutes';
 import './Header.scss';
 import Auth from '../Auth/Auth';
 import CityChanger from '../CityChanger/CityChanger';
+import Routes from '../../types/routes';
 
-const Header = () => {
+const Header = ({ history }: RouteComponentProps) => {
   const [showMenu, setShowMenu] = useState(false);
-  const [showCityModal, setShowCityModal] = useState(false);
-  const [showLoginModal, setShowLoginModal] = useState(false);
   const { token } = useTypedSelector((state) => state.auth);
   const { logout } = useActions();
 
   const {
-    // error,
     loading,
     city,
     currentCity,
@@ -37,11 +37,11 @@ const Header = () => {
   };
 
   const toggleCityModal = () => {
-    setShowCityModal((prev) => !prev);
+    history.push(Routes.HOME_ROUTE);
   };
 
   const toggleLoginModal = () => {
-    setShowLoginModal((prev) => !prev);
+    history.push(Routes.HOME_ROUTE);
   };
 
   return (
@@ -55,7 +55,9 @@ const Header = () => {
                 <span className="delivery__firstText">
                   Доставка пицы
                   {' '}
-                  <span aria-hidden="true" role="link" onClick={toggleCityModal} className="city">{currentCity.name}</span>
+                  <Link to={Routes.CITY_ROUTE}>
+                    <span className="city">{currentCity.name}</span>
+                  </Link>
                 </span>
                 <span className="delivery__lastText">{`${currentCity.time} ${minutesCorrect(currentCity.time)}`}</span>
               </div>
@@ -75,44 +77,56 @@ const Header = () => {
           <div className="login-button">
             { token
               ? <Button buttonStyle="default" onClickHandler={logout} text="Выйти" />
-              : <Button buttonStyle="default" onClickHandler={toggleLoginModal} text="Войти" />}
+              : (
+                <Link to={Routes.LOGIN_ROUTE}>
+                  <Button buttonStyle="default" onClickHandler={toggleLoginModal} text="Войти" />
+                </Link>
+              ) }
           </div>
         </div>
       </div>
       { showMenu ? <MobileMenu onClickHandler={toggleMenu} /> : null }
 
-      <CSSTransition
-        in={showCityModal}
-        timeout={300}
-        classNames="modal"
-        mountOnEnter
-        unmountOnExit
-      >
-        <Portal>
-          <Modal onCloseModal={toggleCityModal}>
-            <CityChanger
-              city={city}
-              currentCity={currentCity}
-              setCurrentCity={setCurrentCity}
-              toggleCityModal={toggleCityModal}
-            />
-          </Modal>
-        </Portal>
-      </CSSTransition>
+      <Route path={Routes.CITY_ROUTE}>
+        {({ match }) => (
+          <CSSTransition
+            in={match != null}
+            timeout={300}
+            classNames="modal"
+            mountOnEnter
+            unmountOnExit
+          >
+            <Portal>
+              <Modal onCloseModal={toggleCityModal}>
+                <CityChanger
+                  city={city}
+                  currentCity={currentCity}
+                  setCurrentCity={setCurrentCity}
+                  toggleCityModal={toggleCityModal}
+                />
+              </Modal>
+            </Portal>
+          </CSSTransition>
+        )}
+      </Route>
 
-      <CSSTransition
-        in={showLoginModal}
-        timeout={300}
-        classNames="modal"
-        mountOnEnter
-        unmountOnExit
-      >
-        <Portal>
-          <Modal onCloseModal={toggleLoginModal}>
-            <Auth toggleLoginModal={toggleLoginModal} />
-          </Modal>
-        </Portal>
-      </CSSTransition>
+      <Route path={Routes.LOGIN_ROUTE}>
+        {({ match }) => (
+          <CSSTransition
+            in={match != null}
+            timeout={300}
+            classNames="modal"
+            mountOnEnter
+            unmountOnExit
+          >
+            <Portal>
+              <Modal onCloseModal={toggleLoginModal}>
+                <Auth toggleLoginModal={toggleLoginModal} />
+              </Modal>
+            </Portal>
+          </CSSTransition>
+        )}
+      </Route>
     </header>
   );
 };
