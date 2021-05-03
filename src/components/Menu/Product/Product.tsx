@@ -7,6 +7,7 @@ import Routes from '../../../types/routes';
 import Modal from '../../Modal/Modal';
 import Portal from '../../Portal/Portal';
 import Button from '../../UI/Button/Button';
+import Configurator from './Configurator/Configurator';
 import './Product.scss';
 
 interface ProductProps {
@@ -53,7 +54,7 @@ const Product = ({ product, history }: ProductProps & RouteComponentProps) => {
           >
             <Portal>
               <Modal onCloseModal={toggleModal}>
-                <h1>Hello World</h1>
+                <Configurator product={product} />
               </Modal>
             </Portal>
           </CSSTransition>

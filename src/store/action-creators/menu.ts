@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Dispatch } from 'react';
-import { MenuAction, MenuActionTypes } from '../../types/menu';
+import { MenuAction, MenuActionTypes, Collection } from '../../types/menu';
 
 const fetchMenuStart = (): MenuAction => ({ type: MenuActionTypes.FETCH_MENU });
 const fetchMenuSucces = (data: any): MenuAction => ({
@@ -17,9 +17,16 @@ const fetchMenu = () => async (dispatch: Dispatch<MenuAction>) => {
   try {
     dispatch(fetchMenuStart());
 
-    const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+    const response = await axios.get('https://qb-pizza-hub-default-rtdb.firebaseio.com/menu.json');
+    let data: Collection[] = [];
+    // eslint-disable-next-line no-restricted-syntax
+    for (const key in response.data) {
+      if (Object.prototype.hasOwnProperty.call(response.data, key)) {
+        data = response.data[key];
+      }
+    }
 
-    dispatch(fetchMenuSucces(response.data));
+    dispatch(fetchMenuSucces(data));
   } catch (e) {
     dispatch(fetchMenuError());
   }

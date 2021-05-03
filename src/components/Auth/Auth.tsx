@@ -26,8 +26,8 @@ const Auth = ({ toggleLoginModal }: AuthProps) => {
   };
 
   return (
-    <div>
-      <h1 className="logInText">Вход на сайт</h1>
+    <div className="Auth">
+      <h1 className="Auth__logInText">Вход на сайт</h1>
       <Input
         isError={inputLogin.isError}
         validError={inputLogin.validError}
@@ -40,7 +40,7 @@ const Auth = ({ toggleLoginModal }: AuthProps) => {
         icon="fa fa-unlock-alt"
         defaultParams={inputPassword.default}
       />
-      <div className="buttonContainer">
+      <div className="Auth__buttonContainer">
         <div className="loginButton">
           { valid
             ? <Button buttonStyle="default" onClickHandler={() => {}} text="Войти" />

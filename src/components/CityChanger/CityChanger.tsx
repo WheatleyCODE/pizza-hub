@@ -18,9 +18,9 @@ const CityChanger = ({
   toggleCityModal,
 }: CityChangerProps) => (
   <div className="CityChanger">
-    <h1 className="city-title">Города</h1>
-    <hr className="sity-hr" />
-    <div className="city-container">
+    <h1 className="CityChanger__title">Города</h1>
+    <hr className="CityChanger__hr" />
+    <div className="CityChanger__container">
       { city.map((el) => (
         <CityItem
           target={el.name === currentCity.name}

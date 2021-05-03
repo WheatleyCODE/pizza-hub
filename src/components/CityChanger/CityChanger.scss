@@ -1,13 +1,18 @@
-.city-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 20px;
-}
-.city-title {
-  margin: 10px 0;
-}
+.CityChanger {
+  width: 650px;
 
-.sity-hr {
-  margin-top: 20px;
+  &__title {
+    margin: 10px 0;
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  &__hr {
+    margin-top: 20px;
+  }
 }
