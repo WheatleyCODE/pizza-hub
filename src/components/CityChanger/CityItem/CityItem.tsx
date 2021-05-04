@@ -1,13 +1,13 @@
 import React from 'react';
 import './CityItem.scss';
 
-interface CityItemProps {
+interface ICityItemProps {
   text: string,
   onClick: () => void,
   target: boolean,
 }
 
-const CityItem = ({ text, onClick, target }: CityItemProps) => {
+const CityItem = ({ text, onClick, target }: ICityItemProps) => {
   const targetClass = target ? 'target' : '';
   return (
     <div className="CityItem">

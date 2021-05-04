@@ -5,11 +5,11 @@ import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
 import './Auth.scss';
 
-interface AuthProps {
+interface IAuthProps {
   toggleLoginModal: () => void;
 }
 
-const Auth = ({ toggleLoginModal }: AuthProps) => {
+const Auth = ({ toggleLoginModal }: IAuthProps) => {
   const inputLogin = useInput('', 'Email', 'email');
   const inputPassword = useInput('', 'Password', 'password');
   const valid = (!inputLogin.isValid || !inputPassword.isValid);

@@ -10,11 +10,11 @@ import Button from '../../UI/Button/Button';
 import Configurator from './Configurator/Configurator';
 import './Product.scss';
 
-interface ProductProps {
+interface IProductProps {
   product: IProduct
 }
 
-const Product = ({ product, history }: ProductProps & RouteComponentProps) => {
+const Product = ({ product, history }: IProductProps & RouteComponentProps) => {
   const toggleModal = () => {
     history.push(Routes.HOME_ROUTE);
   };

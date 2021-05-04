@@ -2,12 +2,12 @@ import React from 'react';
 import BackDrop from '../UI/BackDrop/BackDrop';
 import './Modal.scss';
 
-interface ModalProps {
+interface IModalProps {
   children: React.ReactNode,
   onCloseModal: () => void,
 }
 
-const Modal = ({ children, onCloseModal }: ModalProps) => (
+const Modal = ({ children, onCloseModal }: IModalProps) => (
   <>
     <div className="Modal">
       <div className="Modal__main">

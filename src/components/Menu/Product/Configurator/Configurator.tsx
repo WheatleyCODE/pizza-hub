@@ -5,11 +5,11 @@ import RadioButtons from '../../../UI/Radio/RadioButtons';
 import AddIngredient from './AddIngredient/AddIngredient';
 import './Configurator.scss';
 
-interface ProductProps {
+interface IProductProps {
   product: IProduct
 }
 
-const Configurator = ({ product } :ProductProps) => {
+const Configurator = ({ product }: IProductProps) => {
   const [
     pizzaSize,
     setPizzaSize,

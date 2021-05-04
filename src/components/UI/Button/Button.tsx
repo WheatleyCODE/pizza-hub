@@ -1,13 +1,13 @@
 import React from 'react';
 import './Button.scss';
 
-interface ButtonProps {
+interface IButtonProps {
   text: string,
   buttonStyle: string,
   onClickHandler: () => void,
 }
 
-const Button = ({ text, buttonStyle = 'default', onClickHandler }: ButtonProps) => {
+const Button = ({ text, buttonStyle = 'default', onClickHandler }: IButtonProps) => {
   const styles = buttonStyle;
   return (
     <button onClick={onClickHandler} type="button" className={`Button ${styles}`}>

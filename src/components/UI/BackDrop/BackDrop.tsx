@@ -1,11 +1,11 @@
 import React from 'react';
 import './BackDrop.scss';
 
-interface BackDropProps {
+interface IBackDropProps {
   onCloseHandler: () => void,
 }
 
-const BackDrop = ({ onCloseHandler }:BackDropProps) => (
+const BackDrop = ({ onCloseHandler }: IBackDropProps) => (
   <button onClick={onCloseHandler} type="button" className="BackDrop">
     {}
   </button>

@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { IIngredients } from '../../../../../types/menu';
 import './AddIngredient.scss';
 
-interface AddIngredientProps {
+interface IAddIngredientProps {
   ing : IIngredients,
   addPrice: (currentPrice: number) => void;
   pizzaSize: any;
 }
 
-const AddIngredient = ({ ing, addPrice, pizzaSize }: AddIngredientProps) => {
+const AddIngredient = ({ ing, addPrice, pizzaSize }: IAddIngredientProps) => {
   const [isTarget, setIsTarget] = useState(false);
 
   let currentIngPrice: number;

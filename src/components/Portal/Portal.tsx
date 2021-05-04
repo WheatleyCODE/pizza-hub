@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-interface PortalProps {
+interface IPortalProps {
   children: React.ReactNode
 }
 
-class Portal extends React.Component<PortalProps> {
+class Portal extends React.Component<IPortalProps> {
   el = document.createElement('div');
 
   componentDidMount() {

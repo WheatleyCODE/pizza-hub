@@ -5,11 +5,11 @@ import Logo from '../Logo/Logo';
 import menuItems from '../../../utils/menuItems';
 import './MobileMenu.scss';
 
-interface MobileMenuProps {
+interface IMobileMenuProps {
   onClickHandler: () => void
 }
 
-const MobileMenu = ({ onClickHandler }: MobileMenuProps) => (
+const MobileMenu = ({ onClickHandler }: IMobileMenuProps) => (
   <div className="MobileMenu">
     <Logo onClickHandler={onClickHandler} />
     <hr className="firstHR" />

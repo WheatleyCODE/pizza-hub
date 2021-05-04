@@ -2,26 +2,26 @@
 import React from 'react';
 import './Input.scss';
 
-type DefaultParams = {
+interface IDefaultParams {
   type: string,
   placeholder: string,
   value: string,
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
-};
+}
 
-type InputProps = {
-  defaultParams: DefaultParams,
+interface IInputProps {
+  defaultParams: IDefaultParams,
   icon: string,
   validError: string,
   isError: boolean,
-};
+}
 
 const Input = ({
   defaultParams,
   icon,
   validError,
   isError,
-}:InputProps) => (
+}: IInputProps) => (
   <div className="Input">
     { isError ? <span className="Input__error">{validError}</span> : null}
     <input className="input" {...defaultParams} />

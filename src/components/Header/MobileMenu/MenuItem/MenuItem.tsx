@@ -1,13 +1,13 @@
 import React from 'react';
 import './MenuItem.scss';
 
-interface MenuItemProps {
+interface IMenuItemProps {
   icon: string,
   textFirst: string,
   textLast: string,
 }
 
-const MenuItem = ({ icon, textFirst, textLast }: MenuItemProps) => (
+const MenuItem = ({ icon, textFirst, textLast }: IMenuItemProps) => (
   <div className="MenuItem">
     <div className="MenuItem__icon">
       <i className={icon} aria-hidden="true" />

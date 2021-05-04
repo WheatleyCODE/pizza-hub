@@ -4,7 +4,7 @@ import CityItem from './CityItem/CityItem';
 import Loader from '../UI/Loader/Loader';
 import './CityChanger.scss';
 
-interface CityChangerProps {
+interface ICityChangerProps {
   city: ICity[],
   currentCity: ICurrentCity,
   setCurrentCity: (currentCity: ICurrentCity) => CityAction,
@@ -16,7 +16,7 @@ const CityChanger = ({
   currentCity,
   setCurrentCity,
   toggleCityModal,
-}: CityChangerProps) => (
+}: ICityChangerProps) => (
   <div className="CityChanger">
     <h1 className="CityChanger__title">Города</h1>
     <hr className="CityChanger__hr" />

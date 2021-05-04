@@ -1,10 +1,10 @@
 import React from 'react';
 import './RadioButtons.scss';
 
-interface Buttons { title: string, value: string, style: string }
+interface IButtons { title: string, value: string, style: string }
 
 interface IRadioButtonsProps {
-  buttons: Buttons[];
+  buttons: IButtons[];
   selected: string;
   onChange: (value: any) => void;
 }
