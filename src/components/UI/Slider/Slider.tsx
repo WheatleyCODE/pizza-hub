@@ -28,6 +28,15 @@ const Slider = () => {
     setClassName(sliderClasses.next);
   };
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setClassName(sliderClasses.next);
+      nextSlideChanger();
+    }, 6000);
+
+    return () => clearInterval(timer);
+  });
+
   const prevSlideChanger = () => {
     setCurrentSlideIndex((prev) => {
       if (prev - 1 === -1) return sliders.length - 1;

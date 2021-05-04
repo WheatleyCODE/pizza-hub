@@ -1,7 +1,7 @@
 @import '../../../../styles/variables';
 
 .configurator {
-  width: 900px;
+  width: 950px;
   display: flex;
 
   &__img-container {
@@ -14,7 +14,29 @@
   &__menu-container {
     height: 500px;
     overflow-x: auto;
+    padding-right: 10px;
   }
+
+  &__menu-container {
+    scrollbar-width: thin;
+    scrollbar-color: grey $colorLightGrey;
+  }
+  
+  &__menu-container::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+
+  &__menu-container::-webkit-scrollbar-track {
+    background: $colorLightGrey;
+  }
+
+  &__menu-container::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
 
   .menu-container {
     &__title {
