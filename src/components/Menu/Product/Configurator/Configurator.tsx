@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { IProduct } from '../../../../types/menu';
+import { IProduct, PizzaDataKeyNames } from '../../../../types/menu';
 import RadioButtons from '../../../UI/Radio/RadioButtons';
+import AddIngredient from './AddIngredient/AddIngredient';
 import './Configurator.scss';
 
 interface ProductProps {
@@ -9,8 +10,12 @@ interface ProductProps {
 }
 
 const Configurator = ({ product } :ProductProps) => {
-  const [pizzaSize, setPizzaSize] = useState<keyof typeof pizzaDate.doughThin>('medium');
-  const [dough, setDough] = useState<keyof typeof pizzaDate>('doughTraditional');
+  const [
+    pizzaSize,
+    setPizzaSize,
+  ] = useState<keyof typeof pizzaDate.doughThin>(PizzaDataKeyNames.MEDIUM);
+  const [dough, setDough] = useState<keyof typeof pizzaDate>(PizzaDataKeyNames.DOUGH_TRADITIONAL);
+  const [additionalСost, setAdditionalСost] = useState(0);
 
   const {
     description,
@@ -27,16 +32,31 @@ const Configurator = ({ product } :ProductProps) => {
   } = pizzaDate[dough][pizzaSize];
 
   let radioStyle = '';
-  if (pizzaSize !== 'medium' && pizzaSize !== 'large') {
+  if (pizzaSize !== PizzaDataKeyNames.MEDIUM && pizzaSize !== PizzaDataKeyNames.LARGE) {
     radioStyle = 'disable';
   }
 
   const onChangeSizeRadio = (value: any) => {
-    if (dough === 'doughThin' && value === 'small') {
-      setDough('doughTraditional');
+    if (dough === PizzaDataKeyNames.DOUGH_THIN && value === PizzaDataKeyNames.SMALL) {
+      setDough(PizzaDataKeyNames.DOUGH_TRADITIONAL);
     }
     setPizzaSize(value);
   };
+
+  const addPrice = (currentIngPrice: number) => {
+    setAdditionalСost((prev) => prev + currentIngPrice);
+  };
+
+  const radioButtonsSize = [
+    { title: 'Маленькая', value: PizzaDataKeyNames.SMALL, style: '' },
+    { title: 'Cредняя', value: PizzaDataKeyNames.MEDIUM, style: '' },
+    { title: 'Большая', value: PizzaDataKeyNames.LARGE, style: '' },
+  ];
+
+  const radioButtonsDough = [
+    { title: 'Традиционное', value: PizzaDataKeyNames.DOUGH_TRADITIONAL, style: '' },
+    { title: 'Тонкое', value: PizzaDataKeyNames.DOUGH_THIN, style: radioStyle },
+  ];
 
   return (
     <div className="configurator">
@@ -60,16 +80,12 @@ const Configurator = ({ product } :ProductProps) => {
             <h2 className="menu-container__title">{title}</h2>
             <span className="menu-container__description">{`${size} см, ${dough === 'doughTraditional' ? 'традиционное' : 'тонкое'} тесто, ${wight} г`}</span>
             <div className="menu-container__ingr-block">
-              { description }
+              {description}
             </div>
             <div className="menu-container__buttons-container">
               <div className="buttons-container__size">
                 <RadioButtons
-                  buttons={[
-                    { title: 'Маленькая', value: 'small', style: '' },
-                    { title: 'Cредняя', value: 'medium', style: '' },
-                    { title: 'Большая', value: 'large', style: '' },
-                  ]}
+                  buttons={radioButtonsSize}
                   selected={pizzaSize}
                   onChange={(
                     value: keyof typeof pizzaDate.doughThin
@@ -81,10 +97,7 @@ const Configurator = ({ product } :ProductProps) => {
               </div>
               <div className="buttons-container__dough">
                 <RadioButtons
-                  buttons={[
-                    { title: 'Традиционное', value: 'doughTraditional', style: '' },
-                    { title: 'Тонкое', value: 'doughThin', style: radioStyle },
-                  ]}
+                  buttons={radioButtonsDough}
                   selected={dough}
                   onChange={(value :keyof typeof pizzaDate) => {
                     setDough(value);
@@ -94,13 +107,14 @@ const Configurator = ({ product } :ProductProps) => {
               <div className="buttons-container__add-ingr">
                 <h2 className="buttons-container__title">Добавить в пицу</h2>
                 <div className="buttons-container__ing-container">
-                  { moreIngredients.map((ing) => (
-                    <div key={ing.id} className="moreIngredients">
-                      <img src={ing.url} alt="ing" />
-                      <h5 className="moreIngredients__title">{ing.title}</h5>
-                      <span className="moreIngredients__price">{`${ing.price}р`}</span>
-                    </div>
-                  )) }
+                  {moreIngredients.map((ing) => (
+                    <AddIngredient
+                      pizzaSize={pizzaSize}
+                      addPrice={addPrice}
+                      ing={ing}
+                      key={ing.id}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
@@ -108,7 +122,7 @@ const Configurator = ({ product } :ProductProps) => {
         </div>
         <div className="buy-button">
           <button className="Button bright" type="button">
-            <span>{`Купить за ${price}р`}</span>
+            <span>{`Купить за ${price + additionalСost}р`}</span>
           </button>
         </div>
       </div>

@@ -10,7 +10,7 @@ interface IRadioButtonsProps {
 }
 
 const RadioButtons = ({ buttons, selected, onChange }: IRadioButtonsProps) => {
-  const groupName = `RadioButtons${buttons.length}`;
+  const groupName = `RadioButtons${buttons.length}_${Math.round(Math.random() * 10000)}`;
 
   const selectedIndex = buttons.findIndex((el) => el.value === selected);
 
