@@ -1,3 +1,8 @@
+export interface IDefaultIng {
+  title: string,
+  add: boolean,
+}
+
 export enum PizzaDataKeyNames {
   SMALL = 'small',
   MEDIUM = 'medium',
@@ -10,6 +15,10 @@ export interface IIngredients {
   url: string,
   price: number,
   id: number
+}
+
+export interface IMoreIng extends IIngredients {
+  add: boolean,
 }
 
 export interface IPizzaParam {

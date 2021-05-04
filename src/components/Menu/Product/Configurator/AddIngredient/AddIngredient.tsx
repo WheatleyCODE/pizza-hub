@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
-import { IIngredients } from '../../../../../types/menu';
+import { IIngredients, IMoreIng } from '../../../../../types/menu';
 import './AddIngredient.scss';
 
 interface IAddIngredientProps {
   ing : IIngredients,
   addPrice: (currentPrice: number) => void;
   pizzaSize: any;
+  changeMoreIng: (ing: IMoreIng) => void,
+  disableElem: string,
 }
 
-const AddIngredient = ({ ing, addPrice, pizzaSize }: IAddIngredientProps) => {
+const AddIngredient = ({
+  ing,
+  addPrice,
+  pizzaSize,
+  changeMoreIng,
+  disableElem,
+}: IAddIngredientProps) => {
   const [isTarget, setIsTarget] = useState(false);
 
   let currentIngPrice: number;
@@ -22,6 +30,7 @@ const AddIngredient = ({ ing, addPrice, pizzaSize }: IAddIngredientProps) => {
   }
 
   const onClickHandler = () => {
+    changeMoreIng({ ...ing, add: !isTarget });
     setIsTarget((prev) => !prev);
 
     if (isTarget) {
@@ -31,12 +40,27 @@ const AddIngredient = ({ ing, addPrice, pizzaSize }: IAddIngredientProps) => {
     }
   };
 
+  if (disableElem === ing.title) {
+    return (
+      <button type="button" className="moreIngredients disable">
+        <img src={ing.url} alt="ing" />
+        <h5 className="moreIngredients__title">{ing.title}</h5>
+        <span className="moreIngredients__price">{`${currentIngPrice}р`}</span>
+      </button>
+    );
+  }
+
   return (
-    <div aria-hidden="true" onClick={onClickHandler} className={`moreIngredients ${isTarget ? 'target' : ''}`}>
+    <button type="button" onClick={onClickHandler} className={`moreIngredients ${isTarget ? 'target' : ''}`}>
+      {isTarget ? (
+        <div className="moreIngredients__check-icon">
+          <i className="fa fa-check-circle-o" aria-hidden="true" />
+        </div>
+      ) : null}
       <img src={ing.url} alt="ing" />
       <h5 className="moreIngredients__title">{ing.title}</h5>
       <span className="moreIngredients__price">{`${currentIngPrice}р`}</span>
-    </div>
+    </button>
   );
 };
 

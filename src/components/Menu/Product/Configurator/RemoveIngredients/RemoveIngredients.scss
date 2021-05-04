@@ -1,0 +1,25 @@
+@import '../../../../../styles/variables';
+@import '../../../../../styles/mixins';
+
+.RemoveIngredients {
+  @include ButtonToDiv;
+  margin: 3px;
+  padding-bottom: 1px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-bottom: 1px dashed $colorGrey;
+
+
+  i {
+    margin-left: 2px;
+  }
+
+  &:hover {
+    border-bottom: 1px solid $colorBlack;
+  }
+
+  &.target {
+    text-decoration: line-through;
+  }
+}

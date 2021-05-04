@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { IProduct, PizzaDataKeyNames } from '../../../../types/menu';
+import {
+  IDefaultIng,
+  IProduct,
+  PizzaDataKeyNames,
+  IMoreIng,
+} from '../../../../types/menu';
 import RadioButtons from '../../../UI/Radio/RadioButtons';
 import AddIngredient from './AddIngredient/AddIngredient';
 import './Configurator.scss';
+import RemoveIngredients from './RemoveIngredients/RemoveIngredients';
 
 interface IProductProps {
   product: IProduct
@@ -31,10 +37,32 @@ const Configurator = ({ product }: IProductProps) => {
     size,
   } = pizzaDate[dough][pizzaSize];
 
-  let radioStyle = '';
-  if (pizzaSize !== PizzaDataKeyNames.MEDIUM && pizzaSize !== PizzaDataKeyNames.LARGE) {
-    radioStyle = 'disable';
-  }
+  const [
+    defaultIngredients,
+    setDefaultIngredients,
+  ] = useState(description.split(', ').map((text) => ({ title: text, add: true })));
+
+  const [
+    moreIng,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    setMoreIng,
+  ] = useState(moreIngredients.map((obj) => ({ ...obj, add: false })));
+
+  const changeDefaultIng = (ing: IDefaultIng) => {
+    const newDefIng = [...defaultIngredients];
+    const index = newDefIng.findIndex((obj) => obj.title === ing.title);
+    newDefIng.splice(index, 1, ing);
+
+    setDefaultIngredients(newDefIng);
+  };
+
+  const changeMoreIng = (ing: IMoreIng) => {
+    const newMoreIng = [...moreIng];
+    const index = newMoreIng.findIndex((obj) => obj.title === ing.title);
+    newMoreIng.splice(index, 1, ing);
+
+    setMoreIng(newMoreIng);
+  };
 
   const onChangeSizeRadio = (value: any) => {
     if (dough === PizzaDataKeyNames.DOUGH_THIN && value === PizzaDataKeyNames.SMALL) {
@@ -47,6 +75,16 @@ const Configurator = ({ product }: IProductProps) => {
     setAdditionalСost((prev) => prev + currentIngPrice);
   };
 
+  let disableStyle = '';
+  if (pizzaSize !== PizzaDataKeyNames.MEDIUM && pizzaSize !== PizzaDataKeyNames.LARGE) {
+    disableStyle = 'disable';
+  }
+
+  let disableElem = '';
+  if (pizzaSize !== PizzaDataKeyNames.MEDIUM && pizzaSize !== PizzaDataKeyNames.LARGE) {
+    disableElem = 'Сырный бортик';
+  }
+
   const radioButtonsSize = [
     { title: 'Маленькая', value: PizzaDataKeyNames.SMALL, style: '' },
     { title: 'Cредняя', value: PizzaDataKeyNames.MEDIUM, style: '' },
@@ -55,7 +93,7 @@ const Configurator = ({ product }: IProductProps) => {
 
   const radioButtonsDough = [
     { title: 'Традиционное', value: PizzaDataKeyNames.DOUGH_TRADITIONAL, style: '' },
-    { title: 'Тонкое', value: PizzaDataKeyNames.DOUGH_THIN, style: radioStyle },
+    { title: 'Тонкое', value: PizzaDataKeyNames.DOUGH_THIN, style: disableStyle },
   ];
 
   return (
@@ -80,7 +118,13 @@ const Configurator = ({ product }: IProductProps) => {
             <h2 className="menu-container__title">{title}</h2>
             <span className="menu-container__description">{`${size} см, ${dough === 'doughTraditional' ? 'традиционное' : 'тонкое'} тесто, ${wight} г`}</span>
             <div className="menu-container__ingr-block">
-              {description}
+              { defaultIngredients.map((ing) => (
+                <RemoveIngredients
+                  changeDefaultIng={changeDefaultIng}
+                  key={ing.title}
+                  ing={ing}
+                />
+              ))}
             </div>
             <div className="menu-container__buttons-container">
               <div className="buttons-container__size">
@@ -107,12 +151,14 @@ const Configurator = ({ product }: IProductProps) => {
               <div className="buttons-container__add-ingr">
                 <h2 className="buttons-container__title">Добавить в пицу</h2>
                 <div className="buttons-container__ing-container">
-                  {moreIngredients.map((ing) => (
+                  {moreIng.map((ing) => (
                     <AddIngredient
+                      changeMoreIng={changeMoreIng}
                       pizzaSize={pizzaSize}
                       addPrice={addPrice}
                       ing={ing}
                       key={ing.id}
+                      disableElem={disableElem}
                     />
                   ))}
                 </div>
