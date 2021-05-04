@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Dispatch } from 'react';
-import { AuthAction, AuthActionTypes, AuthData } from '../../types/auth';
+import { AuthAction, AuthActionTypes, IAuthData } from '../../types/auth';
 
 const authSucces = (email: string, token: string, userId: string): AuthAction => ({
   type: AuthActionTypes.AUTH_SUCCES,
@@ -43,7 +43,7 @@ export const autoLogin = () => async (dispatch: Dispatch<AuthAction>) => {
   }
 };
 
-export const auth = (authData: AuthData, succesCallback: () => void) => (
+export const auth = (authData: IAuthData, succesCallback: () => void) => (
   async (dispatch: Dispatch<AuthAction>) => {
     try {
       let url: string = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCybwd8_sQFZF95r1i7mLeZc-F8LkDR7mQ';

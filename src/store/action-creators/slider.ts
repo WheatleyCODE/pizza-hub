@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Dispatch } from 'react';
-import { Slider, SliderAction, SliderActionTypes } from '../../types/slider';
+import { ISlider, SliderAction, SliderActionTypes } from '../../types/slider';
 
 const fetchSliderStart = (): SliderAction => ({ type: SliderActionTypes.FETCH_SLIDER });
 const fetchSliderSucces = (data: any): SliderAction => ({
@@ -18,7 +18,7 @@ const fetchSlider = () => async (dispatch: Dispatch<SliderAction>) => {
     dispatch(fetchSliderStart());
 
     const response = await axios.get('https://qb-pizza-hub-default-rtdb.firebaseio.com/sliders.json');
-    let data: Slider[] = [];
+    let data: ISlider[] = [];
     // eslint-disable-next-line no-restricted-syntax
     for (const key in response.data) {
       if (Object.prototype.hasOwnProperty.call(response.data, key)) {

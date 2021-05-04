@@ -1,12 +1,12 @@
-import { AuthAction, AuthActionTypes, AuthState } from '../../types/auth';
+import { AuthAction, AuthActionTypes, IAuthState } from '../../types/auth';
 
-const initialState: AuthState = {
+const initialState: IAuthState = {
   email: '',
   token: '',
   userId: '',
 };
 
-const authReducer = (state: AuthState = initialState, action: AuthAction): AuthState => {
+const authReducer = (state: IAuthState = initialState, action: AuthAction): IAuthState => {
   switch (action.type) {
     case AuthActionTypes.AUTH_SUCCES:
       return { ...state, ...action.payload };

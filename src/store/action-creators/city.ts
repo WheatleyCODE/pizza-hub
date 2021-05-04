@@ -3,13 +3,13 @@ import { Dispatch } from 'react';
 import {
   CityAction,
   CityActionTypes,
-  CurrentCity,
-  City,
+  ICurrentCity,
+  ICity,
 } from '../../types/city';
 
 const fetchCityStart = (): CityAction => ({ type: CityActionTypes.FETCH_CITY });
 
-const fetchCitySucces = (data: City[]): CityAction => ({
+const fetchCitySucces = (data: ICity[]): CityAction => ({
   type: CityActionTypes.FETCH_CITY_SUCCES,
   payload: data,
 });
@@ -24,7 +24,7 @@ export const fetchCity = () => async (dispatch: Dispatch<CityAction>) => {
     dispatch(fetchCityStart());
 
     const response = await axios.get('https://qb-pizza-hub-default-rtdb.firebaseio.com/cities.json');
-    let data: City[] = [];
+    let data: ICity[] = [];
     // eslint-disable-next-line no-restricted-syntax
     for (const key in response.data) {
       if (Object.prototype.hasOwnProperty.call(response.data, key)) {
@@ -38,7 +38,7 @@ export const fetchCity = () => async (dispatch: Dispatch<CityAction>) => {
   }
 };
 
-export const setCurrentCity = (currentCity: CurrentCity): CityAction => ({
+export const setCurrentCity = (currentCity: ICurrentCity): CityAction => ({
   type: CityActionTypes.SET_CURRENT_CITY,
   payload: currentCity,
 });

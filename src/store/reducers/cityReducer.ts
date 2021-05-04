@@ -1,6 +1,6 @@
-import { CityAction, CityActionTypes, CityState } from '../../types/city';
+import { CityAction, CityActionTypes, ICityState } from '../../types/city';
 
-const initialState: CityState = {
+const initialState: ICityState = {
   currentCity: {
     name: 'Нижний Новгород',
     time: 37,
@@ -10,7 +10,7 @@ const initialState: CityState = {
   error: null,
 };
 
-const cityReducer = (state: CityState = initialState, action: CityAction): CityState => {
+const cityReducer = (state: ICityState = initialState, action: CityAction): ICityState => {
   switch (action.type) {
     case CityActionTypes.FETCH_CITY:
       return { ...state, loading: true };

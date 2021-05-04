@@ -1,10 +1,10 @@
-export interface AuthData {
+export interface IAuthData {
   email: string,
   password: string,
   isLogin: boolean,
 }
 
-export interface AuthState {
+export interface IAuthState {
   email: string,
   token: string,
   userId: string,
@@ -15,13 +15,13 @@ export enum AuthActionTypes {
   AUTH_LOGOUT = 'AUTH_LOGOUT',
 }
 
-interface AuthSuccesActionCreator {
+interface IAuthSuccesActionCreator {
   type: AuthActionTypes.AUTH_SUCCES,
-  payload: AuthState,
+  payload: IAuthState,
 }
 
-interface AuthLogoutAction {
+interface IAuthLogoutAction {
   type: AuthActionTypes.AUTH_LOGOUT,
 }
 
-export type AuthAction = AuthSuccesActionCreator | AuthLogoutAction;
+export type AuthAction = IAuthSuccesActionCreator | IAuthLogoutAction;

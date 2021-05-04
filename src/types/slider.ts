@@ -1,9 +1,9 @@
-export interface Slider {
+export interface ISlider {
   text: string,
   url: string
 }
-export interface SliderState {
-  sliders: Slider[]
+export interface ISliderState {
+  sliders: ISlider[]
   loading: boolean,
   error: null | string
 }
@@ -13,16 +13,16 @@ export enum SliderActionTypes {
   FETCH_SLIDER_SUCCES = 'FETCH_SLIDER_SUCCES',
   FETCH_SLIDER_ERROR = 'FETCH_SLIDER_ERROR',
 }
-interface SliderctionTypes {
+interface ISliderctionTypes {
   type: SliderActionTypes.FETCH_SLIDER,
 }
-interface FetchSliderSuccesAction {
+interface IFetchSliderSuccesAction {
   type: SliderActionTypes.FETCH_SLIDER_SUCCES,
-  payload: Slider[],
+  payload: ISlider[],
 }
-interface FetchSliderErrorAction {
+interface IFetchSliderErrorAction {
   type: SliderActionTypes.FETCH_SLIDER_ERROR,
   payload: string,
 }
 
-export type SliderAction = SliderctionTypes | FetchSliderSuccesAction | FetchSliderErrorAction;
+export type SliderAction = ISliderctionTypes | IFetchSliderSuccesAction | IFetchSliderErrorAction;

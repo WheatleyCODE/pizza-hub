@@ -1,14 +1,14 @@
-export interface City {
+export interface ICity {
   name: string,
   time: number,
 }
-export interface CurrentCity {
+export interface ICurrentCity {
   name: string,
   time: number,
 }
-export interface CityState {
-  currentCity: CurrentCity,
-  city: City[]
+export interface ICityState {
+  currentCity: ICurrentCity,
+  city: ICity[]
   loading: boolean,
   error: null | string,
 }
@@ -20,25 +20,25 @@ export enum CityActionTypes {
   SET_CURRENT_CITY = 'SET_CURRENT_CITY',
 }
 
-interface FetchCityAction {
+interface IFetchCityAction {
   type: CityActionTypes.FETCH_CITY,
 }
-interface FetchCitySuccesAction {
+interface IFetchCitySuccesAction {
   type: CityActionTypes.FETCH_CITY_SUCCES,
-  payload: City[],
+  payload: ICity[],
 }
-interface FetchCityErrorAction {
+interface IFetchCityErrorAction {
   type: CityActionTypes.FETCH_CITY_ERROR,
   payload: string,
 }
 
-interface SetCurrentCityAction {
+interface ISetCurrentCityAction {
   type: CityActionTypes.SET_CURRENT_CITY,
-  payload: CurrentCity,
+  payload: ICurrentCity,
 }
 
 export type CityAction =
-  FetchCityErrorAction
-  | FetchCityAction
-  | FetchCitySuccesAction
-  | SetCurrentCityAction;
+  IFetchCityErrorAction
+  | IFetchCityAction
+  | IFetchCitySuccesAction
+  | ISetCurrentCityAction;

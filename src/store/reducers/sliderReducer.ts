@@ -1,12 +1,12 @@
-import { SliderAction, SliderActionTypes, SliderState } from '../../types/slider';
+import { SliderAction, SliderActionTypes, ISliderState } from '../../types/slider';
 
-const initialState: SliderState = {
+const initialState: ISliderState = {
   sliders: [],
   loading: false,
   error: null,
 };
 
-const sliderReducer = (state = initialState, action: SliderAction): SliderState => {
+const sliderReducer = (state = initialState, action: SliderAction): ISliderState => {
   switch (action.type) {
     case SliderActionTypes.FETCH_SLIDER:
       return { loading: true, error: null, sliders: [] };

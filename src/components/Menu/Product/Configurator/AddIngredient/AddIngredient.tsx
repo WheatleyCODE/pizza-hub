@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Ingredients } from '../../../../../types/menu';
+import { IIngredients } from '../../../../../types/menu';
 import './AddIngredient.scss';
 
 interface AddIngredientProps {
-  ing : Ingredients,
+  ing : IIngredients,
   addPrice: (currentPrice: number) => void;
   pizzaSize: any;
 }

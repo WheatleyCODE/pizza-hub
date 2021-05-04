@@ -1,13 +1,13 @@
 import React from 'react';
-import { City, CityAction, CurrentCity } from '../../types/city';
+import { ICity, CityAction, ICurrentCity } from '../../types/city';
 import CityItem from './CityItem/CityItem';
 import Loader from '../UI/Loader/Loader';
 import './CityChanger.scss';
 
 interface CityChangerProps {
-  city: City[],
-  currentCity: CurrentCity,
-  setCurrentCity: (currentCity: CurrentCity) => CityAction,
+  city: ICity[],
+  currentCity: ICurrentCity,
+  setCurrentCity: (currentCity: ICurrentCity) => CityAction,
   toggleCityModal: () => void,
 }
 

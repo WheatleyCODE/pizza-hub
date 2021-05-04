@@ -1,12 +1,12 @@
-import { MenuAction, MenuActionTypes, MenuState } from '../../types/menu';
+import { MenuAction, MenuActionTypes, IMenuState } from '../../types/menu';
 
-const initialState: MenuState = {
+const initialState: IMenuState = {
   menu: [],
   loading: false,
   error: null,
 };
 
-const menuReducer = (state = initialState, action: MenuAction): MenuState => {
+const menuReducer = (state = initialState, action: MenuAction): IMenuState => {
   switch (action.type) {
     case MenuActionTypes.FETCH_MENU:
       return { loading: true, error: null, menu: [] };

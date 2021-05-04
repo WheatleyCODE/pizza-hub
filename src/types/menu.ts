@@ -5,29 +5,29 @@ export enum PizzaDataKeyNames {
   DOUGH_TRADITIONAL = 'doughTraditional',
   DOUGH_THIN = 'doughThin',
 }
-export interface Ingredients {
+export interface IIngredients {
   title: string,
   url: string,
   price: number,
   id: number
 }
 
-export interface PizzaParam {
+export interface IPizzaParam {
   size: number,
   wight: number,
   url: string,
   price: number,
 }
 
-export interface PizzaData {
+export interface IPizzaData {
   doughTraditional: {
-    small: PizzaParam,
-    medium: PizzaParam,
-    large: PizzaParam,
+    small: IPizzaParam,
+    medium: IPizzaParam,
+    large: IPizzaParam,
   },
   doughThin: {
-    medium: PizzaParam,
-    large: PizzaParam,
+    medium: IPizzaParam,
+    large: IPizzaParam,
   }
 }
 
@@ -37,17 +37,17 @@ export interface IProduct {
   description: string,
   price: number,
   route: string,
-  moreIngredients: Ingredients[],
-  pizzaDate: PizzaData,
+  moreIngredients: IIngredients[],
+  pizzaDate: IPizzaData,
 }
 
-export interface Collection {
+export interface ICollection {
   collection: IProduct[],
   collectionName: string,
 }
 
-export interface MenuState {
-  menu: Collection[],
+export interface IMenuState {
+  menu: ICollection[],
   loading: boolean,
   error: null | string
 }
@@ -57,16 +57,16 @@ export enum MenuActionTypes {
   FETCH_MENU_SUCCES = 'FETCH_MENU_SUCCES',
   FETCH_MENU_ERROR = 'FETCH_MENU_ERROR',
 }
-interface FetchMenuAction {
+interface IFetchMenuAction {
   type: MenuActionTypes.FETCH_MENU,
 }
-interface FetchMenuSuccesAction {
+interface IFetchMenuSuccesAction {
   type: MenuActionTypes.FETCH_MENU_SUCCES,
   payload: any[],
 }
-interface FetchMenuErrorAction {
+interface IFetchMenuErrorAction {
   type: MenuActionTypes.FETCH_MENU_ERROR,
   payload: string,
 }
 
-export type MenuAction = FetchMenuAction | FetchMenuSuccesAction | FetchMenuErrorAction;
+export type MenuAction = IFetchMenuAction | IFetchMenuSuccesAction | IFetchMenuErrorAction;
