@@ -29,7 +29,7 @@ const StickyMenu = () => {
           <CSSTransition
             in={showLogo}
             timeout={150}
-            classNames="modal"
+            classNames="logo"
             mountOnEnter
             unmountOnExit
           >
