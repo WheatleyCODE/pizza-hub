@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { addToBasket } from '../store/action-creators/basket';
 import fetchMenu from '../store/action-creators/menu';
 import { fetchSlider, changeSlide, changeSlideCircle } from '../store/action-creators/slider';
 import * as configActions from '../store/action-creators/configurator';
@@ -18,6 +19,7 @@ const useActions = () => {
     fetchSlider,
     changeSlide,
     changeSlideCircle,
+    addToBasket,
     ...configActions,
   }, dispatch);
 };

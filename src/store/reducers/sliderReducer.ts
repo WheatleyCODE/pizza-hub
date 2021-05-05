@@ -83,7 +83,9 @@ const sliderReducer = (state = initialState, action: SliderAction): ISliderState
     }
 
     default:
-      return { ...state };
+      return {
+        ...state,
+      };
   }
 };
 

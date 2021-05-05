@@ -13,19 +13,36 @@ const initialState: ICityState = {
 const cityReducer = (state: ICityState = initialState, action: CityAction): ICityState => {
   switch (action.type) {
     case CityActionTypes.FETCH_CITY:
-      return { ...state, loading: true };
+      return {
+        ...state,
+        loading: true,
+      };
 
     case CityActionTypes.FETCH_CITY_SUCCES:
-      return { ...state, loading: false, city: action.payload };
+      return {
+        ...state,
+        loading: false,
+        city: action.payload,
+      };
 
     case CityActionTypes.FETCH_CITY_ERROR:
-      return { ...state, loading: false, error: action.payload };
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
 
     case CityActionTypes.SET_CURRENT_CITY:
-      return { ...state, currentCity: action.payload };
+      return {
+        ...state,
+        currentCity:
+        action.payload,
+      };
 
     default:
-      return { ...state };
+      return {
+        ...state,
+      };
   }
 };
 

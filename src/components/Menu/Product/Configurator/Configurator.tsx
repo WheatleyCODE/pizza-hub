@@ -44,6 +44,7 @@ const Configurator = ({ product }: IProductProps) => {
     changeCurrentPrice,
     priceRecalculation,
     updateInfo,
+    addToBasket,
   } = useActions();
 
   useEffect(() => {
@@ -183,8 +184,8 @@ const Configurator = ({ product }: IProductProps) => {
           </div>
         </div>
         <div className="buy-button">
-          <button className="Button bright" type="button">
-            <span>{`Купить за ${currentPizza.currentPrice}р`}</span>
+          <button onClick={() => { addToBasket({ product: currentPizza, amount: 1 }); }} className="Button bright" type="button">
+            <span>{`Добавить в корзину за ${currentPizza.currentPrice}р`}</span>
           </button>
         </div>
       </div>
