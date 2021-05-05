@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import useActions from '../../../hooks/useAction';
 import useTypedSelector from '../../../hooks/useTypedSelector';
@@ -6,55 +6,30 @@ import Loader from '../Loader/Loader';
 import './Slider.scss';
 
 const Slider = () => {
-  const { fetchSlider } = useActions();
-  const { loading, sliders } = useTypedSelector((state) => state.slider);
-  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [className, setClassName] = useState('slider');
+  const { fetchSlider, changeSlide, changeSlideCircle } = useActions();
+  const {
+    loading,
+    sliders,
+    className,
+    currentSlideIndex,
+  } = useTypedSelector((state) => state.slider);
 
-  const sliderClasses = {
-    next: 'sliderNext',
-    prev: 'sliderPrev',
+  const slider = {
+    next: 1,
+    prev: -1,
   };
 
   useEffect(() => {
     fetchSlider();
   }, []);
 
-  const nextSlideChanger = () => {
-    setCurrentSlideIndex((prev) => {
-      if (prev + 1 === sliders.length) return 0;
-      return prev + 1;
-    });
-    setClassName(sliderClasses.next);
-  };
-
   useEffect(() => {
     const timer = setInterval(() => {
-      setClassName(sliderClasses.next);
-      nextSlideChanger();
+      changeSlide(slider.next);
     }, 6000);
 
     return () => clearInterval(timer);
   });
-
-  const prevSlideChanger = () => {
-    setCurrentSlideIndex((prev) => {
-      if (prev - 1 === -1) return sliders.length - 1;
-      return prev - 1;
-    });
-    setClassName(sliderClasses.prev);
-  };
-
-  const circleSlideChanger = (i : number) => {
-    setCurrentSlideIndex((prev) => {
-      if (prev < i) {
-        setClassName(sliderClasses.next);
-      } else {
-        setClassName(sliderClasses.prev);
-      }
-      return i;
-    });
-  };
 
   return (
     <div className="Slider">
@@ -76,10 +51,10 @@ const Slider = () => {
         );
       })}
       <div className="Slider__button-container">
-        <button onClick={prevSlideChanger} type="button">
+        <button onClick={() => changeSlide(slider.prev)} type="button">
           <i className="fa fa-chevron-left" aria-hidden="true" />
         </button>
-        <button onClick={nextSlideChanger} type="button">
+        <button onClick={() => changeSlide(slider.next)} type="button">
           <i className="fa fa-chevron-right" aria-hidden="true" />
         </button>
       </div>
@@ -88,7 +63,7 @@ const Slider = () => {
           let styles;
           if (i === currentSlideIndex) styles = { backgroundColor: '#ff6900' };
           return (
-            <div role="button" aria-hidden="true" style={styles} key={el.text} onClick={() => { circleSlideChanger(i); }} className="dotted-container__circle-buttom" />
+            <div role="button" aria-hidden="true" style={styles} key={el.text} onClick={() => changeSlideCircle(i)} className="dotted-container__circle-buttom" />
           );
         }) }
       </div>

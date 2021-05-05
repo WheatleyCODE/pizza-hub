@@ -13,7 +13,7 @@ const fetchSliderError = (): SliderAction => ({
   payload: 'Error slider',
 });
 
-const fetchSlider = () => async (dispatch: Dispatch<SliderAction>) => {
+export const fetchSlider = () => async (dispatch: Dispatch<SliderAction>) => {
   try {
     dispatch(fetchSliderStart());
 
@@ -32,4 +32,12 @@ const fetchSlider = () => async (dispatch: Dispatch<SliderAction>) => {
   }
 };
 
-export default fetchSlider;
+export const changeSlide = (num: number): SliderAction => ({
+  type: SliderActionTypes.CHANGE_SLIDE,
+  payload: num,
+});
+
+export const changeSlideCircle = (num: number): SliderAction => ({
+  type: SliderActionTypes.CHANGE_SLIDE_CIRCLE,
+  payload: num,
+});
