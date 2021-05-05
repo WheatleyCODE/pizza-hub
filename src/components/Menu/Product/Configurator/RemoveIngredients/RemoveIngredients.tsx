@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { IDefaultIng } from '../../../../../types/menu';
 import './RemoveIngredients.scss';
 
@@ -10,22 +10,19 @@ interface IRemoveIngredients {
   changeDefaultIng: (ing: IDefaultIng) => void,
 }
 const RemoveIngredients = ({ ing, changeDefaultIng }: IRemoveIngredients) => {
-  const [isTarget, setIsTarget] = useState(false);
-
   const onClickHandler = () => {
-    changeDefaultIng({ title: ing.title, add: isTarget });
-    setIsTarget((prev) => !prev);
+    changeDefaultIng({ title: ing.title, add: !ing.add });
   };
 
   return (
     <button
       onClick={onClickHandler}
       type="button"
-      className={`RemoveIngredients ${isTarget ? 'target' : ''}`}
+      className={`RemoveIngredients ${!ing.add ? 'target' : ''}`}
     >
       <span>
         {ing.title}
-        {isTarget ? <i className="fa fa-undo" aria-hidden="true" /> : <i className="fa fa-minus-square-o" aria-hidden="true" />}
+        {!ing.add ? <i className="fa fa-undo" aria-hidden="true" /> : <i className="fa fa-minus-square-o" aria-hidden="true" />}
         ,
       </span>
     </button>

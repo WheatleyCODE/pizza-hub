@@ -10,6 +10,16 @@ export enum PizzaDataKeyNames {
   DOUGH_TRADITIONAL = 'doughTraditional',
   DOUGH_THIN = 'doughThin',
 }
+
+export enum PizzaDataKeyNamesPizzaSize {
+  MEDIUM = 'medium',
+  LARGE = 'large',
+}
+
+export enum PizzaDataKeyNamesDough {
+  DOUGH_TRADITIONAL = 'doughTraditional',
+  DOUGH_THIN = 'doughThin',
+}
 export interface IIngredients {
   title: string,
   url: string,

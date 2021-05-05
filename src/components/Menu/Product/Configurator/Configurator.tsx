@@ -1,34 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import useActions from '../../../../hooks/useAction';
+import useTypedSelector from '../../../../hooks/useTypedSelector';
 import {
-  IDefaultIng,
   IProduct,
   PizzaDataKeyNames,
-  IMoreIng,
+  PizzaDataKeyNamesDough,
+  PizzaDataKeyNamesPizzaSize,
 } from '../../../../types/menu';
 import RadioButtons from '../../../UI/Radio/RadioButtons';
 import AddIngredient from './AddIngredient/AddIngredient';
-import './Configurator.scss';
 import RemoveIngredients from './RemoveIngredients/RemoveIngredients';
+import './Configurator.scss';
 
 interface IProductProps {
   product: IProduct
 }
 
 const Configurator = ({ product }: IProductProps) => {
-  const [
-    pizzaSize,
-    setPizzaSize,
-  ] = useState<keyof typeof pizzaDate.doughThin>(PizzaDataKeyNames.MEDIUM);
-  const [dough, setDough] = useState<keyof typeof pizzaDate>(PizzaDataKeyNames.DOUGH_TRADITIONAL);
-  const [additionalСost, setAdditionalСost] = useState(0);
-
   const {
     description,
     moreIngredients,
     pizzaDate,
     title,
   } = product;
+
+  const { currentPizza } = useTypedSelector((state) => state.configurator);
+  const { dough, pizzaSize } = currentPizza;
 
   const {
     price,
@@ -37,51 +35,72 @@ const Configurator = ({ product }: IProductProps) => {
     size,
   } = pizzaDate[dough][pizzaSize];
 
-  const [
-    defaultIngredients,
-    setDefaultIngredients,
-  ] = useState(description.split(', ').map((text) => ({ title: text, add: true })));
+  const {
+    setCurrentPizza,
+    changeDefaultIng,
+    changeMoreIng,
+    changeDough,
+    changePizzaSize,
+    changeCurrentPrice,
+    priceRecalculation,
+    updateInfo,
+  } = useActions();
 
-  const [
-    moreIng,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    setMoreIng,
-  ] = useState(moreIngredients.map((obj) => ({ ...obj, add: false })));
+  useEffect(() => {
+    setCurrentPizza({
+      defaultIngredients: description,
+      moreIngredients,
+      dough: PizzaDataKeyNamesDough.DOUGH_TRADITIONAL,
+      pizzaSize: PizzaDataKeyNamesPizzaSize.MEDIUM,
+      currentPrice: price,
+      murkUp: 0,
+      pizzaInfo: {
+        description,
+        title,
+        url,
+        wight,
+        size,
+      },
+    });
+  }, []);
 
-  const changeDefaultIng = (ing: IDefaultIng) => {
-    const newDefIng = [...defaultIngredients];
-    const index = newDefIng.findIndex((obj) => obj.title === ing.title);
-    newDefIng.splice(index, 1, ing);
+  useEffect(() => {
+    updateInfo({
+      description,
+      title,
+      url,
+      wight,
+      size,
+    });
+  }, [dough, pizzaSize]);
 
-    setDefaultIngredients(newDefIng);
-  };
+  useEffect(() => {
+    changeCurrentPrice(price);
 
-  const changeMoreIng = (ing: IMoreIng) => {
-    const newMoreIng = [...moreIng];
-    const index = newMoreIng.findIndex((obj) => obj.title === ing.title);
-    newMoreIng.splice(index, 1, ing);
-
-    setMoreIng(newMoreIng);
-  };
+    const ingredient = currentPizza.moreIngredients.find((el) => el.title === 'Сырный бортик');
+    if (ingredient?.add
+      && pizzaSize !== PizzaDataKeyNamesPizzaSize.MEDIUM
+      && pizzaSize !== PizzaDataKeyNamesPizzaSize.LARGE) {
+      priceRecalculation(ingredient, price);
+    }
+  }, [pizzaSize]);
 
   const onChangeSizeRadio = (value: any) => {
-    if (dough === PizzaDataKeyNames.DOUGH_THIN && value === PizzaDataKeyNames.SMALL) {
-      setDough(PizzaDataKeyNames.DOUGH_TRADITIONAL);
+    if (dough === PizzaDataKeyNamesDough.DOUGH_THIN && value === PizzaDataKeyNames.SMALL) {
+      changeDough(PizzaDataKeyNamesDough.DOUGH_TRADITIONAL);
     }
-    setPizzaSize(value);
-  };
-
-  const addPrice = (currentIngPrice: number) => {
-    setAdditionalСost((prev) => prev + currentIngPrice);
+    changePizzaSize(value);
   };
 
   let disableStyle = '';
-  if (pizzaSize !== PizzaDataKeyNames.MEDIUM && pizzaSize !== PizzaDataKeyNames.LARGE) {
+  if (pizzaSize !== PizzaDataKeyNamesPizzaSize.MEDIUM
+      && pizzaSize !== PizzaDataKeyNamesPizzaSize.LARGE) {
     disableStyle = 'disable';
   }
 
   let disableElem = '';
-  if (pizzaSize !== PizzaDataKeyNames.MEDIUM && pizzaSize !== PizzaDataKeyNames.LARGE) {
+  if (pizzaSize !== PizzaDataKeyNamesPizzaSize.MEDIUM
+      && pizzaSize !== PizzaDataKeyNamesPizzaSize.LARGE) {
     disableElem = 'Сырный бортик';
   }
 
@@ -118,7 +137,7 @@ const Configurator = ({ product }: IProductProps) => {
             <h2 className="menu-container__title">{title}</h2>
             <span className="menu-container__description">{`${size} см, ${dough === 'doughTraditional' ? 'традиционное' : 'тонкое'} тесто, ${wight} г`}</span>
             <div className="menu-container__ingr-block">
-              { defaultIngredients.map((ing) => (
+              { currentPizza.defaultIngredients.map((ing) => (
                 <RemoveIngredients
                   changeDefaultIng={changeDefaultIng}
                   key={ing.title}
@@ -131,10 +150,7 @@ const Configurator = ({ product }: IProductProps) => {
                 <RadioButtons
                   buttons={radioButtonsSize}
                   selected={pizzaSize}
-                  onChange={(
-                    value: keyof typeof pizzaDate.doughThin
-                    | keyof typeof pizzaDate.doughThin,
-                  ) => {
+                  onChange={(value: any) => {
                     onChangeSizeRadio(value);
                   }}
                 />
@@ -143,19 +159,19 @@ const Configurator = ({ product }: IProductProps) => {
                 <RadioButtons
                   buttons={radioButtonsDough}
                   selected={dough}
-                  onChange={(value :keyof typeof pizzaDate) => {
-                    setDough(value);
+                  onChange={(value: PizzaDataKeyNamesDough) => {
+                    changeDough(value);
                   }}
                 />
               </div>
               <div className="buttons-container__add-ingr">
                 <h2 className="buttons-container__title">Добавить в пицу</h2>
                 <div className="buttons-container__ing-container">
-                  {moreIng.map((ing) => (
+                  {currentPizza.moreIngredients.map((ing) => (
                     <AddIngredient
                       changeMoreIng={changeMoreIng}
-                      pizzaSize={pizzaSize}
-                      addPrice={addPrice}
+                      murkUp={currentPizza.murkUp}
+                      changeCurrentPrice={() => changeCurrentPrice(price)}
                       ing={ing}
                       key={ing.id}
                       disableElem={disableElem}
@@ -168,11 +184,10 @@ const Configurator = ({ product }: IProductProps) => {
         </div>
         <div className="buy-button">
           <button className="Button bright" type="button">
-            <span>{`Купить за ${price + additionalСost}р`}</span>
+            <span>{`Купить за ${currentPizza.currentPrice}р`}</span>
           </button>
         </div>
       </div>
-
     </div>
   );
 };
