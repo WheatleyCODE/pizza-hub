@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { Route } from 'react-router';
+import { Route, Switch } from 'react-router';
 import useActions from '../../hooks/useAction';
 import Routes from '../../types/routes';
+import Basket from '../Basket/Basket';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import InfoBlock from '../InfoBlock/InfoBlock';
@@ -21,11 +22,21 @@ const Layout = () => {
   return (
     <div className="Layout">
       <Route path={Routes.HOME_ROUTE} component={Header} />
-      <StickyMenu />
-      <Slider />
-      <Menu />
-      <InfoBlock />
-      <PromoBlock />
+      <Switch>
+        <Route path={Routes.BASKET_ROUTE} component={Basket} />
+        <Route
+          path={Routes.HOME_ROUTE}
+          render={() => (
+            <>
+              <StickyMenu />
+              <Slider />
+              <Menu />
+              <InfoBlock />
+              <PromoBlock />
+            </>
+          )}
+        />
+      </Switch>
       <Footer />
     </div>
   );

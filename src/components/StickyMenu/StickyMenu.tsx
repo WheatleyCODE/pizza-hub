@@ -1,19 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import { Link } from 'react-router-dom';
 import stichyMenuItems from '../../utils/stichyMenuItems';
 import Button from '../UI/Button/Button';
 import logoImg from '../../img/pizza.png';
+import useDebounce from '../../hooks/useDebounse';
+import MiniBasket from '../MiniBasket/MiniBasket';
+import Routes from '../../types/routes';
 import './StickyMenu.scss';
 
 const StickyMenu = () => {
   const [showLogo, setShowLogo] = useState(false);
+  const [isHoverButtonOver, setIsHoverButtonOver] = useState(false);
+  const [isHoverButtonEnter, setIsHoverButtonEnter] = useState(false);
+
+  const [isHoverBasketOver, setIsHoverBasketOver] = useState(false);
+  const [isHoverBasketEnter, setIsHoverBasketEnter] = useState(false);
+  const [styleName, setStyleName] = useState('');
+
+  const closeBasketButton = useDebounce(() => setIsHoverButtonOver(false), 1000);
+  const closeBasket = useDebounce(() => setIsHoverBasketOver(false), 1000);
 
   const scrollHandler = (e: any) => {
     const top = e.target.documentElement.scrollTop;
     if (top > 90) {
       setShowLogo(true);
+      setStyleName('shadow');
     } else {
       setShowLogo(false);
+      setStyleName('');
     }
   };
 
@@ -22,8 +37,34 @@ const StickyMenu = () => {
     return () => document.removeEventListener('scroll', scrollHandler);
   }, []);
 
+  const onMouseEnterButton = () => {
+    setIsHoverButtonEnter(true);
+  };
+
+  const onMouseOverButton = () => {
+    setIsHoverButtonOver(true);
+  };
+
+  const onMouseLeaveButton = () => {
+    closeBasketButton();
+    setIsHoverButtonEnter(false);
+  };
+
+  const onMouseEnterBasket = () => {
+    setIsHoverBasketEnter(true);
+  };
+
+  const onMouseOverBasket = () => {
+    setIsHoverBasketOver(true);
+  };
+
+  const onMouseLeaveBasket = () => {
+    closeBasket();
+    setIsHoverBasketEnter(false);
+  };
+
   return (
-    <div className="StickyMenu">
+    <div className={`StickyMenu ${styleName}`}>
       <div className="StickyMenu__container">
         <div className="flex">
           <CSSTransition
@@ -41,9 +82,31 @@ const StickyMenu = () => {
             )) }
           </ul>
         </div>
-        <div className="basket">
-          <Button onClickHandler={() => {}} buttonStyle="bright" text="Корзина" />
+        <div
+          onFocus={() => {}}
+          onMouseEnter={onMouseEnterButton}
+          onMouseLeave={onMouseLeaveButton}
+          onMouseOver={onMouseOverButton}
+          aria-hidden="true"
+          className="basket"
+        >
+          <Link to={Routes.BASKET_ROUTE}>
+            <Button onClickHandler={() => {}} buttonStyle="bright" text="Корзина" />
+          </Link>
         </div>
+        <CSSTransition
+          in={isHoverButtonOver || isHoverBasketOver || isHoverButtonEnter || isHoverBasketEnter}
+          timeout={300}
+          classNames="modal"
+          mountOnEnter
+          unmountOnExit
+        >
+          <MiniBasket
+            onMouseOverBasket={onMouseOverBasket}
+            onMouseLeaveBasket={onMouseLeaveBasket}
+            onMouseEnterBasket={onMouseEnterBasket}
+          />
+        </CSSTransition>
       </div>
     </div>
   );

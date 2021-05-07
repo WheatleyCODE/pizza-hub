@@ -1,5 +1,6 @@
 import { PizzaDataKeyNamesDough, PizzaDataKeyNamesPizzaSize } from '../../types/menu';
 import { ConfiguratorAction, ConfiguratorActionTypes, IConfiguratorState } from '../../types/configurator';
+import { replaceMurkUp } from '../../utils/replacement';
 
 const initialState: IConfiguratorState = {
   currentPizza: {
@@ -80,15 +81,7 @@ const configuratorReducer = (
 
     case ConfiguratorActionTypes.CHANGE_CURRENT_PRICE: {
       const { pizzaSize } = state.currentPizza;
-      let murkUp: number;
-      switch (pizzaSize) {
-        case 'large': murkUp = 20;
-          break;
-        case 'medium': murkUp = 0;
-          break;
-        default: murkUp = -10;
-          break;
-      }
+      const murkUp: number = replaceMurkUp(pizzaSize);
       const pesult = state.currentPizza.moreIngredients.reduce((acc, obj) => {
         if (obj.add) {
           return (

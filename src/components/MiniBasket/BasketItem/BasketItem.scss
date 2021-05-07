@@ -1,0 +1,155 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.BasketItem {
+  display: flex;
+  position: relative;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+  &:last-child {
+    border: none;
+  }
+
+  &__delete-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 15px;
+    margin-right: 5px;
+
+    button {
+      @include ButtonToDiv;
+
+      i {
+        font-size: 18px;
+        transition: .3s;
+      }
+
+      &:hover {
+        color: $colorOrange;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__img {
+    width: 25%;
+    margin-left: 10px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -15px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    width: 68%;
+    display: flex;
+    flex-direction: column;
+    .title {
+      font-weight: 600;
+      font-size: 15px;
+      display: block;
+    }
+
+    .description {
+      font-size: 12px;
+      display: block;
+    }
+  }
+
+  &__amount {
+    display: flex;
+    align-items: center;
+    width: 65%;
+    justify-content: flex-end;
+  }
+
+  &__price {
+    width: 35%;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: end;
+    padding-right: 10px;
+
+    .price {
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+}
+
+.counter {
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.07);
+  border-radius: 10px;
+  display: flex;
+
+  &__button {
+    @include ButtonToDiv;
+    cursor: pointer;
+    padding: 2px;
+
+    i {
+      color: $colorDarkGrey;
+      transition: .3s;
+      font-size: 12px;
+    }
+
+    &:hover i {
+      color: black;
+    }
+  }
+
+  &__number {
+    display: flex;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: $colorBlack;
+  }
+}
+
+.BasketItem.basketI {
+  padding-right: 20px;
+  width: 100%;
+  max-width: 800px;
+  img {
+    width: 100px;
+  }
+
+  .BasketItem__delete-button {
+    i {
+      margin-right: 15px;
+    }
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .Basket__container {
+    width: 95%;
+  }
+
+  .BasketItem.basketI {
+    img {
+      width: 80px;
+    }
+
+    .BasketItem__price {
+      width: 30%;
+    }
+
+    .BasketItem__amount {
+      width: 70%;
+    }
+  }
+}
