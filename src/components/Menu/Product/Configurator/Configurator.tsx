@@ -187,7 +187,7 @@ const Configurator = ({ product }: IProductProps) => {
         </div>
         <Link to={Routes.HOME_ROUTE}>
           <div className="buy-button">
-            <button onClick={() => { addToBasket({ product: currentPizza, amount: 1 }); }} className="Button bright" type="button">
+            <button onClick={() => { addToBasket({ product: currentPizza, amount: 1, id: Math.random() * 10000 }); }} className="Button bright" type="button">
               <span>{`Добавить в корзину за ${currentPizza.currentPrice}р`}</span>
             </button>
           </div>

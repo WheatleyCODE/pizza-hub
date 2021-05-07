@@ -32,7 +32,7 @@ const MiniBasket = (props: IMiniBasketProps) => {
         { basket.map((productData) => (
           <BasketItem
             itemStyle={null}
-            key={productData.product.pizzaInfo.title}
+            key={productData.id}
             productData={productData}
           />
         ))}

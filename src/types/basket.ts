@@ -3,6 +3,7 @@ import { ICurrentPizza } from './configurator';
 export interface IBasketItem {
   product: ICurrentPizza,
   amount: number,
+  id: number,
 }
 
 export interface IBasketState {

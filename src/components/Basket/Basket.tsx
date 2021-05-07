@@ -13,7 +13,7 @@ const Basket = () => {
         { basket.map((productData) => (
           <BasketItem
             itemStyle="basketI"
-            key={productData.product.pizzaInfo.title}
+            key={productData.id}
             productData={productData}
           />
         ))}
