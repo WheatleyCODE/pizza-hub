@@ -28,7 +28,7 @@ const Menu = () => {
                 <Route
                   key={i}
                   path="/"
-                  component={({ history, match, location }: RouteComponentProps) => (
+                  render={({ history, match, location }: RouteComponentProps) => (
                     <Product
                       match={match}
                       location={location}

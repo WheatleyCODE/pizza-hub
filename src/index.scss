@@ -25,6 +25,11 @@ body.modal-open {
   padding-right: 16px;
 }
 
+body.modal-open {
+  overflow: hidden;
+  padding-right: 17px;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
