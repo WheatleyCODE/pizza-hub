@@ -10,10 +10,10 @@ import Modal from '../Modal/Modal';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useActions from '../../hooks/useAction';
 import minutesCorrect from '../../utils/correctMinutes';
-import './Header.scss';
 import Auth from '../Auth/Auth';
 import CityChanger from '../CityChanger/CityChanger';
 import Routes from '../../types/routes';
+import './Header.scss';
 
 const Header = ({ history }: RouteComponentProps) => {
   const [showMenu, setShowMenu] = useState(false);

@@ -4,11 +4,11 @@ import pizzaLogo from '../../../img/pizza.png';
 import Routes from '../../../types/routes';
 import './Logo.scss';
 
-interface LogoProps {
+interface ILogoProps {
   onClickHandler: () => void
 }
 
-const Logo = ({ onClickHandler }:LogoProps) => (
+const Logo = ({ onClickHandler }: ILogoProps) => (
   <NavLink to={Routes.HOME_ROUTE}>
     <button type="submit" onClick={onClickHandler} className="Logo">
       <div>

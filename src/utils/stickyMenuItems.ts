@@ -1,4 +1,4 @@
-const stichyMenuItems = [
+const stickyMenuItems = [
   {
     title: 'Пицца',
   },
@@ -16,4 +16,4 @@ const stichyMenuItems = [
   },
 ];
 
-export default stichyMenuItems;
+export default stickyMenuItems;

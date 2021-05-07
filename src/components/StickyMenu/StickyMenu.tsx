@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
-import stichyMenuItems from '../../utils/stichyMenuItems';
+import stickyMenuItems from '../../utils/stickyMenuItems';
 import Button from '../UI/Button/Button';
 import logoImg from '../../img/pizza.png';
 import useDebounce from '../../hooks/useDebounse';
@@ -77,7 +77,7 @@ const StickyMenu = () => {
             <div className="StickyMenu__logo"><img src={logoImg} alt="logo" /></div>
           </CSSTransition>
           <ul className={`menu ${showLogo ? 'translate' : 'unTranslate'}`}>
-            { stichyMenuItems.map((item) => (
+            { stickyMenuItems.map((item) => (
               <li className="menu__list" key={item.title}>{item.title}</li>
             )) }
           </ul>
