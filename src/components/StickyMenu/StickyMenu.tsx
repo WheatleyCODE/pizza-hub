@@ -7,6 +7,7 @@ import logoImg from '../../img/pizza.png';
 import useDebounce from '../../hooks/useDebounse';
 import MiniBasket from '../MiniBasket/MiniBasket';
 import Routes from '../../types/routes';
+import useTypedSelector from '../../hooks/useTypedSelector';
 import './StickyMenu.scss';
 
 const StickyMenu = () => {
@@ -17,6 +18,7 @@ const StickyMenu = () => {
   const [isHoverBasketOver, setIsHoverBasketOver] = useState(false);
   const [isHoverBasketEnter, setIsHoverBasketEnter] = useState(false);
   const [styleName, setStyleName] = useState('');
+  const { basket } = useTypedSelector((state) => state.basket);
 
   const closeBasketButton = useDebounce(() => setIsHoverButtonOver(false), 1000);
   const closeBasket = useDebounce(() => setIsHoverBasketOver(false), 1000);
@@ -63,6 +65,12 @@ const StickyMenu = () => {
     setIsHoverBasketEnter(false);
   };
 
+  let buttonBasketText = '';
+  if (basket.length > 0) {
+    const amount = basket.reduce((total, obj) => total + obj.amount, 0);
+    buttonBasketText = `| ${amount}`;
+  }
+
   return (
     <div className={`StickyMenu ${styleName}`}>
       <div className="StickyMenu__container">
@@ -91,7 +99,7 @@ const StickyMenu = () => {
           className="basket"
         >
           <Link to={Routes.BASKET_ROUTE}>
-            <Button onClickHandler={() => {}} buttonStyle="bright" text="Корзина" />
+            <Button onClickHandler={() => {}} buttonStyle="bright" text={`Корзина ${buttonBasketText}`} />
           </Link>
         </div>
         <CSSTransition

@@ -5,27 +5,47 @@ const initialState: IBasketState = {
 };
 
 const basketReducer = (state: IBasketState = initialState, action: BasketAction): IBasketState => {
+  const newBasket = [...state.basket];
+
   switch (action.type) {
     case BasketActionTypes.ADD_TO_BASKET: {
-      const { basket } = state;
-
-      if (basket.length > 0) {
-        const index = basket.findIndex((obj) => (
+      if (newBasket.length > 0) {
+        const index = newBasket.findIndex((obj) => (
           JSON.stringify(obj.product) === JSON.stringify(action.payload.product)
         ));
-
         if (index === -1) {
-          basket.push(action.payload);
+          newBasket.push(action.payload);
         } else {
-          basket[index].amount += 1;
+          newBasket[index].amount += 1;
         }
       }
 
-      if (basket.length === 0) basket.push(action.payload);
+      if (newBasket.length === 0) newBasket.push(action.payload);
 
       return {
         ...state,
-        basket,
+        basket: newBasket,
+      };
+    }
+
+    case BasketActionTypes.CHANGE_AMOUNT: {
+      const index = newBasket.findIndex((obj) => obj.id === action.payload.id);
+      newBasket[index].amount += action.payload.num;
+      if (newBasket[index].amount === 0) {
+        newBasket.splice(index, 1);
+      }
+      return {
+        ...state,
+        basket: newBasket,
+      };
+    }
+
+    case BasketActionTypes.DELETE_FROM_BASKET: {
+      const index = newBasket.findIndex((obj) => obj.id === action.payload);
+      newBasket.splice(index, 1);
+      return {
+        ...state,
+        basket: newBasket,
       };
     }
 

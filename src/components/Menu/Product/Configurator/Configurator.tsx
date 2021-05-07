@@ -88,6 +88,13 @@ const Configurator = ({ product }: IProductProps) => {
     }
   }, [pizzaSize]);
 
+  useEffect(() => {
+    const ingredient = currentPizza.moreIngredients.find((el) => el.title === 'Сырный бортик');
+    if (ingredient?.add && dough === PizzaDataKeyNamesDough.DOUGH_THIN) {
+      priceRecalculation(ingredient, price);
+    }
+  }, [dough]);
+
   const onChangeSizeRadio = (value: any) => {
     if (dough === PizzaDataKeyNamesDough.DOUGH_THIN && value === PizzaDataKeyNames.SMALL) {
       changeDough(PizzaDataKeyNamesDough.DOUGH_TRADITIONAL);
@@ -102,8 +109,9 @@ const Configurator = ({ product }: IProductProps) => {
   }
 
   let disableElem = '';
-  if (pizzaSize !== PizzaDataKeyNamesPizzaSize.MEDIUM
-      && pizzaSize !== PizzaDataKeyNamesPizzaSize.LARGE) {
+  if ((pizzaSize !== PizzaDataKeyNamesPizzaSize.MEDIUM
+      && pizzaSize !== PizzaDataKeyNamesPizzaSize.LARGE)
+      || dough === PizzaDataKeyNamesDough.DOUGH_THIN) {
     disableElem = 'Сырный бортик';
   }
 

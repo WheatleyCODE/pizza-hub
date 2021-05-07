@@ -1,4 +1,5 @@
 import React from 'react';
+import useActions from '../../../hooks/useAction';
 import { IBasketItem } from '../../../types/basket';
 import { replaceDoughText, replacePizzaSizeText } from '../../../utils/replacement';
 import './BasketItem.scss';
@@ -9,9 +10,15 @@ interface IBasketItemProps {
 }
 
 const BasketItem = ({ productData, itemStyle }: IBasketItemProps) => {
+  const { changeAmount, deleteFromBasket } = useActions();
   const { dough, pizzaSize, currentPrice } = productData.product;
   const { title, url, size } = productData.product.pizzaInfo;
-  const { amount } = productData;
+  const { amount, id } = productData;
+
+  const chgAmount = {
+    add: 1,
+    sub: -1,
+  };
 
   const price = amount * currentPrice;
 
@@ -21,7 +28,7 @@ const BasketItem = ({ productData, itemStyle }: IBasketItemProps) => {
   return (
     <div className={`BasketItem ${itemStyle}`}>
       <div className="BasketItem__delete-button">
-        <button type="button">
+        <button onClick={() => deleteFromBasket(id)} type="button">
           <i className="fa fa-trash-o" aria-hidden="true" />
         </button>
       </div>
@@ -34,11 +41,11 @@ const BasketItem = ({ productData, itemStyle }: IBasketItemProps) => {
       </div>
       <div className="BasketItem__amount">
         <div className="counter">
-          <button className="counter__button" type="button">
+          <button onClick={() => changeAmount(chgAmount.add, id)} className="counter__button" type="button">
             <i className="fa fa-plus" aria-hidden="true" />
           </button>
           <span className="counter__number">{amount}</span>
-          <button className="counter__button" type="button">
+          <button onClick={() => changeAmount(chgAmount.sub, id)} className="counter__button" type="button">
             <i className="fa fa-minus" aria-hidden="true" />
           </button>
         </div>

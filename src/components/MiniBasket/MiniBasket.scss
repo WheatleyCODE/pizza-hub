@@ -1,11 +1,16 @@
 @import '../../styles/variables';
 
+.animation-container {
+  position: absolute;
+  right: 0;
+  margin-top: 55px;
+}
+
 .MiniBasket {
   position: absolute;
   z-index: 10;
   padding: 10px 20px;
   right: 0;
-  margin-top: 55px;
   width: 370px;
   max-height: 800px;
   overflow: auto;
@@ -45,7 +50,7 @@
   right: 0;
   transform: rotate(135deg);
   z-index: 10;
-  margin-bottom: -15px;
+  margin-bottom: -10px;
   margin-right: 40px;
   border-left: 1px solid rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);

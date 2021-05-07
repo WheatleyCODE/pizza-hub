@@ -19,8 +19,7 @@ const MiniBasket = (props: IMiniBasketProps) => {
   } = props;
 
   return (
-    <>
-      <div className="triangle" />
+    <div className="animation-container">
       <div
         aria-hidden="true"
         onFocus={() => {}}
@@ -38,7 +37,8 @@ const MiniBasket = (props: IMiniBasketProps) => {
         ))}
         { basket.length === 0 ? <img className="MiniBasket__img" src={BasketImg} alt="null" /> : null}
       </div>
-    </>
+      <div className="triangle" />
+    </div>
   );
 };
 
