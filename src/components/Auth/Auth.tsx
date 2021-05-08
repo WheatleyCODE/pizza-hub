@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useActions from '../../hooks/useAction';
 import useInput from '../../hooks/useInput';
+import useTypedSelector from '../../hooks/useTypedSelector';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
 import './Auth.scss';
@@ -14,7 +15,8 @@ const Auth = ({ toggleLoginModal }: IAuthProps) => {
   const inputPassword = useInput('', 'Password', 'password');
   const valid = (!inputLogin.isValid || !inputPassword.isValid);
 
-  const { auth } = useActions();
+  const { auth, setAuthError } = useActions();
+  const { error } = useTypedSelector((state) => state.auth);
 
   const authHandler = (isLogin: boolean) => {
     const authData = {
@@ -25,9 +27,14 @@ const Auth = ({ toggleLoginModal }: IAuthProps) => {
     auth(authData, toggleLoginModal);
   };
 
+  useEffect(() => {
+    if (error) setAuthError(null);
+  }, [inputLogin.default.value, inputPassword.default.value]);
+
   return (
     <div className="Auth">
       <h1 className="Auth__logInText">Вход на сайт</h1>
+      { error ? <h4 className="error-message">{error}</h4> : null}
       <Input
         isError={inputLogin.isError}
         validError={inputLogin.validError}

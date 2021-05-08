@@ -8,6 +8,7 @@ const authSucces = (email: string, token: string, userId: string): AuthAction =>
     email,
     token,
     userId,
+    error: null,
   },
 });
 
@@ -19,6 +20,11 @@ export const logout = (): AuthAction => {
 
   return ({ type: AuthActionTypes.AUTH_LOGOUT });
 };
+
+export const setAuthError = (text: string | null): AuthAction => ({
+  type: AuthActionTypes.SET_AUTH_ERROR,
+  payload: text,
+});
 
 const autologout = (time: number, dispatch:Dispatch<AuthAction>) => {
   setTimeout(() => {
@@ -68,6 +74,6 @@ export const auth = (authData: IAuthData, succesCallback: () => void) => (
       autologout(data.expiresIn, dispatch);
       succesCallback();
     } catch (e) {
-      // console.log(e);
+      dispatch(setAuthError('Неверный Email или Password'));
     }
   });

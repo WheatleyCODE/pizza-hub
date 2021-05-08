@@ -8,11 +8,13 @@ export interface IAuthState {
   email: string,
   token: string,
   userId: string,
+  error: null | string,
 }
 
 export enum AuthActionTypes {
   AUTH_SUCCES = 'AUTH_SUCCES',
   AUTH_LOGOUT = 'AUTH_LOGOUT',
+  SET_AUTH_ERROR = 'SET_AUTH_ERROR',
 }
 
 interface IAuthSuccesActionCreator {
@@ -24,4 +26,9 @@ interface IAuthLogoutAction {
   type: AuthActionTypes.AUTH_LOGOUT,
 }
 
-export type AuthAction = IAuthSuccesActionCreator | IAuthLogoutAction;
+interface ISetAuthErrorAction {
+  type: AuthActionTypes.SET_AUTH_ERROR,
+  payload: string | null,
+}
+
+export type AuthAction = IAuthSuccesActionCreator | IAuthLogoutAction | ISetAuthErrorAction;

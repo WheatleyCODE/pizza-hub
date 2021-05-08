@@ -22,6 +22,7 @@ const basketReducer = (state: IBasketState = initialState, action: BasketAction)
 
       if (newBasket.length === 0) newBasket.push(action.payload);
 
+      localStorage.setItem('basket', JSON.stringify(newBasket));
       return {
         ...state,
         basket: newBasket,
@@ -34,6 +35,7 @@ const basketReducer = (state: IBasketState = initialState, action: BasketAction)
       if (newBasket[index].amount === 0) {
         newBasket.splice(index, 1);
       }
+      localStorage.setItem('basket', JSON.stringify(newBasket));
       return {
         ...state,
         basket: newBasket,
@@ -43,6 +45,7 @@ const basketReducer = (state: IBasketState = initialState, action: BasketAction)
     case BasketActionTypes.DELETE_FROM_BASKET: {
       const index = newBasket.findIndex((obj) => obj.id === action.payload);
       newBasket.splice(index, 1);
+      localStorage.setItem('basket', JSON.stringify(newBasket));
       return {
         ...state,
         basket: newBasket,

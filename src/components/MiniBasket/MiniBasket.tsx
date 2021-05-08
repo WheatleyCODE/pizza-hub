@@ -18,6 +18,8 @@ const MiniBasket = (props: IMiniBasketProps) => {
     onMouseEnterBasket,
   } = props;
 
+  const amount = basket.reduce((total, obj) => (total + obj.product.currentPrice * obj.amount), 0);
+
   return (
     <div className="animation-container">
       <div
@@ -36,6 +38,12 @@ const MiniBasket = (props: IMiniBasketProps) => {
           />
         ))}
         { basket.length === 0 ? <img className="MiniBasket__img" src={BasketImg} alt="null" /> : null}
+        { basket.length !== 0 ? (
+          <div className="MiniBasket__price">
+            <div className="price__title">Сумма заказа:</div>
+            <div className="price__price">{`${amount} р`}</div>
+          </div>
+        ) : null }
       </div>
       <div className="triangle" />
     </div>

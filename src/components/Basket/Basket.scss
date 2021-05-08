@@ -1,7 +1,9 @@
+@import '../../styles/variables';
 .Basket {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding-bottom: 30px;
 }
 
 .Basket__container {
@@ -16,6 +18,32 @@
     margin-bottom: 50px;
     width: 100%;
     text-align: left;
+  }
+
+  &__price {
+    padding: 40px 10px;
+    padding-bottom: 20px;
+    width: 95%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .price__title {
+    font-size: 22px;
+    margin-right: 10px;
+  }
+
+  .price__price {
+    font-size: 22px;
+    font-weight: 600;
+    color: $colorBlack;
+  }
+
+  &__button {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
   }
 }
 

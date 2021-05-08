@@ -4,6 +4,7 @@ const initialState: IAuthState = {
   email: '',
   token: '',
   userId: '',
+  error: null,
 };
 
 const authReducer = (state: IAuthState = initialState, action: AuthAction): IAuthState => {
@@ -16,6 +17,11 @@ const authReducer = (state: IAuthState = initialState, action: AuthAction): IAut
     case AuthActionTypes.AUTH_LOGOUT:
       return {
         ...initialState,
+      };
+    case AuthActionTypes.SET_AUTH_ERROR:
+      return {
+        ...state,
+        error: action.payload,
       };
     default:
       return {

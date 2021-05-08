@@ -13,10 +13,11 @@ import Slider from '../UI/Slider/Slider';
 import './Layout.scss';
 
 const Layout = () => {
-  const { autoLogin } = useActions();
+  const { autoLogin, autoAddToBasket } = useActions();
 
   useEffect(() => {
     autoLogin();
+    autoAddToBasket();
   }, []);
 
   return (

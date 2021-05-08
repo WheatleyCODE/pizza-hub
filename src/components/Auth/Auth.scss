@@ -4,6 +4,13 @@
   width: 550px;
   margin: 0 40px;
 
+  .error-message {
+    color: red;
+    position: absolute;
+    margin-bottom: 50px;
+    margin-top: 10px;
+  }
+
   &__buttonContainer {
     padding-top: 30px;
     padding-bottom: 10px;
