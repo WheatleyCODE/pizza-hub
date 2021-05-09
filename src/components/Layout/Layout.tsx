@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router';
 import useActions from '../../hooks/useAction';
 import publickRoutes from '../../routes/routes';
 import Routes from '../../types/routes';
-import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import './Layout.scss';
 
@@ -30,7 +29,6 @@ const Layout = () => {
           );
         }) }
       </Switch>
-      <Footer />
     </div>
   );
 };

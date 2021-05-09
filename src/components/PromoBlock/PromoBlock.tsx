@@ -3,7 +3,9 @@ import './PromoBlock.scss';
 
 const PromoBlock = () => (
   <div className="PromoBlock">
-    <h1>PromoBlock</h1>
+    <div className="PromoBlock__container">
+      <h1>PromoBlock</h1>
+    </div>
   </div>
 );
 

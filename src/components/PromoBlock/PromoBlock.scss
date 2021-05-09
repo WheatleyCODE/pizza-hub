@@ -1,5 +1,15 @@
+@import '../../styles/variables';
+
 .PromoBlock {
   width: 100%;
   height: 50px;
-  background-color: pink;
+  background-color: $colorOrange;
+  color: $colorWhite;
+  display: flex;
+  justify-content: center;
+
+  &__container {
+    width: 1280px;
+    padding: 0 8px;
+  }
 }
