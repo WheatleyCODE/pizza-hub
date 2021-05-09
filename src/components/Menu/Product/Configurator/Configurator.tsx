@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import { Link } from 'react-router-dom';
 import useActions from '../../../../hooks/useAction';
 import useTypedSelector from '../../../../hooks/useTypedSelector';
 import {
@@ -13,6 +12,7 @@ import RadioButtons from '../../../UI/Radio/RadioButtons';
 import AddIngredient from './AddIngredient/AddIngredient';
 import RemoveIngredients from './RemoveIngredients/RemoveIngredients';
 import Routes from '../../../../types/routes';
+import ModalBuyButton from '../ModalBuyButton/ModalBuyButton';
 import './Configurator.scss';
 
 interface IProductProps {
@@ -193,13 +193,15 @@ const Configurator = ({ product }: IProductProps) => {
             </div>
           </div>
         </div>
-        <Link to={Routes.HOME_ROUTE}>
-          <div className="buy-button">
-            <button onClick={() => { addToBasket({ product: currentPizza, amount: 1, id: Math.random() * 10000 }); }} className="Button bright" type="button">
-              <span>{`Добавить в корзину за ${currentPizza.currentPrice}р`}</span>
-            </button>
-          </div>
-        </Link>
+        <ModalBuyButton
+          to={Routes.HOME_ROUTE}
+          price={currentPizza.currentPrice}
+          callback={() => addToBasket({
+            product: currentPizza,
+            amount: 1,
+            id: Math.random() * 10000,
+          })}
+        />
       </div>
     </div>
   );

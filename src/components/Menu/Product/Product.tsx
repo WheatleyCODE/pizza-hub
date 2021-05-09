@@ -8,13 +8,15 @@ import Modal from '../../Modal/Modal';
 import Portal from '../../Portal/Portal';
 import Button from '../../UI/Button/Button';
 import Configurator from './Configurator/Configurator';
+import DefaultProduct from './DefaultProduct/DefaultProduct';
 import './Product.scss';
 
 interface IProductProps {
-  product: IProduct
+  product: IProduct,
+  collectionName: string,
 }
 
-const Product = ({ product, history }: IProductProps & RouteComponentProps) => {
+const Product = ({ product, collectionName, history }: IProductProps & RouteComponentProps) => {
   const toggleModal = () => {
     history.push(Routes.HOME_ROUTE);
   };
@@ -26,6 +28,34 @@ const Product = ({ product, history }: IProductProps & RouteComponentProps) => {
     price,
     route,
   } = product;
+
+  let modal = (
+    <Portal>
+      <Modal onCloseModal={toggleModal}>
+        <DefaultProduct product={product} />
+      </Modal>
+    </Portal>
+  );
+
+  if (product.pizzaDate && product.moreIngredients) {
+    modal = (
+      <Portal>
+        <Modal onCloseModal={toggleModal}>
+          <Configurator product={product} />
+        </Modal>
+      </Portal>
+    );
+  }
+
+  if (collectionName === 'Комбо') {
+    modal = (
+      <Portal>
+        <Modal onCloseModal={toggleModal}>
+          <h1>Комбо</h1>
+        </Modal>
+      </Portal>
+    );
+  }
 
   return (
     <div className="Product">
@@ -42,7 +72,6 @@ const Product = ({ product, history }: IProductProps & RouteComponentProps) => {
           </Link>
         </div>
       </div>
-
       <Route path={route}>
         {({ match }) => (
           <CSSTransition
@@ -52,11 +81,7 @@ const Product = ({ product, history }: IProductProps & RouteComponentProps) => {
             mountOnEnter
             unmountOnExit
           >
-            <Portal>
-              <Modal onCloseModal={toggleModal}>
-                <Configurator product={product} />
-              </Modal>
-            </Portal>
+            {modal}
           </CSSTransition>
         )}
       </Route>

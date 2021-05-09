@@ -60,6 +60,14 @@ export interface IProduct {
   pizzaDate: IPizzaData,
 }
 
+export interface IDefaultProduct {
+  title: string,
+  url: string,
+  description: string,
+  price: number,
+  route: string,
+}
+
 export interface ICollection {
   collection: IProduct[],
   collectionName: string,

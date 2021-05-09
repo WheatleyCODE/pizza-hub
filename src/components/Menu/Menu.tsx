@@ -34,6 +34,7 @@ const Menu = () => {
                       location={location}
                       history={history}
                       product={product}
+                      collectionName={coll.collectionName}
                     />
                   )}
                 />
