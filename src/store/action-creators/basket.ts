@@ -1,8 +1,10 @@
+import axios from 'axios';
 import { Dispatch } from 'react';
 import {
   BasketAction,
   BasketActionTypes,
   IBasketItem,
+  IOrder,
 } from '../../types/basket';
 
 export const addToBasket = (product: IBasketItem): BasketAction => ({
@@ -34,3 +36,32 @@ export const deleteFromBasket = (id: number): BasketAction => ({
   type: BasketActionTypes.DELETE_FROM_BASKET,
   payload: id,
 });
+
+const postOrderStart = (): BasketAction => ({
+  type: BasketActionTypes.POST_ORDER,
+});
+
+const postOrderSucces = (text: string): BasketAction => ({
+  type: BasketActionTypes.POST_ORDER_SUCCES,
+  payload: text,
+});
+
+const postOrderError = (): BasketAction => ({
+  type: BasketActionTypes.POST_ORDER_ERROR,
+});
+
+const clearBasket = (): BasketAction => ({
+  type: BasketActionTypes.CLEAR_BASKET,
+});
+
+export const postOrder = (order: IOrder) => async (dispatch: Dispatch<BasketAction>) => {
+  try {
+    dispatch(postOrderStart());
+    await axios.post('https://qb-pizza-hub-default-rtdb.firebaseio.com/orders.json', order);
+
+    dispatch(postOrderSucces('Заказ отправлен!'));
+    dispatch(clearBasket());
+  } catch (e) {
+    dispatch(postOrderError());
+  }
+};

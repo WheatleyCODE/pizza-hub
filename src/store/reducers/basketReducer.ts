@@ -2,6 +2,7 @@ import { BasketAction, BasketActionTypes, IBasketState } from '../../types/baske
 
 const initialState: IBasketState = {
   basket: [],
+  postMessage: null,
 };
 
 const basketReducer = (state: IBasketState = initialState, action: BasketAction): IBasketState => {
@@ -26,6 +27,7 @@ const basketReducer = (state: IBasketState = initialState, action: BasketAction)
       return {
         ...state,
         basket: newBasket,
+        postMessage: null,
       };
     }
 
@@ -49,6 +51,23 @@ const basketReducer = (state: IBasketState = initialState, action: BasketAction)
       return {
         ...state,
         basket: newBasket,
+      };
+    }
+
+    case BasketActionTypes.CLEAR_BASKET: {
+      let clearedBasked = newBasket;
+      clearedBasked = [];
+      localStorage.setItem('basket', JSON.stringify(clearedBasked));
+      return {
+        ...state,
+        basket: clearedBasked,
+      };
+    }
+
+    case BasketActionTypes.POST_ORDER_SUCCES: {
+      return {
+        ...state,
+        postMessage: action.payload,
       };
     }
 

@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { postOrder } from '../store/action-creators/basket';
 import * as basketActions from '../store/action-creators/basket';
 import fetchMenu from '../store/action-creators/menu';
 import * as sliderActions from '../store/action-creators/slider';
@@ -16,6 +17,7 @@ const useActions = () => {
     ...basketActions,
     ...configActions,
     ...authActions,
+    postOrder,
   }, dispatch);
 };
 
