@@ -114,6 +114,7 @@
     width: 100%;
     flex-wrap: wrap;
     justify-content: center;
+    padding-bottom: 40px;
 
     &__img-container {
       width: 530px;
@@ -127,7 +128,7 @@
   }
 
   .configurator__menu-container {
-    height: 100%;
+    height: auto;
     padding-right: 0px;
   }
 

@@ -6,16 +6,8 @@ const menuItems = [
     link: Routes.LOGIN_ROUTE,
   },
   {
-    text: 'Мои бонусы',
-    link: Routes.BONUS_ROUTE,
-  },
-  {
-    text: 'Акции',
-    link: Routes.PROMO_ROUTE,
-  },
-  {
-    text: 'Контакты',
-    link: Routes.CONTACTS_ROUTE,
+    text: 'Корзина',
+    link: Routes.BASKET_ROUTE,
   },
 ];
 

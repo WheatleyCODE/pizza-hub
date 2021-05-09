@@ -31,7 +31,7 @@ code {
 }
 
 @media screen and (max-width: 1000px) {
-  body.modal-open .Menu{
+  body.modal-open .Menu, .Footer{
     display: none;
   }
 }

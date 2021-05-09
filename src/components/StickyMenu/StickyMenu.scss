@@ -97,16 +97,14 @@
   .menu.translate {
     transform: translateX(0px) !important;
   }
-  .StickyMenu {
-    overflow-x: scroll;
-  }
 
   .StickyMenu__logo {
     display: none;
   }
 
   .menu__list {
-    font-size: 12px !important;
+    font-size: 14px !important;
+    margin-right: 12px !important;
   }
 }
 
