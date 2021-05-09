@@ -16,6 +16,11 @@ const Modal = ({ children, onCloseModal }: IModalProps) => {
   return (
     <>
       <div className="Modal">
+        <div className="Modal__mobile-close-button">
+          <button onClick={onCloseModal} type="button">
+            <i className="fa fa-angle-double-left" aria-hidden="true" />
+          </button>
+        </div>
         <div className="Modal__main">
           <button onClick={onCloseModal} type="button" className="closeButton">
             <i className="fa fa-times" aria-hidden="true" />

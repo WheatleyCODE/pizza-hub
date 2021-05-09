@@ -1,4 +1,5 @@
 @import '../../../../styles/variables';
+@import '../../../../styles/mixins';
 
 .configurator {
   width: 950px;
@@ -105,5 +106,45 @@
 
   .Button.bright {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .configurator {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &__img-container {
+      width: 530px;
+    }
+
+    .img-container__img.small, .img-container__img.medium, .img-container__img.large {
+      width: 300px;
+      height: 300px;
+      margin-top: 20px;
+    }
+  }
+
+  .configurator__menu-container {
+    height: 100%;
+    padding-right: 0px;
+  }
+
+  .right {
+    width: 530px;
+  }
+
+  .RadioButtons__group {
+    padding: 8px 12px;
+  }
+
+  .buttons-container__ing-container {
+    justify-content: space-evenly;
+  }
+
+  .moreIngredients {
+    margin: 0;
+    margin-bottom: 10px;
   }
 }
