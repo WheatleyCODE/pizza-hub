@@ -1,7 +1,7 @@
 import React from 'react';
-import useTypedSelector from '../../hooks/useTypedSelector';
+import useTypedSelector from '../../../hooks/useTypedSelector';
 import BasketItem from './BasketItem/BasketItem';
-import BasketImg from '../../img/basket.png';
+import BasketImg from '../../../img/basket.png';
 import './MiniBasket.scss';
 
 interface IMiniBasketProps {

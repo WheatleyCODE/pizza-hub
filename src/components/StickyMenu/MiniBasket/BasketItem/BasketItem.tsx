@@ -1,7 +1,7 @@
 import React from 'react';
-import useActions from '../../../hooks/useAction';
-import { IBasketItem } from '../../../types/basket';
-import { replaceDoughText, replacePizzaSizeText } from '../../../utils/replacement';
+import { IBasketItem } from '../../../../types/basket';
+import useActions from '../../../../hooks/useAction';
+import { replaceDoughText, replacePizzaSizeText } from '../../../../utils/replacement';
 import './BasketItem.scss';
 
 interface IBasketItemProps {

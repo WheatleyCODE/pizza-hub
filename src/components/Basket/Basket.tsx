@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
 import useTypedSelector from '../../hooks/useTypedSelector';
-import BasketItem from '../MiniBasket/BasketItem/BasketItem';
+import BasketItem from '../StickyMenu/MiniBasket/BasketItem/BasketItem';
 import BasketImg from '../../img/basket.png';
 import Button from '../UI/Button/Button';
 import Portal from '../../hoc/Portal/Portal';

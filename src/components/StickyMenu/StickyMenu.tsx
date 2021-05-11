@@ -5,7 +5,7 @@ import stickyMenuItems from '../../utils/stickyMenuItems';
 import Button from '../UI/Button/Button';
 import logoImg from '../../img/pizza.png';
 import useDebounce from '../../hooks/useDebounse';
-import MiniBasket from '../MiniBasket/MiniBasket';
+import MiniBasket from './MiniBasket/MiniBasket';
 import Routes from '../../types/routes';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import './StickyMenu.scss';
