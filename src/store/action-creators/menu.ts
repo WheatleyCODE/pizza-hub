@@ -17,7 +17,7 @@ const fetchMenu = () => async (dispatch: Dispatch<MenuAction>) => {
   try {
     dispatch(fetchMenuStart());
 
-    const response = await axios.get('https://qb-pizza-hub-default-rtdb.firebaseio.com/menu.json');
+    const response = await axios.get('https://qb-pizza-hub-default-rtdb.firebaseio.com/test.json');
     let data: ICollection[] = [];
     // eslint-disable-next-line no-restricted-syntax
     for (const key in response.data) {

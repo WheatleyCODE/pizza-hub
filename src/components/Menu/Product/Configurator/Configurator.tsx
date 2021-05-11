@@ -16,7 +16,7 @@ import ModalBuyButton from '../ModalBuyButton/ModalBuyButton';
 import './Configurator.scss';
 
 interface IProductProps {
-  product: IProduct
+  product: IProduct,
 }
 
 const Configurator = ({ product }: IProductProps) => {

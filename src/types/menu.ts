@@ -68,8 +68,17 @@ export interface IDefaultProduct {
   route: string,
 }
 
+export interface IComboProduct {
+  title: string,
+  url: string,
+  description: string,
+  price: number,
+  route: string,
+  parts: any[]
+}
+
 export interface ICollection {
-  collection: IProduct[],
+  collection: IProduct[] | IDefaultProduct[] | IComboProduct[],
   collectionName: string,
 }
 

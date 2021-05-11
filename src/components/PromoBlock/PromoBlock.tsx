@@ -1,10 +1,21 @@
 import React from 'react';
+import Button from '../UI/Button/Button';
 import './PromoBlock.scss';
 
 const PromoBlock = () => (
   <div className="PromoBlock">
     <div className="PromoBlock__container">
-      <h1>PromoBlock</h1>
+      <div className="PromoBlock__container__text">
+        <i className="fa fa-user-secret" aria-hidden="true" />
+        <div className="PromoBlock__container__text__default">Стань тайным покупателем и получи подарок</div>
+        <div className="PromoBlock__container__text__mobile">Стань тайным покупателем</div>
+      </div>
+      <div className="PromoBlock__container__button">
+        <Button buttonStyle="white" onClickHandler={() => {}} text="Заполнить анкету" />
+      </div>
+      <div className="PromoBlock__container__mobile-button">
+        <Button buttonStyle="white" onClickHandler={() => {}} text=">" />
+      </div>
     </div>
   </div>
 );

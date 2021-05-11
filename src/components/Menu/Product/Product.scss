@@ -11,6 +11,7 @@
   &__description-block {
     position: relative;
     min-height: 150px;
+    height: 200px;
   }
 
   .description-block {
@@ -30,6 +31,7 @@
       justify-content: space-between;
       position: absolute;
       bottom: 0;
+      // margin-bottom: -20px;
     }
   }
 

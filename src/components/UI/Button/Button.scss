@@ -56,3 +56,20 @@
     background-color: #ffdfc8;
   }
 }
+
+.Button.white {
+  background-color: $colorWhite;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all .3s;
+  color: $colorOrange;
+
+  span {
+    font-size: 18px;
+  }
+
+  &:hover {
+    background-color: $colorLightOrange;
+  }
+}

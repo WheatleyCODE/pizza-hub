@@ -9,7 +9,7 @@ interface IDefaultProductProps {
 }
 
 const DefaultProduct = ({ product }: IDefaultProductProps) => {
-  console.log(product);
+  console.log('object');
   return (
     <div className="DefaultProduct">
       <div className="DefaultProduct__img-container">

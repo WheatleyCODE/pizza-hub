@@ -2,24 +2,28 @@ import React from 'react';
 import { Route, RouteComponentProps } from 'react-router';
 import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import { IProduct } from '../../../types/menu';
+import { IDefaultProduct, IComboProduct, IProduct } from '../../../types/menu';
 import Routes from '../../../types/routes';
 import Modal from '../../Modal/Modal';
 import Portal from '../../Portal/Portal';
 import Button from '../../UI/Button/Button';
 import Configurator from './Configurator/Configurator';
 import DefaultProduct from './DefaultProduct/DefaultProduct';
+import KomboProduct from './ComboProduct/ComboProduct';
 import './Product.scss';
 
 interface IProductProps {
-  product: IProduct,
-  collectionName: string,
+  product: IProduct | IDefaultProduct | IComboProduct,
 }
 
-const Product = ({ product, collectionName, history }: IProductProps & RouteComponentProps) => {
+const Product = ({ product, history }: IProductProps & RouteComponentProps) => {
   const toggleModal = () => {
     history.push(Routes.HOME_ROUTE);
   };
+
+  const productPizza = product as IProduct;
+  const productDefault = product as IDefaultProduct;
+  const productKombo = product as IComboProduct;
 
   const {
     title,
@@ -32,26 +36,26 @@ const Product = ({ product, collectionName, history }: IProductProps & RouteComp
   let modal = (
     <Portal>
       <Modal onCloseModal={toggleModal}>
-        <DefaultProduct product={product} />
+        <DefaultProduct product={productDefault} />
       </Modal>
     </Portal>
   );
 
-  if (product.pizzaDate && product.moreIngredients) {
+  if (productPizza.pizzaDate && productPizza.moreIngredients) {
     modal = (
       <Portal>
         <Modal onCloseModal={toggleModal}>
-          <Configurator product={product} />
+          <Configurator product={productPizza} />
         </Modal>
       </Portal>
     );
   }
 
-  if (collectionName === 'Комбо') {
+  if (productKombo.parts !== undefined) {
     modal = (
       <Portal>
         <Modal onCloseModal={toggleModal}>
-          <h1>Комбо</h1>
+          <KomboProduct product={productKombo} />
         </Modal>
       </Portal>
     );

@@ -1,0 +1,17 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.SocialButton {
+  @include ButtonToDiv;
+  padding: 7px;
+  width: 45px;
+  height: 45px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 2px;
+
+  i {
+    color: $colorWhite;
+    font-size: 25px;
+  }
+}

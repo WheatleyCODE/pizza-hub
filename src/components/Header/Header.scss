@@ -125,12 +125,12 @@
 }
 
 @media screen and (max-width: 1300px) {
-  .Header {
-    width: 1000px;
+  .logo__container {
+    width: 1000px !important;
   }
 }
 
-@media screen and (max-width: 1000px) {
+@media (max-width: 1000px) {
   .Header {
     width: 100%;
   }

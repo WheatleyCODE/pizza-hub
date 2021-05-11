@@ -2,7 +2,8 @@
 
 .PromoBlock {
   width: 100%;
-  height: 50px;
+  margin-top: 80px;
+  height: 60px;
   background-color: $colorOrange;
   color: $colorWhite;
   display: flex;
@@ -10,6 +11,57 @@
 
   &__container {
     width: 1280px;
-    padding: 0 8px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.PromoBlock__container__text {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+
+  i {
+    font-size: 40px;
+    margin-right: 14px;
+  }
+}
+
+.PromoBlock__container__mobile-button {
+  display: none;
+}
+
+.PromoBlock__container__text__mobile {
+  display: none;
+}
+
+@media screen and (max-width: 785px) {
+  .PromoBlock__container__text__default {
+    display: none;
+  }
+
+  .PromoBlock__container__text__mobile {
+    display: block;
+  }
+  .PromoBlock {
+    height: 50px;
+  }
+  .PromoBlock__container__button {
+    display: none;
+  }
+
+  .PromoBlock__container__mobile-button {
+    display: block;
+  }
+
+  .PromoBlock__container__text {
+    font-size: 16px;
+  
+    i {
+      font-size: 30px;
+      margin-right: 10px;
+    }
   }
 }
