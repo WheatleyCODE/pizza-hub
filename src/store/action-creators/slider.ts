@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { Dispatch } from 'react';
+import axios from '../../axios/axios-default';
 import { ISlider, SliderAction, SliderActionTypes } from '../../types/slider';
 
 const fetchSliderStart = (): SliderAction => ({ type: SliderActionTypes.FETCH_SLIDER });
@@ -17,7 +17,7 @@ export const fetchSlider = () => async (dispatch: Dispatch<SliderAction>) => {
   try {
     dispatch(fetchSliderStart());
 
-    const response = await axios.get('https://qb-pizza-hub-default-rtdb.firebaseio.com/sliders.json');
+    const response = await axios.get('/sliders.json');
     let data: ISlider[] = [];
     // eslint-disable-next-line no-restricted-syntax
     for (const key in response.data) {

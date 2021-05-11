@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { Dispatch } from 'react';
+import axios from '../../axios/axios-default';
 import {
   BasketAction,
   BasketActionTypes,
@@ -57,7 +57,7 @@ const clearBasket = (): BasketAction => ({
 export const postOrder = (order: IOrder) => async (dispatch: Dispatch<BasketAction>) => {
   try {
     dispatch(postOrderStart());
-    await axios.post('https://qb-pizza-hub-default-rtdb.firebaseio.com/orders.json', order);
+    await axios.post('/orders.json', order);
 
     dispatch(postOrderSucces('Заказ отправлен!'));
     dispatch(clearBasket());

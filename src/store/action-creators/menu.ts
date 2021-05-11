@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { Dispatch } from 'react';
+import axios from '../../axios/axios-default';
 import { MenuAction, MenuActionTypes, ICollection } from '../../types/menu';
 
 const fetchMenuStart = (): MenuAction => ({ type: MenuActionTypes.FETCH_MENU });
@@ -17,7 +17,7 @@ const fetchMenu = () => async (dispatch: Dispatch<MenuAction>) => {
   try {
     dispatch(fetchMenuStart());
 
-    const response = await axios.get('https://qb-pizza-hub-default-rtdb.firebaseio.com/test.json');
+    const response = await axios.get('/test.json');
     let data: ICollection[] = [];
     // eslint-disable-next-line no-restricted-syntax
     for (const key in response.data) {

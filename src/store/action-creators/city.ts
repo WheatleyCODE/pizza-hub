@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { Dispatch } from 'react';
+import axios from '../../axios/axios-default';
 import {
   CityAction,
   CityActionTypes,
@@ -23,7 +23,7 @@ export const fetchCity = () => async (dispatch: Dispatch<CityAction>) => {
   try {
     dispatch(fetchCityStart());
 
-    const response = await axios.get('https://qb-pizza-hub-default-rtdb.firebaseio.com/cities.json');
+    const response = await axios.get('/cities.json');
     let data: ICity[] = [];
     // eslint-disable-next-line no-restricted-syntax
     for (const key in response.data) {
