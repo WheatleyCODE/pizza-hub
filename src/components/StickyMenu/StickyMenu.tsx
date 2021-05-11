@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import * as Scroll from 'react-scroll';
 import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
 import stickyMenuItems from '../../utils/stickyMenuItems';
@@ -22,6 +23,8 @@ const StickyMenu = () => {
 
   const closeBasketButton = useDebounce(() => setIsHoverButtonOver(false), 1000);
   const closeBasket = useDebounce(() => setIsHoverBasketOver(false), 1000);
+
+  const ScrollLink = Scroll.Link;
 
   const scrollHandler = (e: any) => {
     const top = e.target.documentElement.scrollTop;
@@ -86,7 +89,9 @@ const StickyMenu = () => {
           </CSSTransition>
           <ul className={`menu ${showLogo ? 'translate' : 'unTranslate'}`}>
             { stickyMenuItems.map((item) => (
-              <li className="menu__list" key={item.title}>{item.title}</li>
+              <ScrollLink activeClass="active" to={item.title} spy smooth offset={-100} duration={400}>
+                <li className="menu__list" key={item.title}>{item.title}</li>
+              </ScrollLink>
             )) }
           </ul>
         </div>

@@ -46,6 +46,10 @@
     display: flex;
   }
 
+  .active {
+    color: $colorOrange;
+  }
+
   &__container {
     margin: 0px 15px;
     position: relative;
