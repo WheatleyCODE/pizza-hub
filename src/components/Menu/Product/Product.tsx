@@ -9,7 +9,7 @@ import Portal from '../../../hoc/Portal/Portal';
 import Button from '../../UI/Button/Button';
 import Configurator from './Configurator/Configurator';
 import DefaultProduct from './DefaultProduct/DefaultProduct';
-import KomboProduct from './ComboProduct/ComboProduct';
+import ComboConfigurator from './ComboConfigurator/ComboConfigurator';
 import './Product.scss';
 
 interface IProductProps {
@@ -23,7 +23,7 @@ const Product = ({ product, history }: IProductProps & RouteComponentProps) => {
 
   const productPizza = product as IProduct;
   const productDefault = product as IDefaultProduct;
-  const productKombo = product as IComboProduct;
+  const productCombo = product as IComboProduct;
 
   const {
     title,
@@ -51,11 +51,11 @@ const Product = ({ product, history }: IProductProps & RouteComponentProps) => {
     );
   }
 
-  if (productKombo.parts !== undefined) {
+  if (productCombo.parts !== undefined) {
     modal = (
       <Portal>
         <Modal onCloseModal={toggleModal}>
-          <KomboProduct product={productKombo} />
+          <ComboConfigurator product={productCombo} />
         </Modal>
       </Portal>
     );

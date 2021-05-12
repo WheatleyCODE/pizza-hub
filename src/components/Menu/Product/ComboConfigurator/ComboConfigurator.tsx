@@ -1,12 +1,12 @@
 import React from 'react';
 import { IComboProduct } from '../../../../types/menu';
-import './ComboProduct.scss';
+import './ComboConfigurator.scss';
 
 interface IComboProductProps {
   product: IComboProduct,
 }
 
-const KomboProduct = ({ product }: IComboProductProps) => {
+const ComboConfigurator = ({ product }: IComboProductProps) => {
   const {
     parts,
     title,
@@ -15,8 +15,8 @@ const KomboProduct = ({ product }: IComboProductProps) => {
   } = product;
 
   return (
-    <div className="KomboProduct">
-      <div className="KomboProduct__left-container">
+    <div className="ComboConfigurator">
+      <div className="ComboConfigurator__left-container">
         <div className="left-container__description">
           <div className="left-container__description__title">{title}</div>
           <div className="left-container__description__description">{description}</div>
@@ -25,7 +25,7 @@ const KomboProduct = ({ product }: IComboProductProps) => {
           <div className="left-container__current">One</div>
         )) }
       </div>
-      <div className="KomboProduct__right-container">
+      <div className="ComboConfigurator__right-container">
         <div className="right-container__parts">
           <img className="parts__default-img" src={url} alt={title} />
         </div>
@@ -34,4 +34,4 @@ const KomboProduct = ({ product }: IComboProductProps) => {
   );
 };
 
-export default KomboProduct;
+export default ComboConfigurator;
