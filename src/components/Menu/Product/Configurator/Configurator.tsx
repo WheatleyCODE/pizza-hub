@@ -197,9 +197,18 @@ const Configurator = ({ product }: IProductProps) => {
           to={Routes.HOME_ROUTE}
           price={currentPizza.currentPrice}
           callback={() => addToBasket({
-            product: currentPizza,
             amount: 1,
             id: Math.random() * 10000,
+            url: currentPizza.pizzaInfo.url,
+            title: currentPizza.pizzaInfo.title,
+            currentPrice: currentPizza.currentPrice,
+            moreInfo: {
+              defaultIngredients: currentPizza.defaultIngredients,
+              moreIngredients: currentPizza.moreIngredients,
+              dough: currentPizza.dough,
+              pizzaSize: currentPizza.pizzaSize,
+              size: currentPizza.pizzaInfo.size,
+            },
           })}
         />
       </div>

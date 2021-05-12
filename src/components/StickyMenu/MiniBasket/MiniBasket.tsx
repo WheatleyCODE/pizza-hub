@@ -18,7 +18,7 @@ const MiniBasket = (props: IMiniBasketProps) => {
     onMouseEnterBasket,
   } = props;
 
-  const amount = basket.reduce((total, obj) => (total + obj.product.currentPrice * obj.amount), 0);
+  const amount = basket.reduce((total, obj) => (total + obj.currentPrice * obj.amount), 0);
 
   return (
     <div className="animation-container">

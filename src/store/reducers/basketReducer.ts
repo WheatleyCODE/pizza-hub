@@ -12,7 +12,7 @@ const basketReducer = (state: IBasketState = initialState, action: BasketAction)
     case BasketActionTypes.ADD_TO_BASKET: {
       if (newBasket.length > 0) {
         const index = newBasket.findIndex((obj) => (
-          JSON.stringify(obj.product) === JSON.stringify(action.payload.product)
+          JSON.stringify(obj) === JSON.stringify(action.payload)
         ));
         if (index === -1) {
           newBasket.push(action.payload);

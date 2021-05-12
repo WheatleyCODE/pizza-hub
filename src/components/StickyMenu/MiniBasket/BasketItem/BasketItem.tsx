@@ -11,9 +11,16 @@ interface IBasketItemProps {
 
 const BasketItem = ({ productData, itemStyle }: IBasketItemProps) => {
   const { changeAmount, deleteFromBasket } = useActions();
-  const { dough, pizzaSize, currentPrice } = productData.product;
-  const { title, url, size } = productData.product.pizzaInfo;
-  const { amount, id } = productData;
+
+  const {
+    amount,
+    id,
+    url,
+    title,
+    currentPrice,
+  } = productData;
+
+  const { size, dough, pizzaSize } = productData.moreInfo;
 
   const chgAmount = {
     add: 1,
@@ -22,8 +29,13 @@ const BasketItem = ({ productData, itemStyle }: IBasketItemProps) => {
 
   const price = amount * currentPrice;
 
-  const doughText = replaceDoughText(dough);
-  const sizeText = replacePizzaSizeText(pizzaSize);
+  let discription = '';
+
+  if (dough !== null && pizzaSize !== null && size !== null) {
+    const sizeText = replacePizzaSizeText(pizzaSize);
+    const doughText = replaceDoughText(dough);
+    discription = `${sizeText} ${size} см, ${doughText}`;
+  }
 
   return (
     <div className={`BasketItem ${itemStyle}`}>
@@ -37,7 +49,7 @@ const BasketItem = ({ productData, itemStyle }: IBasketItemProps) => {
       </div>
       <div className="BasketItem__title">
         <span className="title">{title}</span>
-        <span className="description">{`${sizeText} ${size} см, ${doughText}`}</span>
+        <span className="description">{discription}</span>
       </div>
       <div className="BasketItem__amount">
         <div className="counter">

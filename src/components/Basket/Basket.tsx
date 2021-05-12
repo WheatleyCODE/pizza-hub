@@ -18,7 +18,7 @@ const Basket = () => {
   const { currentCity } = useTypedSelector((state) => state.city);
   const { postOrder } = useActions();
   const [show, setShow] = useState(false);
-  const amount = basket.reduce((total, obj) => (total + obj.product.currentPrice * obj.amount), 0);
+  const amount = basket.reduce((total, obj) => (total + obj.currentPrice * obj.amount), 0);
 
   const onClickHandler = () => {
     if (token && userId && email) {

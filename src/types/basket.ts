@@ -1,9 +1,23 @@
-import { ICurrentPizza } from './configurator';
+import {
+  PizzaDataKeyNamesDough,
+  PizzaDataKeyNamesPizzaSize,
+  IMoreIng,
+  IDefaultIng,
+} from './menu';
 
 export interface IBasketItem {
-  product: ICurrentPizza,
   amount: number,
   id: number,
+  url: string,
+  title: string,
+  currentPrice: number,
+  moreInfo: {
+    defaultIngredients: IDefaultIng[] | null,
+    moreIngredients: IMoreIng[] | null,
+    size: number | null,
+    dough: PizzaDataKeyNamesDough | null,
+    pizzaSize: PizzaDataKeyNamesPizzaSize | null,
+  }
 }
 
 export interface IOrder {

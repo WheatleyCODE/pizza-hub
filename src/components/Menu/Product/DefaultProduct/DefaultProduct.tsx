@@ -1,4 +1,5 @@
 import React from 'react';
+import useActions from '../../../../hooks/useAction';
 import { IDefaultProduct } from '../../../../types/menu';
 import Routes from '../../../../types/routes';
 import ModalBuyButton from '../ModalBuyButton/ModalBuyButton';
@@ -9,7 +10,7 @@ interface IDefaultProductProps {
 }
 
 const DefaultProduct = ({ product }: IDefaultProductProps) => {
-  console.log('object');
+  const { addToBasket } = useActions();
   return (
     <div className="DefaultProduct">
       <div className="DefaultProduct__img-container">
@@ -24,7 +25,20 @@ const DefaultProduct = ({ product }: IDefaultProductProps) => {
           <ModalBuyButton
             to={Routes.HOME_ROUTE}
             price={product.price}
-            callback={() => {}}
+            callback={() => addToBasket({
+              amount: 1,
+              id: Math.random() * 10000,
+              url: product.url,
+              title: product.title,
+              currentPrice: product.price,
+              moreInfo: {
+                defaultIngredients: null,
+                moreIngredients: null,
+                size: null,
+                dough: null,
+                pizzaSize: null,
+              },
+            })}
           />
         </div>
       </div>
