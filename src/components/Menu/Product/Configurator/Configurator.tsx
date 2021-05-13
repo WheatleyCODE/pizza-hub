@@ -208,6 +208,7 @@ const Configurator = ({ product }: IProductProps) => {
               dough: currentPizza.dough,
               pizzaSize: currentPizza.pizzaSize,
               size: currentPizza.pizzaInfo.size,
+              combo: null,
             },
           })}
         />

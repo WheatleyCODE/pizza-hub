@@ -24,7 +24,12 @@ interface IComboProductProps {
 }
 
 const ComboConfigurator = ({ product }: IComboProductProps) => {
-  const { setCurrentCombo, changePartsIndex, changeCombo } = useActions();
+  const {
+    setCurrentCombo,
+    changePartsIndex,
+    changeCombo,
+    addToBasket,
+  } = useActions();
   const { currentCombo, partsIndex } = useTypedSelector((state) => state.comboConfigurator);
   const [doughThin, setDoughThin] = useState<undefined | IComboPizza[]>(undefined);
   const [doughTraditional, setDoughTraditional] = useState<undefined | IComboPizza[]>(undefined);
@@ -165,7 +170,25 @@ const ComboConfigurator = ({ product }: IComboProductProps) => {
             </>
           ) : null}
         </div>
-        <ModalBuyButton to={Routes.HOME_ROUTE} price={price} callback={() => {}} />
+        <ModalBuyButton
+          to={Routes.HOME_ROUTE}
+          price={price}
+          callback={() => addToBasket({
+            amount: 1,
+            id: Math.random() * 10000,
+            url: product.url,
+            title: product.title,
+            currentPrice: product.price,
+            moreInfo: {
+              defaultIngredients: null,
+              moreIngredients: null,
+              dough: null,
+              pizzaSize: null,
+              size: null,
+              combo: currentCombo,
+            },
+          })}
+        />
       </div>
       <div className="ComboConfigurator__right-container">
         <div className="right-container__parts">

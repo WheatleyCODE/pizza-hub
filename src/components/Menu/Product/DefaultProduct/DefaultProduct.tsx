@@ -37,6 +37,7 @@ const DefaultProduct = ({ product }: IDefaultProductProps) => {
                 size: null,
                 dough: null,
                 pizzaSize: null,
+                combo: null,
               },
             })}
           />

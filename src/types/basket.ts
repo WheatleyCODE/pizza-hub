@@ -1,3 +1,4 @@
+import { ICurrentCombo } from './comboConfigurator';
 import {
   PizzaDataKeyNamesDough,
   PizzaDataKeyNamesPizzaSize,
@@ -17,6 +18,7 @@ export interface IBasketItem {
     size: number | null,
     dough: PizzaDataKeyNamesDough | null,
     pizzaSize: PizzaDataKeyNamesPizzaSize | null,
+    combo: ICurrentCombo[] | null,
   }
 }
 
