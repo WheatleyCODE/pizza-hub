@@ -12,7 +12,7 @@ const DefaultItem = ({ product, setIndex }: IDefaultItemProps) => (
     <div className="DefaultItem__img">
       <img src={product.url} alt={product.title} />
     </div>
-    <div className="DefaultItem__discription">
+    <div className="DefaultItem__description">
       <h5>{product.title}</h5>
       <span>{product.description}</span>
     </div>

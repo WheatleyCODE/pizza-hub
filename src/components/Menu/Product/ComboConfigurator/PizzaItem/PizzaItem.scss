@@ -19,7 +19,7 @@
     }
   }
 
-  &__discription {
+  &__description {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -40,7 +40,7 @@
     margin-bottom: -10px;
   }
 
-  .PizzaItem__discription__info {
+  .PizzaItem__description__info {
     color: $colorBlueGrey;
   }
 }

@@ -112,7 +112,7 @@ const ComboConfigurator = ({ product }: IComboProductProps) => {
 
   return (
     <div className="ComboConfigurator">
-      <div>
+      <div className="left">
         <div className="ComboConfigurator__left-container">
           <div className="left-container__description">
             <div className="left-container__description__title">{title}</div>
@@ -159,6 +159,48 @@ const ComboConfigurator = ({ product }: IComboProductProps) => {
             return null;
           })}
         </div>
+        <div className="desctop">
+          <div className="no-promo-price">
+            {noPromoPrice > price ? (
+              <>
+                <span className="no-promo-price__title">Стоимость:</span>
+                <div className="no-promo-price__container">
+                  <span className="no-promo-price__container__prev-price">{`${noPromoPrice} ₽`}</span>
+                  <span className="no-promo-price__container__current-price">{`${price} ₽`}</span>
+                </div>
+              </>
+            ) : null}
+          </div>
+          <ModalBuyButton
+            to={Routes.HOME_ROUTE}
+            price={price}
+            callback={() => addToBasket({
+              amount: 1,
+              id: Math.random() * 10000,
+              url: product.url,
+              title: product.title,
+              currentPrice: product.price,
+              moreInfo: {
+                defaultIngredients: null,
+                moreIngredients: null,
+                dough: null,
+                pizzaSize: null,
+                size: null,
+                combo: currentCombo,
+              },
+            })}
+          />
+        </div>
+      </div>
+      <div className="mobile">
+        <h3>Конфигуратор</h3>
+      </div>
+      <div className="ComboConfigurator__right-container">
+        <div className="right-container__parts">
+          { partsIndex === null ? <img className="parts__default-img" src={url} alt={title} /> : components }
+        </div>
+      </div>
+      <div className="mobile">
         <div className="no-promo-price">
           {noPromoPrice > price ? (
             <>
@@ -189,11 +231,6 @@ const ComboConfigurator = ({ product }: IComboProductProps) => {
             },
           })}
         />
-      </div>
-      <div className="ComboConfigurator__right-container">
-        <div className="right-container__parts">
-          { partsIndex === null ? <img className="parts__default-img" src={url} alt={title} /> : components }
-        </div>
       </div>
     </div>
   );

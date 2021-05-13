@@ -46,10 +46,10 @@ const PizzaItem = (props: IPizzaItemProps) => {
       <div className="PizzaItem__img">
         <img src={comboPizza.url} alt={comboPizza.title} />
       </div>
-      <div className="PizzaItem__discription">
+      <div className="PizzaItem__description">
         <h5>{comboPizza.title}</h5>
         <span>{comboPizza.description}</span>
-        <span className="PizzaItem__discription__info">
+        <span className="PizzaItem__description__info">
           {`${replaceSize(comboPizza.size)} ${comboPizza.size} см, ${replaceDoughText(dough)}`}
         </span>
         {comboPizzaThin && comboPizzaTraditional ? (

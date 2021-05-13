@@ -29,12 +29,12 @@ const BasketItem = ({ productData, itemStyle }: IBasketItemProps) => {
 
   const price = amount * currentPrice;
 
-  let discription = '';
+  let description = '';
 
   if (dough !== null && pizzaSize !== null && size !== null) {
     const sizeText = replacePizzaSizeText(pizzaSize);
     const doughText = replaceDoughText(dough);
-    discription = `${sizeText} ${size} см, ${doughText}`;
+    description = `${sizeText} ${size} см, ${doughText}`;
   }
 
   return (
@@ -49,7 +49,7 @@ const BasketItem = ({ productData, itemStyle }: IBasketItemProps) => {
       </div>
       <div className="BasketItem__title">
         <span className="title">{title}</span>
-        <span className="description">{discription}</span>
+        <span className="description">{description}</span>
       </div>
       <div className="BasketItem__amount">
         <div className="counter">
