@@ -7,6 +7,7 @@ import Product from './Product/Product';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import Loader from '../UI/Loader/Loader';
 import { IProduct, IDefaultProduct, IComboProduct } from '../../types/menu';
+import BasketButton from '../UI/BasketButton/BasketButton';
 import './Menu.scss';
 
 const Menu = () => {
@@ -46,6 +47,7 @@ const Menu = () => {
           </Element>
         )) }
       </div>
+      <BasketButton />
     </div>
   );
 };
