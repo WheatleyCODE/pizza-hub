@@ -70,7 +70,9 @@ const Product = ({ product, history }: IProductProps & RouteComponentProps) => {
         <h2 className="description-block__title">{title}</h2>
         <span className="description-block__description">{description}</span>
         <div className="description-block__price-container">
-          <span className="price-container__price">{`от ${price} р`}</span>
+          <span className="price-container__price">
+            {productPizza.pizzaDate && productPizza.moreIngredients ? `от ${price} ₽` : `${price} ₽`}
+          </span>
           <Link to={route}>
             <Button buttonStyle="light" onClickHandler={toggleModal} text="Выбрать" />
           </Link>

@@ -41,7 +41,7 @@ const MiniBasket = (props: IMiniBasketProps) => {
         { basket.length !== 0 ? (
           <div className="MiniBasket__price">
             <div className="price__title">Сумма заказа:</div>
-            <div className="price__price">{`${amount} р`}</div>
+            <div className="price__price">{`${amount} ₽`}</div>
           </div>
         ) : null }
       </div>

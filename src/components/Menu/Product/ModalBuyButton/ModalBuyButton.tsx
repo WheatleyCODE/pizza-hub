@@ -13,7 +13,7 @@ const ModalBuyButton = ({ to, price, callback }: IModalBuyButtonProps) => (
   <Link to={to}>
     <div className="buy-button">
       <button onClick={callback} className="Button bright" type="button">
-        <span>{`Добавить в корзину за ${price}р`}</span>
+        <span>{`Добавить в корзину за ${price} ₽`}</span>
       </button>
     </div>
   </Link>

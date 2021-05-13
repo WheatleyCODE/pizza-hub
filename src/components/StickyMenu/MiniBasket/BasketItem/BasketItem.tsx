@@ -63,7 +63,7 @@ const BasketItem = ({ productData, itemStyle }: IBasketItemProps) => {
         </div>
       </div>
       <div className="BasketItem__price">
-        <span className="price">{`${price} р`}</span>
+        <span className="price">{`${price} ₽`}</span>
       </div>
     </div>
   );

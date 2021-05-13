@@ -69,7 +69,7 @@ const Basket = () => {
           <>
             <div className="Basket__container__price">
               <div className="price__title">Сумма заказа:</div>
-              <div className="price__price">{`${amount} р`}</div>
+              <div className="price__price">{`${amount} ₽`}</div>
             </div>
             <div className="Basket__container__button">
               <Button buttonStyle="bright" onClickHandler={onClickHandler} text="Оформить заказ" />

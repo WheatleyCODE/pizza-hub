@@ -29,7 +29,7 @@ const AddIngredient = (props: IAddIngredientProps) => {
       <button type="button" className="moreIngredients disable">
         <img src={ing.url} alt="ing" />
         <h5 className="moreIngredients__title">{ing.title}</h5>
-        <span className="moreIngredients__price">{`${ing.price + murkUp}р`}</span>
+        <span className="moreIngredients__price">{`${ing.price + murkUp} ₽`}</span>
       </button>
     );
   }
@@ -43,7 +43,7 @@ const AddIngredient = (props: IAddIngredientProps) => {
       ) : null}
       <img src={ing.url} alt="ing" />
       <h5 className="moreIngredients__title">{ing.title}</h5>
-      <span className="moreIngredients__price">{`${ing.price + murkUp}р`}</span>
+      <span className="moreIngredients__price">{`${ing.price + murkUp} ₽`}</span>
     </button>
   );
 };
