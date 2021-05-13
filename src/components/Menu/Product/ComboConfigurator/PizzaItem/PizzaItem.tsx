@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { IComboPizza, PizzaDataKeyNamesDough } from '../../../../../types/menu';
+import { replaceDoughText, replaceSize } from '../../../../../utils/replacement';
 import RadioButtons from '../../../../UI/Radio/RadioButtons';
 import './PizzaItem.scss';
 
@@ -48,6 +49,9 @@ const PizzaItem = (props: IPizzaItemProps) => {
       <div className="PizzaItem__discription">
         <h5>{comboPizza.title}</h5>
         <span>{comboPizza.description}</span>
+        <span className="PizzaItem__discription__info">
+          {`${replaceSize(comboPizza.size)} ${comboPizza.size} см, ${replaceDoughText(dough)}`}
+        </span>
         {comboPizzaThin && comboPizzaTraditional ? (
           <div className="PizzaItem__radio">
             <RadioButtons

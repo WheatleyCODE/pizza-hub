@@ -7,6 +7,8 @@ interface IProductItemProps {
   url: string,
   callback: () => void,
   partsIndex: number,
+  // eslint-disable-next-line react/require-default-props
+  size?: number,
 }
 
 const ProductItem = (props: IProductItemProps) => {
@@ -15,6 +17,7 @@ const ProductItem = (props: IProductItemProps) => {
     url,
     callback,
     partsIndex,
+    size,
   } = props;
 
   const { currentCombo } = useTypedSelector((state) => state.comboConfigurator);
@@ -27,6 +30,7 @@ const ProductItem = (props: IProductItemProps) => {
     <div aria-hidden="true" onClick={callback} className={`ProductItem ${styles}`}>
       <img src={url} alt={title} />
       <span>{title}</span>
+      {size ? <span className="ProductItem__size">{`${size} см`}</span> : null}
     </div>
   );
 };

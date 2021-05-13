@@ -22,3 +22,11 @@ export const replacePizzaSizeText = (pizzaSize: PizzaDataKeyNamesPizzaSize): str
     default: return 'Маленькая';
   }
 };
+
+export const replaceSize = (size: number): string => {
+  switch (size) {
+    case 35: return 'Большая';
+    case 30: return 'Средняя';
+    default: return 'Маленькая';
+  }
+};

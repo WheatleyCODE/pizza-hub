@@ -1,8 +1,10 @@
+@import '../../../../../styles/variables';
+
 .PizzaItem {
   display: flex;
   align-items: center;
   position: relative;
-  height: 100%;
+  height: 160px;
 
   &__img {
     height: 100%;
@@ -26,7 +28,6 @@
     h5 {
       font-size: 14px;
     }
-  logiclogic
     span {
       font-size: 13px;
       margin-top: 10px;
@@ -37,5 +38,9 @@
     position: absolute;
     bottom: 0;
     margin-bottom: -10px;
+  }
+
+  .PizzaItem__discription__info {
+    color: $colorBlueGrey;
   }
 }

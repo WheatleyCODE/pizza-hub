@@ -59,6 +59,7 @@ const ComboConfigurator = ({ product }: IComboProductProps) => {
           callback={() => changeCombo(el)}
           title={el.title}
           url={el.url}
+          size={el.size}
           partsIndex={partsIndex}
         />
       ));
@@ -71,6 +72,7 @@ const ComboConfigurator = ({ product }: IComboProductProps) => {
         callback={() => changeCombo(el)}
         title={el.title}
         url={el.url}
+        size={el.size}
         partsIndex={partsIndex}
       />
     ));

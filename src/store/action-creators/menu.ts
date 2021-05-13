@@ -17,7 +17,7 @@ const fetchMenu = () => async (dispatch: Dispatch<MenuAction>) => {
   try {
     dispatch(fetchMenuStart());
 
-    const response = await axios.get('/test.json');
+    const response = await axios.get('/yestest.json');
     let data: ICollection[] = [];
     // eslint-disable-next-line no-restricted-syntax
     for (const key in response.data) {
