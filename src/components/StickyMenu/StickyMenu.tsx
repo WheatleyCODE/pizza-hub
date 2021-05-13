@@ -89,7 +89,7 @@ const StickyMenu = () => {
           </CSSTransition>
           <ul className={`menu ${showLogo ? 'translate' : 'unTranslate'}`}>
             { stickyMenuItems.map((item) => (
-              <ScrollLink activeClass="active" to={item.title} spy smooth offset={-100} duration={400}>
+              <ScrollLink key={item.title} activeClass="active" to={item.title} spy smooth offset={-100} duration={400}>
                 <li className="menu__list" key={item.title}>{item.title}</li>
               </ScrollLink>
             )) }

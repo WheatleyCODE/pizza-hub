@@ -1,0 +1,28 @@
+@import '../../../../../styles/variables';
+
+.ProductItem {
+  width: 30%;
+  border: 1px solid #ececec;
+  height: 200px;
+  padding: 5px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 14px;
+  border-radius: 15px;
+  text-align: center;
+  transition: .3s;
+  cursor: pointer;
+  img {
+    width: 90%;
+  }
+  span {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+}
+
+.ProductItem.target {
+  border: 1px solid $colorOrange;
+}

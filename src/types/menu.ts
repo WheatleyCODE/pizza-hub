@@ -1,3 +1,21 @@
+export interface IComboPizza {
+  title: string,
+  url: string,
+  description: string,
+  price: number,
+  size: number,
+}
+
+export interface IOneDoughTraditional {
+  doughTraditional: IComboPizza[],
+  doughThin: null,
+}
+
+export interface ITwoDough {
+  doughTraditional: IComboPizza[],
+  doughThin: IComboPizza[],
+}
+
 export interface IDefaultIng {
   title: string,
   add: boolean,
@@ -44,6 +62,7 @@ export interface IPizzaData {
     medium: IPizzaParam,
     large: IPizzaParam,
   },
+
   doughThin: {
     medium: IPizzaParam,
     large: IPizzaParam,
@@ -74,7 +93,7 @@ export interface IComboProduct {
   description: string,
   price: number,
   route: string,
-  parts: any[]
+  parts: Array<IOneDoughTraditional | ITwoDough | IDefaultProduct[]>
 }
 
 export interface ICollection {
