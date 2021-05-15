@@ -4,6 +4,7 @@
 .ProductSlider {
   position: relative;
   width: 100%;
+  height: 180px;
   overflow-x: hidden;
   padding: 10px 0;
 
@@ -17,7 +18,7 @@
       padding-left: 20px;
       display: flex;
       align-items: center;
-      height: 150px;
+      height: 130px;
       box-shadow: rgb(6 5 50 / 15%) 0px 4px 22px;
       margin-right: 20px;
       margin-left: 3px;
@@ -25,7 +26,7 @@
 
       div {
         height: 100%;
-        padding-top: 40px;
+        padding-top: 30px;
         display: flex;
         padding-left: 15px;
         flex-direction: column;
@@ -49,7 +50,7 @@
 
   &__sub, &__add {
     position: absolute;
-    height: 170px;
+    height: 150px;
     cursor: pointer;
     @include ButtonToDiv;
 

@@ -17,7 +17,12 @@ const PopularProduct = () => {
   return (
     <div className="PopularProduct">
       <h2>Новое и популярное</h2>
-      <ProductSlider products={popular} />
+      <div className="PopularProduct__slider-desctop">
+        <ProductSlider products={popular} />
+      </div>
+      <div className="PopularProduct__slider-mobile">
+        <h1>Нужно сделать мобильный слайдер!</h1>
+      </div>
     </div>
   );
 };

@@ -5,4 +5,28 @@
   h2 {
     margin: 20px 0;
   }
+
+  &__slider-mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .PopularProduct {
+    width: 1000px;
+  }
+}
+
+@media (max-width: 1030px) {
+  .PopularProduct {
+    width: 100%;
+
+    &__slider-mobile {
+      display: block;
+    }
+
+    &__slider-desctop {
+      display: none;
+    }
+  }
 }
