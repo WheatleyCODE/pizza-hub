@@ -47,28 +47,25 @@
     }
   }
 
-  &__add {
+  &__sub, &__add {
     position: absolute;
-    right: 0;
-    top: 0;
     height: 170px;
     cursor: pointer;
     @include ButtonToDiv;
-    &:hover i {
-      color: $colorOrange;
+
+    &:hover i{
+      font-size: 33px;
     }
   }
 
+  &__add {
+    right: 0;
+    top: 0;
+  }
+
   &__sub {
-    position: absolute;
     left: 0;
     top: 0;
-    height: 170px;
-    cursor: pointer;
-    @include ButtonToDiv;
-    &:hover i {
-      color: $colorOrange;
-    }
   }
 
   i {
@@ -80,6 +77,6 @@
     color: $colorWhite;
     transition: .3s;
     color: $colorOrange;
-    margin: 10px;
+    margin: 15px;
   }
 }

@@ -6,6 +6,7 @@ import menuReducer from './menuReducer';
 import sliderReducer from './sliderReducer';
 import basketReducer from './basketReducer';
 import comboConfiguratorReducer from './comboConfiguratorReducer';
+import popularReducer from './popularReducer';
 
 export const rootReducer = combineReducers({
   menu: menuReducer,
@@ -15,6 +16,7 @@ export const rootReducer = combineReducers({
   configurator: configuratorReducer,
   basket: basketReducer,
   comboConfigurator: comboConfiguratorReducer,
+  popular: popularReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

@@ -1,14 +1,8 @@
 /* eslint-disable jsx-a11y/mouse-events-have-key-events */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { IProductsSlider } from '../../../types/popular';
 import './ProductSlider.scss';
-
-interface IProductsSlider {
-  title: string,
-  url: string,
-  price: string,
-  route: string,
-}
 
 interface IProductSliderProps {
   products: IProductsSlider[]

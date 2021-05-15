@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import fetchPopular from '../store/action-creators/popular';
 import * as comboConfiguratorActions from '../store/action-creators/comboConfigurator';
 import { postOrder } from '../store/action-creators/basket';
 import * as basketActions from '../store/action-creators/basket';
@@ -13,6 +14,7 @@ const useActions = () => {
   const dispatch = useDispatch();
   return bindActionCreators({
     fetchMenu,
+    fetchPopular,
     ...cityActions,
     ...comboConfiguratorActions,
     ...sliderActions,
