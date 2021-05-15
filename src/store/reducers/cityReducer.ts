@@ -4,6 +4,7 @@ const initialState: ICityState = {
   currentCity: {
     name: 'Нижний Новгород',
     time: 37,
+    star: 4.59,
   },
   city: [],
   loading: false,

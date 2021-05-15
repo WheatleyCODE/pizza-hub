@@ -1,10 +1,12 @@
 export interface ICity {
   name: string,
   time: number,
+  star: number,
 }
 export interface ICurrentCity {
   name: string,
   time: number,
+  star: number,
 }
 export interface ICityState {
   currentCity: ICurrentCity,

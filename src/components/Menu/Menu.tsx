@@ -25,7 +25,7 @@ const Menu = () => {
       <div className="Menu__container">
         { menu.map((coll) => (
           <Element name={coll.collectionName} key={coll.collectionName} className="container__colection">
-            <h1 className="colection__title">{coll.collectionName}</h1>
+            <h2 className="colection__title">{coll.collectionName}</h2>
             <div className="colection__product-container">
               { coll.collection.map(
                 (product: IProduct | IDefaultProduct | IComboProduct, i: number) => (

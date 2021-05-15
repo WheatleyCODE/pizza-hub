@@ -13,12 +13,18 @@ import minutesCorrect from '../../utils/correctMinutes';
 import Auth from '../Auth/Auth';
 import CityChanger from '../CityChanger/CityChanger';
 import Routes from '../../types/routes';
+import DashBoard from '../UI/DashBoard/DashBoard';
+import Stars from './Stars/Stars';
+import useDebounce from '../../hooks/useDebounse';
 import './Header.scss';
 
 const Header = ({ history }: RouteComponentProps) => {
   const [showMenu, setShowMenu] = useState(false);
+  const [showCityInfo, setShowCityInfo] = useState(false);
   const { token } = useTypedSelector((state) => state.auth);
   const { logout } = useActions();
+
+  const closeCityInfo = useDebounce(() => setShowCityInfo(false), 300);
 
   const {
     loading,
@@ -59,7 +65,39 @@ const Header = ({ history }: RouteComponentProps) => {
                     <span className="city">{currentCity.name}</span>
                   </Link>
                 </span>
-                <span className="delivery__lastText">{`${currentCity.time} ${minutesCorrect(currentCity.time)}`}</span>
+                <div
+                  onMouseEnter={() => setShowCityInfo(true)}
+                  onMouseLeave={() => closeCityInfo()}
+                  className="delivery__lastText"
+                >
+                  <span>{`${currentCity.time} ${minutesCorrect(currentCity.time)}`}</span>
+                  <i className="fa fa-circle" aria-hidden="true" />
+                  <span>{`${currentCity.star}`}</span>
+                  <i className="fa fa-star stars" aria-hidden="true" />
+                  <CSSTransition
+                    in={showCityInfo}
+                    timeout={200}
+                    classNames="dashboard"
+                    mountOnEnter
+                    unmountOnExit
+                  >
+                    <DashBoard>
+                      <div className="block1">
+                        <h2>{`${currentCity.time} ${minutesCorrect(currentCity.time)}`}</h2>
+                        <h4>Cреднее время доставки</h4>
+                        <div>Если не успеем за 60 минут, вы получите подарок</div>
+                      </div>
+                      <div className="block2">
+                        <h2>
+                          {`${currentCity.star} `}
+                          <Stars num={currentCity.star} />
+                        </h2>
+                        <h4>394 оценки</h4>
+                        <div>Оценить заказ можно в мобильном приложении</div>
+                      </div>
+                    </DashBoard>
+                  </CSSTransition>
+                </div>
               </div>
             ) : null }
           </div>
