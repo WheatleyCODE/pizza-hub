@@ -84,6 +84,16 @@
         }
       }
     }
+
+    &__message-block {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 5px;
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
 

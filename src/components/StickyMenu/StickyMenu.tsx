@@ -9,17 +9,19 @@ import useDebounce from '../../hooks/useDebounse';
 import MiniBasket from './MiniBasket/MiniBasket';
 import Routes from '../../types/routes';
 import useTypedSelector from '../../hooks/useTypedSelector';
+import Message from './Message/Message';
 import './StickyMenu.scss';
 
 const StickyMenu = () => {
   const [showLogo, setShowLogo] = useState(false);
+  const [messages, setMessages] = useState<string[]>([]);
   const [isHoverButtonOver, setIsHoverButtonOver] = useState(false);
   const [isHoverButtonEnter, setIsHoverButtonEnter] = useState(false);
 
   const [isHoverBasketOver, setIsHoverBasketOver] = useState(false);
   const [isHoverBasketEnter, setIsHoverBasketEnter] = useState(false);
   const [styleName, setStyleName] = useState('');
-  const { basket } = useTypedSelector((state) => state.basket);
+  const { changes, basket } = useTypedSelector((state) => state.basket);
 
   const closeBasketButton = useDebounce(() => setIsHoverButtonOver(false), 1000);
   const closeBasket = useDebounce(() => setIsHoverBasketOver(false), 1000);
@@ -41,6 +43,10 @@ const StickyMenu = () => {
     document.addEventListener('scroll', scrollHandler);
     return () => document.removeEventListener('scroll', scrollHandler);
   }, []);
+
+  useEffect(() => {
+    setMessages((prev) => [...prev, changes[changes.length - 1]]);
+  }, [changes]);
 
   const onMouseEnterButton = () => {
     setIsHoverButtonEnter(true);
@@ -120,6 +126,9 @@ const StickyMenu = () => {
             onMouseEnterBasket={onMouseEnterBasket}
           />
         </CSSTransition>
+        <div className="StickyMenu__container__message-block">
+          {messages.map((text) => <Message text={text} />)}
+        </div>
       </div>
     </div>
   );

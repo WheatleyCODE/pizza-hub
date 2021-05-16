@@ -1,0 +1,43 @@
+@import '../../../styles/variables';
+
+.Message {
+  background-color: $colorBlack;
+  color: $colorWhite;
+  padding: 15px;
+  min-width: 200px;
+  border-radius: 10px;
+  margin-top: 10px;
+
+  h3 {
+    font-size: 15px;
+  }
+
+  span {
+    display: inline-block;
+    margin-top: 5px;
+    margin-right: 5px;
+    font-size: 15px;
+    font-weight: bold;
+  }
+}
+
+.message-enter-active {
+  animation: show-message 0.22s forwards;
+}
+
+.message-exit-active {
+  animation: show-message 0.22s reverse;
+}
+
+@keyframes show-message {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+
+  }
+}

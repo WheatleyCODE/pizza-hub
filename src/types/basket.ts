@@ -33,6 +33,7 @@ export interface IOrder {
 export interface IBasketState {
   basket: IBasketItem[],
   postMessage: string | null,
+  changes: string[],
 }
 
 export enum BasketActionTypes {
