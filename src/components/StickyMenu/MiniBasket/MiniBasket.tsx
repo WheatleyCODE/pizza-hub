@@ -12,6 +12,7 @@ interface IMiniBasketProps {
 
 const MiniBasket = (props: IMiniBasketProps) => {
   const { basket } = useTypedSelector((state) => state.basket);
+  const deliveryPrice = 1000;
   const {
     onMouseOverBasket,
     onMouseLeaveBasket,
@@ -30,20 +31,35 @@ const MiniBasket = (props: IMiniBasketProps) => {
         onMouseEnter={onMouseEnterBasket}
         className="MiniBasket"
       >
-        { basket.map((productData) => (
-          <BasketItem
-            itemStyle={null}
-            key={productData.id}
-            productData={productData}
-          />
-        ))}
-        { basket.length === 0 ? <img className="MiniBasket__img" src={BasketImg} alt="null" /> : null}
+        <div className="MiniBasket__products">
+
+          { basket.map((productData) => (
+            <BasketItem
+              itemStyle={null}
+              key={productData.id}
+              productData={productData}
+            />
+          ))}
+
+          { basket.length === 0 ? <img className="MiniBasket__img" src={BasketImg} alt="null" /> : null}
+
+        </div>
+
+        { deliveryPrice - amount > 0 && basket.length !== 0 ? (
+          <div className="MiniBasket__delivery">
+            <i className="fa fa-car" aria-hidden="true" />
+            <span>{`Для доставки добавте продукты еще на ${deliveryPrice - amount} ₽`}</span>
+            <div className="MiniBasket__delivery__triangle" />
+          </div>
+        ) : null }
+
         { basket.length !== 0 ? (
           <div className="MiniBasket__price">
             <div className="price__title">Сумма заказа:</div>
             <div className="price__price">{`${amount} ₽`}</div>
           </div>
         ) : null }
+
       </div>
       <div className="triangle" />
     </div>
