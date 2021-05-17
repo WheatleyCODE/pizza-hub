@@ -35,7 +35,11 @@
   max-width: 800px;
 
   &__space {
-    height: 50px;
+    height: 96px;
+
+    h3 {
+      margin-top: 70px;
+    }
   }
 
   h1 {
@@ -127,8 +131,34 @@
   margin: 0 auto;
 }
 
-@media screen and (max-width: 475px) {
+@media screen and (max-width: 600px) {
   .Basket__container {
     width: 95%;
+
+    &__price {
+      padding: 0;
+      padding-bottom: 20px;
+    }
+
+    &__buttons {
+      padding: 0;
+      flex-direction: column-reverse;
+      button {
+        margin-bottom: 20px;
+      }
+    }
+
+    &__promo-code {
+      .promo-code__container {
+        width: 100%;
+
+        button {
+          padding: 0px 15px;
+          span {
+            font-size: 15px;
+          }
+        }
+      }
+    }
   }
 }

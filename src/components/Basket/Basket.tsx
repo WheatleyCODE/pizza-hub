@@ -103,7 +103,7 @@ const Basket = () => {
 
         { deliveryPrice - amount > 0 && basket.length !== 0 ? (
           <DeliveryMessage amount={amount} deliveryPrice={deliveryPrice} />
-        ) : <div className="Basket__container__space" /> }
+        ) : <div className="Basket__container__space"><h3>Добавить к заказу?</h3></div> }
 
         { basket.length !== 0 ? (
           <>
