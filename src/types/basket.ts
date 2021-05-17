@@ -48,7 +48,10 @@ export enum BasketActionTypes {
 
 interface IAddToBasketAction {
   type: BasketActionTypes.ADD_TO_BASKET,
-  payload: IBasketItem,
+  payload: {
+    product: IBasketItem,
+    writeChange: boolean,
+  },
 }
 
 interface IChangeAmountAction {

@@ -7,9 +7,12 @@ import {
   IOrder,
 } from '../../types/basket';
 
-export const addToBasket = (product: IBasketItem): BasketAction => ({
+export const addToBasket = (product: IBasketItem, writeChange: boolean = true): BasketAction => ({
   type: BasketActionTypes.ADD_TO_BASKET,
-  payload: product,
+  payload: {
+    product,
+    writeChange,
+  },
 });
 
 export const autoAddToBasket = () => (
@@ -18,7 +21,7 @@ export const autoAddToBasket = () => (
     if (basket) {
       const basketArr: IBasketItem[] = JSON.parse(basket);
       basketArr.forEach((item) => {
-        dispatch(addToBasket(item));
+        dispatch(addToBasket(item, false));
       });
     }
   }
