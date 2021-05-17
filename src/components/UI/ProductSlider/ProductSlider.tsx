@@ -83,7 +83,7 @@ const ProductSlider = ({ products }: IProductSliderProps) => {
         aria-hidden
       >
         {products.map((obj) => (
-          <Link to={obj.route}>
+          <Link key={obj.title} to={obj.route}>
             <div className="ProductSlider__roll__item">
               <img src={obj.url} alt={obj.title} />
               <div>

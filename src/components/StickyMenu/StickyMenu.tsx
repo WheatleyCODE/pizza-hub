@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react';
 import * as Scroll from 'react-scroll';
 import { CSSTransition } from 'react-transition-group';
@@ -127,7 +128,7 @@ const StickyMenu = () => {
           />
         </CSSTransition>
         <div className="StickyMenu__container__message-block">
-          {messages.map((text) => <Message text={text} />)}
+          {messages.map((text, i) => <Message key={i} text={text} />)}
         </div>
       </div>
     </div>

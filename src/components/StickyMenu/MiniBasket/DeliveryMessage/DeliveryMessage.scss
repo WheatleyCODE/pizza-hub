@@ -1,0 +1,37 @@
+@import '../../../../styles/variables';
+
+.DeliveryMessage {
+  display: flex;
+  max-width: 350px;
+  position: relative;
+  align-items: center;
+  background-color: $colorYellow;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 15px 0;
+  margin-right: 15px;
+
+  i {
+    font-size: 30px;
+    margin-left: 5px;
+    color: $colorBlack;
+  }
+
+  span {
+    font-size: 16px;
+    margin-left: 20px;
+  }
+
+  &__triangle {
+    background-color: $colorYellow;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: rotate(135deg);
+    z-index: 10;
+    margin-bottom: -10px;
+    margin-left: 45px;
+  }
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import useTypedSelector from '../../../hooks/useTypedSelector';
 import BasketItem from './BasketItem/BasketItem';
 import BasketImg from '../../../img/basket.png';
+import DeliveryMessage from './DeliveryMessage/DeliveryMessage';
 import './MiniBasket.scss';
 
 interface IMiniBasketProps {
@@ -46,11 +47,7 @@ const MiniBasket = (props: IMiniBasketProps) => {
         </div>
 
         { deliveryPrice - amount > 0 && basket.length !== 0 ? (
-          <div className="MiniBasket__delivery">
-            <i className="fa fa-car" aria-hidden="true" />
-            <span>{`Для доставки добавте продукты еще на ${deliveryPrice - amount} ₽`}</span>
-            <div className="MiniBasket__delivery__triangle" />
-          </div>
+          <DeliveryMessage deliveryPrice={deliveryPrice} amount={amount} />
         ) : null }
 
         { basket.length !== 0 ? (

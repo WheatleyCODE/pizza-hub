@@ -48,6 +48,20 @@ const useInput = (initialValue: string, placeholder: string, type: string) => {
       };
       break;
 
+    case 'promo':
+      onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setValue(e.target.value);
+
+        if (e.target.value.length < 1) {
+          setValidError('Поле не может быть пустым');
+        } else if (e.target.value.length < 8) {
+          setValidError('Промокод должен содержать 8 символов');
+        } else {
+          setValidError('');
+        }
+      };
+      break;
+
     default:
       onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);

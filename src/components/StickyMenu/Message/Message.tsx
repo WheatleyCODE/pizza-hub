@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import './Message.scss';
@@ -27,8 +28,8 @@ const Message = ({ text }: IMessageProps) => {
     >
       <div className="Message">
         {arrText.map((string, i) => {
-          if (i === 0) return <h3>{`${string}:`}</h3>;
-          return <span>{string}</span>;
+          if (i === 0) return <h3 key={i}>{`${string}:`}</h3>;
+          return <span key={i}>{string}</span>;
         })}
       </div>
     </CSSTransition>

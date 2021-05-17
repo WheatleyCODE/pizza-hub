@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .Basket {
   display: flex;
@@ -28,22 +29,29 @@
 
 .Basket__container {
   width: 70%;
-  padding-top: 80px;
+  padding-top: 60px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   max-width: 800px;
 
+  &__space {
+    height: 50px;
+  }
+
   h1 {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     width: 100%;
     text-align: left;
   }
 
+  &__slider {
+    width: 800px;
+  }
+
   &__price {
-    padding: 40px 10px;
+    padding: 40px 25px;
     padding-bottom: 20px;
-    width: 95%;
+    margin-bottom: 10px;
     display: flex;
     justify-content: flex-end;
   }
@@ -54,22 +62,69 @@
   }
 
   .price__price {
-    font-size: 22px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
     font-weight: 600;
     color: $colorBlack;
+
+    &__prev {
+      text-decoration: line-through;
+      color: rgba(0, 0, 0, 0.2);
+      font-size: 18px;
+      margin-right: 8px;
+    }
+
+    &__curent {
+      font-size: 22px;
+      color: $colorOrange;
+    }
   }
 
-  &__button {
+  &__buttons {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding-right: 20px;
+  }
+
+  &__promo-code {
+    margin: 50px 0px;
+
+    h2 {
+      font-size: 20px;
+    }
+
+    .promo-code__container {
+      display: flex;
+      width: 410px;
+
+      i {
+        font-size: 20px;
+        margin-left: 10px;
+      }
+
+      input {
+        border-radius: 10px 0 0 10px;
+        padding-left: 50px;
+      }
+
+      &__button {
+        padding-top: 30px;
+
+        button {
+          border-radius: 0 10px 10px 0;
+          height: 46px;
+        }
+      }
+    }
   }
 }
 
 .Basket__img {
   width: 60%;
   max-width: 400px;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 475px) {
