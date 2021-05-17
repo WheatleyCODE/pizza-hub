@@ -8,6 +8,7 @@ import './PopularProduct.scss';
 const PopularProduct = () => {
   const { fetchPopular } = useActions();
   const { popular, loading } = useTypedSelector((state) => state.popular);
+
   useEffect(() => {
     fetchPopular();
   }, []);

@@ -16,17 +16,21 @@ interface IInputProps {
   isError: boolean,
 }
 
-const Input = ({
-  defaultParams,
-  icon,
-  validError,
-  isError,
-}: IInputProps) => (
-  <div className="Input">
-    { isError ? <span className="Input__error">{validError}</span> : null}
-    <input className="input" {...defaultParams} />
-    <span className="Input__icon"><i className={icon} /></span>
-  </div>
-);
+const Input = (props: IInputProps) => {
+  const {
+    defaultParams,
+    icon,
+    validError,
+    isError,
+  } = props;
+
+  return (
+    <div className="Input">
+      { isError ? <span className="Input__error">{validError}</span> : null}
+      <input className="input" {...defaultParams} />
+      <span className="Input__icon"><i className={icon} /></span>
+    </div>
+  );
+};
 
 export default Input;

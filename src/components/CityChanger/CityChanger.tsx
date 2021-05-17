@@ -11,27 +11,31 @@ interface ICityChangerProps {
   toggleCityModal: () => void,
 }
 
-const CityChanger = ({
-  city,
-  currentCity,
-  setCurrentCity,
-  toggleCityModal,
-}: ICityChangerProps) => (
-  <div className="CityChanger">
-    <h1 className="CityChanger__title">Города</h1>
-    <hr className="CityChanger__hr" />
-    <div className="CityChanger__container">
-      { city.map((el) => (
-        <CityItem
-          target={el.name === currentCity.name}
-          onClick={() => { setCurrentCity(el); toggleCityModal(); }}
-          key={el.name}
-          text={el.name}
-        />
-      )) }
-      { city.length === 0 ? <Loader /> : null }
+const CityChanger = (props: ICityChangerProps) => {
+  const {
+    city,
+    currentCity,
+    setCurrentCity,
+    toggleCityModal,
+  } = props;
+
+  return (
+    <div className="CityChanger">
+      <h1 className="CityChanger__title">Города</h1>
+      <hr className="CityChanger__hr" />
+      <div className="CityChanger__container">
+        { city.map((el) => (
+          <CityItem
+            target={el.name === currentCity.name}
+            onClick={() => { setCurrentCity(el); toggleCityModal(); }}
+            key={el.name}
+            text={el.name}
+          />
+        )) }
+        { city.length === 0 ? <Loader /> : null }
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default CityChanger;
