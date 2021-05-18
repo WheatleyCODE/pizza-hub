@@ -29,7 +29,7 @@ const Basket = () => {
   const { popular } = useTypedSelector((state) => state.popular);
   const { token, userId, email } = useTypedSelector((state) => state.auth);
   const { currentCity } = useTypedSelector((state) => state.city);
-  const { postOrder } = useActions();
+  const { postOrder, fetchPopular } = useActions();
 
   const [show, setShow] = useState(false);
   const [amount, setAmount] = useState(0);
@@ -45,6 +45,10 @@ const Basket = () => {
   useEffect(() => {
     setAmount(basket.reduce((total, obj) => (total + obj.currentPrice * obj.amount), 0));
   }, [basket]);
+
+  useEffect(() => {
+    fetchPopular();
+  }, []);
 
   const onClickHandler = () => {
     if (token && userId && email) {

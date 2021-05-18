@@ -1,8 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
 const useInput = (initialValue: string, placeholder: string, type: string) => {
+  let initialValidError = '';
+  switch (type) {
+    case 'promo':
+      initialValidError = 'Некорректный промокод';
+      break;
+
+    default:
+      initialValidError = 'Поле не может быть пустым';
+      break;
+  }
+
   const [value, setValue] = useState(initialValue);
-  const [validError, setValidError] = useState('Поле не может быть пустым');
+  const [validError, setValidError] = useState(initialValidError);
   const [touched, setTouched] = useState(false);
   const [isValid, setIsValid] = useState(false);
 
@@ -53,7 +64,7 @@ const useInput = (initialValue: string, placeholder: string, type: string) => {
         setValue(e.target.value);
 
         if (e.target.value.length < 1) {
-          setValidError('Поле не может быть пустым');
+          setValidError('Некорректный промокод');
         } else if (e.target.value.length < 8) {
           setValidError('Промокод должен содержать 8 символов');
         } else {

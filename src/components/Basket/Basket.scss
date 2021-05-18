@@ -146,6 +146,9 @@
   
   .Basket__container__slider.mobile {
     display: block;
+    .ProductSliderMobile {
+      padding-left: 0;
+    }
   }
 }
 
