@@ -37,6 +37,13 @@
   display: none;
 }
 
+@media screen and (max-width: 1000px) {
+  .PromoBlock {
+    margin-top: 30px;
+  }
+}
+
+
 @media screen and (max-width: 785px) {
   .PromoBlock__container__text__default {
     display: none;
