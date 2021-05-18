@@ -6,3 +6,38 @@
   color: none;
   background-color: rgba(255, 255, 255, 0);
 }
+
+@mixin Scroll {
+  &::-webkit-scrollbar {
+    height: 7px;
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $colorLightGrey;
+    border-radius: 30px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+@mixin ScrollNone {
+  &::-webkit-scrollbar {
+    height: 0px;
+    width: 0px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $colorLightGrey;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}

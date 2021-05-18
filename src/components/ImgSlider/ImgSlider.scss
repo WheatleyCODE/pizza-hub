@@ -1,0 +1,26 @@
+.ImgSlider {
+  width: 100%;
+
+  &__desctop {
+    display: block;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__mobile {
+    display: none;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 999px) {
+  .ImgSlider {
+    &__desctop {
+      display: none;
+    }
+  
+    &__mobile {
+      display: block;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 .PopularProduct {
   width: 1280px;
-  padding-top: 50px;
+  padding-top: 15px;
 
   h2 {
     margin: 20px 0;
@@ -36,5 +36,11 @@
     h2 {
       margin-left: 15px;
     }
+  }
+}
+
+@media (max-width: 500px) {
+  .PopularProduct {
+    padding-top: 10px;
   }
 }

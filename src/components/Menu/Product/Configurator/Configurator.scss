@@ -21,21 +21,8 @@
   &__menu-container {
     scrollbar-width: thin;
     scrollbar-color: grey $colorLightGrey;
-  }
-  
-  &__menu-container::-webkit-scrollbar {
-    height: 8px;
-    width: 8px;
-  }
 
-  &__menu-container::-webkit-scrollbar-track {
-    background: $colorLightGrey;
-  }
-
-  &__menu-container::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.15);
-    border-radius: 5px;
-    cursor: pointer;
+    @include Scroll;
   }
 
   .menu-container {

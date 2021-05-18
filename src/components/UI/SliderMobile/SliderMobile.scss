@@ -1,0 +1,24 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.SliderMobile {
+  overflow: scroll;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+
+  @include ScrollNone;
+
+  &__roll {
+    width: 800px;
+    display: flex;
+    height: 26vw;
+
+
+    img {
+      height: 100%;
+      margin-left: 15px;
+      border-radius: 10px;
+    }
+  }
+}

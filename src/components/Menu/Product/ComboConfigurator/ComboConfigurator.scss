@@ -1,4 +1,5 @@
 @import '../../../../styles/variables';
+@import '../../../../styles/mixins';
 
 .ComboConfigurator {
   display: flex;
@@ -14,21 +15,7 @@
     padding-bottom: 40px;
     padding-right: 15px;
 
-    &::-webkit-scrollbar {
-      height: 8px;
-      width: 8px;
-    }
-  
-    &::-webkit-scrollbar-track {
-      background: $colorLightGrey;
-      border-radius: 30px;
-    }
-  
-    &::-webkit-scrollbar-thumb {
-      background-color: rgba(0, 0, 0, 0.15);
-      border-radius: 5px;
-      cursor: pointer;
-    }
+    @include Scroll;
   }
 
   .left-container {
@@ -64,21 +51,7 @@
     height: 400px;
     overflow: auto;
 
-    &::-webkit-scrollbar {
-      height: 8px;
-      width: 8px;
-    }
-  
-    &::-webkit-scrollbar-track {
-      background: $colorLightGrey;
-      border-radius: 30px;
-    }
-  
-    &::-webkit-scrollbar-thumb {
-      background-color: rgba(0, 0, 0, 0.15);
-      border-radius: 5px;
-      cursor: pointer;
-    }
+    @include Scroll;
   }
 
   .right-container {

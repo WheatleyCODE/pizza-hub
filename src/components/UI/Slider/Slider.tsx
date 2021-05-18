@@ -2,13 +2,11 @@ import React, { useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import useActions from '../../../hooks/useAction';
 import useTypedSelector from '../../../hooks/useTypedSelector';
-import Loader from '../Loader/Loader';
 import './Slider.scss';
 
 const Slider = () => {
-  const { fetchSlider, changeSlide, changeSlideCircle } = useActions();
+  const { changeSlide, changeSlideCircle } = useActions();
   const {
-    loading,
     sliders,
     className,
     currentSlideIndex,
@@ -20,10 +18,6 @@ const Slider = () => {
   };
 
   useEffect(() => {
-    fetchSlider();
-  }, []);
-
-  useEffect(() => {
     const timer = setInterval(() => {
       changeSlide(slider.next);
     }, 6000);
@@ -33,7 +27,6 @@ const Slider = () => {
 
   return (
     <div className="Slider">
-      { loading ? <Loader /> : null}
       { sliders.map((slide, index) => {
         let show = false;
         if (index === currentSlideIndex) show = true;
