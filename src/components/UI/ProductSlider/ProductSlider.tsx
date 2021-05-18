@@ -16,7 +16,7 @@ const ProductSlider = ({ products }: IProductSliderProps) => {
   const [MouseOverX, setMouseOverX] = useState(0);
   const widthInfo = {
     widthBlocks: 323,
-    widthRollBlock: 1935,
+    widthRollBlock: 1290,
   };
 
   const styles = { width: `${widthInfo.widthBlocks * products.length}px`, transform: `translateX(-${curentX + num}px)` };

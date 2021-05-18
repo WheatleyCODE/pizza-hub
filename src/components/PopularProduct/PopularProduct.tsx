@@ -3,6 +3,7 @@ import useActions from '../../hooks/useAction';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import Loader from '../UI/Loader/Loader';
 import ProductSlider from '../UI/ProductSlider/ProductSlider';
+import ProductSliderMobile from '../UI/ProductSliderMobile/ProductSliderMobile';
 import './PopularProduct.scss';
 
 const PopularProduct = () => {
@@ -22,7 +23,7 @@ const PopularProduct = () => {
         <ProductSlider products={popular} />
       </div>
       <div className="PopularProduct__slider-mobile">
-        <h1>Нужно сделать мобильный слайдер!</h1>
+        <ProductSliderMobile products={popular} />
       </div>
     </div>
   );
