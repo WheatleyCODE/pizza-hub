@@ -10,6 +10,7 @@ import './Footer.scss';
 const Footer = () => {
   const [data, loading] = useRequest('/footer.json');
   const footerData: IFooterData = data;
+
   if (loading) {
     return (
       <div className="Footer">
@@ -19,17 +20,18 @@ const Footer = () => {
       </div>
     );
   }
+
   return (
     <div className="Footer">
       <div className="Footer__container">
-        {footerData.links.map((obj) => (
+        { footerData.links.map((obj) => (
           <div key={obj.columnTitle} className="container__text">
             <h4 className="container__text__title">{obj.columnTitle}</h4>
             {obj.links.map((link) => (
               <Link key={link.title} to={link.to}>{link.title}</Link>
             ))}
           </div>
-        ))}
+        )) }
         <div className="container__right-side">
           <div className="container__right-side__store">
             <div>
@@ -39,32 +41,33 @@ const Footer = () => {
           <Link to="/">feedback@pizzahub.com</Link>
         </div>
         <div className="container__stats">
-          {footerData.stats.map((obj) => (
+          { footerData.stats.map((obj) => (
             <div key={obj.title} className="stats__part">
               <span className="stats__part__title">{obj.title}</span>
               <span className="stats__part__more">{obj.description}</span>
             </div>
-          ))}
+          )) }
         </div>
         <div className="container__copyright">
-          {footerData.copyright.map((obj, i) => {
+          { footerData.copyright.map((obj, i) => {
             if (i === 0) {
               return (
                 <div key={i} className="copyright__left-side">
-                  {obj.links?.map((links: ILinks) => (
+                  { obj.links?.map((links: ILinks) => (
                     <Link key={links.title} to={links.to}>{links.title}</Link>
                   )) }
                 </div>
               );
             }
+
             return (
               <div key={i} className="copyright__right-side">
-                {obj.social?.map((icon: string) => (
+                { obj.social?.map((icon: string) => (
                   <SocialButton key={icon} icon={icon} />
-                ))}
+                )) }
               </div>
             );
-          })}
+          }) }
         </div>
       </div>
     </div>

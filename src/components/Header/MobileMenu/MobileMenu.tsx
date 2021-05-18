@@ -13,6 +13,7 @@ interface IMobileMenuProps {
 
 const MobileMenu = ({ onClickHandler }: IMobileMenuProps) => {
   const { currentCity } = useTypedSelector((state) => state.city);
+
   return (
     <div className="MobileMenu">
       <Logo onClickHandler={onClickHandler} />

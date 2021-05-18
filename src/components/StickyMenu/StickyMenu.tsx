@@ -42,6 +42,7 @@ const StickyMenu = () => {
 
   useEffect(() => {
     document.addEventListener('scroll', scrollHandler);
+
     return () => document.removeEventListener('scroll', scrollHandler);
   }, []);
 
@@ -128,7 +129,7 @@ const StickyMenu = () => {
           />
         </CSSTransition>
         <div className="StickyMenu__container__message-block">
-          {messages.map((text, i) => <Message key={i} text={text} />)}
+          { messages.map((text, i) => <Message key={i} text={text} />) }
         </div>
       </div>
     </div>

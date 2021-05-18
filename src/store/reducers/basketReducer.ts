@@ -44,6 +44,7 @@ const basketReducer = (state: IBasketState = initialState, action: BasketAction)
       }
 
       localStorage.setItem('basket', JSON.stringify(newBasket));
+
       return {
         ...state,
         basket: newBasket,
@@ -65,7 +66,9 @@ const basketReducer = (state: IBasketState = initialState, action: BasketAction)
       if (newBasket[index].amount === 0) {
         newBasket.splice(index, 1);
       }
+
       localStorage.setItem('basket', JSON.stringify(newBasket));
+
       return {
         ...state,
         basket: newBasket,
@@ -78,6 +81,7 @@ const basketReducer = (state: IBasketState = initialState, action: BasketAction)
       newChanges.push(messages.del(newBasket[index].title));
       newBasket.splice(index, 1);
       localStorage.setItem('basket', JSON.stringify(newBasket));
+
       return {
         ...state,
         basket: newBasket,
@@ -89,6 +93,7 @@ const basketReducer = (state: IBasketState = initialState, action: BasketAction)
       let clearedBasked = newBasket;
       clearedBasked = [];
       localStorage.setItem('basket', JSON.stringify(clearedBasked));
+
       return {
         ...state,
         basket: clearedBasked,

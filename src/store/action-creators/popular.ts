@@ -3,6 +3,7 @@ import axios from '../../axios/axios-default';
 import { IProductsSlider, PopularAction, PopularActionTypes } from '../../types/popular';
 
 const fetchPopularStart = (): PopularAction => ({ type: PopularActionTypes.FETCH_POPULAR });
+
 const fetchPopularSucces = (data: any): PopularAction => ({
   type: PopularActionTypes.FETCH_POPULAR_SUCCES,
   payload: data,

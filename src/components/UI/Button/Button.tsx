@@ -9,6 +9,7 @@ interface IButtonProps {
 
 const Button = ({ text, buttonStyle = 'default', onClickHandler }: IButtonProps) => {
   const styles = buttonStyle;
+
   return (
     <button onClick={onClickHandler} type="button" className={`Button ${styles}`}>
       <span>{text}</span>

@@ -45,6 +45,7 @@ const useInput = (initialValue: string, placeholder: string, type: string) => {
         }
       };
       break;
+
     case 'password':
       onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);

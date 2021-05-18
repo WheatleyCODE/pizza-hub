@@ -45,6 +45,7 @@ const sliderReducer = (state = initialState, action: SliderAction): ISliderState
             className: sliderClasses.next,
           };
         }
+
         return {
           ...state,
           currentSlideIndex: currentSlideIndex + action.payload,
@@ -75,6 +76,7 @@ const sliderReducer = (state = initialState, action: SliderAction): ISliderState
           className: sliderClasses.next,
         };
       }
+
       return {
         ...state,
         currentSlideIndex: action.payload,

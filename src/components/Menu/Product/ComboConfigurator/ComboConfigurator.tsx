@@ -156,12 +156,13 @@ const ComboConfigurator = ({ product }: IComboProductProps) => {
                 </div>
               );
             }
+
             return null;
-          })}
+          }) }
         </div>
         <div className="desctop">
           <div className="no-promo-price">
-            {noPromoPrice > price ? (
+            { noPromoPrice > price ? (
               <>
                 <span className="no-promo-price__title">Стоимость:</span>
                 <div className="no-promo-price__container">
@@ -169,7 +170,7 @@ const ComboConfigurator = ({ product }: IComboProductProps) => {
                   <span className="no-promo-price__container__current-price">{`${price} ₽`}</span>
                 </div>
               </>
-            ) : null}
+            ) : null }
           </div>
           <ModalBuyButton
             to={Routes.HOME_ROUTE}
@@ -202,7 +203,7 @@ const ComboConfigurator = ({ product }: IComboProductProps) => {
       </div>
       <div className="mobile">
         <div className="no-promo-price">
-          {noPromoPrice > price ? (
+          { noPromoPrice > price ? (
             <>
               <span className="no-promo-price__title">Стоимость:</span>
               <div className="no-promo-price__container">
@@ -210,7 +211,7 @@ const ComboConfigurator = ({ product }: IComboProductProps) => {
                 <span className="no-promo-price__container__current-price">{`${price} ₽`}</span>
               </div>
             </>
-          ) : null}
+          ) : null }
         </div>
         <ModalBuyButton
           to={Routes.HOME_ROUTE}

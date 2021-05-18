@@ -4,6 +4,7 @@ export interface ICurrentCombo {
   isPizza: boolean,
   item: IDefaultProduct | IComboPizza,
 }
+
 export interface IComboConfiguratorState {
   currentCombo: ICurrentCombo[],
   partsIndex: null | number,

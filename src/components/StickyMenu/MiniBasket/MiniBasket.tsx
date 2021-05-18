@@ -40,9 +40,9 @@ const MiniBasket = (props: IMiniBasketProps) => {
               key={productData.id}
               productData={productData}
             />
-          ))}
+          )) }
 
-          { basket.length === 0 ? <img className="MiniBasket__img" src={BasketImg} alt="null" /> : null}
+          { basket.length === 0 ? <img className="MiniBasket__img" src={BasketImg} alt="null" /> : null }
 
         </div>
 

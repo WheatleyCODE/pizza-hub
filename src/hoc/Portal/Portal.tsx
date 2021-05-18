@@ -18,6 +18,7 @@ class Portal extends React.Component<IPortalProps> {
 
   render() {
     const { children } = this.props;
+
     return ReactDOM.createPortal(children, this.el);
   }
 }

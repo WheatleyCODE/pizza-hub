@@ -16,8 +16,8 @@ import Input from '../UI/Input/Input';
 import useInput from '../../hooks/useInput';
 import useRequest from '../../hooks/useRequest';
 import Loader from '../UI/Loader/Loader';
-import './Basket.scss';
 import ProductSliderMobile from '../UI/ProductSliderMobile/ProductSliderMobile';
+import './Basket.scss';
 
 interface IPromo {
   promo: string,
@@ -50,7 +50,7 @@ const Basket = () => {
     fetchPopular();
   }, []);
 
-  const onClickHandler = () => {
+  const addOrder = () => {
     if (token && userId && email) {
       postOrder({
         email,
@@ -103,7 +103,7 @@ const Basket = () => {
             key={productData.id}
             productData={productData}
           />
-        ))}
+        )) }
         { basket.length === 0 ? <img className="Basket__img" src={BasketImg} alt="null" /> : null }
 
         { deliveryPrice - amount > 0 && basket.length !== 0 ? (
@@ -159,7 +159,7 @@ const Basket = () => {
               <Link to={Routes.HOME_ROUTE}>
                 <Button buttonStyle="default" onClickHandler={() => {}} text="Вернуться в меню" />
               </Link>
-              <Button buttonStyle="bright" onClickHandler={onClickHandler} text="Оформить заказ" />
+              <Button buttonStyle="bright" onClickHandler={addOrder} text="Оформить заказ" />
             </div>
           </>
         ) : null }

@@ -9,6 +9,7 @@ interface ICityItemProps {
 
 const CityItem = ({ text, onClick, target }: ICityItemProps) => {
   const targetClass = target ? 'target' : '';
+
   return (
     <div className="CityItem">
       <div className={`CityItem__item ${targetClass}`}>

@@ -30,7 +30,7 @@ const ProductItem = (props: IProductItemProps) => {
     <div aria-hidden="true" onClick={callback} className={`ProductItem ${styles}`}>
       <img src={url} alt={title} />
       <span>{title}</span>
-      {size ? <span className="ProductItem__size">{`${size} см`}</span> : null}
+      { size ? <span className="ProductItem__size">{`${size} см`}</span> : null }
     </div>
   );
 };

@@ -28,6 +28,7 @@ const comboConfiguratorReducer = (
           item: action.payload,
         };
       }
+
       return {
         ...state,
         currentCombo: newCurrentCombo,

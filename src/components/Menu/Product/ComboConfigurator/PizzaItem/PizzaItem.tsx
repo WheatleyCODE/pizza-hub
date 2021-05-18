@@ -52,7 +52,7 @@ const PizzaItem = (props: IPizzaItemProps) => {
         <span className="PizzaItem__description__info">
           {`${replaceSize(comboPizza.size)} ${comboPizza.size} см, ${replaceDoughText(dough)}`}
         </span>
-        {comboPizzaThin && comboPizzaTraditional ? (
+        { comboPizzaThin && comboPizzaTraditional ? (
           <div className="PizzaItem__radio">
             <RadioButtons
               buttons={radioButtonsDough}
@@ -62,7 +62,7 @@ const PizzaItem = (props: IPizzaItemProps) => {
               }}
             />
           </div>
-        ) : null}
+        ) : null }
       </div>
     </div>
   );

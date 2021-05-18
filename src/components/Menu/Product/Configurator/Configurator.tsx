@@ -178,7 +178,7 @@ const Configurator = ({ product }: IProductProps) => {
               <div className="buttons-container__add-ingr">
                 <h2 className="buttons-container__title">Добавить в пицу</h2>
                 <div className="buttons-container__ing-container">
-                  {currentPizza.moreIngredients.map((ing) => (
+                  { currentPizza.moreIngredients.map((ing) => (
                     <AddIngredient
                       changeMoreIng={changeMoreIng}
                       murkUp={currentPizza.murkUp}
@@ -187,7 +187,7 @@ const Configurator = ({ product }: IProductProps) => {
                       key={ing.id}
                       disableElem={disableElem}
                     />
-                  ))}
+                  )) }
                 </div>
               </div>
             </div>

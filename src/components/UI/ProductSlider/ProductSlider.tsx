@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/mouse-events-have-key-events */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IProductsSlider } from '../../../types/popular';
@@ -26,9 +25,11 @@ const ProductSlider = ({ products }: IProductSliderProps) => {
       if (!(prev + number < 0) && !(prev + number > widthInfo.widthRollBlock)) {
         return prev + number;
       }
+
       if (number > 0) {
         return widthInfo.widthRollBlock;
       }
+
       return 0;
     });
   };
@@ -82,7 +83,7 @@ const ProductSlider = ({ products }: IProductSliderProps) => {
         className="ProductSlider__roll"
         aria-hidden
       >
-        {products.map((obj) => (
+        { products.map((obj) => (
           <Link key={obj.title} to={obj.route}>
             <div className="ProductSlider__roll__item">
               <img src={obj.url} alt={obj.title} />
@@ -92,18 +93,18 @@ const ProductSlider = ({ products }: IProductSliderProps) => {
               </div>
             </div>
           </Link>
-        ))}
+        )) }
       </div>
-      {curentX !== 0 ? (
+      { curentX !== 0 ? (
         <button className="ProductSlider__sub" onClick={() => changeCurrentX(-600)} type="button">
           <i className="fa fa-chevron-left" aria-hidden="true" />
         </button>
-      ) : null}
-      {curentX !== widthInfo.widthRollBlock ? (
+      ) : null }
+      { curentX !== widthInfo.widthRollBlock ? (
         <button className="ProductSlider__add" onClick={() => changeCurrentX(600)} type="button">
           <i className="fa fa-chevron-right" aria-hidden="true" />
         </button>
-      ) : null}
+      ) : null }
     </div>
   );
 };

@@ -10,6 +10,7 @@ interface IModalProps {
 const Modal = ({ children, onCloseModal }: IModalProps) => {
   useEffect(() => {
     document.body.classList.add('modal-open');
+
     return () => document.body.classList.remove('modal-open');
   }, []);
 
@@ -25,7 +26,7 @@ const Modal = ({ children, onCloseModal }: IModalProps) => {
           <button onClick={onCloseModal} type="button" className="closeButton">
             <i className="fa fa-times" aria-hidden="true" />
           </button>
-          { children }
+          {children}
         </div>
         <BackDrop onCloseHandler={onCloseModal} />
       </div>

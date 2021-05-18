@@ -14,15 +14,18 @@ const authReducer = (state: IAuthState = initialState, action: AuthAction): IAut
         ...state,
         ...action.payload,
       };
+
     case AuthActionTypes.AUTH_LOGOUT:
       return {
         ...initialState,
       };
+
     case AuthActionTypes.SET_AUTH_ERROR:
       return {
         ...state,
         error: action.payload,
       };
+
     default:
       return {
         ...state,

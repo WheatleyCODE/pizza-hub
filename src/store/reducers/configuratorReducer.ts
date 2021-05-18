@@ -28,6 +28,7 @@ const configuratorReducer = (
     case ConfiguratorActionTypes.SET_CURRENT_PIZZA: {
       const defaultIngredients = action.payload.defaultIngredients.split(', ').map((text) => ({ title: text, add: true }));
       const moreIngredients = action.payload.moreIngredients.map((obj) => ({ ...obj, add: false }));
+
       return {
         currentPizza: {
           ...state.currentPizza,
@@ -41,6 +42,7 @@ const configuratorReducer = (
       const newDefIngs = [...state.currentPizza.defaultIngredients];
       const index = newDefIngs.findIndex((obj) => obj.title === action.payload.title);
       newDefIngs.splice(index, 1, action.payload);
+
       return {
         currentPizza: {
           ...state.currentPizza,
@@ -53,6 +55,7 @@ const configuratorReducer = (
       const newMoreIng = [...state.currentPizza.moreIngredients];
       const index = newMoreIng.findIndex((obj) => obj.title === action.payload.title);
       newMoreIng.splice(index, 1, action.payload);
+
       return {
         currentPizza: {
           ...state.currentPizza,
@@ -88,8 +91,10 @@ const configuratorReducer = (
             acc + obj.price + murkUp
           );
         }
+
         return acc;
       }, 0);
+
       return {
         currentPizza: {
           ...state.currentPizza,

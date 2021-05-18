@@ -6,9 +6,7 @@ interface IBackDropProps {
 }
 
 const BackDrop = ({ onCloseHandler }: IBackDropProps) => (
-  <button onClick={onCloseHandler} type="button" className="BackDrop">
-    {}
-  </button>
+  <div aria-hidden onClick={onCloseHandler} className="BackDrop" />
 );
 
 export default BackDrop;

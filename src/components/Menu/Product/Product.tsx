@@ -115,7 +115,7 @@ const Product = ({ product, history }: IProductProps & RouteComponentProps) => {
         <span className="description-block__description">{description}</span>
         <div className="description-block__price-container">
           <span className="price-container__price">
-            {productPizza.pizzaDate && productPizza.moreIngredients ? `от ${price} ₽` : `${price} ₽`}
+            { productPizza.pizzaDate && productPizza.moreIngredients ? `от ${price} ₽` : `${price} ₽` }
           </span>
           {button}
         </div>

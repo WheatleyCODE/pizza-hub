@@ -12,6 +12,7 @@ import * as authActions from '../store/action-creators/auth';
 
 const useActions = () => {
   const dispatch = useDispatch();
+
   return bindActionCreators({
     fetchMenu,
     fetchPopular,

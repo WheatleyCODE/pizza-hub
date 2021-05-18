@@ -29,7 +29,9 @@ const menuReducer = (state = initialState, action: MenuAction): IMenuState => {
       };
 
     default:
-      return state;
+      return {
+        ...state,
+      };
   }
 };
 

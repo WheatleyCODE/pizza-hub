@@ -3,6 +3,7 @@ import axios from '../../axios/axios-default';
 import { ISlider, SliderAction, SliderActionTypes } from '../../types/slider';
 
 const fetchSliderStart = (): SliderAction => ({ type: SliderActionTypes.FETCH_SLIDER });
+
 const fetchSliderSucces = (data: any): SliderAction => ({
   type: SliderActionTypes.FETCH_SLIDER_SUCCES,
   payload: data,

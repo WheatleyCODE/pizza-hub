@@ -11,6 +11,7 @@ interface IDefaultProductProps {
 
 const DefaultProduct = ({ product }: IDefaultProductProps) => {
   const { addToBasket } = useActions();
+
   return (
     <div className="DefaultProduct">
       <div className="DefaultProduct__img-container">

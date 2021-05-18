@@ -36,11 +36,11 @@ const AddIngredient = (props: IAddIngredientProps) => {
 
   return (
     <button type="button" onClick={onClickHandler} className={`moreIngredients ${ing.add ? 'target' : ''}`}>
-      {ing.add ? (
+      { ing.add ? (
         <div className="moreIngredients__check-icon">
           <i className="fa fa-check-circle-o" aria-hidden="true" />
         </div>
-      ) : null}
+      ) : null }
       <img src={ing.url} alt="ing" />
       <h5 className="moreIngredients__title">{ing.title}</h5>
       <span className="moreIngredients__price">{`${ing.price + murkUp} ₽`}</span>

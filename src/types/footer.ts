@@ -2,6 +2,7 @@ export interface IStats {
   title: string,
   description: string,
 }
+
 export interface ILinks {
   title: string,
   to: string,
@@ -10,6 +11,7 @@ export interface ILinks {
 export interface ICopyright {
   links: ILinks[]
 }
+
 export interface INavigation {
   columnTitle: string,
   links: ILinks[]

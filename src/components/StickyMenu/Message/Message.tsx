@@ -6,6 +6,7 @@ import './Message.scss';
 interface IMessageProps {
   text: string,
 }
+
 const Message = ({ text }: IMessageProps) => {
   const [show, setShow] = useState(true);
 
@@ -27,10 +28,11 @@ const Message = ({ text }: IMessageProps) => {
       unmountOnExit
     >
       <div className="Message">
-        {arrText.map((string, i) => {
+        { arrText.map((string, i) => {
           if (i === 0) return <h3 key={i}>{`${string}:`}</h3>;
+
           return <span key={i}>{string}</span>;
-        })}
+        }) }
       </div>
     </CSSTransition>
   );

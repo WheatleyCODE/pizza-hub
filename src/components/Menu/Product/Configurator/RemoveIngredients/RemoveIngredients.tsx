@@ -22,7 +22,7 @@ const RemoveIngredients = ({ ing, changeDefaultIng }: IRemoveIngredients) => {
     >
       <span>
         {ing.title}
-        {!ing.add ? <i className="fa fa-undo" aria-hidden="true" /> : <i className="fa fa-minus-square-o" aria-hidden="true" />}
+        { !ing.add ? <i className="fa fa-undo" aria-hidden="true" /> : <i className="fa fa-minus-square-o" aria-hidden="true" /> }
         ,
       </span>
     </button>

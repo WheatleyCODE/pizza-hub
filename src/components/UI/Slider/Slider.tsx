@@ -30,6 +30,7 @@ const Slider = () => {
       { sliders.map((slide, index) => {
         let show = false;
         if (index === currentSlideIndex) show = true;
+
         return (
           <CSSTransition
             in={show}
@@ -55,6 +56,7 @@ const Slider = () => {
         { sliders.map((el, i) => {
           let styles;
           if (i === currentSlideIndex) styles = { backgroundColor: '#ff6900' };
+
           return (
             <div role="button" aria-hidden="true" style={styles} key={el.text} onClick={() => changeSlideCircle(i)} className="dotted-container__circle-buttom" />
           );

@@ -112,13 +112,16 @@ export enum MenuActionTypes {
   FETCH_MENU_SUCCES = 'FETCH_MENU_SUCCES',
   FETCH_MENU_ERROR = 'FETCH_MENU_ERROR',
 }
+
 interface IFetchMenuAction {
   type: MenuActionTypes.FETCH_MENU,
 }
+
 interface IFetchMenuSuccesAction {
   type: MenuActionTypes.FETCH_MENU_SUCCES,
   payload: any[],
 }
+
 interface IFetchMenuErrorAction {
   type: MenuActionTypes.FETCH_MENU_ERROR,
   payload: string,

@@ -3,6 +3,7 @@ import axios from '../../axios/axios-default';
 import { MenuAction, MenuActionTypes, ICollection } from '../../types/menu';
 
 const fetchMenuStart = (): MenuAction => ({ type: MenuActionTypes.FETCH_MENU });
+
 const fetchMenuSucces = (data: any): MenuAction => ({
   type: MenuActionTypes.FETCH_MENU_SUCCES,
   payload: data,
