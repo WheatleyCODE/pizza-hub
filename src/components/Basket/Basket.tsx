@@ -17,6 +17,7 @@ import useInput from '../../hooks/useInput';
 import useRequest from '../../hooks/useRequest';
 import Loader from '../UI/Loader/Loader';
 import './Basket.scss';
+import ProductSliderMobile from '../UI/ProductSliderMobile/ProductSliderMobile';
 
 interface IPromo {
   promo: string,
@@ -107,8 +108,11 @@ const Basket = () => {
 
         { basket.length !== 0 ? (
           <>
-            <div className="Basket__container__slider">
+            <div className="Basket__container__slider desctop">
               <ProductSlider products={popular} />
+            </div>
+            <div className="Basket__container__slider mobile">
+              <ProductSliderMobile products={popular} />
             </div>
             { !loading ? (
               <div className="Basket__container__promo-code">

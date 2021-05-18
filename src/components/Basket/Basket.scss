@@ -125,10 +125,28 @@
   }
 }
 
+.Basket__container__slider.desctop {
+  display: block;
+}
+
+.Basket__container__slider.mobile {
+  display: none;
+}
+
 .Basket__img {
   width: 60%;
   max-width: 400px;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 1000px) {
+  .Basket__container__slider.desctop {
+    display: none;
+  }
+  
+  .Basket__container__slider.mobile {
+    display: block;
+  }
 }
 
 @media screen and (max-width: 600px) {
