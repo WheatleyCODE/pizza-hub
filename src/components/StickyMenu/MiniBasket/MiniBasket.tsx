@@ -22,6 +22,18 @@ const MiniBasket = (props: IMiniBasketProps) => {
 
   const amount = basket.reduce((total, obj) => (total + obj.currentPrice * obj.amount), 0);
 
+  let stylesProducts;
+  let stylesMiniBasket;
+  if (basket.length !== 0) {
+    stylesProducts = {
+      paddingRight: '20px',
+    };
+
+    stylesMiniBasket = {
+      padding: '10px 0px 10px 20px',
+    };
+  }
+
   return (
     <div className="animation-container">
       <div
@@ -31,8 +43,9 @@ const MiniBasket = (props: IMiniBasketProps) => {
         onMouseLeave={onMouseLeaveBasket}
         onMouseEnter={onMouseEnterBasket}
         className="MiniBasket"
+        style={stylesMiniBasket}
       >
-        <div className="MiniBasket__products">
+        <div style={stylesProducts} className="MiniBasket__products">
 
           { basket.map((productData) => (
             <BasketItem
