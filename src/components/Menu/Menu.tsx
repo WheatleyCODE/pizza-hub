@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 import React, { useEffect } from 'react';
 import { Route, RouteComponentProps } from 'react-router';
 import { Element } from 'react-scroll';

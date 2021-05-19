@@ -9,7 +9,7 @@ const SliderMobile = () => {
     <div className="SliderMobile">
       <div className="SliderMobile__roll">
         { sliders.map((obj) => (
-          <img src={obj.url} alt={obj.text} />
+          <img key={obj.text} src={obj.url} alt={obj.text} />
         )) }
       </div>
     </div>

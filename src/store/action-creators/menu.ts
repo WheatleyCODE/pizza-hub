@@ -19,15 +19,10 @@ const fetchMenu = () => async (dispatch: Dispatch<MenuAction>) => {
     dispatch(fetchMenuStart());
 
     const response = await axios.get('/yestest.json');
-    let data: ICollection[] = [];
-    // eslint-disable-next-line no-restricted-syntax
-    for (const key in response.data) {
-      if (Object.prototype.hasOwnProperty.call(response.data, key)) {
-        data = response.data[key];
-      }
-    }
+    const keys = Object.keys(response.data);
+    const data: ICollection[][] = keys.map((key) => response.data[key]);
 
-    dispatch(fetchMenuSucces(data));
+    dispatch(fetchMenuSucces(data[0]));
   } catch (e) {
     dispatch(fetchMenuError());
   }

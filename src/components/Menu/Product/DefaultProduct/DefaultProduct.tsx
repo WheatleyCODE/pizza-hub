@@ -7,9 +7,7 @@ import './DefaultProduct.scss';
 
 interface IDefaultProductProps {
   product: IDefaultProduct,
-  // eslint-disable-next-line react/require-default-props
   route?: Routes,
-  // eslint-disable-next-line react/require-default-props
   closeModal?: () => void,
 }
 

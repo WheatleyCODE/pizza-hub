@@ -9,14 +9,9 @@ const useRequest = (url: string) => {
   useEffect(() => {
     axios.get(url)
       .then((response) => {
-        let resData: any;
-        // eslint-disable-next-line no-restricted-syntax
-        for (const key in response.data) {
-          if (Object.prototype.hasOwnProperty.call(response.data, key)) {
-            resData = response.data[key];
-          }
-        }
-        setData(resData);
+        const keys = Object.keys(response.data);
+        const resData = keys.map((key) => response.data[key]);
+        setData(resData[0]);
       })
       .catch((e) => setError(e))
       .finally(() => setLoading(false));

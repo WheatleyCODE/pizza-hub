@@ -7,7 +7,6 @@ interface IProductItemProps {
   url: string,
   callback: () => void,
   partsIndex: number,
-  // eslint-disable-next-line react/require-default-props
   size?: number,
 }
 

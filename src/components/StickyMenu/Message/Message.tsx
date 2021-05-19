@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import './Message.scss';

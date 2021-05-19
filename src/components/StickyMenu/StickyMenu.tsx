@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react';
 import * as Scroll from 'react-scroll';
 import { CSSTransition } from 'react-transition-group';

@@ -88,15 +88,10 @@ export const fetchProducts = () => async (dispatch: Dispatch<BasketAction>) => {
     dispatch(fetchProductsStart());
 
     const response = await axios.get('/products.json');
-    let data: IDefaultProduct[] = [];
-    // eslint-disable-next-line no-restricted-syntax
-    for (const key in response.data) {
-      if (Object.prototype.hasOwnProperty.call(response.data, key)) {
-        data = response.data[key];
-      }
-    }
+    const keys = Object.keys(response.data);
+    const data: IDefaultProduct[][] = keys.map((key) => response.data[key]);
 
-    dispatch(fetchProductsSucces(data));
+    dispatch(fetchProductsSucces(data[0]));
   } catch (e) {
     dispatch(fetchProductsError());
   }

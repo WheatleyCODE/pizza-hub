@@ -19,15 +19,10 @@ export const fetchSlider = () => async (dispatch: Dispatch<SliderAction>) => {
     dispatch(fetchSliderStart());
 
     const response = await axios.get('/sliders.json');
-    let data: ISlider[] = [];
-    // eslint-disable-next-line no-restricted-syntax
-    for (const key in response.data) {
-      if (Object.prototype.hasOwnProperty.call(response.data, key)) {
-        data = response.data[key];
-      }
-    }
+    const keys = Object.keys(response.data);
+    const data: ISlider[][] = keys.map((key) => response.data[key]);
 
-    dispatch(fetchSliderSucces(data));
+    dispatch(fetchSliderSucces(data[0]));
   } catch (e) {
     dispatch(fetchSliderError());
   }

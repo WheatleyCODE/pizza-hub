@@ -19,15 +19,10 @@ const fetchPopular = () => async (dispatch: Dispatch<PopularAction>) => {
     dispatch(fetchPopularStart());
 
     const response = await axios.get('/popular.json');
-    let data: IProductsSlider[] = [];
-    // eslint-disable-next-line no-restricted-syntax
-    for (const key in response.data) {
-      if (Object.prototype.hasOwnProperty.call(response.data, key)) {
-        data = response.data[key];
-      }
-    }
+    const keys = Object.keys(response.data);
+    const data: IProductsSlider[][] = keys.map((key) => response.data[key]);
 
-    dispatch(fetchPopularSucces(data));
+    dispatch(fetchPopularSucces(data[0]));
   } catch (e) {
     dispatch(fetchPopularError());
   }

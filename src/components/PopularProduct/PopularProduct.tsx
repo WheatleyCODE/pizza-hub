@@ -24,6 +24,7 @@ const PopularProduct = () => {
       price={obj.price}
       route={obj.route}
       defaultProduct={null}
+      key={obj.title}
     />
   ));
 

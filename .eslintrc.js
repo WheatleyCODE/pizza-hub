@@ -7,5 +7,9 @@ module.exports =  {
  parserOptions:  {
     project: './tsconfig.json',
   },
-  rules: {}
+  rules: {
+    "react/require-default-props": [0],
+    "react/no-array-index-key": [0],
+    "react/jsx-props-no-spreading": [0],
+  }
 }

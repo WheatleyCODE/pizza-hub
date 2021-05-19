@@ -24,15 +24,10 @@ export const fetchCity = () => async (dispatch: Dispatch<CityAction>) => {
     dispatch(fetchCityStart());
 
     const response = await axios.get('/cities.json');
-    let data: ICity[] = [];
-    // eslint-disable-next-line no-restricted-syntax
-    for (const key in response.data) {
-      if (Object.prototype.hasOwnProperty.call(response.data, key)) {
-        data = response.data[key];
-      }
-    }
+    const keys = Object.keys(response.data);
+    const data: ICity[][] = keys.map((key) => response.data[key]);
 
-    dispatch(fetchCitySucces(data));
+    dispatch(fetchCitySucces(data[0]));
   } catch (e) {
     dispatch(fetchCityError());
   }

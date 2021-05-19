@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState } from 'react';
 import useActions from '../../../../hooks/useAction';
 import useTypedSelector from '../../../../hooks/useTypedSelector';
