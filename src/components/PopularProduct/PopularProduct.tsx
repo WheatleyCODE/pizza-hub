@@ -23,7 +23,7 @@ const PopularProduct = () => {
       url={obj.url}
       price={obj.price}
       route={obj.route}
-      bool={false}
+      defaultProduct={null}
     />
   ));
 

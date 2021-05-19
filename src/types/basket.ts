@@ -4,6 +4,7 @@ import {
   PizzaDataKeyNamesPizzaSize,
   IMoreIng,
   IDefaultIng,
+  IDefaultProduct,
 } from './menu';
 
 export interface IBasketItem {
@@ -34,6 +35,9 @@ export interface IBasketState {
   basket: IBasketItem[],
   postMessage: string | null,
   changes: string[],
+  products: IDefaultProduct[],
+  productsLoading: boolean,
+  productsError: null | string,
 }
 
 export enum BasketActionTypes {
@@ -44,6 +48,22 @@ export enum BasketActionTypes {
   POST_ORDER_SUCCES = 'POST_ORDER_SUCCES',
   POST_ORDER_ERROR = 'POST_ORDER_ERROR',
   CLEAR_BASKET = 'CLEAR_BASKET',
+  FETCH_PRODUCTS = 'FETCH_PRODUCTS',
+  FETCH_PRODUCTS_SUCCES = 'FETCH_PRODUCTS_SUCCES',
+  FETCH_PRODUCTS_ERROR = 'FETCH_PRODUCTS_ERROR',
+}
+
+interface IFetchProductsAction {
+  type: BasketActionTypes.FETCH_PRODUCTS,
+}
+
+interface IFetchProductsSuccesAction {
+  type: BasketActionTypes.FETCH_PRODUCTS_SUCCES,
+  payload: IDefaultProduct[]
+}
+
+interface IFetchProductsErrorAction {
+  type: BasketActionTypes.FETCH_PRODUCTS_ERROR,
 }
 
 interface IAddToBasketAction {
@@ -91,4 +111,7 @@ export type BasketAction =
   | IPostOrderAction
   | IPostSuccesAction
   | IPostErrorAction
-  | IClearBasket;
+  | IClearBasket
+  | IFetchProductsAction
+  | IFetchProductsErrorAction
+  | IFetchProductsSuccesAction;

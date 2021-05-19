@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { fetchProducts, postOrder } from '../store/action-creators/basket';
 import fetchPopular from '../store/action-creators/popular';
 import * as comboConfiguratorActions from '../store/action-creators/comboConfigurator';
-import { postOrder } from '../store/action-creators/basket';
 import * as basketActions from '../store/action-creators/basket';
 import fetchMenu from '../store/action-creators/menu';
 import * as sliderActions from '../store/action-creators/slider';
@@ -23,6 +23,7 @@ const useActions = () => {
     ...configActions,
     ...authActions,
     postOrder,
+    fetchProducts,
   }, dispatch);
 };
 

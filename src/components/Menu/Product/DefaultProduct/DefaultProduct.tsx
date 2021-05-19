@@ -7,10 +7,17 @@ import './DefaultProduct.scss';
 
 interface IDefaultProductProps {
   product: IDefaultProduct,
+  // eslint-disable-next-line react/require-default-props
+  route?: Routes,
+  // eslint-disable-next-line react/require-default-props
+  closeModal?: () => void,
 }
 
-const DefaultProduct = ({ product }: IDefaultProductProps) => {
+const DefaultProduct = ({ product, route, closeModal }: IDefaultProductProps) => {
   const { addToBasket } = useActions();
+
+  let router = Routes.HOME_ROUTE;
+  if (route) router = route;
 
   return (
     <div className="DefaultProduct">
@@ -24,23 +31,29 @@ const DefaultProduct = ({ product }: IDefaultProductProps) => {
         </div>
         <div className="DefaultProduct__description-container__button">
           <ModalBuyButton
-            to={Routes.HOME_ROUTE}
+            to={router}
             price={product.price}
-            callback={() => addToBasket({
-              amount: 1,
-              id: Math.random() * 10000,
-              url: product.url,
-              title: product.title,
-              currentPrice: product.price,
-              moreInfo: {
-                defaultIngredients: null,
-                moreIngredients: null,
-                size: null,
-                dough: null,
-                pizzaSize: null,
-                combo: null,
-              },
-            })}
+            callback={() => {
+              addToBasket({
+                amount: 1,
+                id: Math.random() * 10000,
+                url: product.url,
+                title: product.title,
+                currentPrice: product.price,
+                moreInfo: {
+                  defaultIngredients: null,
+                  moreIngredients: null,
+                  size: null,
+                  dough: null,
+                  pizzaSize: null,
+                  combo: null,
+                },
+              });
+
+              if (closeModal) {
+                closeModal();
+              }
+            }}
           />
         </div>
       </div>

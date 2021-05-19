@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
+import Modal from '../../../../hoc/Modal/Modal';
+import Portal from '../../../../hoc/Portal/Portal';
+import useActions from '../../../../hooks/useAction';
+import { IDefaultProduct } from '../../../../types/menu';
+import Routes from '../../../../types/routes';
+import DefaultProduct from '../../../Menu/Product/DefaultProduct/DefaultProduct';
+import Button from '../../Button/Button';
 import './SliderItem.scss';
 
 interface ISliderItem {
   title: string,
   route: string,
   url: string,
-  price: string,
-  bool: boolean,
+  price: string | number,
+  defaultProduct: IDefaultProduct | null,
 }
 
 const SliderItem = (props: ISliderItem) => {
@@ -16,19 +24,67 @@ const SliderItem = (props: ISliderItem) => {
     route,
     url,
     price,
-    bool,
+    defaultProduct,
   } = props;
 
-  if (bool) {
+  const [showModal, setShowModal] = useState(false);
+  const { addToBasket } = useActions();
+
+  const toggleModal = () => {
+    setShowModal((prev) => !prev);
+  };
+
+  if (defaultProduct !== null) {
     return (
-      <Link key={title} to={route}>
-        <div className="SliderItem">
+      <>
+        <div aria-hidden onClick={toggleModal} className="SliderItem">
           <img src={url} alt={title} />
           <div>
-            <h6>LoooL?</h6>
+            <h6>{defaultProduct.title}</h6>
+            <span>
+              <Button
+                buttonStyle="light"
+                text={`${defaultProduct.price} ₽`}
+                onClickHandler={() => {
+                  addToBasket({
+                    amount: 1,
+                    id: Math.random() * 10000,
+                    url: defaultProduct.url,
+                    title: defaultProduct.title,
+                    currentPrice: defaultProduct.price,
+                    moreInfo: {
+                      defaultIngredients: null,
+                      moreIngredients: null,
+                      size: null,
+                      dough: null,
+                      pizzaSize: null,
+                      combo: null,
+                    },
+                  });
+                  toggleModal();
+                }}
+              />
+            </span>
           </div>
         </div>
-      </Link>
+        <CSSTransition
+          in={showModal}
+          timeout={300}
+          classNames="modal"
+          mountOnEnter
+          unmountOnExit
+        >
+          <Portal>
+            <Modal onCloseModal={toggleModal}>
+              <DefaultProduct
+                closeModal={toggleModal}
+                route={Routes.BASKET_ROUTE}
+                product={defaultProduct}
+              />
+            </Modal>
+          </Portal>
+        </CSSTransition>
+      </>
     );
   }
 

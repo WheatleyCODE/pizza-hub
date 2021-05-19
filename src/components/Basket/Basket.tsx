@@ -17,8 +17,8 @@ import useInput from '../../hooks/useInput';
 import useRequest from '../../hooks/useRequest';
 import Loader from '../UI/Loader/Loader';
 import ProductSliderMobile from '../UI/ProductSlider/ProductSliderMobile/ProductSliderMobile';
-import './Basket.scss';
 import SliderItem from '../UI/ProductSlider/SliderItem/SliderItem';
+import './Basket.scss';
 
 interface IPromo {
   promo: string,
@@ -26,11 +26,16 @@ interface IPromo {
 }
 
 const Basket = () => {
-  const { basket, postMessage } = useTypedSelector((state) => state.basket);
-  const { popular } = useTypedSelector((state) => state.popular);
+  const {
+    basket,
+    postMessage,
+    products,
+    productsLoading,
+  } = useTypedSelector((state) => state.basket);
+
   const { token, userId, email } = useTypedSelector((state) => state.auth);
   const { currentCity } = useTypedSelector((state) => state.city);
-  const { postOrder, fetchPopular } = useActions();
+  const { postOrder, fetchProducts } = useActions();
 
   const [show, setShow] = useState(false);
   const [amount, setAmount] = useState(0);
@@ -48,7 +53,7 @@ const Basket = () => {
   }, [basket]);
 
   useEffect(() => {
-    fetchPopular();
+    fetchProducts();
   }, []);
 
   const addOrder = () => {
@@ -94,13 +99,14 @@ const Basket = () => {
     );
   }
 
-  const productSliderItem = popular.map((obj) => (
+  const productSliderItem = products.map((obj) => (
     <SliderItem
+      key={obj.route}
       title={obj.title}
       url={obj.url}
       price={obj.price}
       route={obj.route}
-      bool
+      defaultProduct={obj}
     />
   ));
 
@@ -127,12 +133,17 @@ const Basket = () => {
 
         { basket.length !== 0 ? (
           <>
-            <div className="Basket__container__slider desctop">
-              <ProductSliderDesktop sliderItem={productSliderItem} />
-            </div>
-            <div className="Basket__container__slider mobile">
-              <ProductSliderMobile sliderItem={productSliderItem} />
-            </div>
+            { !productsLoading ? (
+              <>
+                <div className="Basket__container__slider desctop">
+                  <ProductSliderDesktop sliderItem={productSliderItem} />
+                </div>
+                <div className="Basket__container__slider mobile">
+                  <ProductSliderMobile sliderItem={productSliderItem} />
+                </div>
+              </>
+            ) : <Loader />}
+
             { !loading ? (
               <div className="Basket__container__promo-code">
                 { usePromo ? <h3>Промокод использован!</h3> : <h3>Промокод</h3> }

@@ -38,7 +38,7 @@ code {
 }
 
 @media screen and (max-width: 1000px) {
-  body.modal-open .Menu, body.modal-open .Footer{
+  body.modal-open .Menu, body.modal-open .Footer, body.modal-open .Basket{
     display: none;
   }
 }

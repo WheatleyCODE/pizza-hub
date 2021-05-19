@@ -4,6 +4,9 @@ const initialState: IBasketState = {
   basket: [],
   postMessage: null,
   changes: [],
+  products: [],
+  productsLoading: false,
+  productsError: null,
 };
 
 const basketReducer = (state: IBasketState = initialState, action: BasketAction): IBasketState => {
@@ -107,6 +110,25 @@ const basketReducer = (state: IBasketState = initialState, action: BasketAction)
         postMessage: action.payload,
       };
     }
+
+    case BasketActionTypes.FETCH_PRODUCTS:
+      return {
+        ...state,
+        productsLoading: true,
+      };
+
+    case BasketActionTypes.FETCH_PRODUCTS_SUCCES:
+      return {
+        ...state,
+        productsLoading: false,
+        products: action.payload,
+      };
+
+    case BasketActionTypes.FETCH_PRODUCTS_ERROR:
+      return {
+        ...state,
+        productsLoading: false,
+      };
 
     default:
       return {

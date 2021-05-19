@@ -6,6 +6,7 @@ import {
   IBasketItem,
   IOrder,
 } from '../../types/basket';
+import { IDefaultProduct } from '../../types/menu';
 
 export const addToBasket = (product: IBasketItem, writeChange: boolean = true): BasketAction => ({
   type: BasketActionTypes.ADD_TO_BASKET,
@@ -66,5 +67,37 @@ export const postOrder = (order: IOrder) => async (dispatch: Dispatch<BasketActi
     dispatch(clearBasket());
   } catch (e) {
     dispatch(postOrderError());
+  }
+};
+
+const fetchProductsStart = (): BasketAction => ({
+  type: BasketActionTypes.FETCH_PRODUCTS,
+});
+
+const fetchProductsSucces = (products: IDefaultProduct[]): BasketAction => ({
+  type: BasketActionTypes.FETCH_PRODUCTS_SUCCES,
+  payload: products,
+});
+
+const fetchProductsError = (): BasketAction => ({
+  type: BasketActionTypes.FETCH_PRODUCTS_ERROR,
+});
+
+export const fetchProducts = () => async (dispatch: Dispatch<BasketAction>) => {
+  try {
+    dispatch(fetchProductsStart());
+
+    const response = await axios.get('/products.json');
+    let data: IDefaultProduct[] = [];
+    // eslint-disable-next-line no-restricted-syntax
+    for (const key in response.data) {
+      if (Object.prototype.hasOwnProperty.call(response.data, key)) {
+        data = response.data[key];
+      }
+    }
+
+    dispatch(fetchProductsSucces(data));
+  } catch (e) {
+    dispatch(fetchProductsError());
   }
 };
