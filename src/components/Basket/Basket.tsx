@@ -18,6 +18,7 @@ import useRequest from '../../hooks/useRequest';
 import Loader from '../UI/Loader/Loader';
 import ProductSliderMobile from '../UI/ProductSlider/ProductSliderMobile/ProductSliderMobile';
 import './Basket.scss';
+import SliderItem from '../UI/ProductSlider/SliderItem/SliderItem';
 
 interface IPromo {
   promo: string,
@@ -93,6 +94,16 @@ const Basket = () => {
     );
   }
 
+  const productSliderItem = popular.map((obj) => (
+    <SliderItem
+      title={obj.title}
+      url={obj.url}
+      price={obj.price}
+      route={obj.route}
+      bool
+    />
+  ));
+
   return (
     <div className="Basket">
       <div className="Basket__container">
@@ -117,10 +128,10 @@ const Basket = () => {
         { basket.length !== 0 ? (
           <>
             <div className="Basket__container__slider desctop">
-              <ProductSliderDesktop products={popular} />
+              <ProductSliderDesktop sliderItem={productSliderItem} />
             </div>
             <div className="Basket__container__slider mobile">
-              <ProductSliderMobile products={popular} />
+              <ProductSliderMobile sliderItem={productSliderItem} />
             </div>
             { !loading ? (
               <div className="Basket__container__promo-code">

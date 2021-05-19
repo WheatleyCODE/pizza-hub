@@ -1,0 +1,63 @@
+.SliderItem {
+  width: 300px;
+  position: relative;
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  height: 130px;
+  box-shadow: rgb(6 5 50 / 15%) 0px 4px 22px;
+  margin-right: 20px;
+  margin-left: 3px;
+  border-radius: 20px;
+
+  div {
+    height: 100%;
+    padding-top: 30px;
+    display: flex;
+    padding-left: 15px;
+    flex-direction: column;
+  }
+
+  h6 {
+    font-size: 15px;
+    font-weight: normal;
+    height: 50px;
+  }
+
+  span {
+    font-size: 20px;
+  }
+
+  img {
+    height: 100px
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .SliderItem {
+    width: 235px;
+    padding-left: 10px;
+    height: 100px;
+    margin: 10px 0px;
+    margin-right: 10px;
+
+    div {
+      padding-top: 20px;
+      padding-left: 5px;
+    }
+
+    img {
+      height: 80px
+    }
+
+    h6 {
+      font-size: 15px;
+      font-weight: bold;
+      height: 40px;
+    }
+
+    span {
+      font-size: 16px;
+    }
+  }
+}

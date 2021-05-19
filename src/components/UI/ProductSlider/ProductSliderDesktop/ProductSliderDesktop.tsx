@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { IProductsSlider } from '../../../../types/popular';
 import './ProductSliderDesktop.scss';
 
 interface IProductSliderDesktopProps {
-  products: IProductsSlider[]
+  sliderItem: JSX.Element[],
 }
 
-const ProductSliderDesktop = ({ products }: IProductSliderDesktopProps) => {
+const ProductSliderDesktop = ({ sliderItem }: IProductSliderDesktopProps) => {
   const [num, setNum] = useState(0);
   const [curentX, setCurentX] = useState(0);
   const [isMouseDown, setIsMouseDown] = useState(false);
@@ -18,7 +16,7 @@ const ProductSliderDesktop = ({ products }: IProductSliderDesktopProps) => {
     widthRollBlock: 1290,
   };
 
-  const styles = { width: `${widthInfo.widthBlocks * products.length}px`, transform: `translateX(-${curentX + num}px)` };
+  const styles = { width: `${widthInfo.widthBlocks * sliderItem.length}px`, transform: `translateX(-${curentX + num}px)` };
 
   const changeCurrentX = (number: number) => {
     setCurentX((prev) => {
@@ -83,17 +81,7 @@ const ProductSliderDesktop = ({ products }: IProductSliderDesktopProps) => {
         className="ProductSliderDesktop__roll"
         aria-hidden
       >
-        { products.map((obj) => (
-          <Link key={obj.title} to={obj.route}>
-            <div className="ProductSliderDesktop__roll__item">
-              <img src={obj.url} alt={obj.title} />
-              <div>
-                <h6>{obj.title}</h6>
-                <span>{obj.price}</span>
-              </div>
-            </div>
-          </Link>
-        )) }
+        {sliderItem}
       </div>
       { curentX !== 0 ? (
         <button className="ProductSliderDesktop__sub" onClick={() => changeCurrentX(-600)} type="button">

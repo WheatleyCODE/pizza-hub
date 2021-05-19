@@ -11,41 +11,6 @@
   &__roll {
     display: flex;
     transition: .3s;
-
-    &__item {
-      width: 300px;
-      position: relative;
-      padding-left: 20px;
-      display: flex;
-      align-items: center;
-      height: 130px;
-      box-shadow: rgb(6 5 50 / 15%) 0px 4px 22px;
-      margin-right: 20px;
-      margin-left: 3px;
-      border-radius: 20px;
-
-      div {
-        height: 100%;
-        padding-top: 30px;
-        display: flex;
-        padding-left: 15px;
-        flex-direction: column;
-      }
-
-      h6 {
-        font-size: 15px;
-        font-weight: normal;
-        height: 50px;
-      }
-
-      span {
-        font-size: 20px;
-      }
-
-      img {
-        height: 100px
-      }
-    }
   }
 
   &__sub, &__add {
