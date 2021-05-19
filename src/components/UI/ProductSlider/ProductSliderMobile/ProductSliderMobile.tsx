@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { IProductsSlider } from '../../../types/popular';
+import { IProductsSlider } from '../../../../types/popular';
 import './ProductSliderMobile.scss';
 
 interface IProductSliderMobileProps {

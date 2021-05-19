@@ -1,7 +1,7 @@
-@import '../../../styles/mixins';
-@import '../../../styles/variables';
+@import '../../../../styles/mixins';
+@import '../../../../styles/variables';
 
-.Slider {
+.SliderDesktop {
   margin: 20px 15px;
   width: 1280px;
   display: flex;
@@ -137,7 +137,7 @@
 }
 
 @media screen and (max-width: 1300px) {
-  .Slider {
+  .SliderDesktop {
     width: 1000px;
     height: 290px;
 
@@ -148,7 +148,7 @@
 }
 
 @media screen and (max-width: 999px) {
-  .Slider {
+  .SliderDesktop {
     width: 550px;
     height: 290px;
     display: none;

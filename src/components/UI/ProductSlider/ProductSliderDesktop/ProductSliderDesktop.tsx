@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { IProductsSlider } from '../../../types/popular';
-import './ProductSlider.scss';
+import { IProductsSlider } from '../../../../types/popular';
+import './ProductSliderDesktop.scss';
 
-interface IProductSliderProps {
+interface IProductSliderDesktopProps {
   products: IProductsSlider[]
 }
 
-const ProductSlider = ({ products }: IProductSliderProps) => {
+const ProductSliderDesktop = ({ products }: IProductSliderDesktopProps) => {
   const [num, setNum] = useState(0);
   const [curentX, setCurentX] = useState(0);
   const [isMouseDown, setIsMouseDown] = useState(false);
@@ -64,7 +64,7 @@ const ProductSlider = ({ products }: IProductSliderProps) => {
   }, [isMouseDown]);
 
   useEffect(() => {
-    const elem = document.querySelector('.ProductSlider__roll');
+    const elem = document.querySelector('.ProductSliderDesktop__roll');
     elem?.addEventListener('mousedown', mouseDownHandler);
     elem?.addEventListener('mouseup', mouseUpHandler);
     elem?.addEventListener('mouseover', mouseOverHandler);
@@ -77,15 +77,15 @@ const ProductSlider = ({ products }: IProductSliderProps) => {
   }, []);
 
   return (
-    <div className="ProductSlider">
+    <div className="ProductSliderDesktop">
       <div
         style={styles}
-        className="ProductSlider__roll"
+        className="ProductSliderDesktop__roll"
         aria-hidden
       >
         { products.map((obj) => (
           <Link key={obj.title} to={obj.route}>
-            <div className="ProductSlider__roll__item">
+            <div className="ProductSliderDesktop__roll__item">
               <img src={obj.url} alt={obj.title} />
               <div>
                 <h6>{obj.title}</h6>
@@ -96,12 +96,12 @@ const ProductSlider = ({ products }: IProductSliderProps) => {
         )) }
       </div>
       { curentX !== 0 ? (
-        <button className="ProductSlider__sub" onClick={() => changeCurrentX(-600)} type="button">
+        <button className="ProductSliderDesktop__sub" onClick={() => changeCurrentX(-600)} type="button">
           <i className="fa fa-chevron-left" aria-hidden="true" />
         </button>
       ) : null }
       { curentX !== widthInfo.widthRollBlock ? (
-        <button className="ProductSlider__add" onClick={() => changeCurrentX(600)} type="button">
+        <button className="ProductSliderDesktop__add" onClick={() => changeCurrentX(600)} type="button">
           <i className="fa fa-chevron-right" aria-hidden="true" />
         </button>
       ) : null }
@@ -109,4 +109,4 @@ const ProductSlider = ({ products }: IProductSliderProps) => {
   );
 };
 
-export default ProductSlider;
+export default ProductSliderDesktop;

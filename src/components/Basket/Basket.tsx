@@ -10,13 +10,13 @@ import Modal from '../../hoc/Modal/Modal';
 import Auth from '../Auth/Auth';
 import useActions from '../../hooks/useAction';
 import Routes from '../../types/routes';
-import ProductSlider from '../UI/ProductSlider/ProductSlider';
+import ProductSliderDesktop from '../UI/ProductSlider/ProductSliderDesktop/ProductSliderDesktop';
 import DeliveryMessage from '../StickyMenu/MiniBasket/DeliveryMessage/DeliveryMessage';
 import Input from '../UI/Input/Input';
 import useInput from '../../hooks/useInput';
 import useRequest from '../../hooks/useRequest';
 import Loader from '../UI/Loader/Loader';
-import ProductSliderMobile from '../UI/ProductSliderMobile/ProductSliderMobile';
+import ProductSliderMobile from '../UI/ProductSlider/ProductSliderMobile/ProductSliderMobile';
 import './Basket.scss';
 
 interface IPromo {
@@ -117,7 +117,7 @@ const Basket = () => {
         { basket.length !== 0 ? (
           <>
             <div className="Basket__container__slider desctop">
-              <ProductSlider products={popular} />
+              <ProductSliderDesktop products={popular} />
             </div>
             <div className="Basket__container__slider mobile">
               <ProductSliderMobile products={popular} />

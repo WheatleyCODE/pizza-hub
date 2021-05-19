@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import useActions from '../../../hooks/useAction';
-import useTypedSelector from '../../../hooks/useTypedSelector';
-import './Slider.scss';
+import useActions from '../../../../hooks/useAction';
+import useTypedSelector from '../../../../hooks/useTypedSelector';
+import './SliderDesktop.scss';
 
-const Slider = () => {
+const SliderDesktop = () => {
   const { changeSlide, changeSlideCircle } = useActions();
   const {
     sliders,
@@ -26,7 +26,7 @@ const Slider = () => {
   });
 
   return (
-    <div className="Slider">
+    <div className="SliderDesktop">
       { sliders.map((slide, index) => {
         let show = false;
         if (index === currentSlideIndex) show = true;
@@ -40,11 +40,11 @@ const Slider = () => {
             unmountOnExit
             key={slide.url}
           >
-            <img className="Slider__img" src={slide.url} alt={slide.text} />
+            <img className="SliderDesktop__img" src={slide.url} alt={slide.text} />
           </CSSTransition>
         );
       })}
-      <div className="Slider__button-container">
+      <div className="SliderDesktop__button-container">
         <button onClick={() => changeSlide(slider.prev)} type="button">
           <i className="fa fa-chevron-left" aria-hidden="true" />
         </button>
@@ -52,7 +52,7 @@ const Slider = () => {
           <i className="fa fa-chevron-right" aria-hidden="true" />
         </button>
       </div>
-      <div className="Slider__dotted-container">
+      <div className="SliderDesktop__dotted-container">
         { sliders.map((el, i) => {
           let styles;
           if (i === currentSlideIndex) styles = { backgroundColor: '#ff6900' };
@@ -66,4 +66,4 @@ const Slider = () => {
   );
 };
 
-export default Slider;
+export default SliderDesktop;

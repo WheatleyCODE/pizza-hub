@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import useActions from '../../hooks/useAction';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import Loader from '../UI/Loader/Loader';
-import ProductSlider from '../UI/ProductSlider/ProductSlider';
-import ProductSliderMobile from '../UI/ProductSliderMobile/ProductSliderMobile';
+import ProductSliderDesktop from '../UI/ProductSlider/ProductSliderDesktop/ProductSliderDesktop';
+import ProductSliderMobile from '../UI/ProductSlider/ProductSliderMobile/ProductSliderMobile';
 import './PopularProduct.scss';
 
 const PopularProduct = () => {
@@ -20,7 +20,7 @@ const PopularProduct = () => {
     <div className="PopularProduct">
       <h2>Новое и популярное</h2>
       <div className="PopularProduct__slider-desctop">
-        <ProductSlider products={popular} />
+        <ProductSliderDesktop products={popular} />
       </div>
       <div className="PopularProduct__slider-mobile">
         <ProductSliderMobile products={popular} />

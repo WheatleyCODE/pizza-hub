@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import useActions from '../../hooks/useAction';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import Loader from '../UI/Loader/Loader';
-import Slider from '../UI/Slider/Slider';
-import SliderMobile from '../UI/SliderMobile/SliderMobile';
+import SliderDesktop from '../UI/Slider/SliderDesktop/SliderDesktop';
+import SliderMobile from '../UI/Slider/SliderMobile/SliderMobile';
 import './ImgSlider.scss';
 
 const ImgSlider = () => {
@@ -23,7 +23,7 @@ const ImgSlider = () => {
   return (
     <div className="ImgSlider">
       <div className="ImgSlider__desctop">
-        <Slider />
+        <SliderDesktop />
       </div>
       <div className="ImgSlider__mobile">
         <SliderMobile />
