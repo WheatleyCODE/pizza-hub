@@ -52,15 +52,38 @@
     display: flex;
     padding-right: 30px;
     flex-direction: column;
-    .title {
+
+    &__title {
       font-weight: 600;
       font-size: 15px;
       display: block;
     }
 
-    .description {
+    &__description {
+      margin-top: 3px;
       font-size: 12px;
       display: block;
+    }
+
+    &__details {
+      margin-top: 5px;
+      font-size: 12px;
+
+      &__add-item {
+        margin-right: 6px;
+        display: block;
+      }
+
+      &__dell-item {
+        margin-right: 6px;
+        display: block;
+      }
+
+      &__combo-item {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 13px;
+      }
     }
   }
 
@@ -69,6 +92,7 @@
     align-items: center;
     width: 66%;
     justify-content: flex-end;
+    margin-top: 20px;
   }
 
   &__price {
@@ -78,6 +102,7 @@
     align-items: center;
     text-align: end;
     padding-right: 10px;
+    margin-top: 20px;
 
     .price {
       font-size: 19px;

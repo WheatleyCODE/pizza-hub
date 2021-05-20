@@ -49,6 +49,7 @@ const MiniBasket = (props: IMiniBasketProps) => {
 
           { basket.map((productData) => (
             <BasketItem
+              isDetails={false}
               itemStyle={null}
               key={productData.id}
               productData={productData}

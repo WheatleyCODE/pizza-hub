@@ -116,6 +116,7 @@ const Basket = () => {
         <h1>Корзина</h1>
         { basket.map((productData) => (
           <BasketItem
+            isDetails
             itemStyle="basketI"
             key={productData.id}
             productData={productData}

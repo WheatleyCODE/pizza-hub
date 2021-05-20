@@ -29,6 +29,7 @@
     &__price-container {
       display: flex;
       width: 100%;
+      height: 40px;
       justify-content: space-between;
       position: absolute;
       bottom: 0;
@@ -79,7 +80,7 @@
   }
 }
 
-@media screen and (max-width: 1013px) {
+@media screen and (max-width: 1030px) {
   .Product {
     width: 100%;
     display: flex;
