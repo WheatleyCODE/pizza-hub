@@ -50,12 +50,12 @@ const Auth = ({ toggleLoginModal }: IAuthProps) => {
       <div className="Auth__buttonContainer">
         <div className="loginButton">
           { valid
-            ? <Button buttonStyle="default" onClickHandler={() => {}} text="Войти" />
+            ? <Button buttonStyle="default" text="Войти" />
             : <Button buttonStyle="bright" onClickHandler={() => authHandler(true)} text="Войти" /> }
         </div>
         <div className="registerButton">
           { valid
-            ? <Button buttonStyle="default" onClickHandler={() => {}} text="Регистрация" />
+            ? <Button buttonStyle="default" text="Регистрация" />
             : <Button buttonStyle="bright" onClickHandler={() => authHandler(false)} text="Регистрация" /> }
         </div>
       </div>

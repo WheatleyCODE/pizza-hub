@@ -17,6 +17,9 @@ const firebaseConfig = {
   measurementId: 'G-GYGVTT0JGJ',
 };
 
+// Сделать UseReducer
+// Сделать reduce
+
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 

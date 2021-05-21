@@ -11,10 +11,10 @@ const PromoBlock = () => (
         <div className="PromoBlock__container__text__mobile">Стань тайным покупателем</div>
       </div>
       <div className="PromoBlock__container__button">
-        <Button buttonStyle="white" onClickHandler={() => {}} text="Заполнить анкету" />
+        <Button buttonStyle="white" text="Заполнить анкету" />
       </div>
       <div className="PromoBlock__container__mobile-button">
-        <Button buttonStyle="white" onClickHandler={() => {}} text=">" />
+        <Button buttonStyle="white" text=">" />
       </div>
     </div>
   </div>

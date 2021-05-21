@@ -4,7 +4,7 @@ import './Button.scss';
 interface IButtonProps {
   text: string,
   buttonStyle: string,
-  onClickHandler: () => void,
+  onClickHandler?: () => void,
 }
 
 const Button = ({ text, buttonStyle = 'default', onClickHandler }: IButtonProps) => {

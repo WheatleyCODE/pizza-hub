@@ -21,14 +21,13 @@ const RadioButtons = ({ buttons, selected, onChange }: IRadioButtonsProps) => {
         if (selectedIndex === index) selectedClassName = 'selected';
         if (obj.style === 'disable') {
           return (
-            <div aria-hidden="true" onClick={() => {}} key={obj.title} className={`RadioButtons__group ${selectedClassName} ${obj.style}`}>
+            <div aria-hidden="true" key={obj.title} className={`RadioButtons__group ${selectedClassName} ${obj.style}`}>
               <input
                 className="RadioButtons__group__input"
                 type="radio"
                 name={groupName}
                 id={inputID}
                 checked={selected === obj.title}
-                onChange={() => {}}
               />
               <label
                 className="RadioButtons__group__label"

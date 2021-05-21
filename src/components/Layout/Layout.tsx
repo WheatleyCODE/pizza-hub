@@ -18,17 +18,9 @@ const Layout = () => {
     <div className="Layout">
       <Route path={Routes.HOME_ROUTE} component={Header} />
       <Switch>
-        { publickRoutes.map((route) => {
-          if (route.render) {
-            return (
-              <Route key={route.path} path={route.path} render={() => <route.Component />} />
-            );
-          }
-
-          return (
-            <Route key={route.path} path={route.path} component={route.Component} />
-          );
-        }) }
+        { publickRoutes.map((route) => (
+          <Route key={route.path} path={route.path} component={route.Component} />
+        )) }
       </Switch>
     </div>
   );

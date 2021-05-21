@@ -6,12 +6,10 @@ const publickRoutes: IRoute[] = [
   {
     path: Routes.BASKET_ROUTE,
     Component: Basket,
-    render: false,
   },
   {
     path: Routes.HOME_ROUTE,
     Component: MainPage,
-    render: true,
   },
 ];
 

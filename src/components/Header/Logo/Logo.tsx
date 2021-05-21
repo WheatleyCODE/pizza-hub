@@ -5,7 +5,7 @@ import Routes from '../../../types/routes';
 import './Logo.scss';
 
 interface ILogoProps {
-  onClickHandler: () => void
+  onClickHandler?: () => void
 }
 
 const Logo = ({ onClickHandler }: ILogoProps) => (

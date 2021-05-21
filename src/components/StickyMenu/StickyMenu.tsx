@@ -111,7 +111,7 @@ const StickyMenu = () => {
           className="basket"
         >
           <Link to={Routes.BASKET_ROUTE}>
-            <Button onClickHandler={() => {}} buttonStyle="bright" text={`Корзина ${buttonBasketText}`} />
+            <Button buttonStyle="bright" text={`Корзина ${buttonBasketText}`} />
           </Link>
         </div>
         <CSSTransition

@@ -8,7 +8,6 @@ enum Routes {
 export interface IRoute {
   path: Routes,
   Component: React.FC,
-  render: boolean,
 }
 
 export default Routes;

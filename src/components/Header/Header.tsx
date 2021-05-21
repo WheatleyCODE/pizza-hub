@@ -50,7 +50,7 @@ const Header = ({ history }: RouteComponentProps) => {
     <header className="Header">
       <div className="logo__container">
         <div className="logo">
-          <Logo onClickHandler={() => {}} />
+          <Logo />
           <div className="delivery">
             { !loading && (
               <div className="delivery__container">

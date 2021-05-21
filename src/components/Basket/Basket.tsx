@@ -91,7 +91,7 @@ const Basket = () => {
           <div className="Basket__container__post-message">
             <h2>{postMessage}</h2>
             <Link to={Routes.HOME_ROUTE}>
-              <Button buttonStyle="bright" text="На главную" onClickHandler={() => {}} />
+              <Button buttonStyle="bright" text="На главную" />
             </Link>
           </div>
         </div>
@@ -157,7 +157,7 @@ const Basket = () => {
                   />
                   <div className="promo-code__container__button">
                     { !inputPromo.isValid
-                      ? <Button buttonStyle="default" onClickHandler={() => {}} text="Применить" />
+                      ? <Button buttonStyle="default" text="Применить" />
                       : <Button buttonStyle="bright" onClickHandler={checkPromo} text="Применить" /> }
                   </div>
                 </div>
@@ -184,7 +184,7 @@ const Basket = () => {
             </div>
             <div className="Basket__container__buttons">
               <Link to={Routes.HOME_ROUTE}>
-                <Button buttonStyle="default" onClickHandler={() => {}} text="Вернуться в меню" />
+                <Button buttonStyle="default" text="Вернуться в меню" />
               </Link>
               <Button buttonStyle="bright" onClickHandler={addOrder} text="Оформить заказ" />
             </div>
