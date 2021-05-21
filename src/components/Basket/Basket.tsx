@@ -74,7 +74,7 @@ const Basket = () => {
     setShow((prev) => !prev);
   };
 
-  const checkPromo = async () => {
+  const checkPromo = () => {
     if (!usePromo) {
       const index = basketData.findIndex((obj) => inputPromo.default.value === obj.promo);
       if (index !== -1) {
