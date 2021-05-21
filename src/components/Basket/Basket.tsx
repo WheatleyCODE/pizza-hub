@@ -137,7 +137,7 @@ const Basket = () => {
             { !productsLoading ? (
               <>
                 <div className="Basket__container__slider desctop">
-                  <ProductSliderDesktop sliderItem={productSliderItem} />
+                  <ProductSliderDesktop width={800} sliderItem={productSliderItem} />
                 </div>
                 <div className="Basket__container__slider mobile">
                   <ProductSliderMobile sliderItem={productSliderItem} />

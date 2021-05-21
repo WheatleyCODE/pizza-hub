@@ -32,7 +32,7 @@ const PopularProduct = () => {
     <div className="PopularProduct">
       <h2>Новое и популярное</h2>
       <div className="PopularProduct__slider-desctop">
-        <ProductSliderDesktop sliderItem={productSliderItem} />
+        <ProductSliderDesktop width={1290} sliderItem={productSliderItem} />
       </div>
       <div className="PopularProduct__slider-mobile">
         <ProductSliderMobile sliderItem={productSliderItem} />

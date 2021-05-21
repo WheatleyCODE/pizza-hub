@@ -9,9 +9,17 @@ interface IModalProps {
 
 const Modal = ({ children, onCloseModal }: IModalProps) => {
   useEffect(() => {
-    document.body.classList.add('modal-open');
+    const { platform } = window.navigator;
+    if (platform === 'Win32') {
+      document.body.classList.add('modal-open-win');
+    } else {
+      document.body.classList.add('modal-open-mac');
+    }
 
-    return () => document.body.classList.remove('modal-open');
+    return () => {
+      document.body.classList.remove('modal-open-win');
+      document.body.classList.remove('modal-open-mac');
+    };
   }, []);
 
   return (

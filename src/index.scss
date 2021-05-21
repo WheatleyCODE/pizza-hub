@@ -27,9 +27,13 @@ h2 {
   font-size: 22px;
 }
 
-body.modal-open {
+body.modal-open-win {
   overflow: hidden;
   padding-right: 17px;
+}
+
+body.modal-open-mac {
+  overflow: hidden;
 }
 
 code {
@@ -38,7 +42,11 @@ code {
 }
 
 @media screen and (max-width: 1000px) {
-  body.modal-open .Menu, body.modal-open .Footer, body.modal-open .Basket{
+  body.modal-open-win .Menu, body.modal-open-win .Footer, body.modal-open-win .Basket{
+    display: none;
+  }
+
+  body.modal-open-mac .Menu, body.modal-open-mac .Footer, body.modal-open-mac .Basket{
     display: none;
   }
 }

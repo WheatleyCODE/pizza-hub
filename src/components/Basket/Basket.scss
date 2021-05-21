@@ -5,8 +5,8 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  padding-bottom: 30px;
-  height: 100vh;
+  min-height: 100vh;
+  padding-bottom: 150px;
 }
 
 .Basket__container__post-message {
@@ -140,6 +140,10 @@
 }
 
 @media screen and (max-width: 1000px) {
+  .Basket {
+    padding-bottom: 100px;
+  }
+
   .Basket__container__slider.desctop {
     display: none;
   }
@@ -160,6 +164,10 @@
 }
 
 @media screen and (max-width: 600px) {
+  .Basket {
+    padding-bottom: 50px;
+  }
+
   .Basket__container {
     width: 95%;
 

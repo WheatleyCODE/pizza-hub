@@ -3,9 +3,10 @@ import './ProductSliderDesktop.scss';
 
 interface IProductSliderDesktopProps {
   sliderItem: JSX.Element[],
+  width: number,
 }
 
-const ProductSliderDesktop = ({ sliderItem }: IProductSliderDesktopProps) => {
+const ProductSliderDesktop = ({ sliderItem, width }: IProductSliderDesktopProps) => {
   const [num, setNum] = useState(0);
   const [curentX, setCurentX] = useState(0);
   const [isMouseDown, setIsMouseDown] = useState(false);
@@ -13,7 +14,7 @@ const ProductSliderDesktop = ({ sliderItem }: IProductSliderDesktopProps) => {
   const [MouseOverX, setMouseOverX] = useState(0);
   const widthInfo = {
     widthBlocks: 323,
-    widthRollBlock: 1290,
+    widthRollBlock: width,
   };
 
   const styles = { width: `${widthInfo.widthBlocks * sliderItem.length}px`, transform: `translateX(-${curentX + num}px)` };

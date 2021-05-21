@@ -85,10 +85,15 @@
     display: none !important;
   }
 
-  body.modal-open {
+  body.modal-open-win {
     overflow-y: auto !important;
     padding: 0px !important;
     overflow-x: hidden !important;
+  }
 
+  body.modal-open-mac {
+    overflow-y: auto !important;
+    padding: 0px !important;
+    overflow-x: hidden !important;
   }
 }
