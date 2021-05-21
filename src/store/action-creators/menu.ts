@@ -1,5 +1,5 @@
 import { Dispatch } from 'react';
-import axios from '../../axios/axios-default';
+import axios from '../../utils/axios/axios-default';
 import { MenuAction, MenuActionTypes, ICollection } from '../../types/menu';
 
 const fetchMenuStart = (): MenuAction => ({ type: MenuActionTypes.FETCH_MENU });

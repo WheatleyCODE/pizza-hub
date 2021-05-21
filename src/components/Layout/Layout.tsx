@@ -12,7 +12,7 @@ const Layout = () => {
   useEffect(() => {
     autoLogin();
     autoAddToBasket();
-  }, []);
+  }, [autoLogin, autoAddToBasket]);
 
   return (
     <div className="Layout">

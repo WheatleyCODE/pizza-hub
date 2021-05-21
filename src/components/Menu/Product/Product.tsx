@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, RouteComponentProps } from 'react-router';
+import { Route, useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import { IDefaultProduct, IComboProduct, IProduct } from '../../../types/menu';
@@ -19,7 +19,8 @@ interface IProductProps {
   product: IProduct | IDefaultProduct | IComboProduct,
 }
 
-const Product = ({ product, history }: IProductProps & RouteComponentProps) => {
+const Product = ({ product }: IProductProps) => {
+  const history = useHistory();
   const { addToBasket } = useActions();
   const { basket } = useTypedSelector((state) => state.basket);
 

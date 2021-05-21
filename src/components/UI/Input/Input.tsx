@@ -25,7 +25,7 @@ const Input = (props: IInputProps) => {
 
   return (
     <div className="Input">
-      { isError ? <span className="Input__error">{validError}</span> : null }
+      { isError && <span className="Input__error">{validError}</span> }
       <input className="input" {...defaultParams} />
       <span className="Input__icon"><i className={icon} /></span>
     </div>

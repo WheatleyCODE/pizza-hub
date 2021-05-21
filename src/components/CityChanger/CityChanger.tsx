@@ -32,7 +32,7 @@ const CityChanger = (props: ICityChangerProps) => {
             text={el.name}
           />
         )) }
-        { city.length === 0 ? <Loader /> : null }
+        { city.length === 0 && <Loader /> }
       </div>
     </div>
   );

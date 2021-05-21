@@ -122,17 +122,17 @@ const Basket = () => {
             productData={productData}
           />
         )) }
-        { basket.length === 0 ? <img className="Basket__img" src={BasketImg} alt="null" /> : null }
+        { basket.length === 0 && <img className="Basket__img" src={BasketImg} alt="null" /> }
 
-        { deliveryPrice - amount > 0 && basket.length !== 0 ? (
+        { deliveryPrice - amount > 0 && basket.length !== 0 && (
           <DeliveryMessage amount={amount} deliveryPrice={deliveryPrice} />
-        ) : null }
+        ) }
 
-        { deliveryPrice - amount < 0 && basket.length !== 0 ? (
+        { deliveryPrice - amount < 0 && basket.length !== 0 && (
           <div className="Basket__container__space"><h3>Добавить к заказу?</h3></div>
-        ) : null}
+        ) }
 
-        { basket.length !== 0 ? (
+        { basket.length !== 0 && (
           <>
             { !productsLoading ? (
               <>
@@ -189,7 +189,7 @@ const Basket = () => {
               <Button buttonStyle="bright" onClickHandler={addOrder} text="Оформить заказ" />
             </div>
           </>
-        ) : null }
+        ) }
       </div>
       <CSSTransition
         in={show}

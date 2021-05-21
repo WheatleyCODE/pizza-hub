@@ -1,5 +1,5 @@
 import { Dispatch } from 'react';
-import axios from '../../axios/axios-default';
+import axios from '../../utils/axios/axios-default';
 import { IProductsSlider, PopularAction, PopularActionTypes } from '../../types/popular';
 
 const fetchPopularStart = (): PopularAction => ({ type: PopularActionTypes.FETCH_POPULAR });

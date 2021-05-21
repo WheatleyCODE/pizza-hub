@@ -56,20 +56,20 @@ const MiniBasket = (props: IMiniBasketProps) => {
             />
           )) }
 
-          { basket.length === 0 ? <img className="MiniBasket__img" src={BasketImg} alt="null" /> : null }
+          { basket.length === 0 && <img className="MiniBasket__img" src={BasketImg} alt="null" /> }
 
         </div>
 
-        { deliveryPrice - amount > 0 && basket.length !== 0 ? (
+        { deliveryPrice - amount > 0 && basket.length !== 0 && (
           <DeliveryMessage deliveryPrice={deliveryPrice} amount={amount} />
-        ) : null }
+        ) }
 
-        { basket.length !== 0 ? (
+        { basket.length !== 0 && (
           <div className="MiniBasket__price">
             <div className="price__title">Сумма заказа:</div>
             <div className="price__price">{`${amount} ₽`}</div>
           </div>
-        ) : null }
+        ) }
 
       </div>
       <div className="triangle" />

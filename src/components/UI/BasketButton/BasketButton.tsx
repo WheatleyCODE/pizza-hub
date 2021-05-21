@@ -11,7 +11,7 @@ const BasketButton = () => {
   return (
     <div className="BasketButton">
       <Link to={Routes.BASKET_ROUTE}>
-        { basket.length > 0 ? <div className="BasketButton__length">{amount}</div> : null }
+        { basket.length > 0 && <div className="BasketButton__length">{amount}</div> }
         <i className="fa fa-shopping-basket" aria-hidden="true" />
       </Link>
     </div>

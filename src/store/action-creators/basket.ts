@@ -1,5 +1,5 @@
 import { Dispatch } from 'react';
-import axios from '../../axios/axios-default';
+import axios from '../../utils/axios/axios-default';
 import {
   BasketAction,
   BasketActionTypes,

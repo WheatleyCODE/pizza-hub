@@ -84,16 +84,16 @@ const ProductSliderDesktop = ({ sliderItem, width }: IProductSliderDesktopProps)
       >
         {sliderItem}
       </div>
-      { curentX !== 0 ? (
+      { curentX !== 0 && (
         <button className="ProductSliderDesktop__sub" onClick={() => changeCurrentX(-600)} type="button">
           <i className="fa fa-chevron-left" aria-hidden="true" />
         </button>
-      ) : null }
-      { curentX !== widthInfo.widthRollBlock ? (
+      ) }
+      { curentX !== widthInfo.widthRollBlock && (
         <button className="ProductSliderDesktop__add" onClick={() => changeCurrentX(600)} type="button">
           <i className="fa fa-chevron-right" aria-hidden="true" />
         </button>
-      ) : null }
+      ) }
     </div>
   );
 };

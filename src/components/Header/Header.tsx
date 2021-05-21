@@ -42,11 +42,7 @@ const Header = ({ history }: RouteComponentProps) => {
     setShowMenu((prev) => !prev);
   };
 
-  const toggleCityModal = () => {
-    history.push(Routes.HOME_ROUTE);
-  };
-
-  const toggleLoginModal = () => {
+  const toggleModal = () => {
     history.push(Routes.HOME_ROUTE);
   };
 
@@ -56,7 +52,7 @@ const Header = ({ history }: RouteComponentProps) => {
         <div className="logo">
           <Logo onClickHandler={() => {}} />
           <div className="delivery">
-            { !loading ? (
+            { !loading && (
               <div className="delivery__container">
                 <span className="delivery__firstText">
                   Доставка пицы
@@ -99,7 +95,7 @@ const Header = ({ history }: RouteComponentProps) => {
                   </CSSTransition>
                 </div>
               </div>
-            ) : null }
+            ) }
           </div>
         </div>
         <div className="phone">
@@ -117,13 +113,13 @@ const Header = ({ history }: RouteComponentProps) => {
               ? <Button buttonStyle="default" onClickHandler={logout} text="Выйти" />
               : (
                 <Link to={Routes.LOGIN_ROUTE}>
-                  <Button buttonStyle="default" onClickHandler={toggleLoginModal} text="Войти" />
+                  <Button buttonStyle="default" onClickHandler={toggleModal} text="Войти" />
                 </Link>
               ) }
           </div>
         </div>
       </div>
-      { showMenu ? <MobileMenu onClickHandler={toggleMenu} /> : null }
+      { showMenu && <MobileMenu onClickHandler={toggleMenu} /> }
 
       <Route path={Routes.CITY_ROUTE}>
         {({ match }) => (
@@ -135,12 +131,12 @@ const Header = ({ history }: RouteComponentProps) => {
             unmountOnExit
           >
             <Portal>
-              <Modal onCloseModal={toggleCityModal}>
+              <Modal onCloseModal={toggleModal}>
                 <CityChanger
                   city={city}
                   currentCity={currentCity}
                   setCurrentCity={setCurrentCity}
-                  toggleCityModal={toggleCityModal}
+                  toggleCityModal={toggleModal}
                 />
               </Modal>
             </Portal>
@@ -158,8 +154,8 @@ const Header = ({ history }: RouteComponentProps) => {
             unmountOnExit
           >
             <Portal>
-              <Modal onCloseModal={toggleLoginModal}>
-                <Auth toggleLoginModal={toggleLoginModal} />
+              <Modal onCloseModal={toggleModal}>
+                <Auth toggleLoginModal={toggleModal} />
               </Modal>
             </Portal>
           </CSSTransition>

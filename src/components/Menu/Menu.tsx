@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Route, RouteComponentProps } from 'react-router';
 import { Element } from 'react-scroll';
 import useActions from '../../hooks/useAction';
 import Product from './Product/Product';
@@ -28,17 +27,9 @@ const Menu = () => {
             <div className="colection__product-container">
               { coll.collection.map(
                 (product: IProduct | IDefaultProduct | IComboProduct, i: number) => (
-                  <Route
+                  <Product
                     key={i}
-                    path="/"
-                    render={({ history, match, location }: RouteComponentProps) => (
-                      <Product
-                        match={match}
-                        location={location}
-                        history={history}
-                        product={product}
-                      />
-                    )}
+                    product={product}
                   />
                 ),
               ) }

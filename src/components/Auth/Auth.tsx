@@ -34,7 +34,7 @@ const Auth = ({ toggleLoginModal }: IAuthProps) => {
   return (
     <div className="Auth">
       <h1 className="Auth__logInText">Вход на сайт</h1>
-      { error ? <h4 className="error-message">{error}</h4> : null}
+      { error && <h4 className="error-message">{error}</h4> }
       <Input
         isError={inputLogin.isError}
         validError={inputLogin.validError}

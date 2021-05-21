@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import axios from '../axios/axios-default';
+import axios from '../utils/axios/axios-default';
 
 const useRequest = (url: string) => {
   const [data, setData]: any = useState(null);
@@ -13,7 +13,7 @@ const useRequest = (url: string) => {
         const resData = keys.map((key) => response.data[key]);
         setData(resData[0]);
       })
-      .catch((e) => setError(e))
+      .catch(setError)
       .finally(() => setLoading(false));
   }, []);
 
