@@ -26,21 +26,25 @@ const configuratorReducer = (
 ): IConfiguratorState => {
   switch (action.type) {
     case ConfiguratorActionTypes.SET_CURRENT_PIZZA: {
-      const defaultIngredients = action.payload.defaultIngredients.split(', ').map((text) => ({ title: text, add: true }));
-      const moreIngredients = action.payload.moreIngredients.map((obj) => ({ ...obj, add: false }));
+      const { defaultIngredients, moreIngredients } = action.payload;
+
+      const newDefIng = defaultIngredients.split(', ').map((text) => ({ title: text, add: true }));
+      const newMoreIng = moreIngredients.map((obj) => ({ ...obj, add: false }));
 
       return {
         currentPizza: {
           ...state.currentPizza,
-          defaultIngredients,
-          moreIngredients,
+          defaultIngredients: newDefIng,
+          moreIngredients: newMoreIng,
         },
       };
     }
 
     case ConfiguratorActionTypes.CHANGE_DEFAULT_ING: {
+      const { title } = action.payload;
+
       const newDefIngs = [...state.currentPizza.defaultIngredients];
-      const index = newDefIngs.findIndex((obj) => obj.title === action.payload.title);
+      const index = newDefIngs.findIndex((obj) => obj.title === title);
       newDefIngs.splice(index, 1, action.payload);
 
       return {
@@ -52,8 +56,10 @@ const configuratorReducer = (
     }
 
     case ConfiguratorActionTypes.CHANGE_MORE_ING: {
+      const { title } = action.payload;
+
       const newMoreIng = [...state.currentPizza.moreIngredients];
-      const index = newMoreIng.findIndex((obj) => obj.title === action.payload.title);
+      const index = newMoreIng.findIndex((obj) => obj.title === title);
       newMoreIng.splice(index, 1, action.payload);
 
       return {
@@ -85,10 +91,10 @@ const configuratorReducer = (
     case ConfiguratorActionTypes.CHANGE_CURRENT_PRICE: {
       const { pizzaSize } = state.currentPizza;
       const murkUp: number = replaceMurkUp(pizzaSize);
-      const pesult = state.currentPizza.moreIngredients.reduce((acc, obj) => {
-        if (obj.add) {
+      const pesult = state.currentPizza.moreIngredients.reduce((acc, { add, price }) => {
+        if (add) {
           return (
-            acc + obj.price + murkUp
+            acc + price + murkUp
           );
         }
 

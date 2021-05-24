@@ -7,6 +7,7 @@ import {
   IOrder,
 } from '../../types/basket';
 import { IDefaultProduct } from '../../types/menu';
+import { reduce } from '../../utils/reduce';
 
 export const addToBasket = (product: IBasketItem, writeChange: boolean = true): BasketAction => ({
   type: BasketActionTypes.ADD_TO_BASKET,
@@ -41,58 +42,32 @@ export const deleteFromBasket = (id: number): BasketAction => ({
   payload: id,
 });
 
-const postOrderStart = (): BasketAction => ({
-  type: BasketActionTypes.POST_ORDER,
-});
-
-const postOrderSucces = (text: string): BasketAction => ({
-  type: BasketActionTypes.POST_ORDER_SUCCES,
-  payload: text,
-});
-
-const postOrderError = (): BasketAction => ({
-  type: BasketActionTypes.POST_ORDER_ERROR,
-});
-
 const clearBasket = (): BasketAction => ({
   type: BasketActionTypes.CLEAR_BASKET,
 });
 
 export const postOrder = (order: IOrder) => async (dispatch: Dispatch<BasketAction>) => {
   try {
-    dispatch(postOrderStart());
+    dispatch(reduce(BasketActionTypes.POST_ORDER));
     await axios.post('/orders.json', order);
 
-    dispatch(postOrderSucces('Заказ отправлен!'));
+    dispatch(reduce(BasketActionTypes.POST_ORDER_SUCCES, 'Заказ отправлен!'));
     dispatch(clearBasket());
   } catch (e) {
-    dispatch(postOrderError());
+    dispatch(reduce(BasketActionTypes.POST_ORDER_ERROR));
   }
 };
 
-const fetchProductsStart = (): BasketAction => ({
-  type: BasketActionTypes.FETCH_PRODUCTS,
-});
-
-const fetchProductsSucces = (products: IDefaultProduct[]): BasketAction => ({
-  type: BasketActionTypes.FETCH_PRODUCTS_SUCCES,
-  payload: products,
-});
-
-const fetchProductsError = (): BasketAction => ({
-  type: BasketActionTypes.FETCH_PRODUCTS_ERROR,
-});
-
 export const fetchProducts = () => async (dispatch: Dispatch<BasketAction>) => {
   try {
-    dispatch(fetchProductsStart());
+    dispatch(reduce(BasketActionTypes.FETCH_PRODUCTS));
 
     const response = await axios.get('/products.json');
     const keys = Object.keys(response.data);
     const data: IDefaultProduct[][] = keys.map((key) => response.data[key]);
 
-    dispatch(fetchProductsSucces(data[0]));
+    dispatch(reduce(BasketActionTypes.FETCH_PRODUCTS_SUCCES, data[0]));
   } catch (e) {
-    dispatch(fetchProductsError());
+    dispatch(reduce(BasketActionTypes.FETCH_PRODUCTS_ERROR));
   }
 };

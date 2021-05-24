@@ -20,29 +20,35 @@ const basketReducer = (state: IBasketState = initialState, action: BasketAction)
 
   switch (action.type) {
     case BasketActionTypes.ADD_TO_BASKET: {
+      const { product, writeChange } = action.payload;
+      const { currentPrice, moreInfo, title } = action.payload.product;
+
       if (newBasket.length > 0) {
         const index = newBasket.findIndex((obj) => (
-          JSON.stringify(obj.currentPrice) === JSON.stringify(action.payload.product.currentPrice)
-          && JSON.stringify(obj.moreInfo) === JSON.stringify(action.payload.product.moreInfo)
-          && JSON.stringify(obj.title) === JSON.stringify(action.payload.product.title)
+          JSON.stringify(obj.currentPrice) === JSON.stringify(currentPrice)
+          && JSON.stringify(obj.moreInfo) === JSON.stringify(moreInfo)
+          && JSON.stringify(obj.title) === JSON.stringify(title)
         ));
+
         if (index === -1) {
-          newBasket.push(action.payload.product);
-          if (action.payload.writeChange) {
-            newChanges.push(messages.add(action.payload.product.title));
+          newBasket.push(product);
+          if (writeChange) {
+            newChanges.push(messages.add(title));
           }
         } else {
           newBasket[index].amount += 1;
-          if (action.payload.writeChange) {
+
+          if (writeChange) {
             newChanges.push(messages.add(newBasket[index].title));
           }
         }
       }
 
       if (newBasket.length === 0) {
-        newBasket.push(action.payload.product);
-        if (action.payload.writeChange) {
-          newChanges.push(messages.add(action.payload.product.title));
+        newBasket.push(product);
+
+        if (writeChange) {
+          newChanges.push(messages.add(title));
         }
       }
 
@@ -57,10 +63,12 @@ const basketReducer = (state: IBasketState = initialState, action: BasketAction)
     }
 
     case BasketActionTypes.CHANGE_AMOUNT: {
-      const index = newBasket.findIndex((obj) => obj.id === action.payload.id);
-      newBasket[index].amount += action.payload.num;
+      const { id, num } = action.payload;
 
-      if (action.payload.num > 0) {
+      const index = newBasket.findIndex((obj) => obj.id === id);
+      newBasket[index].amount += num;
+
+      if (num > 0) {
         newChanges.push(messages.add(newBasket[index].title));
       } else {
         newChanges.push(messages.del(newBasket[index].title));
@@ -80,7 +88,7 @@ const basketReducer = (state: IBasketState = initialState, action: BasketAction)
     }
 
     case BasketActionTypes.DELETE_FROM_BASKET: {
-      const index = newBasket.findIndex((obj) => obj.id === action.payload);
+      const index = newBasket.findIndex(({ id }) => id === action.payload);
       newChanges.push(messages.del(newBasket[index].title));
       newBasket.splice(index, 1);
       localStorage.setItem('basket', JSON.stringify(newBasket));

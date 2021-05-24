@@ -8,8 +8,8 @@ const SliderMobile = () => {
   return (
     <div className="SliderMobile">
       <div className="SliderMobile__roll">
-        { sliders.map((obj) => (
-          <img key={obj.text} src={obj.url} alt={obj.text} />
+        { sliders.map(({ text, url }) => (
+          <img key={text} src={url} alt={text} />
         )) }
       </div>
     </div>

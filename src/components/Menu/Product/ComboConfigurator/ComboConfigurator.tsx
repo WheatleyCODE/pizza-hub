@@ -107,7 +107,7 @@ const ComboConfigurator = ({ product }: IComboProductProps) => {
     changePartsIndex(i);
   };
 
-  const noPromoPrice = currentCombo.reduce((total, obj) => total + obj.item.price, 0);
+  const noPromoPrice = currentCombo.reduce((total, { item }) => total + item.price, 0);
 
   return (
     <div className="ComboConfigurator">

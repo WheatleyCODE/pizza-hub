@@ -1,30 +1,19 @@
 import { Dispatch } from 'react';
 import axios from '../../utils/axios/axios-default';
 import { IProductsSlider, PopularAction, PopularActionTypes } from '../../types/popular';
-
-const fetchPopularStart = (): PopularAction => ({ type: PopularActionTypes.FETCH_POPULAR });
-
-const fetchPopularSucces = (data: any): PopularAction => ({
-  type: PopularActionTypes.FETCH_POPULAR_SUCCES,
-  payload: data,
-});
-
-const fetchPopularError = (): PopularAction => ({
-  type: PopularActionTypes.FETCH_POPULAR_ERROR,
-  payload: 'Error Popular',
-});
+import { reduce } from '../../utils/reduce';
 
 const fetchPopular = () => async (dispatch: Dispatch<PopularAction>) => {
   try {
-    dispatch(fetchPopularStart());
+    dispatch(reduce(PopularActionTypes.FETCH_POPULAR));
 
     const response = await axios.get('/popular.json');
     const keys = Object.keys(response.data);
     const data: IProductsSlider[][] = keys.map((key) => response.data[key]);
 
-    dispatch(fetchPopularSucces(data[0]));
+    dispatch(reduce(PopularActionTypes.FETCH_POPULAR_SUCCES, data[0]));
   } catch (e) {
-    dispatch(fetchPopularError());
+    dispatch(reduce(PopularActionTypes.FETCH_POPULAR_ERROR, 'Error Popular'));
   }
 };
 

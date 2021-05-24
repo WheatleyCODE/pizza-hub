@@ -15,45 +15,45 @@ const RadioButtons = ({ buttons, selected, onChange }: IRadioButtonsProps) => {
 
   return (
     <div className="RadioButtons">
-      { buttons.map((obj, index) => {
+      { buttons.map(({ title, style, value }, index) => {
         const inputID = `${groupName}__${index}`;
         let selectedClassName = '';
         if (selectedIndex === index) selectedClassName = 'selected';
-        if (obj.style === 'disable') {
+        if (style === 'disable') {
           return (
-            <div aria-hidden="true" key={obj.title} className={`RadioButtons__group ${selectedClassName} ${obj.style}`}>
+            <div aria-hidden="true" key={title} className={`RadioButtons__group ${selectedClassName} ${style}`}>
               <input
                 className="RadioButtons__group__input"
                 type="radio"
                 name={groupName}
                 id={inputID}
-                checked={selected === obj.title}
+                checked={selected === title}
               />
               <label
                 className="RadioButtons__group__label"
                 htmlFor={inputID}
               >
-                {obj.title}
+                {title}
               </label>
             </div>
           );
         }
 
         return (
-          <div aria-hidden="true" onClick={() => onChange(obj.value)} key={obj.title} className={`RadioButtons__group ${selectedClassName}`}>
+          <div aria-hidden="true" onClick={() => onChange(value)} key={title} className={`RadioButtons__group ${selectedClassName}`}>
             <input
               className="RadioButtons__group__input"
               type="radio"
               name={groupName}
               id={inputID}
-              checked={selected === obj.title}
-              onChange={() => onChange(obj.value)}
+              checked={selected === title}
+              onChange={() => onChange(value)}
             />
             <label
               className="RadioButtons__group__label"
               htmlFor={inputID}
             >
-              {obj.title}
+              {title}
             </label>
           </div>
         );

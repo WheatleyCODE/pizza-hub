@@ -6,30 +6,19 @@ import {
   ICurrentCity,
   ICity,
 } from '../../types/city';
-
-const fetchCityStart = (): CityAction => ({ type: CityActionTypes.FETCH_CITY });
-
-const fetchCitySucces = (data: ICity[]): CityAction => ({
-  type: CityActionTypes.FETCH_CITY_SUCCES,
-  payload: data,
-});
-
-const fetchCityError = (): CityAction => ({
-  type: CityActionTypes.FETCH_CITY_ERROR,
-  payload: 'Error City',
-});
+import { reduce } from '../../utils/reduce';
 
 export const fetchCity = () => async (dispatch: Dispatch<CityAction>) => {
   try {
-    dispatch(fetchCityStart());
+    dispatch(reduce(CityActionTypes.FETCH_CITY));
 
     const response = await axios.get('/cities.json');
     const keys = Object.keys(response.data);
     const data: ICity[][] = keys.map((key) => response.data[key]);
 
-    dispatch(fetchCitySucces(data[0]));
+    dispatch(reduce(CityActionTypes.FETCH_CITY_SUCCES, data[0]));
   } catch (e) {
-    dispatch(fetchCityError());
+    dispatch(reduce(CityActionTypes.FETCH_CITY_ERROR, 'Error City'));
   }
 };
 

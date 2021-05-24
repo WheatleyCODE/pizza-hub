@@ -76,7 +76,7 @@ const Basket = () => {
 
   const checkPromo = () => {
     if (!usePromo) {
-      const index = basketData.findIndex((obj) => inputPromo.default.value === obj.promo);
+      const index = basketData.findIndex(({ promo }) => inputPromo.default.value === promo);
       if (index !== -1) {
         setPromoMult(basketData[index].multiply);
         setUsePromo(true);
