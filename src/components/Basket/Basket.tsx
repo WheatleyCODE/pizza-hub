@@ -34,13 +34,12 @@ const Basket = () => {
   } = useTypedSelector((state) => state.basket);
 
   const { token, userId, email } = useTypedSelector((state) => state.auth);
+  const { usePromo, promoMult } = useTypedSelector((state) => state.basket);
   const { currentCity } = useTypedSelector((state) => state.city);
-  const { postOrder, fetchProducts } = useActions();
+  const { postOrder, fetchProducts, setPromo } = useActions();
 
   const [show, setShow] = useState(false);
   const [amount, setAmount] = useState(0);
-  const [promoMult, setPromoMult] = useState(1);
-  const [usePromo, setUsePromo] = useState(false);
 
   const [data, loading] = useRequest('/promo.json');
   const basketData: IPromo[] = data;
@@ -78,8 +77,7 @@ const Basket = () => {
     if (!usePromo) {
       const index = basketData.findIndex(({ promo }) => inputPromo.default.value === promo);
       if (index !== -1) {
-        setPromoMult(basketData[index].multiply);
-        setUsePromo(true);
+        setPromo(basketData[index].multiply, true);
       }
     }
   };

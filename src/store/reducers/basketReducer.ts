@@ -7,6 +7,8 @@ const initialState: IBasketState = {
   products: [],
   productsLoading: false,
   productsError: null,
+  promoMult: 1,
+  usePromo: false,
 };
 
 const basketReducer = (state: IBasketState = initialState, action: BasketAction): IBasketState => {
@@ -136,6 +138,13 @@ const basketReducer = (state: IBasketState = initialState, action: BasketAction)
       return {
         ...state,
         productsLoading: false,
+      };
+
+    case BasketActionTypes.SET_PROMO:
+      return {
+        ...state,
+        usePromo: action.payload.usePromo,
+        promoMult: action.payload.promoMult,
       };
 
     default:

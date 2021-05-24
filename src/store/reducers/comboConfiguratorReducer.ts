@@ -7,6 +7,8 @@ import {
 const initialState: IComboConfiguratorState = {
   currentCombo: [],
   partsIndex: null,
+  doughThin: undefined,
+  doughTraditional: undefined,
 };
 
 const comboConfiguratorReducer = (
@@ -39,6 +41,13 @@ const comboConfiguratorReducer = (
       return {
         ...state,
         partsIndex: action.payload,
+      };
+
+    case ComboConfiguratorActionTypes.SET_DOUGH:
+      return {
+        ...state,
+        doughThin: action.payload.doughThin,
+        doughTraditional: action.payload.doughTraditional,
       };
 
     default:

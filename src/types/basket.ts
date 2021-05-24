@@ -38,6 +38,8 @@ export interface IBasketState {
   products: IDefaultProduct[],
   productsLoading: boolean,
   productsError: null | string,
+  promoMult: number,
+  usePromo: boolean,
 }
 
 export enum BasketActionTypes {
@@ -51,6 +53,7 @@ export enum BasketActionTypes {
   FETCH_PRODUCTS = 'FETCH_PRODUCTS',
   FETCH_PRODUCTS_SUCCES = 'FETCH_PRODUCTS_SUCCES',
   FETCH_PRODUCTS_ERROR = 'FETCH_PRODUCTS_ERROR',
+  SET_PROMO = 'SET_PROMO',
 }
 
 interface IFetchProductsAction {
@@ -104,6 +107,14 @@ interface IClearBasket {
   type: BasketActionTypes.CLEAR_BASKET,
 }
 
+interface ISetPromoBasket {
+  type: BasketActionTypes.SET_PROMO,
+  payload: {
+    promoMult: number,
+    usePromo: boolean,
+  }
+}
+
 export type BasketAction =
   IAddToBasketAction
   | IChangeAmountAction
@@ -114,4 +125,5 @@ export type BasketAction =
   | IClearBasket
   | IFetchProductsAction
   | IFetchProductsErrorAction
-  | IFetchProductsSuccesAction;
+  | IFetchProductsSuccesAction
+  | ISetPromoBasket;

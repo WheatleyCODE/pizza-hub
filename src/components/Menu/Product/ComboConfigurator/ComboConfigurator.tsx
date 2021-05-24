@@ -28,10 +28,14 @@ const ComboConfigurator = ({ product }: IComboProductProps) => {
     changePartsIndex,
     changeCombo,
     addToBasket,
+    setDough,
   } = useActions();
-  const { currentCombo, partsIndex } = useTypedSelector((state) => state.comboConfigurator);
-  const [doughThin, setDoughThin] = useState<undefined | IComboPizza[]>(undefined);
-  const [doughTraditional, setDoughTraditional] = useState<undefined | IComboPizza[]>(undefined);
+  const {
+    currentCombo,
+    partsIndex,
+    doughThin,
+    doughTraditional,
+  } = useTypedSelector((state) => state.comboConfigurator);
   const [dou, setDou] = useState(PizzaDataKeyNamesDough.DOUGH_TRADITIONAL);
 
   const {
@@ -95,8 +99,7 @@ const ComboConfigurator = ({ product }: IComboProductProps) => {
           isPizza: true,
           item: el.doughTraditional[0],
         });
-        setDoughThin(el.doughThin);
-        setDoughTraditional(el.doughTraditional);
+        setDough(el.doughThin, el.doughTraditional);
       }
     });
     setCurrentCombo(currentComb);

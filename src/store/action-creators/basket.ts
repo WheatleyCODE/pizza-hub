@@ -71,3 +71,11 @@ export const fetchProducts = () => async (dispatch: Dispatch<BasketAction>) => {
     dispatch(reduce(BasketActionTypes.FETCH_PRODUCTS_ERROR));
   }
 };
+
+export const setPromo = (promoMult: number, usePromo: boolean): BasketAction => ({
+  type: BasketActionTypes.SET_PROMO,
+  payload: {
+    promoMult,
+    usePromo,
+  },
+});

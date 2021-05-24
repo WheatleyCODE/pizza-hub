@@ -15,3 +15,14 @@ export const changePartsIndex = (idx: number): ComboConfiguratorAction => ({
   type: ComboConfiguratorActionTypes.CHANGE_PARTS_INDEX,
   payload: idx,
 });
+
+export const setDough = (
+  doughThin: IComboPizza[],
+  doughTraditional: IComboPizza[],
+): ComboConfiguratorAction => ({
+  type: ComboConfiguratorActionTypes.SET_DOUGH,
+  payload: {
+    doughThin,
+    doughTraditional,
+  },
+});
