@@ -1,4 +1,4 @@
-import { PizzaDataKeyNamesPizzaSize, PizzaDataKeyNamesDough } from '../types/menu';
+import { PizzaDataKeyNamesPizzaSize, PizzaDataKeyNamesDough } from '@t/menu';
 
 export const replaceMurkUp = (pizzaSize: PizzaDataKeyNamesPizzaSize): number => {
   switch (pizzaSize) {

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import useActions from '../../../../hooks/useAction';
-import useTypedSelector from '../../../../hooks/useTypedSelector';
-import { ICurrentCombo } from '../../../../types/comboConfigurator';
+import { useActions, useTypedSelector } from '@hooks';
+import { ICurrentCombo } from '@t/comboConfigurator';
 import {
   IComboPizza,
   IComboProduct,
@@ -10,12 +9,12 @@ import {
   IProduct,
   ITwoDough,
   PizzaDataKeyNamesDough,
-} from '../../../../types/menu';
-import DefaultItem from './DefaultItem/DefaultItem';
-import ProductItem from './ProductItem/ProductItem';
-import PizzaItem from './PizzaItem/PizzaItem';
-import ModalBuyButton from '../ModalBuyButton/ModalBuyButton';
-import Routes from '../../../../types/routes';
+} from '@t/menu';
+import Routes from '@t/routes';
+import DefaultItem from './DefaultItem';
+import ProductItem from './ProductItem';
+import PizzaItem from './PizzaItem';
+import ModalBuyButton from '../ModalBuyButton';
 import './ComboConfigurator.scss';
 
 interface IComboProductProps {

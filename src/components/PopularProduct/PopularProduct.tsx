@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
-import useActions from '../../hooks/useAction';
-import useTypedSelector from '../../hooks/useTypedSelector';
-import Loader from '../UI/Loader/Loader';
-import ProductSliderDesktop from '../UI/ProductSlider/ProductSliderDesktop/ProductSliderDesktop';
-import ProductSliderMobile from '../UI/ProductSlider/ProductSliderMobile/ProductSliderMobile';
-import SliderItem from '../UI/ProductSlider/SliderItem/SliderItem';
+import Loader from '@ui/Loader';
+import { ProductSliderDesktop, ProductSliderMobile, SliderItem } from '@ui/ProductSlider';
+import { useActions, useTypedSelector } from '@hooks';
 import './PopularProduct.scss';
 
 const PopularProduct = () => {

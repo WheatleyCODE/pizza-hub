@@ -1,5 +1,5 @@
 import React from 'react';
-import useTypedSelector from '../../../../../hooks/useTypedSelector';
+import { useTypedSelector } from '@hooks';
 import './ProductItem.scss';
 
 interface IProductItemProps {

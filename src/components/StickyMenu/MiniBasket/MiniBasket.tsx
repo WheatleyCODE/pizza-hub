@@ -1,8 +1,8 @@
 import React from 'react';
-import useTypedSelector from '../../../hooks/useTypedSelector';
-import BasketItem from './BasketItem/BasketItem';
-import BasketImg from '../../../img/basket.png';
-import DeliveryMessage from './DeliveryMessage/DeliveryMessage';
+import { useTypedSelector } from '@hooks';
+import BasketImg from '@images/basket.png';
+import BasketItem from './BasketItem';
+import DeliveryMessage from './DeliveryMessage';
 import './MiniBasket.scss';
 
 interface IMiniBasketProps {

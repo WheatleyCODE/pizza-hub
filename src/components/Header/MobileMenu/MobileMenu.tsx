@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import MenuItem from './MenuItem/MenuItem';
-import Logo from '../Logo/Logo';
-import menuItems from '../../../utils/menuItems';
-import useTypedSelector from '../../../hooks/useTypedSelector';
-import Routes from '../../../types/routes';
+import { useTypedSelector } from '@hooks';
+import { menuItems } from '@utils';
+import Routes from '@t/routes';
+import MenuItem from './MenuItem';
+import Logo from '../Logo';
 import './MobileMenu.scss';
 
 interface IMobileMenuProps {

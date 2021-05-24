@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import pizzaLogo from '../../../img/pizza.png';
-import Routes from '../../../types/routes';
+import pizzaLogo from '@images/pizza.png';
+import Routes from '@t/routes';
 import './Logo.scss';
 
 interface ILogoProps {

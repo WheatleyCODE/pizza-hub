@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
-import useActions from '../../hooks/useAction';
-import useTypedSelector from '../../hooks/useTypedSelector';
-import Loader from '../UI/Loader/Loader';
-import SliderDesktop from '../UI/Slider/SliderDesktop/SliderDesktop';
-import SliderMobile from '../UI/Slider/SliderMobile/SliderMobile';
+import Loader from '@ui/Loader';
+import { SliderDesktop, SliderMobile } from '@ui/Slider';
+import { useTypedSelector, useActions } from '@hooks';
 import './ImgSlider.scss';
 
 const ImgSlider = () => {

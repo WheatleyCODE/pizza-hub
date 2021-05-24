@@ -16,14 +16,16 @@ module.exports = function override(config) {
      * JavaScript usage
      */
     '@t': 'src/types',
-    '@constants': 'src/constants',
+    // '@constants': 'src/constants',
     '@utils': 'src/utils',
-    '@helpers': 'src/helpers',
-    '@selectors': 'src/redux/selectors',
+    // '@helpers': 'src/helpers',
+    // '@selectors': 'src/redux/selectors',
     '@actions': 'src/redux/actions',
     '@hooks': 'src/hooks',
-    '@pages': 'src/pages',
+    // '@pages': 'src/pages',
     '@components': 'src/components',
+    '@ui': 'src/components/UI',
+    '@hoc': 'src/hoc',
     '@images': 'src/images',
     '@styles': 'src/styles',
   })(config);

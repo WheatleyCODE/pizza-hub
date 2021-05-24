@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 import * as Scroll from 'react-scroll';
 import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
-import stickyMenuItems from '../../utils/stickyMenuItems';
-import Button from '../UI/Button/Button';
-import logoImg from '../../img/pizza.png';
-import useDebounce from '../../hooks/useDebounse';
-import MiniBasket from './MiniBasket/MiniBasket';
-import Routes from '../../types/routes';
-import useTypedSelector from '../../hooks/useTypedSelector';
-import Message from './Message/Message';
+import Button from '@ui/Button';
+import logoImg from '@images/pizza.png';
+import { useTypedSelector, useDebounce } from '@hooks';
+import { stickyMenuItems } from '@utils';
+import Routes from '@t/routes';
+import MiniBasket from './MiniBasket';
+import Message from './Message';
 import './StickyMenu.scss';
 
 const StickyMenu = () => {

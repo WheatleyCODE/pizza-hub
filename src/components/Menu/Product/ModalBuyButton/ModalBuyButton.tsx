@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Routes from '../../../../types/routes';
+import Routes from '@t/routes';
 import './ModalBuyButton.scss';
 
 interface IModalBuyButtonProps {

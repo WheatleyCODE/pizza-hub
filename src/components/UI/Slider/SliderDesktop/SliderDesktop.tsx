@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import useActions from '../../../../hooks/useAction';
-import useTypedSelector from '../../../../hooks/useTypedSelector';
+import { useActions, useTypedSelector } from '@hooks';
 import './SliderDesktop.scss';
 
 const SliderDesktop = () => {

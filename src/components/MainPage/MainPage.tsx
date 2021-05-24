@@ -1,10 +1,10 @@
 import React from 'react';
-import Footer from '../Footer/Footer';
-import ImgSlider from '../ImgSlider/ImgSlider';
-import Menu from '../Menu/Menu';
-import PopularProduct from '../PopularProduct/PopularProduct';
-import PromoBlock from '../PromoBlock/PromoBlock';
-import StickyMenu from '../StickyMenu/StickyMenu';
+import Footer from '@components/Footer';
+import ImgSlider from '@components/ImgSlider';
+import PopularProduct from '@components/PopularProduct';
+import PromoBlock from '@components/PromoBlock';
+import StickyMenu from '@components/StickyMenu';
+import Menu from '@components/Menu';
 
 const MainPage = () => (
   <>

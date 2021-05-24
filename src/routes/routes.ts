@@ -1,6 +1,6 @@
-import Basket from '../components/Basket/Basket';
-import MainPage from '../components/MainPage/MainPage';
-import Routes, { IRoute } from '../types/routes';
+import Routes, { IRoute } from '@t/routes';
+import Basket from '@components/Basket';
+import MainPage from '@components/MainPage';
 
 const publickRoutes: IRoute[] = [
   {

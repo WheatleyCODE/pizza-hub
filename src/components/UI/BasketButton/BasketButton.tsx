@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useTypedSelector from '../../../hooks/useTypedSelector';
-import Routes from '../../../types/routes';
+import { useTypedSelector } from '@hooks';
+import Routes from '@t/routes';
 import './BasketButton.scss';
 
 const BasketButton = () => {

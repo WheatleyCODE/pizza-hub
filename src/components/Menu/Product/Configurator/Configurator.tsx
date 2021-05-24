@@ -1,18 +1,17 @@
 import React, { useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
-import useActions from '../../../../hooks/useAction';
-import useTypedSelector from '../../../../hooks/useTypedSelector';
+import RadioButtons from '@ui/Radio/RadioButtons';
+import { useActions, useTypedSelector } from '@hooks';
 import {
   IProduct,
   PizzaDataKeyNames,
   PizzaDataKeyNamesDough,
   PizzaDataKeyNamesPizzaSize,
-} from '../../../../types/menu';
-import RadioButtons from '../../../UI/Radio/RadioButtons';
-import AddIngredient from './AddIngredient/AddIngredient';
-import RemoveIngredients from './RemoveIngredients/RemoveIngredients';
-import Routes from '../../../../types/routes';
-import ModalBuyButton from '../ModalBuyButton/ModalBuyButton';
+} from '@t/menu';
+import Routes from '@t/routes';
+import AddIngredient from './AddIngredient';
+import RemoveIngredients from './RemoveIngredients';
+import ModalBuyButton from '../ModalBuyButton';
 import './Configurator.scss';
 
 interface IProductProps {

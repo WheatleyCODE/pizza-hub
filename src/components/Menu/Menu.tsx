@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import { Element } from 'react-scroll';
-import useActions from '../../hooks/useAction';
-import Product from './Product/Product';
-import useTypedSelector from '../../hooks/useTypedSelector';
-import Loader from '../UI/Loader/Loader';
-import { IProduct, IDefaultProduct, IComboProduct } from '../../types/menu';
-import BasketButton from '../UI/BasketButton/BasketButton';
+import BasketButton from '@ui/BasketButton';
+import Loader from '@ui/Loader';
+import { useActions, useTypedSelector } from '@hooks';
+import { IProduct, IDefaultProduct, IComboProduct } from '@t/menu';
+import Product from './Product';
 import './Menu.scss';
 
 const Menu = () => {

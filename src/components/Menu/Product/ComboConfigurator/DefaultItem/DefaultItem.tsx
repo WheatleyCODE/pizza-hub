@@ -1,5 +1,5 @@
 import React from 'react';
-import { IDefaultProduct } from '../../../../../types/menu';
+import { IDefaultProduct } from '@t/menu';
 import './DefaultItem.scss';
 
 interface IDefaultItemProps {

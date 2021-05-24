@@ -1,14 +1,14 @@
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchProducts, postOrder } from '../store/action-creators/basket';
-import fetchPopular from '../store/action-creators/popular';
-import * as comboConfiguratorActions from '../store/action-creators/comboConfigurator';
-import * as basketActions from '../store/action-creators/basket';
-import fetchMenu from '../store/action-creators/menu';
-import * as sliderActions from '../store/action-creators/slider';
-import * as configActions from '../store/action-creators/configurator';
-import * as cityActions from '../store/action-creators/city';
-import * as authActions from '../store/action-creators/auth';
+import { fetchProducts, postOrder } from '../redux/actions/basket';
+import fetchPopular from '../redux/actions/popular';
+import * as comboConfiguratorActions from '../redux/actions/comboConfigurator';
+import * as basketActions from '../redux/actions/basket';
+import fetchMenu from '../redux/actions/menu';
+import * as sliderActions from '../redux/actions/slider';
+import * as configActions from '../redux/actions/configurator';
+import * as cityActions from '../redux/actions/city';
+import * as authActions from '../redux/actions/auth';
 
 const useActions = () => {
   const dispatch = useDispatch();

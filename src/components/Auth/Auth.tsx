@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
-import useActions from '../../hooks/useAction';
-import useInput from '../../hooks/useInput';
-import useTypedSelector from '../../hooks/useTypedSelector';
-import Button from '../UI/Button/Button';
-import Input from '../UI/Input/Input';
+import { useActions, useInput, useTypedSelector } from '@hooks';
+import Button from '@ui/Button';
+import Input from '@ui/Input';
 import './Auth.scss';
 
 interface IAuthProps {

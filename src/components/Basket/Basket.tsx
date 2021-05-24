@@ -1,23 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
-import useTypedSelector from '../../hooks/useTypedSelector';
-import BasketItem from '../StickyMenu/MiniBasket/BasketItem/BasketItem';
-import BasketImg from '../../img/basket.png';
-import Button from '../UI/Button/Button';
-import Portal from '../../hoc/Portal/Portal';
-import Modal from '../../hoc/Modal/Modal';
-import Auth from '../Auth/Auth';
-import useActions from '../../hooks/useAction';
-import Routes from '../../types/routes';
-import ProductSliderDesktop from '../UI/ProductSlider/ProductSliderDesktop/ProductSliderDesktop';
-import DeliveryMessage from '../StickyMenu/MiniBasket/DeliveryMessage/DeliveryMessage';
-import Input from '../UI/Input/Input';
-import useInput from '../../hooks/useInput';
-import useRequest from '../../hooks/useRequest';
-import Loader from '../UI/Loader/Loader';
-import ProductSliderMobile from '../UI/ProductSlider/ProductSliderMobile/ProductSliderMobile';
-import SliderItem from '../UI/ProductSlider/SliderItem/SliderItem';
+import Button from '@ui/Button';
+import Input from '@ui/Input';
+import Loader from '@ui/Loader';
+import { ProductSliderDesktop, ProductSliderMobile, SliderItem } from '@ui/ProductSlider';
+import { Modal, Portal } from '@hoc';
+import BasketImg from '@images/basket.png';
+import useTypedSelector from '@hooks/useTypedSelector';
+import { useActions, useInput, useRequest } from '@hooks';
+import Routes from '@t/routes';
+import Auth from '@components/Auth';
+import BasketItem from '@components/StickyMenu/MiniBasket/BasketItem';
+import DeliveryMessage from '@components/StickyMenu/MiniBasket/DeliveryMessage';
 import './Basket.scss';
 
 interface IPromo {

@@ -1,5 +1,5 @@
 import React from 'react';
-import useActions from '../../../hooks/useAction';
+import { useActions } from '@hooks';
 import './Counter.scss';
 
 interface ICounterProps {

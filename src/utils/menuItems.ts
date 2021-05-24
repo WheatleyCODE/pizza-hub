@@ -1,4 +1,4 @@
-import Routes from '../types/routes';
+import Routes from '@t/routes';
 
 const menuItems = [
   {

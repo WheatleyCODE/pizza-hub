@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router';
-import useActions from '../../hooks/useAction';
+import { useActions } from '@hooks';
+import Routes from '@t/routes';
+import Header from '@components/Header';
 import publickRoutes from '../../routes/routes';
-import Routes from '../../types/routes';
-import Header from '../Header/Header';
 import './Layout.scss';
 
 const Layout = () => {

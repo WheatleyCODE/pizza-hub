@@ -2,17 +2,15 @@ import React from 'react';
 import { Route, useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import { IDefaultProduct, IComboProduct, IProduct } from '../../../types/menu';
-import Routes from '../../../types/routes';
-import Modal from '../../../hoc/Modal/Modal';
-import Portal from '../../../hoc/Portal/Portal';
-import Button from '../../UI/Button/Button';
-import Configurator from './Configurator/Configurator';
-import DefaultProduct from './DefaultProduct/DefaultProduct';
-import ComboConfigurator from './ComboConfigurator/ComboConfigurator';
-import useActions from '../../../hooks/useAction';
-import useTypedSelector from '../../../hooks/useTypedSelector';
-import Counter from '../../UI/Counter/Counter';
+import Button from '@ui/Button';
+import Counter from '@ui/Counter';
+import { Portal, Modal } from '@hoc';
+import { useTypedSelector, useActions } from '@hooks';
+import { IDefaultProduct, IComboProduct, IProduct } from '@t/menu';
+import Routes from '@t/routes';
+import Configurator from './Configurator';
+import DefaultProduct from './DefaultProduct';
+import ComboConfigurator from './ComboConfigurator';
 import './Product.scss';
 
 interface IProductProps {

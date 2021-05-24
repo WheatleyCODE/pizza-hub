@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { IComboPizza, PizzaDataKeyNamesDough } from '../../../../../types/menu';
-import { replaceDoughText, replaceSize } from '../../../../../utils/replacement';
-import RadioButtons from '../../../../UI/Radio/RadioButtons';
+import RadioButtons from '@ui/Radio/RadioButtons';
+import { replaceDoughText, replaceSize } from '@utils';
+import { IComboPizza, PizzaDataKeyNamesDough } from '@t/menu';
 import './PizzaItem.scss';
 
 interface IPizzaItemProps {

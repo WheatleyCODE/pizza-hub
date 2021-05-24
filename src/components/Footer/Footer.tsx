@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useRequest from '../../hooks/useRequest';
-import SocialButton from './SocialButton/SocialButton';
-import Loader from '../UI/Loader/Loader';
-import { IFooterData, ILinks } from '../../types/footer';
+import Loader from '@ui/Loader';
+import { useRequest } from '@hooks';
+import { IFooterData, ILinks } from '@t/footer';
+import SocialButton from './SocialButton';
 import './Footer.scss';
 
 const Footer = () => {

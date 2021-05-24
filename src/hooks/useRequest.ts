@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import axios from '../utils/axios/axios-default';
+import { axios } from '@utils';
 
 const useRequest = (url: string) => {
   const [data, setData]: any = useState(null);

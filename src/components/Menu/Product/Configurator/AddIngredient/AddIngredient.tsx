@@ -1,5 +1,5 @@
 import React from 'react';
-import { IMoreIng } from '../../../../../types/menu';
+import { IMoreIng } from '@t/menu';
 import './AddIngredient.scss';
 
 interface IAddIngredientProps {

@@ -1,8 +1,8 @@
 import React from 'react';
-import useActions from '../../../../hooks/useAction';
-import { IDefaultProduct } from '../../../../types/menu';
-import Routes from '../../../../types/routes';
-import ModalBuyButton from '../ModalBuyButton/ModalBuyButton';
+import { useActions } from '@hooks';
+import { IDefaultProduct } from '@t/menu';
+import Routes from '@t/routes';
+import ModalBuyButton from '../ModalBuyButton';
 import './DefaultProduct.scss';
 
 interface IDefaultProductProps {

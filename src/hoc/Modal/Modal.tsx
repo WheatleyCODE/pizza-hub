@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import BackDrop from '../../components/UI/BackDrop/BackDrop';
+import BackDrop from '@ui/BackDrop';
 import './Modal.scss';
 
 interface IModalProps {

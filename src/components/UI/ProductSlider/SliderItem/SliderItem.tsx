@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import Modal from '../../../../hoc/Modal/Modal';
-import Portal from '../../../../hoc/Portal/Portal';
-import useActions from '../../../../hooks/useAction';
-import { IDefaultProduct } from '../../../../types/menu';
-import Routes from '../../../../types/routes';
-import DefaultProduct from '../../../Menu/Product/DefaultProduct/DefaultProduct';
-import Button from '../../Button/Button';
+import Button from '@ui/Button';
+import { Portal, Modal } from '@hoc';
+import { useActions } from '@hooks';
+import { IDefaultProduct } from '@t/menu';
+import Routes from '@t/routes';
+import DefaultProduct from '@components/Menu/Product/DefaultProduct';
 import './SliderItem.scss';
 
 interface ISliderItem {

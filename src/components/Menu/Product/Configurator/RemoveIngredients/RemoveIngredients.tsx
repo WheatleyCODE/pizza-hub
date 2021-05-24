@@ -1,5 +1,5 @@
 import React from 'react';
-import { IDefaultIng } from '../../../../../types/menu';
+import { IDefaultIng } from '@t/menu';
 import './RemoveIngredients.scss';
 
 interface IRemoveIngredients {

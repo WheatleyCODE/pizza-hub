@@ -1,7 +1,7 @@
 import React from 'react';
-import { ICity, CityAction, ICurrentCity } from '../../types/city';
-import CityItem from './CityItem/CityItem';
-import Loader from '../UI/Loader/Loader';
+import Loader from '@ui/Loader';
+import { ICity, CityAction, ICurrentCity } from '@t/city';
+import CityItem from './CityItem';
 import './CityChanger.scss';
 
 interface ICityChangerProps {

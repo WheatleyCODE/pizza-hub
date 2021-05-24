@@ -1,10 +1,9 @@
 import React from 'react';
-import { IBasketItem } from '../../../../types/basket';
-import useActions from '../../../../hooks/useAction';
-import { replaceDoughText, replacePizzaSizeText } from '../../../../utils/replacement';
-import Counter from '../../../UI/Counter/Counter';
+import Counter from '@ui/Counter';
+import { useActions } from '@hooks';
+import { replaceDoughText, replacePizzaSizeText, firstLetterUp } from '@utils';
+import { IBasketItem } from '@t/basket';
 import './BasketItem.scss';
-import firstLetterUp from '../../../../utils/firstLetterUp';
 
 interface IBasketItemProps {
   productData: IBasketItem,
