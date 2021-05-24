@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@t": ["types"],
+      "@constants": ["constants"],
+      "@utils": ["utils"],
+      "@helpers": ["helpers"],
+      "@selectors": ["redux/selectors"],
+      "@actions": ["redux/actions"],
+      "@hooks": ["hooks"],
+      "@pages": ["pages"],
+      "@components": ["components"],
+      "@images": ["images"],
+
+      "@t/*": ["types/*"],
+      "@constants/*": ["constants/*"],
+      "@utils/*": ["utils/*"],
+      "@helpers/*": ["helpers/*"],
+      "@selectors/*": ["redux/selectors/*"],
+      "@actions/*": ["redux/actions/*"],
+      "@hooks/*": ["hooks/*"],
+      "@pages/*": ["pages/*"],
+      "@components/*": ["components/*"],
+      "@images/*": ["images/*"],
+    }
+  }
+}
