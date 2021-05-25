@@ -1,14 +1,14 @@
 export interface IProductsSlider {
-  title: string,
-  url: string,
-  price: string,
-  route: string,
+  title: string;
+  url: string;
+  price: string;
+  route: string;
 }
 
 export interface IPopularState {
-  popular: IProductsSlider[],
-  loading: boolean,
-  error: null | string,
+  popular: IProductsSlider[];
+  loading: boolean;
+  error: null | string;
 }
 
 export enum PopularActionTypes {
@@ -18,20 +18,17 @@ export enum PopularActionTypes {
 }
 
 interface IPopularAction {
-  type: PopularActionTypes.FETCH_POPULAR,
+  type: PopularActionTypes.FETCH_POPULAR;
 }
 
 interface IFetchPopularSuccesAction {
-  type: PopularActionTypes.FETCH_POPULAR_SUCCES,
-  payload: IProductsSlider[],
+  type: PopularActionTypes.FETCH_POPULAR_SUCCES;
+  payload: IProductsSlider[];
 }
 
 interface IFetchPopularErrorAction {
-  type: PopularActionTypes.FETCH_POPULAR_ERROR,
-  payload: string,
+  type: PopularActionTypes.FETCH_POPULAR_ERROR;
+  payload: string;
 }
 
-export type PopularAction =
-  IPopularAction
-  | IFetchPopularSuccesAction
-  | IFetchPopularErrorAction;
+export type PopularAction = IPopularAction | IFetchPopularSuccesAction | IFetchPopularErrorAction;

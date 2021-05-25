@@ -3,11 +3,11 @@ import BackDrop from '@ui/BackDrop';
 import './Modal.scss';
 
 interface IModalProps {
-  children: React.ReactNode,
-  onCloseModal: () => void,
+  children: React.ReactNode;
+  onCloseModal: () => void;
 }
 
-const Modal = ({ children, onCloseModal }: IModalProps) => {
+const Modal: React.FC<IModalProps> = ({ children, onCloseModal }) => {
   useEffect(() => {
     const { platform } = window.navigator;
     if (platform === 'Win32') {

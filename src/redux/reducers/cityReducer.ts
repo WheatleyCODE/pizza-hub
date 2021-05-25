@@ -36,8 +36,7 @@ const cityReducer = (state: ICityState = initialState, action: CityAction): ICit
     case CityActionTypes.SET_CURRENT_CITY:
       return {
         ...state,
-        currentCity:
-        action.payload,
+        currentCity: action.payload,
       };
 
     default:

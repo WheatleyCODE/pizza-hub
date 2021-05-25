@@ -6,12 +6,12 @@ import ModalBuyButton from '../ModalBuyButton';
 import './DefaultProduct.scss';
 
 interface IDefaultProductProps {
-  product: IDefaultProduct,
-  route?: Routes,
-  closeModal?: () => void,
+  product: IDefaultProduct;
+  route?: Routes;
+  closeModal?: () => void;
 }
 
-const DefaultProduct = ({ product, route, closeModal }: IDefaultProductProps) => {
+const DefaultProduct: React.FC<IDefaultProductProps> = ({ product, route, closeModal }) => {
   const { addToBasket } = useActions();
 
   let router = Routes.HOME_ROUTE;

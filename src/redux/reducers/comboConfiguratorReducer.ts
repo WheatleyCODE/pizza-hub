@@ -13,7 +13,7 @@ const initialState: IComboConfiguratorState = {
 
 const comboConfiguratorReducer = (
   state: IComboConfiguratorState = initialState,
-  action: ComboConfiguratorAction,
+  action: ComboConfiguratorAction
 ): IComboConfiguratorState => {
   switch (action.type) {
     case ComboConfiguratorActionTypes.SET_CURRENT_COMBO:

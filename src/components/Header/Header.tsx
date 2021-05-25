@@ -15,7 +15,7 @@ import Logo from './Logo';
 import Stars from './Stars';
 import './Header.scss';
 
-const Header = ({ history }: RouteComponentProps) => {
+const Header: React.FC<RouteComponentProps> = ({ history }) => {
   const [showMenu, setShowMenu] = useState(false);
   const [showCityInfo, setShowCityInfo] = useState(false);
   const { token } = useTypedSelector((state) => state.auth);
@@ -23,11 +23,7 @@ const Header = ({ history }: RouteComponentProps) => {
 
   const closeCityInfo = useDebounce(() => setShowCityInfo(false), 300);
 
-  const {
-    loading,
-    city,
-    currentCity,
-  } = useTypedSelector((state) => state.city);
+  const { loading, city, currentCity } = useTypedSelector((state) => state.city);
 
   const { fetchCity, setCurrentCity } = useActions();
 
@@ -49,11 +45,10 @@ const Header = ({ history }: RouteComponentProps) => {
         <div className="logo">
           <Logo />
           <div className="delivery">
-            { !loading && (
+            {!loading && (
               <div className="delivery__container">
                 <span className="delivery__firstText">
-                  Доставка пицы
-                  {' '}
+                  Доставка пицы{' '}
                   <Link to={Routes.CITY_ROUTE}>
                     <span className="city">{currentCity.name}</span>
                   </Link>
@@ -92,7 +87,7 @@ const Header = ({ history }: RouteComponentProps) => {
                   </CSSTransition>
                 </div>
               </div>
-            ) }
+            )}
           </div>
         </div>
         <div className="phone">
@@ -106,17 +101,17 @@ const Header = ({ history }: RouteComponentProps) => {
             <i className="fa fa-bars" aria-hidden="true" />
           </button>
           <div className="login-button">
-            { token
-              ? <Button buttonStyle="default" onClickHandler={logout} text="Выйти" />
-              : (
-                <Link to={Routes.LOGIN_ROUTE}>
-                  <Button buttonStyle="default" onClickHandler={toggleModal} text="Войти" />
-                </Link>
-              ) }
+            {token ? (
+              <Button buttonStyle="default" onClickHandler={logout} text="Выйти" />
+            ) : (
+              <Link to={Routes.LOGIN_ROUTE}>
+                <Button buttonStyle="default" onClickHandler={toggleModal} text="Войти" />
+              </Link>
+            )}
           </div>
         </div>
       </div>
-      { showMenu && <MobileMenu onClickHandler={toggleMenu} /> }
+      {showMenu && <MobileMenu onClickHandler={toggleMenu} />}
 
       <Route path={Routes.CITY_ROUTE}>
         {({ match }) => (

@@ -15,26 +15,16 @@ import ModalBuyButton from '../ModalBuyButton';
 import './Configurator.scss';
 
 interface IProductProps {
-  product: IProduct,
+  product: IProduct;
 }
 
-const Configurator = ({ product }: IProductProps) => {
-  const {
-    description,
-    moreIngredients,
-    pizzaDate,
-    title,
-  } = product;
+const Configurator: React.FC<IProductProps> = ({ product }) => {
+  const { description, moreIngredients, pizzaDate, title } = product;
 
   const { currentPizza } = useTypedSelector((state) => state.configurator);
   const { dough, pizzaSize } = currentPizza;
 
-  const {
-    price,
-    url,
-    wight,
-    size,
-  } = pizzaDate[dough][pizzaSize];
+  const { price, url, wight, size } = pizzaDate[dough][pizzaSize];
 
   const {
     setCurrentPizza,
@@ -80,9 +70,11 @@ const Configurator = ({ product }: IProductProps) => {
     changeCurrentPrice(price);
 
     const ingredient = currentPizza.moreIngredients.find((el) => el.title === 'Сырный бортик');
-    if (ingredient?.add
-      && pizzaSize !== PizzaDataKeyNamesPizzaSize.MEDIUM
-      && pizzaSize !== PizzaDataKeyNamesPizzaSize.LARGE) {
+    if (
+      ingredient?.add &&
+      pizzaSize !== PizzaDataKeyNamesPizzaSize.MEDIUM &&
+      pizzaSize !== PizzaDataKeyNamesPizzaSize.LARGE
+    ) {
       priceRecalculation(ingredient, price);
     }
   }, [pizzaSize]);
@@ -102,15 +94,19 @@ const Configurator = ({ product }: IProductProps) => {
   };
 
   let disableStyle = '';
-  if (pizzaSize !== PizzaDataKeyNamesPizzaSize.MEDIUM
-      && pizzaSize !== PizzaDataKeyNamesPizzaSize.LARGE) {
+  if (
+    pizzaSize !== PizzaDataKeyNamesPizzaSize.MEDIUM &&
+    pizzaSize !== PizzaDataKeyNamesPizzaSize.LARGE
+  ) {
     disableStyle = 'disable';
   }
 
   let disableElem = '';
-  if ((pizzaSize !== PizzaDataKeyNamesPizzaSize.MEDIUM
-      && pizzaSize !== PizzaDataKeyNamesPizzaSize.LARGE)
-      || dough === PizzaDataKeyNamesDough.DOUGH_THIN) {
+  if (
+    (pizzaSize !== PizzaDataKeyNamesPizzaSize.MEDIUM &&
+      pizzaSize !== PizzaDataKeyNamesPizzaSize.LARGE) ||
+    dough === PizzaDataKeyNamesDough.DOUGH_THIN
+  ) {
     disableElem = 'Сырный бортик';
   }
 
@@ -145,14 +141,12 @@ const Configurator = ({ product }: IProductProps) => {
         <div className="configurator__menu-container">
           <div className="menu-container">
             <h2 className="menu-container__title">{title}</h2>
-            <span className="menu-container__description">{`${size} см, ${dough === 'doughTraditional' ? 'традиционное' : 'тонкое'} тесто, ${wight} г`}</span>
+            <span className="menu-container__description">{`${size} см, ${
+              dough === 'doughTraditional' ? 'традиционное' : 'тонкое'
+            } тесто, ${wight} г`}</span>
             <div className="menu-container__ingr-block">
-              { currentPizza.defaultIngredients.map((ing) => (
-                <RemoveIngredients
-                  changeDefaultIng={changeDefaultIng}
-                  key={ing.title}
-                  ing={ing}
-                />
+              {currentPizza.defaultIngredients.map((ing) => (
+                <RemoveIngredients changeDefaultIng={changeDefaultIng} key={ing.title} ing={ing} />
               ))}
             </div>
             <div className="menu-container__buttons-container">
@@ -177,7 +171,7 @@ const Configurator = ({ product }: IProductProps) => {
               <div className="buttons-container__add-ingr">
                 <h2 className="buttons-container__title">Добавить в пицу</h2>
                 <div className="buttons-container__ing-container">
-                  { currentPizza.moreIngredients.map((ing) => (
+                  {currentPizza.moreIngredients.map((ing) => (
                     <AddIngredient
                       changeMoreIng={changeMoreIng}
                       murkUp={currentPizza.murkUp}
@@ -186,7 +180,7 @@ const Configurator = ({ product }: IProductProps) => {
                       key={ing.id}
                       disableElem={disableElem}
                     />
-                  )) }
+                  ))}
                 </div>
               </div>
             </div>
@@ -195,21 +189,23 @@ const Configurator = ({ product }: IProductProps) => {
         <ModalBuyButton
           to={Routes.HOME_ROUTE}
           price={currentPizza.currentPrice}
-          callback={() => addToBasket({
-            amount: 1,
-            id: Math.random() * 10000,
-            url: currentPizza.pizzaInfo.url,
-            title: currentPizza.pizzaInfo.title,
-            currentPrice: currentPizza.currentPrice,
-            moreInfo: {
-              defaultIngredients: currentPizza.defaultIngredients,
-              moreIngredients: currentPizza.moreIngredients,
-              dough: currentPizza.dough,
-              pizzaSize: currentPizza.pizzaSize,
-              size: currentPizza.pizzaInfo.size,
-              combo: null,
-            },
-          })}
+          callback={() =>
+            addToBasket({
+              amount: 1,
+              id: Math.random() * 10000,
+              url: currentPizza.pizzaInfo.url,
+              title: currentPizza.pizzaInfo.title,
+              currentPrice: currentPizza.currentPrice,
+              moreInfo: {
+                defaultIngredients: currentPizza.defaultIngredients,
+                moreIngredients: currentPizza.moreIngredients,
+                dough: currentPizza.dough,
+                pizzaSize: currentPizza.pizzaSize,
+                size: currentPizza.pizzaInfo.size,
+                combo: null,
+              },
+            })
+          }
         />
       </div>
     </div>

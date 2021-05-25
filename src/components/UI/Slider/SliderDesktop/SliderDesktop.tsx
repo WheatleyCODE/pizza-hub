@@ -3,13 +3,9 @@ import { CSSTransition } from 'react-transition-group';
 import { useActions, useTypedSelector } from '@hooks';
 import './SliderDesktop.scss';
 
-const SliderDesktop = () => {
+const SliderDesktop: React.FC = () => {
   const { changeSlide, changeSlideCircle } = useActions();
-  const {
-    sliders,
-    className,
-    currentSlideIndex,
-  } = useTypedSelector((state) => state.slider);
+  const { sliders, className, currentSlideIndex } = useTypedSelector((state) => state.slider);
 
   const slider = {
     next: 1,
@@ -26,7 +22,7 @@ const SliderDesktop = () => {
 
   return (
     <div className="SliderDesktop">
-      { sliders.map((slide, index) => {
+      {sliders.map((slide, index) => {
         let show = false;
         if (index === currentSlideIndex) show = true;
 
@@ -52,14 +48,21 @@ const SliderDesktop = () => {
         </button>
       </div>
       <div className="SliderDesktop__dotted-container">
-        { sliders.map((el, i) => {
+        {sliders.map((el, i) => {
           let styles;
           if (i === currentSlideIndex) styles = { backgroundColor: '#ff6900' };
 
           return (
-            <div role="button" aria-hidden="true" style={styles} key={el.text} onClick={() => changeSlideCircle(i)} className="dotted-container__circle-buttom" />
+            <div
+              role="button"
+              aria-hidden="true"
+              style={styles}
+              key={el.text}
+              onClick={() => changeSlideCircle(i)}
+              className="dotted-container__circle-buttom"
+            />
           );
-        }) }
+        })}
       </div>
     </div>
   );

@@ -1,24 +1,24 @@
 export interface IComboPizza {
-  title: string,
-  url: string,
-  description: string,
-  price: number,
-  size: number,
+  title: string;
+  url: string;
+  description: string;
+  price: number;
+  size: number;
 }
 
 export interface IOneDoughTraditional {
-  doughTraditional: IComboPizza[],
-  doughThin: null,
+  doughTraditional: IComboPizza[];
+  doughThin: null;
 }
 
 export interface ITwoDough {
-  doughTraditional: IComboPizza[],
-  doughThin: IComboPizza[],
+  doughTraditional: IComboPizza[];
+  doughThin: IComboPizza[];
 }
 
 export interface IDefaultIng {
-  title: string,
-  add: boolean,
+  title: string;
+  add: boolean;
 }
 
 export enum PizzaDataKeyNames {
@@ -39,72 +39,72 @@ export enum PizzaDataKeyNamesDough {
   DOUGH_THIN = 'doughThin',
 }
 export interface IIngredients {
-  title: string,
-  url: string,
-  price: number,
-  id: number
+  title: string;
+  url: string;
+  price: number;
+  id: number;
 }
 
 export interface IMoreIng extends IIngredients {
-  add: boolean,
+  add: boolean;
 }
 
 export interface IPizzaParam {
-  size: number,
-  wight: number,
-  url: string,
-  price: number,
+  size: number;
+  wight: number;
+  url: string;
+  price: number;
 }
 
 export interface IPizzaData {
   doughTraditional: {
-    small: IPizzaParam,
-    medium: IPizzaParam,
-    large: IPizzaParam,
-  },
+    small: IPizzaParam;
+    medium: IPizzaParam;
+    large: IPizzaParam;
+  };
 
   doughThin: {
-    medium: IPizzaParam,
-    large: IPizzaParam,
-  }
+    medium: IPizzaParam;
+    large: IPizzaParam;
+  };
 }
 
 export interface IProduct {
-  title: string,
-  url: string,
-  description: string,
-  price: number,
-  route: string,
-  moreIngredients: IIngredients[],
-  pizzaDate: IPizzaData,
+  title: string;
+  url: string;
+  description: string;
+  price: number;
+  route: string;
+  moreIngredients: IIngredients[];
+  pizzaDate: IPizzaData;
 }
 
 export interface IDefaultProduct {
-  title: string,
-  url: string,
-  description: string,
-  price: number,
-  route: string,
+  title: string;
+  url: string;
+  description: string;
+  price: number;
+  route: string;
 }
 
 export interface IComboProduct {
-  title: string,
-  url: string,
-  description: string,
-  price: number,
-  route: string,
-  parts: Array<IOneDoughTraditional | ITwoDough | IDefaultProduct[]>
+  title: string;
+  url: string;
+  description: string;
+  price: number;
+  route: string;
+  parts: Array<IOneDoughTraditional | ITwoDough | IDefaultProduct[]>;
 }
 
 export interface ICollection {
-  collection: IProduct[] | IDefaultProduct[] | IComboProduct[],
-  collectionName: string,
+  collection: IProduct[] | IDefaultProduct[] | IComboProduct[];
+  collectionName: string;
 }
 
 export interface IMenuState {
-  menu: ICollection[],
-  loading: boolean,
-  error: null | string
+  menu: ICollection[];
+  loading: boolean;
+  error: null | string;
 }
 
 export enum MenuActionTypes {
@@ -114,17 +114,17 @@ export enum MenuActionTypes {
 }
 
 interface IFetchMenuAction {
-  type: MenuActionTypes.FETCH_MENU,
+  type: MenuActionTypes.FETCH_MENU;
 }
 
 interface IFetchMenuSuccesAction {
-  type: MenuActionTypes.FETCH_MENU_SUCCES,
-  payload: any[],
+  type: MenuActionTypes.FETCH_MENU_SUCCES;
+  payload: any[];
 }
 
 interface IFetchMenuErrorAction {
-  type: MenuActionTypes.FETCH_MENU_ERROR,
-  payload: string,
+  type: MenuActionTypes.FETCH_MENU_ERROR;
+  payload: string;
 }
 
 export type MenuAction = IFetchMenuAction | IFetchMenuSuccesAction | IFetchMenuErrorAction;

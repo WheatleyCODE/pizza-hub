@@ -5,23 +5,16 @@ import { IComboPizza, PizzaDataKeyNamesDough } from '@t/menu';
 import './PizzaItem.scss';
 
 interface IPizzaItemProps {
-  comboPizza: IComboPizza,
-  comboPizzaThin: IComboPizza | undefined,
-  comboPizzaTraditional: IComboPizza,
-  index: number,
-  changeCombo: (pizza: IComboPizza) => void,
-  print: (i: number, dough: PizzaDataKeyNamesDough) => void
+  comboPizza: IComboPizza;
+  comboPizzaThin: IComboPizza | undefined;
+  comboPizzaTraditional: IComboPizza;
+  index: number;
+  changeCombo: (pizza: IComboPizza) => void;
+  print: (i: number, dough: PizzaDataKeyNamesDough) => void;
 }
 
-const PizzaItem = (props: IPizzaItemProps) => {
-  const {
-    comboPizzaThin,
-    comboPizzaTraditional,
-    comboPizza,
-    index,
-    print,
-    changeCombo,
-  } = props;
+const PizzaItem: React.FC<IPizzaItemProps> = (props) => {
+  const { comboPizzaThin, comboPizzaTraditional, comboPizza, index, print, changeCombo } = props;
 
   const [dough, setDough] = useState(PizzaDataKeyNamesDough.DOUGH_TRADITIONAL);
   useEffect(() => {
@@ -52,7 +45,7 @@ const PizzaItem = (props: IPizzaItemProps) => {
         <span className="PizzaItem__description__info">
           {`${replaceSize(comboPizza.size)} ${comboPizza.size} см, ${replaceDoughText(dough)}`}
         </span>
-        { comboPizzaThin && comboPizzaTraditional && (
+        {comboPizzaThin && comboPizzaTraditional && (
           <div className="PizzaItem__radio">
             <RadioButtons
               buttons={radioButtonsDough}
@@ -62,7 +55,7 @@ const PizzaItem = (props: IPizzaItemProps) => {
               }}
             />
           </div>
-        ) }
+        )}
       </div>
     </div>
   );

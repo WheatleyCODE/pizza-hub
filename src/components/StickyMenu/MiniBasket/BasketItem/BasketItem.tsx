@@ -6,21 +6,15 @@ import { IBasketItem } from '@t/basket';
 import './BasketItem.scss';
 
 interface IBasketItemProps {
-  productData: IBasketItem,
-  itemStyle: string | null,
-  isDetails: boolean,
+  productData: IBasketItem;
+  itemStyle: string | null;
+  isDetails: boolean;
 }
 
-const BasketItem = ({ productData, itemStyle, isDetails }: IBasketItemProps) => {
+const BasketItem: React.FC<IBasketItemProps> = ({ productData, itemStyle, isDetails }) => {
   const { deleteFromBasket } = useActions();
 
-  const {
-    amount,
-    id,
-    url,
-    title,
-    currentPrice,
-  } = productData;
+  const { amount, id, url, title, currentPrice } = productData;
 
   const { size, dough, pizzaSize } = productData.moreInfo;
 
@@ -49,11 +43,11 @@ const BasketItem = ({ productData, itemStyle, isDetails }: IBasketItemProps) => 
           <span className="BasketItem__title__title">{title}</span>
           <span className="BasketItem__title__description">{description}</span>
           <span className="BasketItem__title__details">
-            { productData.moreInfo.combo.map((el) => (
+            {productData.moreInfo.combo.map((el) => (
               <span key={el.item.title} className="BasketItem__title__details__combo-item">
                 {`• ${el.item.title}`}
               </span>
-            )) }
+            ))}
           </span>
         </div>
         <div className="BasketItem__amount">
@@ -66,8 +60,11 @@ const BasketItem = ({ productData, itemStyle, isDetails }: IBasketItemProps) => 
     );
   }
 
-  // eslint-disable-next-line max-len
-  if (productData.moreInfo.moreIngredients !== null && isDetails && productData.moreInfo.defaultIngredients !== null) {
+  if (
+    productData.moreInfo.moreIngredients !== null &&
+    isDetails &&
+    productData.moreInfo.defaultIngredients !== null
+  ) {
     return (
       <div className={`BasketItem ${itemStyle}`}>
         <div className="BasketItem__delete-button">
@@ -82,16 +79,28 @@ const BasketItem = ({ productData, itemStyle, isDetails }: IBasketItemProps) => 
           <span className="BasketItem__title__title">{title}</span>
           <span className="BasketItem__title__description">{description}</span>
           <span className="BasketItem__title__details">
-            { productData.moreInfo.moreIngredients.map((el) => {
-              if (el.add) return <span key={el.title} className="BasketItem__title__details__add-item">{`+ ${el.title},`}</span>;
+            {productData.moreInfo.moreIngredients.map((el) => {
+              if (el.add)
+                return (
+                  <span
+                    key={el.title}
+                    className="BasketItem__title__details__add-item"
+                  >{`+ ${el.title},`}</span>
+                );
               return null;
-            }) }
+            })}
           </span>
           <span className="BasketItem__title__details">
-            { productData.moreInfo.defaultIngredients.map((el) => {
-              if (!el.add) return <span key={el.title} className="BasketItem__title__details__dell-item">{`- ${firstLetterUp(el.title)},`}</span>;
+            {productData.moreInfo.defaultIngredients.map((el) => {
+              if (!el.add)
+                return (
+                  <span
+                    key={el.title}
+                    className="BasketItem__title__details__dell-item"
+                  >{`- ${firstLetterUp(el.title)},`}</span>
+                );
               return null;
-            }) }
+            })}
           </span>
         </div>
         <div className="BasketItem__amount">

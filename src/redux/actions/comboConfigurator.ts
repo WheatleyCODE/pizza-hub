@@ -1,5 +1,9 @@
 import { IComboPizza, IDefaultProduct } from '@t/menu';
-import { ComboConfiguratorAction, ComboConfiguratorActionTypes, ICurrentCombo } from '@t/comboConfigurator';
+import {
+  ComboConfiguratorAction,
+  ComboConfiguratorActionTypes,
+  ICurrentCombo,
+} from '@t/comboConfigurator';
 
 export const setCurrentCombo = (currentCombo: ICurrentCombo[]): ComboConfiguratorAction => ({
   type: ComboConfiguratorActionTypes.SET_CURRENT_COMBO,
@@ -18,7 +22,7 @@ export const changePartsIndex = (idx: number): ComboConfiguratorAction => ({
 
 export const setDough = (
   doughThin: IComboPizza[],
-  doughTraditional: IComboPizza[],
+  doughTraditional: IComboPizza[]
 ): ComboConfiguratorAction => ({
   type: ComboConfiguratorActionTypes.SET_DOUGH,
   payload: {

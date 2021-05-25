@@ -2,12 +2,14 @@ import React from 'react';
 import Button from '@ui/Button';
 import './PromoBlock.scss';
 
-const PromoBlock = () => (
+const PromoBlock: React.FC = () => (
   <div className="PromoBlock">
     <div className="PromoBlock__container">
       <div className="PromoBlock__container__text">
         <i className="fa fa-user-secret" aria-hidden="true" />
-        <div className="PromoBlock__container__text__default">Стань тайным покупателем и получи подарок</div>
+        <div className="PromoBlock__container__text__default">
+          Стань тайным покупателем и получи подарок
+        </div>
         <div className="PromoBlock__container__text__mobile">Стань тайным покупателем</div>
       </div>
       <div className="PromoBlock__container__button">

@@ -26,11 +26,12 @@ const basketReducer = (state: IBasketState = initialState, action: BasketAction)
       const { currentPrice, moreInfo, title } = action.payload.product;
 
       if (newBasket.length > 0) {
-        const index = newBasket.findIndex((obj) => (
-          JSON.stringify(obj.currentPrice) === JSON.stringify(currentPrice)
-          && JSON.stringify(obj.moreInfo) === JSON.stringify(moreInfo)
-          && JSON.stringify(obj.title) === JSON.stringify(title)
-        ));
+        const index = newBasket.findIndex(
+          (obj) =>
+            JSON.stringify(obj.currentPrice) === JSON.stringify(currentPrice) &&
+            JSON.stringify(obj.moreInfo) === JSON.stringify(moreInfo) &&
+            JSON.stringify(obj.title) === JSON.stringify(title)
+        );
 
         if (index === -1) {
           newBasket.push(product);

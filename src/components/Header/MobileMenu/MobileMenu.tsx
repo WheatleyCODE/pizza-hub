@@ -8,10 +8,10 @@ import Logo from '../Logo';
 import './MobileMenu.scss';
 
 interface IMobileMenuProps {
-  onClickHandler: () => void
+  onClickHandler: () => void;
 }
 
-const MobileMenu = ({ onClickHandler }: IMobileMenuProps) => {
+const MobileMenu: React.FC<IMobileMenuProps> = ({ onClickHandler }) => {
   const { currentCity } = useTypedSelector((state) => state.city);
 
   return (
@@ -24,11 +24,11 @@ const MobileMenu = ({ onClickHandler }: IMobileMenuProps) => {
       <hr />
       <nav className="MobileMenu__navigation">
         <ul className="navigation__ul">
-          { menuItems.map((item) => (
+          {menuItems.map((item) => (
             <NavLink key={item.text} onClick={onClickHandler} to={item.link}>
               <li className="navigation__item-list">{item.text}</li>
             </NavLink>
-          )) }
+          ))}
         </ul>
       </nav>
       <hr />

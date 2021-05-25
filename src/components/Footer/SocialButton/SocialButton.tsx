@@ -2,10 +2,10 @@ import React from 'react';
 import './SocialButton.scss';
 
 interface ISocialButtonProps {
-  icon: string,
+  icon: string;
 }
 
-const SocialButton = ({ icon }: ISocialButtonProps) => (
+const SocialButton: React.FC<ISocialButtonProps> = ({ icon }) => (
   <button type="button" className="SocialButton">
     <i className={`fa ${icon}`} aria-hidden="true" />
   </button>

@@ -14,10 +14,10 @@ import ComboConfigurator from './ComboConfigurator';
 import './Product.scss';
 
 interface IProductProps {
-  product: IProduct | IDefaultProduct | IComboProduct,
+  product: IProduct | IDefaultProduct | IComboProduct;
 }
 
-const Product = ({ product }: IProductProps) => {
+const Product: React.FC<IProductProps> = ({ product }) => {
   const history = useHistory();
   const { addToBasket } = useActions();
   const { basket } = useTypedSelector((state) => state.basket);
@@ -30,13 +30,7 @@ const Product = ({ product }: IProductProps) => {
   const productDefault = product as IDefaultProduct;
   const productCombo = product as IComboProduct;
 
-  const {
-    title,
-    url,
-    description,
-    price,
-    route,
-  } = product;
+  const { title, url, description, price, route } = product;
 
   let modal = (
     <Portal>
@@ -69,8 +63,10 @@ const Product = ({ product }: IProductProps) => {
   const index = basket.findIndex((el) => el.title === productDefault.title);
 
   let button: JSX.Element;
-  if ((productPizza.pizzaDate && productPizza.moreIngredients)
-  || productCombo.parts !== undefined) {
+  if (
+    (productPizza.pizzaDate && productPizza.moreIngredients) ||
+    productCombo.parts !== undefined
+  ) {
     button = (
       <Link to={route}>
         <Button buttonStyle="light" onClickHandler={toggleModal} text="Выбрать" />
@@ -80,41 +76,49 @@ const Product = ({ product }: IProductProps) => {
     button = (
       <Button
         buttonStyle="light"
-        onClickHandler={() => addToBasket({
-          amount: 1,
-          id: Math.random() * 10000,
-          url: productDefault.url,
-          title: productDefault.title,
-          currentPrice: productDefault.price,
-          moreInfo: {
-            defaultIngredients: null,
-            moreIngredients: null,
-            size: null,
-            dough: null,
-            pizzaSize: null,
-            combo: null,
-          },
-        })}
+        onClickHandler={() =>
+          addToBasket({
+            amount: 1,
+            id: Math.random() * 10000,
+            url: productDefault.url,
+            title: productDefault.title,
+            currentPrice: productDefault.price,
+            moreInfo: {
+              defaultIngredients: null,
+              moreIngredients: null,
+              size: null,
+              dough: null,
+              pizzaSize: null,
+              combo: null,
+            },
+          })
+        }
         text="В корзину"
       />
     );
   } else {
-    button = (
-      <Counter id={basket[index].id} amount={basket[index].amount} />
-    );
+    button = <Counter id={basket[index].id} amount={basket[index].amount} />;
   }
 
   return (
     <div className="Product">
       <Link to={route}>
-        <img aria-hidden="true" onClick={toggleModal} className="Product__img" src={url} alt={title} />
+        <img
+          aria-hidden="true"
+          onClick={toggleModal}
+          className="Product__img"
+          src={url}
+          alt={title}
+        />
       </Link>
       <div className="Product__description-block">
         <h2 className="description-block__title">{title}</h2>
         <span className="description-block__description">{description}</span>
         <div className="description-block__price-container">
           <span className="price-container__price">
-            { productPizza.pizzaDate && productPizza.moreIngredients ? `от ${price} ₽` : `${price} ₽` }
+            {productPizza.pizzaDate && productPizza.moreIngredients
+              ? `от ${price} ₽`
+              : `${price} ₽`}
           </span>
           {button}
         </div>

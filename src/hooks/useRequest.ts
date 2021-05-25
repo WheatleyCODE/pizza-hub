@@ -7,7 +7,8 @@ const useRequest = (url: string) => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get(url)
+    axios
+      .get(url)
       .then((response) => {
         const keys = Object.keys(response.data);
         const resData = keys.map((key) => response.data[key]);

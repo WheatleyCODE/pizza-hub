@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import './ProductSliderDesktop.scss';
 
 interface IProductSliderDesktopProps {
-  sliderItem: JSX.Element[],
-  width: number,
+  sliderItem: JSX.Element[];
+  width: number;
 }
 
-const ProductSliderDesktop = ({ sliderItem, width }: IProductSliderDesktopProps) => {
+const ProductSliderDesktop: React.FC<IProductSliderDesktopProps> = ({ sliderItem, width }) => {
   const [num, setNum] = useState(0);
   const [curentX, setCurentX] = useState(0);
   const [isMouseDown, setIsMouseDown] = useState(false);
@@ -17,7 +17,10 @@ const ProductSliderDesktop = ({ sliderItem, width }: IProductSliderDesktopProps)
     widthRollBlock: width,
   };
 
-  const styles = { width: `${widthInfo.widthBlocks * sliderItem.length}px`, transform: `translateX(-${curentX + num}px)` };
+  const styles = {
+    width: `${widthInfo.widthBlocks * sliderItem.length}px`,
+    transform: `translateX(-${curentX + num}px)`,
+  };
 
   const changeCurrentX = (number: number) => {
     setCurentX((prev) => {
@@ -51,7 +54,7 @@ const ProductSliderDesktop = ({ sliderItem, width }: IProductSliderDesktopProps)
 
   useEffect(() => {
     if (isMouseDown && MouseDownX && MouseOverX) {
-      setNum((MouseDownX - MouseOverX));
+      setNum(MouseDownX - MouseOverX);
     }
   }, [isMouseDown, MouseDownX, MouseOverX]);
 
@@ -77,23 +80,27 @@ const ProductSliderDesktop = ({ sliderItem, width }: IProductSliderDesktopProps)
 
   return (
     <div className="ProductSliderDesktop">
-      <div
-        style={styles}
-        className="ProductSliderDesktop__roll"
-        aria-hidden
-      >
+      <div style={styles} className="ProductSliderDesktop__roll" aria-hidden>
         {sliderItem}
       </div>
-      { curentX !== 0 && (
-        <button className="ProductSliderDesktop__sub" onClick={() => changeCurrentX(-600)} type="button">
+      {curentX !== 0 && (
+        <button
+          className="ProductSliderDesktop__sub"
+          onClick={() => changeCurrentX(-600)}
+          type="button"
+        >
           <i className="fa fa-chevron-left" aria-hidden="true" />
         </button>
-      ) }
-      { curentX !== widthInfo.widthRollBlock && (
-        <button className="ProductSliderDesktop__add" onClick={() => changeCurrentX(600)} type="button">
+      )}
+      {curentX !== widthInfo.widthRollBlock && (
+        <button
+          className="ProductSliderDesktop__add"
+          onClick={() => changeCurrentX(600)}
+          type="button"
+        >
           <i className="fa fa-chevron-right" aria-hidden="true" />
         </button>
-      ) }
+      )}
     </div>
   );
 };

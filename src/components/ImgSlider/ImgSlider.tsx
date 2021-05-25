@@ -4,7 +4,7 @@ import { SliderDesktop, SliderMobile } from '@ui/Slider';
 import { useTypedSelector, useActions } from '@hooks';
 import './ImgSlider.scss';
 
-const ImgSlider = () => {
+const ImgSlider: React.FC = () => {
   const { fetchSlider } = useActions();
   const { loading } = useTypedSelector((state) => state.slider);
 
@@ -13,9 +13,7 @@ const ImgSlider = () => {
   }, []);
 
   if (loading) {
-    return (
-      <Loader />
-    );
+    return <Loader />;
   }
 
   return (

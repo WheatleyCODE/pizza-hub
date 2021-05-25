@@ -11,7 +11,7 @@ import MiniBasket from './MiniBasket';
 import Message from './Message';
 import './StickyMenu.scss';
 
-const StickyMenu = () => {
+const StickyMenu: React.FC = () => {
   const [showLogo, setShowLogo] = useState(false);
   const [messages, setMessages] = useState<string[]>([]);
   const [isHoverButtonOver, setIsHoverButtonOver] = useState(false);
@@ -84,21 +84,27 @@ const StickyMenu = () => {
     <div className={`StickyMenu ${styleName}`}>
       <div className="StickyMenu__container">
         <div className="flex">
-          <CSSTransition
-            in={showLogo}
-            timeout={150}
-            classNames="logo"
-            mountOnEnter
-            unmountOnExit
-          >
-            <div className="StickyMenu__logo"><img src={logoImg} alt="logo" /></div>
+          <CSSTransition in={showLogo} timeout={150} classNames="logo" mountOnEnter unmountOnExit>
+            <div className="StickyMenu__logo">
+              <img src={logoImg} alt="logo" />
+            </div>
           </CSSTransition>
           <ul className={`menu ${showLogo ? 'translate' : 'unTranslate'}`}>
-            { stickyMenuItems.map((item) => (
-              <ScrollLink key={item.title} activeClass="active" to={item.title} spy smooth offset={-100} duration={400}>
-                <li className="menu__list" key={item.title}>{item.title}</li>
+            {stickyMenuItems.map((item) => (
+              <ScrollLink
+                key={item.title}
+                activeClass="active"
+                to={item.title}
+                spy
+                smooth
+                offset={-100}
+                duration={400}
+              >
+                <li className="menu__list" key={item.title}>
+                  {item.title}
+                </li>
               </ScrollLink>
-            )) }
+            ))}
           </ul>
         </div>
         <div
@@ -127,7 +133,9 @@ const StickyMenu = () => {
           />
         </CSSTransition>
         <div className="StickyMenu__container__message-block">
-          { messages.map((text, i) => <Message key={i} text={text} />) }
+          {messages.map((text, i) => (
+            <Message key={i} text={text} />
+          ))}
         </div>
       </div>
     </div>

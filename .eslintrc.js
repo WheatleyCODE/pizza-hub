@@ -19,11 +19,15 @@ module.exports = {
   },
   "rules": {
     "import/prefer-default-export": 0,
+    "react/no-array-index-key": 0,
+    "react/require-default-props": 0,
     "react/jsx-one-expression-per-line": 0,
     "react/state-in-constructor": 0,
+    "react-hooks/exhaustive-deps": 0,
     "react/jsx-props-no-spreading": 0,
     "no-console": ["warn", { "allow": ["warn", "error"] }],
-    "operator-linebreak": ["error", "before", { "overrides": { "=": "ignore" } }],
+    // "operator-linebreak": ["error", "before", { "overrides": { "=": "ignore" } }],
+    "operator-linebreak": 0,
 
     "max-len": ["error", {
         "code": 100,

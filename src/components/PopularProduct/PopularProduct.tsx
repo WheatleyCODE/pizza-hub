@@ -4,7 +4,7 @@ import { ProductSliderDesktop, ProductSliderMobile, SliderItem } from '@ui/Produ
 import { useActions, useTypedSelector } from '@hooks';
 import './PopularProduct.scss';
 
-const PopularProduct = () => {
+const PopularProduct: React.FC = () => {
   const { fetchPopular } = useActions();
   const { popular, loading } = useTypedSelector((state) => state.popular);
 

@@ -6,7 +6,7 @@ import PromoBlock from '@components/PromoBlock';
 import StickyMenu from '@components/StickyMenu';
 import Menu from '@components/Menu';
 
-const MainPage = () => (
+const MainPage: React.FC = () => (
   <>
     <StickyMenu />
     <ImgSlider />

@@ -22,7 +22,7 @@ const initialState: IConfiguratorState = {
 
 const configuratorReducer = (
   state: IConfiguratorState = initialState,
-  action: ConfiguratorAction,
+  action: ConfiguratorAction
 ): IConfiguratorState => {
   switch (action.type) {
     case ConfiguratorActionTypes.SET_CURRENT_PIZZA: {
@@ -93,9 +93,7 @@ const configuratorReducer = (
       const murkUp: number = replaceMurkUp(pizzaSize);
       const pesult = state.currentPizza.moreIngredients.reduce((acc, { add, price }) => {
         if (add) {
-          return (
-            acc + price + murkUp
-          );
+          return acc + price + murkUp;
         }
 
         return acc;

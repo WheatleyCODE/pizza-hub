@@ -5,12 +5,7 @@ import {
   ConfiguratorAction,
   IPizzaFirstData,
 } from '@t/configurator';
-import {
-  IMoreIng,
-  IDefaultIng,
-  PizzaDataKeyNamesDough,
-  PizzaDataKeyNamesPizzaSize,
-} from '@t/menu';
+import { IMoreIng, IDefaultIng, PizzaDataKeyNamesDough, PizzaDataKeyNamesPizzaSize } from '@t/menu';
 
 export const setCurrentPizza = (currentPizza: IPizzaFirstData): ConfiguratorAction => ({
   type: ConfiguratorActionTypes.SET_CURRENT_PIZZA,
@@ -47,10 +42,9 @@ export const updateInfo = (info: IPizzaInfo): ConfiguratorAction => ({
   payload: info,
 });
 
-export const priceRecalculation = (ing: IMoreIng, price: number) => (
-  (dispatch: Dispatch<ConfiguratorAction>) => {
+export const priceRecalculation =
+  (ing: IMoreIng, price: number) => (dispatch: Dispatch<ConfiguratorAction>) => {
     const newIng = { ...ing, add: false };
     dispatch(changeMoreIng(newIng));
     dispatch(changeCurrentPrice(price));
-  }
-);
+  };

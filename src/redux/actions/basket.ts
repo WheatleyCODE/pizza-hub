@@ -1,14 +1,9 @@
 import { Dispatch } from 'react';
 import { axios, reduce } from '@utils';
-import {
-  BasketAction,
-  BasketActionTypes,
-  IBasketItem,
-  IOrder,
-} from '@t/basket';
+import { BasketAction, BasketActionTypes, IBasketItem, IOrder } from '@t/basket';
 import { IDefaultProduct } from '@t/menu';
 
-export const addToBasket = (product: IBasketItem, writeChange: boolean = true): BasketAction => ({
+export const addToBasket = (product: IBasketItem, writeChange = true): BasketAction => ({
   type: BasketActionTypes.ADD_TO_BASKET,
   payload: {
     product,
@@ -16,17 +11,15 @@ export const addToBasket = (product: IBasketItem, writeChange: boolean = true): 
   },
 });
 
-export const autoAddToBasket = () => (
-  (dispatch: Dispatch<BasketAction>) => {
-    const basket = localStorage.getItem('basket');
-    if (basket) {
-      const basketArr: IBasketItem[] = JSON.parse(basket);
-      basketArr.forEach((item) => {
-        dispatch(addToBasket(item, false));
-      });
-    }
+export const autoAddToBasket = () => (dispatch: Dispatch<BasketAction>) => {
+  const basket = localStorage.getItem('basket');
+  if (basket) {
+    const basketArr: IBasketItem[] = JSON.parse(basket);
+    basketArr.forEach((item) => {
+      dispatch(addToBasket(item, false));
+    });
   }
-);
+};
 
 export const changeAmount = (num: number, id: number): BasketAction => ({
   type: BasketActionTypes.CHANGE_AMOUNT,

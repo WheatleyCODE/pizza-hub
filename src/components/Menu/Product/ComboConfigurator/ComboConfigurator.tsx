@@ -18,34 +18,19 @@ import ModalBuyButton from '../ModalBuyButton';
 import './ComboConfigurator.scss';
 
 interface IComboProductProps {
-  product: IComboProduct,
+  product: IComboProduct;
 }
 
-const ComboConfigurator = ({ product }: IComboProductProps) => {
-  const {
-    setCurrentCombo,
-    changePartsIndex,
-    changeCombo,
-    addToBasket,
-    setDough,
-  } = useActions();
-  const {
-    currentCombo,
-    partsIndex,
-    doughThin,
-    doughTraditional,
-  } = useTypedSelector((state) => state.comboConfigurator);
+const ComboConfigurator: React.FC<IComboProductProps> = ({ product }) => {
+  const { setCurrentCombo, changePartsIndex, changeCombo, addToBasket, setDough } = useActions();
+  const { currentCombo, partsIndex, doughThin, doughTraditional } = useTypedSelector(
+    (state) => state.comboConfigurator
+  );
   const [dou, setDou] = useState(PizzaDataKeyNamesDough.DOUGH_TRADITIONAL);
 
-  const {
-    parts,
-    title,
-    description,
-    url,
-    price,
-  } = product;
+  const { parts, title, description, url, price } = product;
 
-  let components: any;
+  let components: JSX.Element[] = [];
   if (partsIndex !== null && Array.isArray(product.parts[partsIndex])) {
     const prod = product.parts[partsIndex] as IProduct[];
     components = prod.map((el, i) => (
@@ -119,19 +104,25 @@ const ComboConfigurator = ({ product }: IComboProductProps) => {
             <div className="left-container__description__title">{title}</div>
             <div className="left-container__description__description">{description}</div>
           </div>
-          { currentCombo.map((el, i) => {
+          {currentCombo.map((el, i) => {
             const productDefault = el.item as IDefaultProduct;
             const productPizza = el.item as IComboPizza;
             if (productPizza.size === undefined) {
               return (
-                <div key={i} className={`left-container__current ${partsIndex === i ? 'target' : ''}`}>
+                <div
+                  key={i}
+                  className={`left-container__current ${partsIndex === i ? 'target' : ''}`}
+                >
                   <DefaultItem setIndex={() => changePartsIndex(i)} product={productDefault} />
                 </div>
               );
             }
             if (doughThin !== undefined && doughTraditional !== undefined) {
               return (
-                <div key={i} className={`left-container__current ${partsIndex === i ? 'target' : ''}`}>
+                <div
+                  key={i}
+                  className={`left-container__current ${partsIndex === i ? 'target' : ''}`}
+                >
                   <PizzaItem
                     print={print}
                     comboPizza={productPizza}
@@ -145,7 +136,10 @@ const ComboConfigurator = ({ product }: IComboProductProps) => {
             }
             if (doughTraditional !== undefined) {
               return (
-                <div key={i} className={`left-container__current ${partsIndex === i ? 'target' : ''}`}>
+                <div
+                  key={i}
+                  className={`left-container__current ${partsIndex === i ? 'target' : ''}`}
+                >
                   <PizzaItem
                     print={print}
                     comboPizza={productPizza}
@@ -159,11 +153,11 @@ const ComboConfigurator = ({ product }: IComboProductProps) => {
             }
 
             return null;
-          }) }
+          })}
         </div>
         <div className="desctop">
           <div className="no-promo-price">
-            { noPromoPrice > price && (
+            {noPromoPrice > price && (
               <>
                 <span className="no-promo-price__title">Стоимость:</span>
                 <div className="no-promo-price__container">
@@ -171,12 +165,60 @@ const ComboConfigurator = ({ product }: IComboProductProps) => {
                   <span className="no-promo-price__container__current-price">{`${price} ₽`}</span>
                 </div>
               </>
-            ) }
+            )}
           </div>
           <ModalBuyButton
             to={Routes.HOME_ROUTE}
             price={price}
-            callback={() => addToBasket({
+            callback={() =>
+              addToBasket({
+                amount: 1,
+                id: Math.random() * 10000,
+                url: product.url,
+                title: product.title,
+                currentPrice: product.price,
+                moreInfo: {
+                  defaultIngredients: null,
+                  moreIngredients: null,
+                  dough: null,
+                  pizzaSize: null,
+                  size: null,
+                  combo: currentCombo,
+                },
+              })
+            }
+          />
+        </div>
+      </div>
+      <div className="mobile">
+        <h3>Конфигуратор</h3>
+      </div>
+      <div className="ComboConfigurator__right-container">
+        <div className="right-container__parts">
+          {partsIndex === null ? (
+            <img className="parts__default-img" src={url} alt={title} />
+          ) : (
+            components
+          )}
+        </div>
+      </div>
+      <div className="mobile">
+        <div className="no-promo-price">
+          {noPromoPrice > price && (
+            <>
+              <span className="no-promo-price__title">Стоимость:</span>
+              <div className="no-promo-price__container">
+                <span className="no-promo-price__container__prev-price">{`${noPromoPrice} ₽`}</span>
+                <span className="no-promo-price__container__current-price">{`${price} ₽`}</span>
+              </div>
+            </>
+          )}
+        </div>
+        <ModalBuyButton
+          to={Routes.HOME_ROUTE}
+          price={price}
+          callback={() =>
+            addToBasket({
               amount: 1,
               id: Math.random() * 10000,
               url: product.url,
@@ -190,48 +232,8 @@ const ComboConfigurator = ({ product }: IComboProductProps) => {
                 size: null,
                 combo: currentCombo,
               },
-            })}
-          />
-        </div>
-      </div>
-      <div className="mobile">
-        <h3>Конфигуратор</h3>
-      </div>
-      <div className="ComboConfigurator__right-container">
-        <div className="right-container__parts">
-          { partsIndex === null ? <img className="parts__default-img" src={url} alt={title} /> : components }
-        </div>
-      </div>
-      <div className="mobile">
-        <div className="no-promo-price">
-          { noPromoPrice > price && (
-            <>
-              <span className="no-promo-price__title">Стоимость:</span>
-              <div className="no-promo-price__container">
-                <span className="no-promo-price__container__prev-price">{`${noPromoPrice} ₽`}</span>
-                <span className="no-promo-price__container__current-price">{`${price} ₽`}</span>
-              </div>
-            </>
-          ) }
-        </div>
-        <ModalBuyButton
-          to={Routes.HOME_ROUTE}
-          price={price}
-          callback={() => addToBasket({
-            amount: 1,
-            id: Math.random() * 10000,
-            url: product.url,
-            title: product.title,
-            currentPrice: product.price,
-            moreInfo: {
-              defaultIngredients: null,
-              moreIngredients: null,
-              dough: null,
-              pizzaSize: null,
-              size: null,
-              combo: currentCombo,
-            },
-          })}
+            })
+          }
         />
       </div>
     </div>

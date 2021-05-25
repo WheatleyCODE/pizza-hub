@@ -3,10 +3,10 @@ import { CSSTransition } from 'react-transition-group';
 import './Message.scss';
 
 interface IMessageProps {
-  text: string,
+  text: string;
 }
 
-const Message = ({ text }: IMessageProps) => {
+const Message: React.FC<IMessageProps> = ({ text }) => {
   const [show, setShow] = useState(true);
 
   useEffect(() => {
@@ -27,11 +27,11 @@ const Message = ({ text }: IMessageProps) => {
       unmountOnExit
     >
       <div className="Message">
-        { arrText.map((string, i) => {
+        {arrText.map((string, i) => {
           if (i === 0) return <h3 key={i}>{`${string}:`}</h3>;
 
           return <span key={i}>{string}</span>;
-        }) }
+        })}
       </div>
     </CSSTransition>
   );

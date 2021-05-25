@@ -1,11 +1,6 @@
 import { Dispatch } from 'react';
 import { reduce, axios } from '@utils';
-import {
-  CityAction,
-  CityActionTypes,
-  ICurrentCity,
-  ICity,
-} from '@t/city';
+import { CityAction, CityActionTypes, ICurrentCity, ICity } from '@t/city';
 
 export const fetchCity = () => async (dispatch: Dispatch<CityAction>) => {
   try {

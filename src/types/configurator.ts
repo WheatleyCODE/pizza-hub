@@ -7,25 +7,25 @@ import {
 } from './menu';
 
 export interface IPizzaInfo {
-  description: string,
-  title: string,
-  url: string,
-  wight: number,
-  size: number,
+  description: string;
+  title: string;
+  url: string;
+  wight: number;
+  size: number;
 }
 
 export interface ICurrentPizza {
-  defaultIngredients: IDefaultIng[],
-  moreIngredients: IMoreIng[],
-  dough: PizzaDataKeyNamesDough,
-  pizzaSize: PizzaDataKeyNamesPizzaSize,
-  currentPrice: number,
-  murkUp: number,
-  pizzaInfo: IPizzaInfo,
+  defaultIngredients: IDefaultIng[];
+  moreIngredients: IMoreIng[];
+  dough: PizzaDataKeyNamesDough;
+  pizzaSize: PizzaDataKeyNamesPizzaSize;
+  currentPrice: number;
+  murkUp: number;
+  pizzaInfo: IPizzaInfo;
 }
 
 export interface IConfiguratorState {
-  currentPizza: ICurrentPizza,
+  currentPizza: ICurrentPizza;
 }
 
 export enum ConfiguratorActionTypes {
@@ -40,57 +40,57 @@ export enum ConfiguratorActionTypes {
 }
 
 export interface IPizzaFirstData {
-  defaultIngredients: string,
-  moreIngredients: IIngredients[],
-  dough: PizzaDataKeyNamesDough,
-  pizzaSize: PizzaDataKeyNamesPizzaSize,
-  currentPrice: number,
-  murkUp: number,
-  pizzaInfo: IPizzaInfo,
+  defaultIngredients: string;
+  moreIngredients: IIngredients[];
+  dough: PizzaDataKeyNamesDough;
+  pizzaSize: PizzaDataKeyNamesPizzaSize;
+  currentPrice: number;
+  murkUp: number;
+  pizzaInfo: IPizzaInfo;
 }
 
 interface ISetCurrentPizzaAction {
-  type: ConfiguratorActionTypes.SET_CURRENT_PIZZA,
-  payload: IPizzaFirstData,
+  type: ConfiguratorActionTypes.SET_CURRENT_PIZZA;
+  payload: IPizzaFirstData;
 }
 
 interface IChangeDefaultIngAction {
-  type: ConfiguratorActionTypes.CHANGE_DEFAULT_ING,
-  payload: IDefaultIng,
+  type: ConfiguratorActionTypes.CHANGE_DEFAULT_ING;
+  payload: IDefaultIng;
 }
 
 interface IChangeMoreIngAction {
-  type: ConfiguratorActionTypes.CHANGE_MORE_ING,
-  payload: IMoreIng,
+  type: ConfiguratorActionTypes.CHANGE_MORE_ING;
+  payload: IMoreIng;
 }
 
 interface IChangeDoughAction {
-  type: ConfiguratorActionTypes.CHANGE_DOUGH,
-  payload: PizzaDataKeyNamesDough,
+  type: ConfiguratorActionTypes.CHANGE_DOUGH;
+  payload: PizzaDataKeyNamesDough;
 }
 
 interface IChangePizzaSizeAction {
-  type: ConfiguratorActionTypes.CHANGE_PIZZA_SIZE,
-  payload: PizzaDataKeyNamesPizzaSize,
+  type: ConfiguratorActionTypes.CHANGE_PIZZA_SIZE;
+  payload: PizzaDataKeyNamesPizzaSize;
 }
 
 interface IChangeCurrentPriceAction {
-  type: ConfiguratorActionTypes.CHANGE_CURRENT_PRICE,
-  payload: number,
+  type: ConfiguratorActionTypes.CHANGE_CURRENT_PRICE;
+  payload: number;
 }
 
 interface IPriceRecalculationAction {
-  type: ConfiguratorActionTypes.PRICE_RECALCULATION,
-  payload: IMoreIng,
+  type: ConfiguratorActionTypes.PRICE_RECALCULATION;
+  payload: IMoreIng;
 }
 
 interface IUpdateInfoAction {
-  type: ConfiguratorActionTypes.UPDATE_INFO,
-  payload: IPizzaInfo,
+  type: ConfiguratorActionTypes.UPDATE_INFO;
+  payload: IPizzaInfo;
 }
 
 export type ConfiguratorAction =
-  ISetCurrentPizzaAction
+  | ISetCurrentPizzaAction
   | IChangeDefaultIngAction
   | IChangeMoreIngAction
   | IChangeDoughAction

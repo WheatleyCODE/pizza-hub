@@ -1,18 +1,18 @@
 export interface ICity {
-  name: string,
-  time: number,
-  star: number,
+  name: string;
+  time: number;
+  star: number;
 }
 export interface ICurrentCity {
-  name: string,
-  time: number,
-  star: number,
+  name: string;
+  time: number;
+  star: number;
 }
 export interface ICityState {
-  currentCity: ICurrentCity,
-  city: ICity[]
-  loading: boolean,
-  error: null | string,
+  currentCity: ICurrentCity;
+  city: ICity[];
+  loading: boolean;
+  error: null | string;
 }
 
 export enum CityActionTypes {
@@ -23,24 +23,24 @@ export enum CityActionTypes {
 }
 
 interface IFetchCityAction {
-  type: CityActionTypes.FETCH_CITY,
+  type: CityActionTypes.FETCH_CITY;
 }
 interface IFetchCitySuccesAction {
-  type: CityActionTypes.FETCH_CITY_SUCCES,
-  payload: ICity[],
+  type: CityActionTypes.FETCH_CITY_SUCCES;
+  payload: ICity[];
 }
 interface IFetchCityErrorAction {
-  type: CityActionTypes.FETCH_CITY_ERROR,
-  payload: string,
+  type: CityActionTypes.FETCH_CITY_ERROR;
+  payload: string;
 }
 
 interface ISetCurrentCityAction {
-  type: CityActionTypes.SET_CURRENT_CITY,
-  payload: ICurrentCity,
+  type: CityActionTypes.SET_CURRENT_CITY;
+  payload: ICurrentCity;
 }
 
 export type CityAction =
-  IFetchCityErrorAction
+  | IFetchCityErrorAction
   | IFetchCityAction
   | IFetchCitySuccesAction
   | ISetCurrentCityAction;

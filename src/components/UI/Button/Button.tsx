@@ -2,12 +2,12 @@ import React from 'react';
 import './Button.scss';
 
 interface IButtonProps {
-  text: string,
-  buttonStyle: string,
-  onClickHandler?: () => void,
+  text: string;
+  buttonStyle: string;
+  onClickHandler?: () => void;
 }
 
-const Button = ({ text, buttonStyle = 'default', onClickHandler }: IButtonProps) => {
+const Button: React.FC<IButtonProps> = ({ text, buttonStyle = 'default', onClickHandler }) => {
   const styles = buttonStyle;
 
   return (

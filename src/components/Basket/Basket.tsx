@@ -16,17 +16,14 @@ import DeliveryMessage from '@components/StickyMenu/MiniBasket/DeliveryMessage';
 import './Basket.scss';
 
 interface IPromo {
-  promo: string,
-  multiply: number,
+  promo: string;
+  multiply: number;
 }
 
-const Basket = () => {
-  const {
-    basket,
-    postMessage,
-    products,
-    productsLoading,
-  } = useTypedSelector((state) => state.basket);
+const Basket: React.FC = () => {
+  const { basket, postMessage, products, productsLoading } = useTypedSelector(
+    (state) => state.basket
+  );
 
   const { token, userId, email } = useTypedSelector((state) => state.auth);
   const { usePromo, promoMult } = useTypedSelector((state) => state.basket);
@@ -43,7 +40,7 @@ const Basket = () => {
   const inputPromo = useInput('', 'PROMO#10', 'promo');
 
   useEffect(() => {
-    setAmount(basket.reduce((total, obj) => (total + obj.currentPrice * obj.amount), 0));
+    setAmount(basket.reduce((total, obj) => total + obj.currentPrice * obj.amount, 0));
   }, [basket]);
 
   useEffect(() => {
@@ -107,27 +104,29 @@ const Basket = () => {
     <div className="Basket">
       <div className="Basket__container">
         <h1>Корзина</h1>
-        { basket.map((productData) => (
+        {basket.map((productData) => (
           <BasketItem
             isDetails
             itemStyle="basketI"
             key={productData.id}
             productData={productData}
           />
-        )) }
-        { basket.length === 0 && <img className="Basket__img" src={BasketImg} alt="null" /> }
+        ))}
+        {basket.length === 0 && <img className="Basket__img" src={BasketImg} alt="null" />}
 
-        { deliveryPrice - amount > 0 && basket.length !== 0 && (
+        {deliveryPrice - amount > 0 && basket.length !== 0 && (
           <DeliveryMessage amount={amount} deliveryPrice={deliveryPrice} />
-        ) }
+        )}
 
-        { deliveryPrice - amount < 0 && basket.length !== 0 && (
-          <div className="Basket__container__space"><h3>Добавить к заказу?</h3></div>
-        ) }
+        {deliveryPrice - amount < 0 && basket.length !== 0 && (
+          <div className="Basket__container__space">
+            <h3>Добавить к заказу?</h3>
+          </div>
+        )}
 
-        { basket.length !== 0 && (
+        {basket.length !== 0 && (
           <>
-            { !productsLoading ? (
+            {!productsLoading ? (
               <>
                 <div className="Basket__container__slider desctop">
                   <ProductSliderDesktop width={800} sliderItem={productSliderItem} />
@@ -136,11 +135,13 @@ const Basket = () => {
                   <ProductSliderMobile sliderItem={productSliderItem} />
                 </div>
               </>
-            ) : <Loader />}
+            ) : (
+              <Loader />
+            )}
 
-            { !loading ? (
+            {!loading ? (
               <div className="Basket__container__promo-code">
-                { usePromo ? <h3>Промокод использован!</h3> : <h3>Промокод</h3> }
+                {usePromo ? <h3>Промокод использован!</h3> : <h3>Промокод</h3>}
                 <div className="promo-code__container">
                   <Input
                     isError={inputPromo.isError}
@@ -149,31 +150,31 @@ const Basket = () => {
                     defaultParams={inputPromo.default}
                   />
                   <div className="promo-code__container__button">
-                    { !inputPromo.isValid
-                      ? <Button buttonStyle="default" text="Применить" />
-                      : <Button buttonStyle="bright" onClickHandler={checkPromo} text="Применить" /> }
+                    {!inputPromo.isValid ? (
+                      <Button buttonStyle="default" text="Применить" />
+                    ) : (
+                      <Button buttonStyle="bright" onClickHandler={checkPromo} text="Применить" />
+                    )}
                   </div>
                 </div>
               </div>
-            ) : <Loader /> }
+            ) : (
+              <Loader />
+            )}
             <div className="Basket__container__price">
               <div className="price__title">Сумма заказа:</div>
-              { usePromo ? (
+              {usePromo ? (
                 <div className="price__price">
-                  <span className="price__price__prev">
-                    {`${amount} ₽`}
-                  </span>
+                  <span className="price__price__prev">{`${amount} ₽`}</span>
                   <span className="price__price__curent">
                     {`${Math.round(amount * promoMult)} ₽`}
                   </span>
                 </div>
               ) : (
                 <div className="price__price">
-                  <span className="price__price__curent">
-                    {`${amount} ₽`}
-                  </span>
+                  <span className="price__price__curent">{`${amount} ₽`}</span>
                 </div>
-              ) }
+              )}
             </div>
             <div className="Basket__container__buttons">
               <Link to={Routes.HOME_ROUTE}>
@@ -182,15 +183,9 @@ const Basket = () => {
               <Button buttonStyle="bright" onClickHandler={addOrder} text="Оформить заказ" />
             </div>
           </>
-        ) }
+        )}
       </div>
-      <CSSTransition
-        in={show}
-        timeout={300}
-        classNames="modal"
-        mountOnEnter
-        unmountOnExit
-      >
+      <CSSTransition in={show} timeout={300} classNames="modal" mountOnEnter unmountOnExit>
         <Portal>
           <Modal onCloseModal={toggleLoginModal}>
             <Auth toggleLoginModal={toggleLoginModal} />

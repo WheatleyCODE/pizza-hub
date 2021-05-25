@@ -6,21 +6,17 @@ import DeliveryMessage from './DeliveryMessage';
 import './MiniBasket.scss';
 
 interface IMiniBasketProps {
-  onMouseOverBasket: () => void,
-  onMouseLeaveBasket: () => void,
-  onMouseEnterBasket: () => void,
+  onMouseOverBasket: () => void;
+  onMouseLeaveBasket: () => void;
+  onMouseEnterBasket: () => void;
 }
 
-const MiniBasket = (props: IMiniBasketProps) => {
+const MiniBasket: React.FC<IMiniBasketProps> = (props) => {
   const { basket } = useTypedSelector((state) => state.basket);
   const deliveryPrice = 1000;
-  const {
-    onMouseOverBasket,
-    onMouseLeaveBasket,
-    onMouseEnterBasket,
-  } = props;
+  const { onMouseOverBasket, onMouseLeaveBasket, onMouseEnterBasket } = props;
 
-  const amount = basket.reduce((total, obj) => (total + obj.currentPrice * obj.amount), 0);
+  const amount = basket.reduce((total, obj) => total + obj.currentPrice * obj.amount, 0);
 
   let stylesProducts;
   let stylesMiniBasket;
@@ -46,31 +42,28 @@ const MiniBasket = (props: IMiniBasketProps) => {
         style={stylesMiniBasket}
       >
         <div style={stylesProducts} className="MiniBasket__products">
-
-          { basket.map((productData) => (
+          {basket.map((productData) => (
             <BasketItem
               isDetails={false}
               itemStyle={null}
               key={productData.id}
               productData={productData}
             />
-          )) }
+          ))}
 
-          { basket.length === 0 && <img className="MiniBasket__img" src={BasketImg} alt="null" /> }
-
+          {basket.length === 0 && <img className="MiniBasket__img" src={BasketImg} alt="null" />}
         </div>
 
-        { deliveryPrice - amount > 0 && basket.length !== 0 && (
+        {deliveryPrice - amount > 0 && basket.length !== 0 && (
           <DeliveryMessage deliveryPrice={deliveryPrice} amount={amount} />
-        ) }
+        )}
 
-        { basket.length !== 0 && (
+        {basket.length !== 0 && (
           <div className="MiniBasket__price">
             <div className="price__title">Сумма заказа:</div>
             <div className="price__price">{`${amount} ₽`}</div>
           </div>
-        ) }
-
+        )}
       </div>
       <div className="triangle" />
     </div>

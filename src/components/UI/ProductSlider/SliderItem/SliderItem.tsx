@@ -10,21 +10,15 @@ import DefaultProduct from '@components/Menu/Product/DefaultProduct';
 import './SliderItem.scss';
 
 interface ISliderItem {
-  title: string,
-  route: string,
-  url: string,
-  price: string | number,
-  defaultProduct: IDefaultProduct | null,
+  title: string;
+  route: string;
+  url: string;
+  price: string | number;
+  defaultProduct: IDefaultProduct | null;
 }
 
-const SliderItem = (props: ISliderItem) => {
-  const {
-    title,
-    route,
-    url,
-    price,
-    defaultProduct,
-  } = props;
+const SliderItem: React.FC<ISliderItem> = (props) => {
+  const { title, route, url, price, defaultProduct } = props;
 
   const [showModal, setShowModal] = useState(false);
   const { addToBasket } = useActions();
@@ -66,13 +60,7 @@ const SliderItem = (props: ISliderItem) => {
             </span>
           </div>
         </div>
-        <CSSTransition
-          in={showModal}
-          timeout={300}
-          classNames="modal"
-          mountOnEnter
-          unmountOnExit
-        >
+        <CSSTransition in={showModal} timeout={300} classNames="modal" mountOnEnter unmountOnExit>
           <Portal>
             <Modal onCloseModal={toggleModal}>
               <DefaultProduct

@@ -13,18 +13,21 @@ import * as authActions from '../redux/actions/auth';
 const useActions = () => {
   const dispatch = useDispatch();
 
-  return bindActionCreators({
-    fetchMenu,
-    fetchPopular,
-    ...cityActions,
-    ...comboConfiguratorActions,
-    ...sliderActions,
-    ...basketActions,
-    ...configActions,
-    ...authActions,
-    postOrder,
-    fetchProducts,
-  }, dispatch);
+  return bindActionCreators(
+    {
+      fetchMenu,
+      fetchPopular,
+      ...cityActions,
+      ...comboConfiguratorActions,
+      ...sliderActions,
+      ...basketActions,
+      ...configActions,
+      ...authActions,
+      postOrder,
+      fetchProducts,
+    },
+    dispatch
+  );
 };
 
 export default useActions;

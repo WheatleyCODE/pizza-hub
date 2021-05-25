@@ -5,10 +5,10 @@ import Routes from '@t/routes';
 import './Logo.scss';
 
 interface ILogoProps {
-  onClickHandler?: () => void
+  onClickHandler?: () => void;
 }
 
-const Logo = ({ onClickHandler }: ILogoProps) => (
+const Logo: React.FC<ILogoProps> = ({ onClickHandler }) => (
   <NavLink to={Routes.HOME_ROUTE}>
     <button type="submit" onClick={onClickHandler} className="Logo">
       <div>

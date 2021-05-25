@@ -3,11 +3,11 @@ import { IDefaultProduct } from '@t/menu';
 import './DefaultItem.scss';
 
 interface IDefaultItemProps {
-  product: IDefaultProduct,
-  setIndex: () => void,
+  product: IDefaultProduct;
+  setIndex: () => void;
 }
 
-const DefaultItem = ({ product, setIndex }: IDefaultItemProps) => (
+const DefaultItem: React.FC<IDefaultItemProps> = ({ product, setIndex }) => (
   <div aria-hidden="true" onClick={setIndex} className="DefaultItem">
     <div className="DefaultItem__img">
       <img src={product.url} alt={product.title} />

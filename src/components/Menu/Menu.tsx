@@ -7,7 +7,7 @@ import { IProduct, IDefaultProduct, IComboProduct } from '@t/menu';
 import Product from './Product';
 import './Menu.scss';
 
-const Menu = () => {
+const Menu: React.FC = () => {
   const { menu, loading } = useTypedSelector((state) => state.menu);
   const { fetchMenu } = useActions();
 
@@ -20,21 +20,22 @@ const Menu = () => {
   return (
     <div className="Menu">
       <div className="Menu__container">
-        { menu.map((coll) => (
-          <Element name={coll.collectionName} key={coll.collectionName} className="container__collection">
+        {menu.map((coll) => (
+          <Element
+            name={coll.collectionName}
+            key={coll.collectionName}
+            className="container__collection"
+          >
             <h2 className="colection__title">{coll.collectionName}</h2>
             <div className="colection__product-container">
-              { coll.collection.map(
+              {coll.collection.map(
                 (product: IProduct | IDefaultProduct | IComboProduct, i: number) => (
-                  <Product
-                    key={i}
-                    product={product}
-                  />
-                ),
-              ) }
+                  <Product key={i} product={product} />
+                )
+              )}
             </div>
           </Element>
-        )) }
+        ))}
       </div>
       <BasketButton />
     </div>

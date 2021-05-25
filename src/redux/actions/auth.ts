@@ -18,7 +18,7 @@ export const logout = (): AuthAction => {
   localStorage.removeItem('userId');
   localStorage.removeItem('expirationDate');
 
-  return ({ type: AuthActionTypes.AUTH_LOGOUT });
+  return { type: AuthActionTypes.AUTH_LOGOUT };
 };
 
 export const setAuthError = (text: string | null): AuthAction => ({
@@ -26,7 +26,7 @@ export const setAuthError = (text: string | null): AuthAction => ({
   payload: text,
 });
 
-const autologout = (time: number, dispatch:Dispatch<AuthAction>) => {
+const autologout = (time: number, dispatch: Dispatch<AuthAction>) => {
   setTimeout(() => {
     dispatch(logout());
   }, time * 1000);
@@ -49,12 +49,14 @@ export const autoLogin = () => async (dispatch: Dispatch<AuthAction>) => {
   }
 };
 
-export const auth = (authData: IAuthData, succesCallback: () => void) => (
-  async (dispatch: Dispatch<AuthAction>) => {
+export const auth =
+  (authData: IAuthData, succesCallback: () => void) => async (dispatch: Dispatch<AuthAction>) => {
     try {
-      let url: string = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCybwd8_sQFZF95r1i7mLeZc-F8LkDR7mQ';
+      let url =
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCybwd8_sQFZF95r1i7mLeZc-F8LkDR7mQ';
       if (authData.isLogin) {
-        url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCybwd8_sQFZF95r1i7mLeZc-F8LkDR7mQ';
+        url =
+          'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCybwd8_sQFZF95r1i7mLeZc-F8LkDR7mQ';
       }
       const response = await axios.post(url, {
         email: authData.email,
@@ -76,4 +78,4 @@ export const auth = (authData: IAuthData, succesCallback: () => void) => (
     } catch (e) {
       dispatch(setAuthError('Неверный Email или Password'));
     }
-  });
+  };

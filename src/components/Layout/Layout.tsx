@@ -6,7 +6,7 @@ import Header from '@components/Header';
 import publickRoutes from '../../routes/routes';
 import './Layout.scss';
 
-const Layout = () => {
+const Layout: React.FC = () => {
   const { autoLogin, autoAddToBasket } = useActions();
 
   useEffect(() => {
@@ -18,9 +18,9 @@ const Layout = () => {
     <div className="Layout">
       <Route path={Routes.HOME_ROUTE} component={Header} />
       <Switch>
-        { publickRoutes.map((route) => (
+        {publickRoutes.map((route) => (
           <Route key={route.path} path={route.path} component={route.Component} />
-        )) }
+        ))}
       </Switch>
     </div>
   );
