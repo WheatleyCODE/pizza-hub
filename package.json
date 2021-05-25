@@ -21,7 +21,10 @@
     "@types/redux": "^3.6.0",
     "@types/redux-thunk": "^2.1.0",
     "axios": "^0.21.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
     "firebase": "^8.4.2",
+    "prettier": "^2.3.0",
     "react": "^17.0.2",
     "react-app-rewire-alias": "^1.0.3",
     "react-app-rewired": "^2.1.8",
@@ -45,11 +48,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 100
   },
   "browserslist": {
     "production": [
